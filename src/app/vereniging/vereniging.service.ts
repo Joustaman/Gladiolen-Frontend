@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VerenigingService {
 
-  constructor() { }
+  constructor(private readonly http: HttpClient) {}
+
+  getTshirts(): any {
+    return this.http.get('http://localhost:8000/tshirts');
+  }
 }

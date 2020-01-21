@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VerenigingService } from '../vereniging.service';
 
 @Component({
   selector: 'app-create-verantwoordelijke',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateVerantwoordelijkeComponent implements OnInit {
 
-  constructor() { }
+  tshirts: any = [];
+  constructor(private readonly verenigingService: VerenigingService) { }
 
   ngOnInit() {
+    this.verenigingService.getTshirts().subscribe(
+      result => {
+        this.tshirts = result;
+      },
+    );
   }
 
 }

@@ -1,40 +1,95 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-4">
-      <div class="form-group">
-        <label for="naam">Naam</label>
-        <input type="text" id="naam" name="naam">
+  <form>
+    <div class="row">
+
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="naam">Naam</label>
+          <input class="form-control" type="text" id="naam" name="naam">
+        </div>
       </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="form-group">
-        <label for="roepnaam">Roepnaam</label>
-        <input type="text" id="roepnaam" name="roepnaam">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="roepnaam">Roepnaam</label>
+          <input class="form-control" type="text" id="roepnaam" name="roepnaam">
+        </div>
       </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="form-group">
-        <label for="naam">Naam</label>
-        <input type="text" id="naam" name="naam">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="naam">Naam</label>
+          <input class="form-control" type="text" id="naam" name="naam">
+        </div>
       </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="form-group">
-        <label for="straat">Straat</label>
-        <input type="text" id="straat" name="straat">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="straat">Straat</label>
+          <input class="form-control" type="text" id="straat" name="straat">
+        </div>
       </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="form-group">
-        <label for="huisnummer">Huisnummer</label>
-        <input type="text" id="huisnummer" name="huisnummer">
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label for="huisnummer">Huisnummer</label>
+          <input class="form-control" type="text" id="huisnummer" name="huisnummer">
+        </div>
       </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="form-group">
-        <label for="geboortedatum">Geboortedatum</label>
-        <input type="text" id="geboortedatum" name="geboortedatum">
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label for="postcode">Postcode</label>
+          <input class="form-control" type="text" id="postcode" name="postcode">
+        </div>
       </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="emailadres">Email</label>
+          <input class="form-control" type="text" id="emailadres" name="emailadres">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label for="telefoon">Telefoon</label>
+          <input class="form-control" type="telefoon" id="telefoon" name="telefoon">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label for="geboortedatum">Geboortedatum</label>
+          <input class="form-control" type="date" id="geboortedatum" name="geboortedatum">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="rijksregisternr">rijksregisternr</label>
+          <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="opmerking">Opmerking</label>
+          <textarea class="form-control" type="text" id="opmerking" name="opmerking"></textarea>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="tshirt">Tshirt</label>
+          <select name="tshirt" id="tshirt" class="form-control">
+            <option *ngFor="let tshirt of tshirts" [value]="tshirt.id">{{tshirt.maat}} - {{tshirt.geslacht}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group text-center">
+          <label for="tweedetshirt">Extra shirt?</label>
+          <input type="checkbox" name="tweedetshirt" id="tweedetshirt" class="form-control">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group text-center">
+          <label for="lunch text-center">Lunchpakket ?</label>
+          <input type="checkbox" name="lunch" id="lunch" class="form-control">
+        </div>
+      </div>
+
     </div>
-  </div>
+    <input type="submit" class="btn btn-primary">
+  </form>
 </div>

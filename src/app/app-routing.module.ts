@@ -4,12 +4,14 @@ import {CreateVerenigingComponent} from './vereniging/create-vereniging/create-v
 import {ManageGebruikersComponent} from './admin/manage-gebruikers/manage-gebruikers.component';
 import {DetailGebruikerComponent} from './admin/detail-gebruiker/detail-gebruiker.component';
 import {CreateGebruikerComponent} from './admin/create-gebruiker/create-gebruiker.component';
+import { CreateVerantwoordelijkeComponent } from './vereniging/create-verantwoordelijke/create-verantwoordelijke.component';
 
 const routes: Routes = [
   {path: 'manageGebruikers', component: ManageGebruikersComponent},
   {path: 'createGebruiker', component: CreateGebruikerComponent},
   {path: 'detailGebruiker', component: DetailGebruikerComponent},
-  {path: 'createvereniging', component: CreateVerenigingComponent}
+  {path: 'createvereniging', component: CreateVerenigingComponent},
+  {path: 'createverantwoordelijke', component: CreateVerantwoordelijkeComponent}
 ];
 
 @NgModule({

@@ -7,7 +7,8 @@ import {AppComponent} from './app.component';
 import {AdminModule} from './admin/admin.module';
 import { CreateVerenigingComponent } from './vereniging/create-vereniging/create-vereniging.component';
 import { CreateVerantwoordelijkeComponent } from './vereniging/create-verantwoordelijke/create-verantwoordelijke.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,8 +17,10 @@ import { CreateVerantwoordelijkeComponent } from './vereniging/create-verantwoor
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

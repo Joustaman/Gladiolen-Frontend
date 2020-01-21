@@ -5,10 +5,14 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
 import {AdminModule} from './admin/admin.module';
+import { CreateVerenigingComponent } from './vereniging/create-vereniging/create-vereniging.component';
+import { CreateVerantwoordelijkeComponent } from './vereniging/create-verantwoordelijke/create-verantwoordelijke.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CreateVerenigingComponent,
+    CreateVerantwoordelijkeComponent
   ],
   imports: [
     BrowserModule,

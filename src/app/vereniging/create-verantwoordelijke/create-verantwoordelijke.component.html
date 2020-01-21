@@ -1,95 +1,109 @@
 <div class="container">
-  <form>
+  <form [formGroup]="verantwoordelijkeForm" (ngSubmit)="submitForm()">
     <div class="row">
-
       <div class="col-lg-4">
         <div class="form-group">
           <label for="naam">Naam</label>
-          <input class="form-control" type="text" id="naam" name="naam">
+          <input class="form-control" type="text" id="naam" name="naam" formControlName="naam">
         </div>
       </div>
       <div class="col-lg-4">
         <div class="form-group">
           <label for="roepnaam">Roepnaam</label>
-          <input class="form-control" type="text" id="roepnaam" name="roepnaam">
+          <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam">
         </div>
       </div>
       <div class="col-lg-4">
         <div class="form-group">
-          <label for="naam">Naam</label>
-          <input class="form-control" type="text" id="naam" name="naam">
+          <label for="voornaam">Voornaam</label>
+          <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" >
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
           <label for="straat">Straat</label>
-          <input class="form-control" type="text" id="straat" name="straat">
+          <input class="form-control" type="text" id="straat" name="straat" formControlName="straat">
         </div>
       </div>
       <div class="col-lg-3">
         <div class="form-group">
           <label for="huisnummer">Huisnummer</label>
-          <input class="form-control" type="text" id="huisnummer" name="huisnummer">
+          <input class="form-control" type="text" id="huisnummer" name="huisnummer" formControlName="huisnummer">
         </div>
       </div>
       <div class="col-lg-3">
         <div class="form-group">
           <label for="postcode">Postcode</label>
-          <input class="form-control" type="text" id="postcode" name="postcode">
+          <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode">
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
           <label for="emailadres">Email</label>
-          <input class="form-control" type="text" id="emailadres" name="emailadres">
+          <input class="form-control" type="text" id="emailadres" name="emailadres" formControlName="emailadres">
         </div>
       </div>
       <div class="col-lg-3">
         <div class="form-group">
           <label for="telefoon">Telefoon</label>
-          <input class="form-control" type="telefoon" id="telefoon" name="telefoon">
+          <input class="form-control" type="telefoon" id="telefoon" name="telefoon" formControlName="telefoon">
         </div>
       </div>
       <div class="col-lg-3">
         <div class="form-group">
           <label for="geboortedatum">Geboortedatum</label>
-          <input class="form-control" type="date" id="geboortedatum" name="geboortedatum">
+          <input class="form-control" type="date" id="geboortedatum" name="geboortedatum" formControlName="geboortedatum">
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
-          <label for="rijksregisternr">rijksregisternr</label>
-          <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr">
+          <label for="rijksregisternr">Rijksregister</label>
+          <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr" formControlName="rijksregisternr">
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
           <label for="opmerking">Opmerking</label>
-          <textarea class="form-control" type="text" id="opmerking" name="opmerking"></textarea>
+          <textarea class="form-control" type="text" id="opmerking" name="opmerking" formControlName="opmerking"></textarea>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
           <label for="tshirt">Tshirt</label>
-          <select name="tshirt" id="tshirt" class="form-control">
+          <select name="tshirt" id="tshirt" class="form-control" formControlName="tshirt_id">
             <option *ngFor="let tshirt of tshirts" [value]="tshirt.id">{{tshirt.maat}} - {{tshirt.geslacht}}</option>
           </select>
         </div>
       </div>
       <div class="col-lg-3">
-        <div class="form-group text-center">
-          <label for="tweedetshirt">Extra shirt?</label>
-          <input type="checkbox" name="tweedetshirt" id="tweedetshirt" class="form-control">
+        <div class="form-group paddingcheck text-center">
+          <div class="pretty p-default p-switch" (click)="changeTshirt()">
+            <input type="checkbox" />
+            <div class="state p-primary">
+              <label>Extra shirt</label>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-lg-3">
-        <div class="form-group text-center">
-          <label for="lunch text-center">Lunchpakket ?</label>
-          <input type="checkbox" name="lunch" id="lunch" class="form-control">
+        <div class="form-group paddingcheck text-center">
+          <div class="pretty p-default p-switch" (click)="changeLunch()">
+            <input type="checkbox" />
+            <div class="state p-primary">
+              <label>Lunchpakket</label>
+            </div>
+          </div>
         </div>
       </div>
-
+      <div class="col-lg-6">
+        <label for="wachtwoord">Wachtwoord</label>
+        <input type="password" class="form-control" name="wachtwoord" id="wachtwoord" formControlName="wachtwoord">
+      </div>
+      <div class="col-lg-6">
+        <label for="herhaalwachtwoord">Herhaal wachtwoord</label>
+        <input type="password" class="form-control" name="herhaalwachtwoord" id="herhaalwachtwoord">
+      </div>
     </div>
-    <input type="submit" class="btn btn-primary">
+    <input type="submit" class="btn btn-primary" >
   </form>
 </div>

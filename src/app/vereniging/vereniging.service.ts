@@ -11,4 +11,7 @@ export class VerenigingService {
   getTshirts(): any {
     return this.http.get('http://localhost:8000/tshirts');
   }
+  registreerVerantwoordelijke(gebruiker): any {
+    return this.http.post('http://localhost:8000/gebruiker',gebruiker);
+  }
 }

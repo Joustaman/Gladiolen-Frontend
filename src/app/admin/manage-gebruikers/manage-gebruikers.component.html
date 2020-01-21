@@ -3,8 +3,7 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Leden</h5>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">Lid toevoegen
-      </button>
+      <button type="button" class="btn btn-primary" [routerLink]="['/createGebruiker']">Lid toevoegen</button>
       <div class="card-text">
         <table class="table table-hover">
           <thead>
@@ -18,48 +17,19 @@
           </tr>
           </thead>
           <tbody>
-          <tr (click)="showDetailUser()">
+          <tr [routerLink]="['/detailGebruiker']">
             <td>Naam</td>
             <td>Voornaam</td>
             <td>Geboortedatum</td>
             <td>vereniging</td>
             <td>Verantwoordelijke</td>
             <td>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">Bewerk
-              </button>
+              <button type="button" class="btn btn-primary">Bewerk</button>
               <button type="button" class="btn btn-danger">Verwijder</button>
             </td>
           </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-
-    <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal"
-         aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="userModalLabel"></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form>
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="name" class="col-form-label">Naam:</label>
-                <input type="text" class="form-control" id="name"
-                       formControlName="title">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-                <button type="submit" class="btn btn-primary">Opslaan
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
       </div>
     </div>
   </div>

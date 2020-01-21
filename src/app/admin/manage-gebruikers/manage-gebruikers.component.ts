@@ -11,10 +11,6 @@ export class ManageGebruikersComponent implements OnInit {
   constructor(private _router: Router) {
   }
 
-  showDetailUser() {
-    this._router.navigate(['/detailGebruiker']);
-  }
-
   ngOnInit() {
   }
 }

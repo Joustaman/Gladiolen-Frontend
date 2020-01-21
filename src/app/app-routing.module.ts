@@ -1,10 +1,12 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {ManageUsersComponent} from './admin/manage-users/manage-users.component';
-import { CreateVerenigingComponent } from './vereniging/create-vereniging/create-vereniging.component';
+import {CreateVerenigingComponent} from './vereniging/create-vereniging/create-vereniging.component';
+import {ManageGebruikersComponent} from './admin/manage-gebruikers/manage-gebruikers.component';
+import {DetailGebruikerComponent} from './admin/detail-gebruiker/detail-gebruiker.component';
 
 const routes: Routes = [
-  {path: 'manageUser', component: ManageUsersComponent},
+  {path: 'manageGebruiker', component: ManageGebruikersComponent},
+  {path: 'detailGebruiker', component: DetailGebruikerComponent},
   {path: 'createvereniging', component: CreateVerenigingComponent}
 ];
 

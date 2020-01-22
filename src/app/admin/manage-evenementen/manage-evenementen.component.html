@@ -1,29 +1,77 @@
 <div>
-    <h1>Evenementen beheren</h1>
-    <div class="card">
-        <div class="card-body">
-            <button type="button" class="btn btn-primary" [routerLink]="['/createEvenement']">Evenement toevoegen</button>
-            <div class="card-text">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col">Naam</th>
-                        <th scope="col">Startdatum</th>
-                        <th scope="col">Einddatum</th>
-                        <th scope="col">Actief</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr [routerLink]="['/editEvenement']">
-                        <td>Naam</td>
-                        <td>Startdatum</td>
-                        <td>Eindatum</td>
-                        <td>Actief</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  <h1>Evenementen beheren</h1>
+  <div class="card">
+    <div class="card-body">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#evenementModal">Evenement
+        toevoegen
+      </button>
+      <div class="card-text">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">Naam</th>
+            <th scope="col">Startdatum</th>
+            <th scope="col">Einddatum</th>
+            <th scope="col">Actief</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let evenement of evenementen" (click)="onClickEditEvenement(evenement)"
+              data-toggle="modal" data-target="#evenementModal">
+            <td>{{evenement.naam}}</td>
+            <td>{{evenement.startdatum | date:'MM/dd/yyyy'}}</td>
+            <td>{{evenement.einddatum | date:'MM/dd/yyyy'}}</td>
+            <td>{{evenement.actief}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
+
+  <div class="modal fade" id="evenementModal" tabindex="-1" role="dialog" aria-labelledby="evenementModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Evenement toevoegen</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form (ngSubmit)="onSubmit()" [formGroup]="evenementForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="naam" class="col-form-label">Naam:</label>
+              <input type="text" class="form-control" id="naam"
+                     formControlName="naam">
+            </div>
+            <div class="form-group">
+              <label for="startdatum" class="col-form-label">Begin datum:</label>
+              <input type="date" class="form-control" id="startdatum"
+                     formControlName="startdatum">
+            </div>
+            <div class="form-group">
+              <label for="einddatum" class="col-form-label">Eind datum:</label>
+              <input type="date" class="form-control" id="einddatum"
+                     formControlName="einddatum">
+            </div>
+            <div class="form-group paddingcheck text-center">
+              <div class="pretty p-default p-switch" (click)="changeActief()">
+                <input type="checkbox"/>
+                <div class="state p-primary">
+                  <label>Actief</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+            <button type="submit" class="btn btn-primary">Opslaan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

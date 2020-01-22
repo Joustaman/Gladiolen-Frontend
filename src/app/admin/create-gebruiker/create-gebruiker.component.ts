@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
-import {VerenigingService} from '../../vereniging/vereniging.service';
+import {AdminService} from '../admin.service';
 
 @Component({
   selector: 'app-create-gebruiker',
@@ -31,16 +31,16 @@ export class CreateGebruikerComponent implements OnInit {
     rol_id: new FormControl(null),
   });
   tshirts: any = [];
-  constructor(private readonly verenigingService: VerenigingService) { }
+  constructor(private readonly adminService: AdminService) { }
   ngOnInit() {
-    this.verenigingService.getTshirts().subscribe(
+    this.adminService.getTshirts().subscribe(
         result => {
           this.tshirts = result;
         },
     );
   }
   submitForm() {
-    this.verenigingService.registreerVerantwoordelijke(this.gebruikerForm.value).subscribe(
+    this.adminService.registreerGebruiker(this.gebruikerForm.value).subscribe(
         result => {
           console.log(result);
         },

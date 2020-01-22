@@ -1,0 +1,29 @@
+<div>
+    <h1>Evenementen beheren</h1>
+    <div class="card">
+        <div class="card-body">
+            <button type="button" class="btn btn-primary" [routerLink]="['/createEvenement']">Evenement toevoegen</button>
+            <div class="card-text">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Naam</th>
+                        <th scope="col">Startdatum</th>
+                        <th scope="col">Einddatum</th>
+                        <th scope="col">Actief</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr [routerLink]="['/editEvenement']">
+                        <td>Naam</td>
+                        <td>Startdatum</td>
+                        <td>Eindatum</td>
+                        <td>Actief</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

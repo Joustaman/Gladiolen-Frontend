@@ -4,12 +4,12 @@
       <mat-horizontal-stepper #stepper>
         <mat-step>
           <ng-template matStepLabel>Uw gegevens</ng-template>
-          <form [formGroup]="verantwoordelijkeForm">
+          <form [formGroup]="verantwoordelijkeForm" class="was-validated" novalidate>
             <div class="row">
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="naam">Naam</label>
-                  <input class="form-control" type="text" id="naam" name="naam" formControlName="naam">
+                  <input class="form-control" type="text" id="naam" name="naam" formControlName="naam" required>
                 </div>
               </div>
               <div class="col-lg-4">
@@ -21,7 +21,7 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="voornaam">Voornaam</label>
-                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam">
+                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" required>
                 </div>
               </div>
               <div class="col-lg-6">
@@ -33,21 +33,21 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="huisnummer">Huisnummer</label>
-                  <input class="form-control" type="text" id="huisnummer" name="huisnummer"
+                  <input class="form-control" type="number" id="huisnummer" name="huisnummer"
                     formControlName="huisnummer">
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="postcode">Postcode</label>
-                  <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode">
+                  <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode" pattern="[0-9]{4}">
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="emailadres">Email</label>
-                  <input class="form-control" type="text" id="emailadres" name="emailadres"
-                    formControlName="emailadres">
+                  <input class="form-control" type="email" id="emailadres" name="emailadres"
+                    formControlName="emailadres" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" required>
                 </div>
               </div>
               <div class="col-lg-3">
@@ -60,14 +60,14 @@
                 <div class="form-group">
                   <label for="geboortedatum">Geboortedatum</label>
                   <input class="form-control" type="date" id="geboortedatum" name="geboortedatum"
-                    formControlName="geboortedatum">
+                    formControlName="geboortedatum" required>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="rijksregisternr">Rijksregister</label>
                   <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
-                    formControlName="rijksregisternr">
+                    formControlName="rijksregisternr" pattern="[0-9]{11}" required>
                 </div>
               </div>
               <div class="col-lg-6">
@@ -109,11 +109,11 @@
               <div class="col-lg-6">
                 <label for="wachtwoord">Wachtwoord</label>
                 <input type="password" class="form-control" name="wachtwoord" id="wachtwoord"
-                  formControlName="wachtwoord">
+                  formControlName="wachtwoord" pattern=".{6,}" required>
               </div>
               <div class="col-lg-6">
                 <label for="herhaalwachtwoord">Herhaal wachtwoord</label>
-                <input type="password" class="form-control" name="herhaalwachtwoord" id="herhaalwachtwoord">
+                <input type="password" class="form-control" name="herhaalwachtwoord" id="herhaalwachtwoord" pattern=".{6,}" required>
               </div>
               <div>
                 <button mat-button matStepperNext>Next</button>
@@ -123,50 +123,50 @@
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>Vereniging</ng-template>
-          <form [formGroup]="verenigingForm">
+          <form [formGroup]="verenigingForm" class="was-validated" novalidate>
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="naam">Naam</label>
-                  <input class="form-control" type="text" id="naam" name="naam" formControlName="naam">
+                  <input class="form-control" type="text" id="naam" name="naam" formControlName="naam" required>
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="rekeningnr">Rekening Nummer</label>
                   <input class="form-control" type="text" id="rekeningnr" name="rekeningnr"
-                    formControlName="rekeningnr">
+                    formControlName="rekeningnr" pattern="[BE]{2}[0-9]{14}" required>
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="btwnr">BTW Nummer</label>
-                  <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr">
+                  <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr" pattern="[BE]{2}[0]{1}[0-9]{9}" required>
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="straat">Straat</label>
-                  <input class="form-control" type="text" id="straat" name="straat" formControlName=straat>
+                  <input class="form-control" type="text" id="straat" name="straat" formControlName=straat required>
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="huisnummer">Huisnummer</label>
-                  <input class="form-control" type="text" id="huisnummer" name="huisnummer"
-                    formControlName="huisnummer">
+                  <input class="form-control" type="number" id="huisnummer" name="huisnummer"
+                    formControlName="huisnummer" required>
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="gemeente">Gemeente</label>
-                  <input class="form-control" type="text" id="gemeente" name="gemeente" formControlName="gemeente">
+                  <input class="form-control" type="text" id="gemeente" name="gemeente" formControlName="gemeente" required>
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="postcode">Postcode</label>
-                  <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode">
+                  <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode" pattern="[0-9]{4}" required>
                 </div>
               </div>
             </div>

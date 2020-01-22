@@ -14,4 +14,7 @@ export class VerenigingService {
   registreerVerantwoordelijke(gebruiker): any {
     return this.http.post('http://localhost:8000/gebruiker',gebruiker);
   }
+  registreerVereniging(vereniging): any {
+    return this.http.post('http://localhost:8000/vereniging', vereniging);
+  }
 }

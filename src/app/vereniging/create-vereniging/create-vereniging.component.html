@@ -1,3 +1,218 @@
-<div>
-    
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <mat-horizontal-stepper #stepper>
+        <mat-step>
+          <ng-template matStepLabel>Uw gegevens</ng-template>
+          <form [formGroup]="verantwoordelijkeForm">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="naam">Naam</label>
+                  <input class="form-control" type="text" id="naam" name="naam" formControlName="naam">
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="roepnaam">Roepnaam</label>
+                  <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam">
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="voornaam">Voornaam</label>
+                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="straat">Straat</label>
+                  <input class="form-control" type="text" id="straat" name="straat" formControlName="straat">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="huisnummer">Huisnummer</label>
+                  <input class="form-control" type="text" id="huisnummer" name="huisnummer"
+                    formControlName="huisnummer">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="postcode">Postcode</label>
+                  <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="emailadres">Email</label>
+                  <input class="form-control" type="text" id="emailadres" name="emailadres"
+                    formControlName="emailadres">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="telefoon">Telefoon</label>
+                  <input class="form-control" type="telefoon" id="telefoon" name="telefoon" formControlName="telefoon">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="geboortedatum">Geboortedatum</label>
+                  <input class="form-control" type="date" id="geboortedatum" name="geboortedatum"
+                    formControlName="geboortedatum">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="rijksregisternr">Rijksregister</label>
+                  <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
+                    formControlName="rijksregisternr">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="opmerking">Opmerking</label>
+                  <textarea class="form-control" type="text" id="opmerking" name="opmerking"
+                    formControlName="opmerking"></textarea>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="tshirt">Tshirt</label>
+                  <select name="tshirt" id="tshirt" class="form-control" formControlName="tshirt_id">
+                    <option *ngFor="let tshirt of tshirts" [value]="tshirt.id">{{tshirt.maat}} - {{tshirt.geslacht}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group paddingcheck text-center">
+                  <div class="pretty p-default p-switch" (click)="changeTshirt()">
+                    <input type="checkbox" />
+                    <div class="state p-primary">
+                      <label>Extra shirt</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group paddingcheck text-center">
+                  <div class="pretty p-default p-switch" (click)="changeLunch()">
+                    <input type="checkbox" />
+                    <div class="state p-primary">
+                      <label>Lunchpakket</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <label for="wachtwoord">Wachtwoord</label>
+                <input type="password" class="form-control" name="wachtwoord" id="wachtwoord"
+                  formControlName="wachtwoord">
+              </div>
+              <div class="col-lg-6">
+                <label for="herhaalwachtwoord">Herhaal wachtwoord</label>
+                <input type="password" class="form-control" name="herhaalwachtwoord" id="herhaalwachtwoord">
+              </div>
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Vereniging</ng-template>
+          <form [formGroup]="verenigingForm">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="naam">Naam</label>
+                  <input class="form-control" type="text" id="naam" name="naam" formControlName="naam">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="rekeningnr">Rekening Nummer</label>
+                  <input class="form-control" type="text" id="rekeningnr" name="rekeningnr"
+                    formControlName="rekeningnr">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="btwnr">BTW Nummer</label>
+                  <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="straat">Straat</label>
+                  <input class="form-control" type="text" id="straat" name="straat" formControlName=straat>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="huisnummer">Huisnummer</label>
+                  <input class="form-control" type="text" id="huisnummer" name="huisnummer"
+                    formControlName="huisnummer">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="gemeente">Gemeente</label>
+                  <input class="form-control" type="text" id="gemeente" name="gemeente" formControlName="gemeente">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="postcode">Postcode</label>
+                  <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode">
+                </div>
+              </div>
+            </div>
+          </form>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Overzicht</ng-template>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">Naam</th>
+                <td>{{verenigingForm.get('naam').value}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Rekening nummer</th>
+                <td>{{verenigingForm.get('rekeningnr').value}}</td>
+              </tr>
+              <tr>
+                <th scope="row">BTW nummer</th>
+                <td>{{verenigingForm.get('btwnr').value}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Straat</th>
+                <td>{{verenigingForm.get('straat').value}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Huisnummer</th>
+                <td>{{verenigingForm.get('huisnummer').value}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Gemeente</th>
+                <td>{{verenigingForm.get('gemeente').value}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button class="btn btn-primary float-right" (click)="createVerantwoordelijke()">Registreren</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+  </div>
 </div>

@@ -9,6 +9,7 @@ import { CreateVerantwoordelijkeComponent } from './vereniging/create-verantwoor
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MymaterialModule } from './mymaterial/mymaterial.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MymaterialModule,
     AdminModule,
     HttpClientModule,
     FormsModule,

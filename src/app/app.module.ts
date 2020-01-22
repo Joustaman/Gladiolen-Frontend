@@ -10,12 +10,18 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MymaterialModule } from './mymaterial/mymaterial.module';
+import { LoginComponent } from './login/login.component';
+import { LedenComponent } from './vereniging/leden/leden.component';
+import { CreateLidComponent } from './vereniging/create-lid/create-lid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateVerenigingComponent,
-    CreateVerantwoordelijkeComponent
+    CreateVerantwoordelijkeComponent,
+    LoginComponent,
+    LedenComponent,
+    CreateLidComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12">
+      <button [routerLink]="['/maaklid']" routerLinkActive="router-link-active"  type="button" class="btn btn-primary float-right mb-5 mr-5"><i class="fa fa-plus"></i> Voeg lid toe</button>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Naam</th>
+            <th scope="col">Voornaam</th>
+            <th scope="col">Straat</th>
+            <th scope="col">Huisnummer</th>
+            <th scope="col">Geboortedatum</th>
+            <th scope="col">Acties</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let lid of leden">
+            <th scope="row">{{lid.naam}}</th>
+            <td>{{lid.voornaam}}</td>
+            <td>{{lid.straat}}</td>
+            <td>{{lid.huisnummer}}</td>
+            <td>{{lid.geboortedatum | date}}</td>
+            <td>
+                <button type="button" class="btn btn-primary btn-circle mr-2"><i class="fa fa-list"></i></button>
+                <button (click)="deleteLid(lid.id)" type="button" class="btn btn-danger btn-circle"><i class="fa fa-times"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

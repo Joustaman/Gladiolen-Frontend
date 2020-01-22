@@ -4,14 +4,16 @@ import { ManageGebruikersComponent } from './manage-gebruikers/manage-gebruikers
 import { DetailGebruikerComponent } from './detail-gebruiker/detail-gebruiker.component';
 import { CreateGebruikerComponent } from './create-gebruiker/create-gebruiker.component';
 import {RouterModule} from '@angular/router';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
 @NgModule({
   declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent],
-  imports: [
-    CommonModule,
-    RouterModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        ReactiveFormsModule
+    ]
 })
 export class AdminModule { }

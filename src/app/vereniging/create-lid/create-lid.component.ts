@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { VerenigingService } from '../vereniging.service';
 import { Router, Route, ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-create-lid',
   templateUrl: './create-lid.component.html',
-  styleUrls: ['./create-lid.component.scss']
+  styleUrls: ['./create-lid.component.scss'],
+  providers: [DatePipe]
 })
 export class CreateLidComponent implements OnInit {
 
@@ -33,16 +35,37 @@ export class CreateLidComponent implements OnInit {
   });
   tshirts: any = [];
   lid: any = {};
+  updateGebruiker = false;
+  pageLoaded = false;
   constructor(private readonly verenigingService: VerenigingService, private readonly router: Router,
-              private readonly route: ActivatedRoute) { }
+              private readonly route: ActivatedRoute, private readonly datepipe: DatePipe) { }
+
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null || id !== '') {
-    }
+    this.route.paramMap.subscribe(
+      params => {
+        console.log(params.get('id'));
+        if (params.get('id') !== null) {
+          this.verenigingService.getLid(params.get('id')).subscribe(
+            result => {
+              console.log(result);
+              this.lid = result;
+              this.fillForm();
+              this.updateGebruiker = true;
+              this.pageLoaded = true;
+            },
+            error => {
+              console.log(error);
+            },
+          );
+        }
+      }
+    );
+
     this.verenigingService.getTshirts().subscribe(
       result => {
         this.tshirts = result;
+        this.pageLoaded = true;
       },
     );
   }
@@ -70,4 +93,42 @@ export class CreateLidComponent implements OnInit {
       }
     );
   }
+
+  fillForm() {
+    this.lidForm.patchValue({
+      naam: this.lid.naam,
+      voornaam: this.lid.voornaam,
+      roepnaam: this.lid.roepnaam,
+      straat: this.lid.straat,
+      huisnummer: this.lid.huisnummer,
+      geboortedatum: this.datepipe.transform(this.lid.geboortedatum, 'yyyy-MM-dd'),
+      emailadres: this.lid.emailadres,
+      telefoon: this.lid.telefoon,
+      tweedetshirt: this.lid.tweedetshirt,
+      opmerking: this.lid.opmerking,
+      rijksregisternr: this.lid.rijksregisternr,
+      postcode: this.lid.postcode,
+      lunchpakket: this.lid.lunchpakket,
+      tshirt_id: this.lid.tshirt_id,
+      wachtwoord: this.lid.wachtwoord,
+      eersteAanmelding: this.lid.eersteAanmelding,
+      qrcode: this.lid.qrcode,
+      foto: this.lid.foto,
+      rol_id: this.lid.rol_id,
+    });
+
+  }
+
+  updateLid() {
+    this.verenigingService.updateLid(this.lid.id, this.lidForm.value).subscribe(
+      result => {
+        console.log(result);
+        this.router.navigate(['/leden']);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
 }

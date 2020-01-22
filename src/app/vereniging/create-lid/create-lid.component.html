@@ -1,4 +1,5 @@
-<div class="container">
+<app-spinner *ngIf="!pageLoaded"></app-spinner>
+<div class="container" *ngIf="pageLoaded">
   <form [formGroup]="lidForm" class="mt-5">
     <div class="row">
       <div class="col-lg-4">
@@ -82,8 +83,8 @@
       <div class="col-lg-3">
         <div class="form-group paddingcheck text-center">
           <div class="pretty p-default p-switch" (click)="changeTshirt()">
-            <input type="checkbox" />
-            <div class="state p-primary">
+            <input type="checkbox" [checked]="lidForm.get('tweedetshirt').value"/>
+            <div class="state p-primary" >
               <label>Extra shirt</label>
             </div>
           </div>
@@ -92,14 +93,15 @@
       <div class="col-lg-3">
         <div class="form-group paddingcheck text-center">
           <div class="pretty p-default p-switch" (click)="changeLunch()">
-            <input type="checkbox" />
+            <input type="checkbox" [checked]="lidForm.get('lunchpakket').value"/>
             <div class="state p-primary">
               <label>Lunchpakket</label>
             </div>
           </div>
         </div>
       </div>
-      <button class="btn btn-primary ml-3" (click)="createLid()">Voeg lid toe</button> 
+      <button *ngIf="!updateGebruiker" class="btn btn-primary ml-3" (click)="createLid()">Voeg lid toe</button>
+      <button *ngIf="updateGebruiker" class="btn btn-primary ml-3" (click)="updateLid()">Update lid</button>  
     </div>
   </form>
 </div>

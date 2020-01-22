@@ -24,9 +24,12 @@ export class VerenigingService {
     return this.http.post('http://localhost:8000/addlid', lid);
   }
   deleteLid(id): any {
-    return this.http.delete('http://localhost:8000/deletelid?id=' + id);
+    return this.http.delete('http://localhost:8000/deletelid/' + id);
   }
   getLid(id): any {
-    return this.http.get('http://localhost:8000/getlid?id=' + id);
+    return this.http.get('http://localhost:8000/getlid/' + id);
+  }
+  updateLid(id, lid): any {
+    return this.http.put('http://localhost:8000/updatelid/' + id, lid);
   }
 }

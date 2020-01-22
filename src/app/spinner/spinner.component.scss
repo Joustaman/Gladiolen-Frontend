@@ -1,0 +1,37 @@
+$d: 16em;
+
+@function stop-list($precision: 12) {
+	$list: ();
+	$unit: 360/$precision;
+	
+	@for $i from 0 through $precision {
+		$list: $list, hsl($i*$unit, 100%, 80%);
+	}
+	
+	@return $list;
+}
+
+body { background: grey; }
+
+.spinner {
+	&, &:before {
+		position: absolute;
+		margin: -.5*$d;
+		width: $d; height: $d;
+		top: 50%; left: 50%;
+		border-radius: 50%;
+	}
+	
+	box-sizing: border-box;
+	border: solid .75em transparent;
+	background: url(https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F85980171%2F376920421233%2F1%2Foriginal.20200102-102045?w=1000&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=b7edf3660bd6319fe6b4733f82e855e5) 50%/ cover padding-box;
+	
+	&:before {
+		z-index: -1;
+		background: conic-gradient(stop-list());
+		animation: r 2s linear infinite;
+		content: '';
+	}
+}
+
+@keyframes r { to { transform: rotate(1turn); } }

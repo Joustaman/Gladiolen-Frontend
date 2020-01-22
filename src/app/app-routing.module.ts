@@ -7,8 +7,8 @@ import {CreateGebruikerComponent} from './admin/create-gebruiker/create-gebruike
 import {AdminHomeComponent} from './admin/admin-home/admin-home.component';
 import { CreateVerantwoordelijkeComponent } from './vereniging/create-verantwoordelijke/create-verantwoordelijke.component';
 import {ManageEvenementenComponent} from './admin/manage-evenementen/manage-evenementen.component';
-import {CreateEvenementComponent} from './admin/create-evenement/create-evenement.component';
-import {EditEvenementComponent} from './admin/edit-evenement/edit-evenement.component';
+//import {CreateEvenementComponent} from './admin/create-evenement/create-evenement.component';
+//import {EditEvenementComponent} from './admin/edit-evenement/edit-evenement.component';
 import { LedenComponent } from './vereniging/leden/leden.component';
 import { CreateLidComponent } from './vereniging/create-lid/create-lid.component';
 

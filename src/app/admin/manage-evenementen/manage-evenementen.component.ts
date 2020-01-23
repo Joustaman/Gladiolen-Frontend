@@ -15,6 +15,7 @@ export class ManageEvenementenComponent implements OnInit {
   evenementen: any = [];
   startdatum: any;
   einddatum: any;
+  pageLoaded = false;
 
   constructor(private adminService: AdminService) {
   }
@@ -30,6 +31,8 @@ export class ManageEvenementenComponent implements OnInit {
     this.adminService.registreerEvenement(this.evenementForm.value).subscribe(
       result => {
         console.log(result);
+        this.pageLoaded = false;
+        this.ngOnInit();
       },
       error => {
         console.log(error);
@@ -54,7 +57,7 @@ export class ManageEvenementenComponent implements OnInit {
     this.adminService.getEvenementen().subscribe(
       result => {
         this.evenementen = result;
-        console.log(result);
+        this.pageLoaded = true;
       },
     );
   }

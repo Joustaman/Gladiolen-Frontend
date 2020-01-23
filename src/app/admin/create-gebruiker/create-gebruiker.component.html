@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="gebruikerForm" (ngSubmit)="submitForm()">
+  <form [formGroup]="gebruikerForm" (ngSubmit)="submitForm()" class="mt-5">
     <div class="row">
       <div class="col-lg-4">
         <div class="form-group">
@@ -16,7 +16,7 @@
       <div class="col-lg-4">
         <div class="form-group">
           <label for="voornaam">Voornaam</label>
-          <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" >
+          <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam">
         </div>
       </div>
       <div class="col-lg-6">
@@ -52,19 +52,22 @@
       <div class="col-lg-3">
         <div class="form-group">
           <label for="geboortedatum">Geboortedatum</label>
-          <input class="form-control" type="date" id="geboortedatum" name="geboortedatum" formControlName="geboortedatum">
+          <input class="form-control" type="date" id="geboortedatum" name="geboortedatum"
+                 formControlName="geboortedatum">
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
           <label for="rijksregisternr">Rijksregister</label>
-          <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr" formControlName="rijksregisternr">
+          <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
+                 formControlName="rijksregisternr">
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
           <label for="opmerking">Opmerking</label>
-          <textarea class="form-control" type="text" id="opmerking" name="opmerking" formControlName="opmerking"></textarea>
+          <textarea class="form-control" type="text" id="opmerking" name="opmerking"
+                    formControlName="opmerking"></textarea>
         </div>
       </div>
       <div class="col-lg-6">
@@ -78,7 +81,7 @@
       <div class="col-lg-3">
         <div class="form-group paddingcheck text-center">
           <div class="pretty p-default p-switch" (click)="changeTshirt()">
-            <input type="checkbox" />
+            <input type="checkbox"/>
             <div class="state p-primary">
               <label>Extra shirt</label>
             </div>
@@ -88,14 +91,13 @@
       <div class="col-lg-3">
         <div class="form-group paddingcheck text-center">
           <div class="pretty p-default p-switch" (click)="changeLunch()">
-            <input type="checkbox" />
+            <input type="checkbox"/>
             <div class="state p-primary">
               <label>Lunchpakket</label>
             </div>
           </div>
         </div>
       </div>
-
       <div class="col-lg-6">
         <label for="wachtwoord">Wachtwoord</label>
         <input type="password" class="form-control" name="wachtwoord" id="wachtwoord" formControlName="wachtwoord">
@@ -104,17 +106,23 @@
         <label for="herhaalwachtwoord">Herhaal wachtwoord</label>
         <input type="password" class="form-control" name="herhaalwachtwoord" id="herhaalwachtwoord">
       </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="form-group paddingcheck text-center">
-        <div class="pretty p-default p-switch" (click)="changeRol()">
-          <input type="checkbox" />
-          <div class="state p-primary">
-            <label>Verantwoordelijke</label>
-          </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="rol">Rol</label>
+          <select name="rol" id="rol" class="form-control" formControlName="rol_id" (change)="changeRol()">
+            <option *ngFor="let rol of rollen" [value]="rol.id">{{rol.naam}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="vereniging">Vereniging</label>
+          <select name="vereniging" id="vereniging" class="form-control" formControlName="rol_id">
+            <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>
+          </select>
         </div>
       </div>
     </div>
-    <input type="submit" class="btn btn-primary" >
+    <input type="submit" class="btn btn-primary">
   </form>
 </div>

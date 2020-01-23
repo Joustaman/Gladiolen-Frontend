@@ -9,6 +9,12 @@ import {AdminService} from '../admin.service';
   styleUrls: ['./create-gebruiker.component.scss']
 })
 export class CreateGebruikerComponent implements OnInit {
+
+  tshirts: any = [];
+  rollen: any = [];
+  verenigingen: any = [];
+  visible: any = '';
+
   gebruikerForm = new FormGroup({
     naam: new FormControl(''),
     voornaam: new FormControl(''),
@@ -30,23 +36,38 @@ export class CreateGebruikerComponent implements OnInit {
     tshirt_id: new FormControl(null),
     rol_id: new FormControl(null),
   });
-  tshirts: any = [];
-  constructor(private readonly adminService: AdminService) { }
+
+  constructor(private readonly adminService: AdminService) {
+  }
+
   ngOnInit() {
     this.adminService.getTshirts().subscribe(
-        result => {
-          this.tshirts = result;
-        },
+      result => {
+        this.tshirts = result;
+      },
+    );
+
+    this.adminService.getRollen().subscribe(
+      result => {
+        this.rollen = result;
+      },
+    );
+
+    this.adminService.getVerenigingen().subscribe(
+      result => {
+        this.verenigingen = result;
+      },
     );
   }
+
   submitForm() {
     this.adminService.registreerGebruiker(this.gebruikerForm.value).subscribe(
-        result => {
-          console.log(result);
-        },
-        error => {
-          console.log(error);
-        }
+      result => {
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
     );
   }
 
@@ -56,16 +77,15 @@ export class CreateGebruikerComponent implements OnInit {
       tweedetshirt: !value
     });
   }
+
   changeLunch() {
     let value = this.gebruikerForm.get('lunchpakket').value;
     this.gebruikerForm.patchValue({
       lunchpakket: !value
     });
   }
+
   changeRol() {
     let value = this.gebruikerForm.get('rol_id').value;
-    this.gebruikerForm.patchValue({
-      rol_id: !value
-    });
   }
 }

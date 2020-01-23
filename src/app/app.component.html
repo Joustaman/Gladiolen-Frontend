@@ -1,21 +1,19 @@
-<div>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fill">
-    <a class="navbar-brand" routerLink="/" routerLinkActive="active"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav navbar-right">
-        <li class="nav-item">
-          <a class="nav-link link-1" routerLink="/" routerLinkActive="active">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link-1" routerLink="/adminHome" routerLinkActive="active">Admin Home</a>
-        </li>
-      </ul>
+<div class="menu-wrap">
+  <input type="checkbox" class="toggler" [checked]="openMenu" (click)="menuClick()">
+  <div class="hamburger">
+    <div></div>
+  </div>
+  <div class="menu">
+    <div>
+      <div>
+        <ul>
+          <li (click)="menuClick()" class="link">Inloggen</li>
+          <li (click)="menuClick()" class="link" [routerLink]="['/vereniging/editvereniging']" routerLinkActive="router-link-active">Vereniging</li>
+          <li (click)="menuClick()" class="link" [routerLink]="['/leden']" routerLinkActive="router-link-active">Leden</li>
+          <li (click)="menuClick()" class="link">Uitloggen</li>
+        </ul>
+      </div>
     </div>
-  </nav>
-
-    <router-outlet></router-outlet>
- 
+  </div>
 </div>
+<router-outlet></router-outlet>

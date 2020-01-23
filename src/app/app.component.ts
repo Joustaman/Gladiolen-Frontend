@@ -8,5 +8,8 @@ import { RouterOutlet, Route } from '@angular/router';
 })
 export class AppComponent {
 
-
+  openMenu = false;
+  menuClick() {
+    this.openMenu = !this.openMenu;
+  }
 }

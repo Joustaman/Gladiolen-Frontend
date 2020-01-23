@@ -34,13 +34,16 @@ export class CreateVerenigingComponent implements OnInit {
     naam: new FormControl(''),
     hoofdverantwoordelijke: new FormControl(null),
     tweedeverantwoordelijke: new FormControl(null),
+    contactpersoon: new FormControl(null),
     rekeningnr: new FormControl(''),
     btwnr: new FormControl(''),
     straat: new FormControl(''),
     huisnummer: new FormControl(''),
     gemeente: new FormControl(''),
     postcode: new FormControl(''),
+    actief: new FormControl(false),
   });
+
   tshirts: any = [];
   constructor(private readonly verenigingService: VerenigingService) { }
 

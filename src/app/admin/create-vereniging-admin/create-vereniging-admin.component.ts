@@ -20,7 +20,7 @@ export class CreateVerenigingAdminComponent implements OnInit {
     huisnummer: new FormControl(''),
     gemeente: new FormControl(''),
     postcode: new FormControl(''),
-    actief: new FormControl(false),
+    actief: new FormControl(false)
   });
 
   constructor(private adminService: AdminService) {
@@ -30,13 +30,13 @@ export class CreateVerenigingAdminComponent implements OnInit {
   }
 
   createVereniging() {
-    // this.adminService.registreerVereniging(this.verenigingForm.value).subscribe(
-    //   result => {
-    //     console.log(result);
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // );
+    this.adminService.registreerVereniging(this.verenigingForm.value).subscribe(
+      result => {
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

@@ -11,13 +11,12 @@ import {DatePipe} from '@angular/common';
 })
 export class ManageEvenementenComponent implements OnInit {
 
-  evenement: any = {};
   evenementen: any = [];
   startdatum: any;
   einddatum: any;
   pageLoaded = false;
 
-  constructor(private adminService: AdminService) {
+  constructor(private adminService: AdminService, private readonly datepipe: DatePipe) {
   }
 
   evenementForm = new FormGroup({
@@ -41,9 +40,13 @@ export class ManageEvenementenComponent implements OnInit {
   }
 
   onClickEditEvenement(evenement: any) {
-    this.evenementForm.patchValue(evenement);
-    this.startdatum = this.startdatum.transform(evenement.startdatum, 'yyyy-MM-dd');
-    this.einddatum = this.einddatum.transform(evenement.einddatum, 'yyyy-MM-dd');
+    this.evenementForm.patchValue({
+        naam: evenement.naam,
+        startdatum: this.datepipe.transform(evenement.startdatum, 'yyyy-MM-dd'),
+        einddatum: this.datepipe.transform(evenement.einddatum, 'yyyy-MM-dd'),
+        actief: evenement.actief,
+      }
+    );
   }
 
   changeActief() {

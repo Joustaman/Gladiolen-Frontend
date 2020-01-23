@@ -29,6 +29,10 @@ export class AdminService {
     return this.http.get('http://localhost:8000/verenigings');
   }
 
+  registreerVereniging(vereniging): any {
+    return this.http.post('http://localhost:8000/vereniging', vereniging);
+  }
+
   getEvenementen(): any {
     return this.http.get('http://localhost:8000/evenement');
   }

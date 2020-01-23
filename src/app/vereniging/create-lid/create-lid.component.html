@@ -1,11 +1,11 @@
 <app-spinner *ngIf="!pageLoaded"></app-spinner>
 <div class="container" *ngIf="pageLoaded">
-  <form [formGroup]="lidForm" class="mt-5">
+  <form [formGroup]="lidForm" class="mt-5 was-validated" novalidate>
     <div class="row">
       <div class="col-lg-4">
         <div class="form-group">
           <label for="naam">Naam</label>
-          <input class="form-control" type="text" id="naam" name="naam" formControlName="naam">
+          <input class="form-control" type="text" id="naam" name="naam" formControlName="naam" required>
         </div>
       </div>
       <div class="col-lg-4">
@@ -17,7 +17,7 @@
       <div class="col-lg-4">
         <div class="form-group">
           <label for="voornaam">Voornaam</label>
-          <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam">
+          <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" required>
         </div>
       </div>
       <div class="col-lg-6">
@@ -29,13 +29,14 @@
       <div class="col-lg-3">
         <div class="form-group">
           <label for="huisnummer">Huisnummer</label>
-          <input class="form-control" type="text" id="huisnummer" name="huisnummer" formControlName="huisnummer">
+          <input class="form-control" type="number" id="huisnummer" name="huisnummer" formControlName="huisnummer">
         </div>
       </div>
       <div class="col-lg-3">
         <div class="form-group">
           <label for="postcode">Postcode</label>
-          <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode">
+          <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode" pattern="[0-9]{4}">
+          <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven</div>
         </div>
       </div>
       <div class="col-lg-6">

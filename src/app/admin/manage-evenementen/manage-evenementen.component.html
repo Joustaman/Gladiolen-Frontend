@@ -42,22 +42,22 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form (ngSubmit)="onSubmit()" [formGroup]="evenementForm">
+      <form (ngSubmit)="onSubmit()" [formGroup]="evenementForm" class="was-validated" novalidate>
         <div class="modal-body">
           <div class="form-group">
             <label for="naam" class="col-form-label">Naam:</label>
             <input type="text" class="form-control" id="naam"
-                   formControlName="naam">
+                   formControlName="naam" required>
           </div>
           <div class="form-group">
             <label for="startdatum" class="col-form-label">Begin datum:</label>
             <input type="date" class="form-control" id="startdatum"
-                   formControlName="startdatum">
+                   formControlName="startdatum" required>
           </div>
           <div class="form-group">
             <label for="einddatum" class="col-form-label">Eind datum:</label>
             <input type="date" class="form-control" id="einddatum"
-                   formControlName="einddatum">
+                   formControlName="einddatum" required>
           </div>
           <div class="form-group paddingcheck text-center">
             <div class="pretty p-default p-switch" (click)="changeActief()">

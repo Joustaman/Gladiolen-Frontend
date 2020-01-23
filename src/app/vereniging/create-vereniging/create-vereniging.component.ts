@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { VerenigingService } from '../vereniging.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-vereniging',
@@ -45,7 +46,7 @@ export class CreateVerenigingComponent implements OnInit {
   });
 
   tshirts: any = [];
-  constructor(private readonly verenigingService: VerenigingService) { }
+  constructor(private readonly verenigingService: VerenigingService, private toast: ToastrService) { }
 
   ngOnInit() {
     this.verenigingService.getTshirts().subscribe(
@@ -86,9 +87,11 @@ export class CreateVerenigingComponent implements OnInit {
   createVereniging() {
     this.verenigingService.registreerVereniging(this.verenigingForm.value).subscribe(
       result => {
+        this.toast.success('Uw aanvraag is verzonden');
         console.log(result);
       },
       error => {
+        this.toast.error('Vul het formulier correct in');
         console.log(error);
       }
     );

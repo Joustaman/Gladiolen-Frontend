@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { VerenigingService } from '../vereniging.service';
 import { Router, Route, ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-lid',
@@ -38,7 +39,8 @@ export class CreateLidComponent implements OnInit {
   updateGebruiker = false;
   pageLoaded = false;
   constructor(private readonly verenigingService: VerenigingService, private readonly router: Router,
-              private readonly route: ActivatedRoute, private readonly datepipe: DatePipe) { }
+              private readonly route: ActivatedRoute, private readonly datepipe: DatePipe,
+              private readonly toast: ToastrService) { }
 
 
   ngOnInit() {
@@ -86,10 +88,12 @@ export class CreateLidComponent implements OnInit {
   createLid() {
     this.verenigingService.addLid(this.lidForm.value).subscribe(
       () => {
+        this.toast.success('Lid aangemaakt');
         this.router.navigate(['/leden']);
       },
       error => {
         console.log(error);
+        this.toast.error('Vul het formulier correct in');
       }
     );
   }

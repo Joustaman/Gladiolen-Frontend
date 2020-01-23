@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <mat-horizontal-stepper #stepper>
+        <mat-step>
+          <ng-template matStepLabel>Vereniging</ng-template>
+          <form [formGroup]="verenigingForm" class="was-validated" novalidate>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="naam">Naam</label>
+                  <input class="form-control" type="text" id="naam" name="naam" formControlName="naam" required>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="rekeningnr">Rekeningnummer</label>
+                  <input class="form-control" type="text" id="rekeningnr" name="rekeningnr"
+                         formControlName="rekeningnr" pattern="[BE]{2}[0-9]{14}" required>
+                  <div class="invalid-feedback">Gelieve een correct rekeningnummer in te vullen in het formaat
+                    BExxxxxxxxxxxxxx
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="btwnr">BTW nummer</label>
+                  <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr"
+                         pattern="[BE]{2}[0]{1}[0-9]{9}" required>
+                  <div class="invalid-feedback">Gelieve een correct rekeningnummer in te vullen in het formaat
+                    BE0xxxxxxxxx
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="straat">Straat</label>
+                  <input class="form-control" type="text" id="straat" name="straat" formControlName=straat required>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="huisnummer">Huisnummer</label>
+                  <input class="form-control" type="number" id="huisnummer" name="huisnummer"
+                         formControlName="huisnummer" required>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="gemeente">Gemeente</label>
+                  <input class="form-control" type="text" id="gemeente" name="gemeente" formControlName="gemeente"
+                         required>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="postcode">Postcode</label>
+                  <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode"
+                         pattern="[0-9]{4}" required>
+                  <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven</div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Overzicht</ng-template>
+          <table class="table">
+            <tbody>
+            <tr>
+              <th scope="row">Naam</th>
+              <td>{{verenigingForm.get('naam').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Rekeningnummer</th>
+              <td>{{verenigingForm.get('rekeningnr').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">BTW nummer</th>
+              <td>{{verenigingForm.get('btwnr').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Straat</th>
+              <td>{{verenigingForm.get('straat').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Huisnummer</th>
+              <td>{{verenigingForm.get('huisnummer').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Gemeente</th>
+              <td>{{verenigingForm.get('gemeente').value}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button class="btn btn-primary float-right" (click)="createVerantwoordelijke()">Registreren</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+  </div>
+</div>

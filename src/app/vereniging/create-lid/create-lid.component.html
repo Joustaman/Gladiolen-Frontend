@@ -55,21 +55,21 @@
         <div class="form-group">
           <label for="geboortedatum">Geboortedatum</label>
           <input class="form-control" type="date" id="geboortedatum" name="geboortedatum"
-            formControlName="geboortedatum">
+                 formControlName="geboortedatum">
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
           <label for="rijksregisternr">Rijksregister</label>
           <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
-            formControlName="rijksregisternr">
+                 formControlName="rijksregisternr">
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
           <label for="opmerking">Opmerking</label>
           <textarea class="form-control" type="text" id="opmerking" name="opmerking"
-            formControlName="opmerking"></textarea>
+                    formControlName="opmerking"></textarea>
         </div>
       </div>
       <div class="col-lg-6">
@@ -85,7 +85,7 @@
         <div class="form-group paddingcheck text-center">
           <div class="pretty p-default p-switch" (click)="changeTshirt()">
             <input type="checkbox" [checked]="lidForm.get('tweedetshirt').value"/>
-            <div class="state p-primary" >
+            <div class="state p-primary">
               <label>Extra shirt</label>
             </div>
           </div>
@@ -102,7 +102,7 @@
         </div>
       </div>
       <button *ngIf="!updateGebruiker" class="btn btn-primary ml-3" (click)="createLid()">Voeg lid toe</button>
-      <button *ngIf="updateGebruiker" class="btn btn-primary ml-3" (click)="updateLid()">Update lid</button>  
+      <button *ngIf="updateGebruiker" class="btn btn-primary ml-3" (click)="updateLid()">Update lid</button>
     </div>
   </form>
 </div>

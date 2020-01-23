@@ -41,6 +41,7 @@
                 <div class="form-group">
                   <label for="postcode">Postcode</label>
                   <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode" pattern="[0-9]{4}">
+                  <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven</div>
                 </div>
               </div>
               <div class="col-lg-6">
@@ -48,6 +49,7 @@
                   <label for="emailadres">Email</label>
                   <input class="form-control" type="email" id="emailadres" name="emailadres"
                     formControlName="emailadres" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" required>
+                  <div class="invalid-feedback">Gelieve een geldig e-mailadres in te vullen van het formaat test@test.be</div>
                 </div>
               </div>
               <div class="col-lg-3">
@@ -68,6 +70,7 @@
                   <label for="rijksregisternr">Rijksregister</label>
                   <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
                     formControlName="rijksregisternr" pattern="[0-9]{11}" required>
+                  <div class="invalid-feedback">Gelieve de 11 cijfers van je rijksregisternummer in te vullen.</div>
                 </div>
               </div>
               <div class="col-lg-6">
@@ -110,6 +113,7 @@
                 <label for="wachtwoord">Wachtwoord</label>
                 <input type="password" class="form-control" name="wachtwoord" id="wachtwoord"
                   formControlName="wachtwoord" pattern=".{6,}" required>
+                <div class="invalid-feedback">Je wachtwoord moet minstens 6 tekens bevatten.</div>
               </div>
               <div class="col-lg-6">
                 <label for="herhaalwachtwoord">Herhaal wachtwoord</label>
@@ -133,15 +137,17 @@
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
-                  <label for="rekeningnr">Rekening Nummer</label>
+                  <label for="rekeningnr">Rekeningnummer</label>
                   <input class="form-control" type="text" id="rekeningnr" name="rekeningnr"
                     formControlName="rekeningnr" pattern="[BE]{2}[0-9]{14}" required>
+                  <div class="invalid-feedback">Gelieve een correct rekeningnummer in te vullen in het formaat BExxxxxxxxxxxxxx</div>
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
-                  <label for="btwnr">BTW Nummer</label>
+                  <label for="btwnr">BTW nummer</label>
                   <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr" pattern="[BE]{2}[0]{1}[0-9]{9}" required>
+                  <div class="invalid-feedback">Gelieve een correct rekeningnummer in te vullen in het formaat BE0xxxxxxxxx</div>
                 </div>
               </div>
               <div class="col-lg-3">
@@ -167,6 +173,7 @@
                 <div class="form-group">
                   <label for="postcode">Postcode</label>
                   <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode" pattern="[0-9]{4}" required>
+                  <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven</div>
                 </div>
               </div>
             </div>
@@ -185,7 +192,7 @@
                 <td>{{verenigingForm.get('naam').value}}</td>
               </tr>
               <tr>
-                <th scope="row">Rekening nummer</th>
+                <th scope="row">Rekeningnummer</th>
                 <td>{{verenigingForm.get('rekeningnr').value}}</td>
               </tr>
               <tr>

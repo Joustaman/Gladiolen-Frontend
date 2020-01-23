@@ -1,4 +1,7 @@
 <div class="container">
+  <mat-horizontal-stepper #stepper>
+    <mat-step>
+      <ng-template matStepLabel>Gebruiker</ng-template>
   <form [formGroup]="gebruikerForm" (ngSubmit)="submitForm()" class="mt-5 was-validated" novalidate>
     <div class="row">
       <div class="col-lg-4">
@@ -128,4 +131,69 @@
     </div>
     <input type="submit" class="btn btn-primary">
   </form>
+      <div>
+
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Overzicht</ng-template>
+
+      <table class="table">
+        <tbody>
+        <tr>
+          <th scope="row">Naam</th>
+          <td>{{gebruikerForm.get('naam').value}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Rekeningnummer</th>
+          <td>{{gebruikerForm.get('voornaam').value}}</td>
+        </tr>
+        <tr>
+          <th scope="row">BTW nummer</th>
+          <td>{{gebruikerForm.get('roepnaam').value}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Straat</th>
+          <td>{{gebruikerForm.get('straat').value}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Huisnummer</th>
+          <td>{{gebruikerForm.get('huisnummer').value}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Postcode</th>
+          <td>{{gebruikerForm.get('postcode').value}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Email</th>
+          <td>{{gebruikerForm.get('emailadres').value}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Telefoon</th>
+          <td>{{gebruikerForm.get('telefoon').value}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Geboortedatum</th>
+          <td>{{gebruikerForm.get('geboortedatum').value}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Rijsregisternummer</th>
+          <td>{{gebruikerForm.get('rijksregisternr').value}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Opmerking</th>
+          <td>{{gebruikerForm.get('opmerking').value}}</td>
+        </tr>
+        <tr>
+          <th scope="row">T-shirt</th>
+          <td>{{gebruikerForm.get('tshirt_id').value}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
 </div>

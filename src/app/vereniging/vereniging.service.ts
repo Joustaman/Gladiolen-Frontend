@@ -13,7 +13,7 @@ export class VerenigingService {
     return this.http.get('http://localhost:8000/tshirts');
   }
   registreerVerantwoordelijke(gebruiker): any {
-    return this.http.post('http://localhost:8000/gebruiker', gebruiker);
+    return this.http.post('http://localhost:8000/gebruiker/registreerverantwoordelijke', gebruiker);
   }
   registreerVereniging(vereniging): any {
     return this.http.post('http://localhost:8000/vereniging', vereniging);

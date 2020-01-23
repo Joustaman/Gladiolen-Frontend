@@ -15,6 +15,8 @@ import { CreateLidComponent } from './vereniging/create-lid/create-lid.component
 import { SpinnerComponent } from './spinner/spinner.component';
 import { KeuzemenuComponent } from './vereniging/keuzemenu/keuzemenu.component';
 import { EditVerenigingComponent } from './vereniging/edit-vereniging/edit-vereniging.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { EditVerenigingComponent } from './vereniging/edit-vereniging/edit-veren
     AdminModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

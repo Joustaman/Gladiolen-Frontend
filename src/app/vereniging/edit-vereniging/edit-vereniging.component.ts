@@ -3,6 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { VerenigingService } from '../vereniging.service';
 import { CreateLidComponent } from '../create-lid/create-lid.component';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-edit-vereniging',
@@ -26,7 +28,8 @@ export class EditVerenigingComponent implements OnInit {
   vereniging: any = {};
   leden: any = [];
   pageLoaded = false;
-  constructor(private readonly verenigingsService: VerenigingService, private readonly router: Router) { }
+  constructor(private readonly verenigingsService: VerenigingService, private readonly router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.verenigingsService.getVerenigingMetLeden().subscribe(
@@ -62,6 +65,7 @@ export class EditVerenigingComponent implements OnInit {
     this.verenigingsService.updateVereniging(this.vereniging.id, this.verenigingForm.value).subscribe(
       result => {
         console.log(result);
+        this.toastr.success('Verening geupdate');
         this.router.navigate(['keuzemenu']);
       },
       error => {

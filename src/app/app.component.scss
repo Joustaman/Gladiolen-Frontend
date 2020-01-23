@@ -1,4 +1,5 @@
 /* CORE STYLES */
+@import url(https://fonts.googleapis.com/css?family=Vollkorn|Roboto);
 :root {
     --primary-color: rgba(13, 110, 139, 0.75);
     --overlay-color: rgba(24, 39, 51 , 0.85);
@@ -226,11 +227,11 @@
 }
 
 .link {
-    display: inline-block;
     color: #000;
     text-decoration: none;
     cursor: pointer;
-
+    font-weight: bold;
+    font-family: 'Vollkorn', sans-serif;
 }
 
 .link::after {
@@ -245,5 +246,7 @@
 .link:hover::after {
     width: 100%;
 }
+
+
   
   

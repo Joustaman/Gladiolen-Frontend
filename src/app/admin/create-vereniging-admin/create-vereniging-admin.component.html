@@ -60,6 +60,30 @@
                   <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven</div>
                 </div>
               </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="contactpersoon">Contactpersoon</label>
+                  <input class="form-control" type="text" id="contactpersoon" name="contactpersoon"
+                         formControlName="contactpersoon"
+                         required>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="hoofdverantwoordelijke">Hoofdverantwoordelijke</label>
+                  <input class="form-control" type="text" id="hoofdverantwoordelijke" name="hoofdverantwoordelijke"
+                         formControlName="hoofdverantwoordelijke"
+                         required>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="tweedeverantwoordelijke">Tweede verantwoordelijke</label>
+                  <input class="form-control" type="text" id="tweedeverantwoordelijke" name="tweedeverantwoordelijke"
+                         formControlName="tweedeverantwoordelijke"
+                         required>
+                </div>
+              </div>
             </div>
           </form>
           <div>
@@ -94,6 +118,18 @@
             <tr>
               <th scope="row">Gemeente</th>
               <td>{{verenigingForm.get('gemeente').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Contactpersoon</th>
+              <td>{{verenigingForm.get('contactpersoon').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Hoofdverantwoordelijke</th>
+              <td>{{verenigingForm.get('hoofdverantwoordelijke').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Tweede verantwoordelijke</th>
+              <td>{{verenigingForm.get('tweedeverantwoordelijke').value}}</td>
             </tr>
             </tbody>
           </table>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class VerenigingService {
   registreerVereniging(vereniging): any {
     return this.http.post('http://localhost:8000/vereniging', vereniging);
   }
-  getLeden(): any {
-    return this.http.get('http://localhost:8000/eigenleden');
+  getVerenigingMetLeden(): any {
+    return this.http.get('http://localhost:8000/vereniging/verenigingmetleden');
   }
   addLid(lid): any {
     return this.http.post('http://localhost:8000/addlid', lid);
@@ -31,5 +32,12 @@ export class VerenigingService {
   }
   updateLid(id, lid): any {
     return this.http.put('http://localhost:8000/updatelid/' + id, lid);
+  }
+
+  getVerenigingVanIngelogdeGebruiker(): any {
+    return this.http.get('http://localhost:8000/vereniging/verenigingingelogd');
+  }
+  updateVereniging(id, vereniging): any {
+    return this.http.put('http://localhost:8000/vereniging/' + id, vereniging);
   }
 }

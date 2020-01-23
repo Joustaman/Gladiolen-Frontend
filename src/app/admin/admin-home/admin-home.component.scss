@@ -1,0 +1,62 @@
+.leden {
+  background-image: url("src/assets/images/leden.jpeg");
+  text-align: right;
+  cursor: pointer;
+}
+
+.vereniging {
+  background-image: url("src/assets/images/vereniging.jpg");
+}
+
+.evenementen {
+  background-image: url("src/assets/images/evenementen.jpg");
+}
+
+// - Pop -
+.pop:before {
+  $overlay-color: hsla(128, 100%, 50%, 0.3);
+  $from-color: hsla(108, 100%, 50%, 0.2);
+  $to-color: hsla(139, 100%, 50%, 0.8);
+  $white: hsla(0, 100%, 100%, 0.8);
+
+  $gradient-angle: 165deg;
+  $overlay-gradient: linear-gradient($gradient-angle, $from-color, $to-color);
+  $radial-gradient: radial-gradient(ellipse 30vw 20vh at 10% 5%, $white, transparent);
+  background-color: $overlay-color;
+  background-image: $overlay-gradient, $radial-gradient;
+  mix-blend-mode: saturation;
+}
+
+.card {
+  box-sizing: border-box;
+  position: relative;
+  width: 10vw;
+  height: 15vw;
+  margin: 1vw;
+  padding: 1vw;
+  overflow: hidden;
+  font-size: 3vh;
+  font-weight: bold;
+  color: #eee;
+  background-position: center center;
+  background-size: cover;
+  box-shadow: 0.5vw 0.5vw 1.5vw hsla(0, 0%, 0%, 0.5);
+  text-shadow: 0.2vw 0.2vw 0.2vw hsla(0, 0%, 0%, 0.5);
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0vh;
+    right: 0;
+    bottom: 0vh;
+    left: 0;
+    transition: clip-path 200ms ease-in-out;
+    transform-origin: 0% 0%;
+    clip-path: polygon(0% 0%, 100% 00%, 100% 100%, 0% 100%);
+  }
+
+  &:hover:before {
+    clip-path: polygon(0% 0%, 30% 00%, 70% 100%, 0% 100%);
+  }
+}

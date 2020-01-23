@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateLidComponent } from './create-lid.component';
+import { ManageVerenigingenComponent } from './manage-verenigingen.component';
 
-describe('CreateLidComponent', () => {
-  let component: CreateLidComponent;
-  let fixture: ComponentFixture<CreateLidComponent>;
+describe('ManageVerenigingenComponent', () => {
+  let component: ManageVerenigingenComponent;
+  let fixture: ComponentFixture<ManageVerenigingenComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateLidComponent ]
+      declarations: [ ManageVerenigingenComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateLidComponent);
+    fixture = TestBed.createComponent(ManageVerenigingenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

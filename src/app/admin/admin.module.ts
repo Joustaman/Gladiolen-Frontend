@@ -7,9 +7,10 @@ import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AdminHomeComponent} from './admin-home/admin-home.component';
 import {ManageEvenementenComponent} from './manage-evenementen/manage-evenementen.component';
+import { ManageVerenigingenComponent } from './manage-verenigingen/manage-verenigingen.component';
 
 @NgModule({
-  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent],
+  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent],
   imports: [
     CommonModule,
     RouterModule,

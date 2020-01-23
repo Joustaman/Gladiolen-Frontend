@@ -14,7 +14,7 @@ export class LedenComponent implements OnInit {
   constructor(private readonly verenigingService: VerenigingService) { }
 
   ngOnInit() {
-    this.verenigingService.getLeden().subscribe(
+    this.verenigingService.getVerenigingMetLeden().subscribe(
       result => {
         console.log(result.gebruikers);
         this.leden = result.gebruikers;

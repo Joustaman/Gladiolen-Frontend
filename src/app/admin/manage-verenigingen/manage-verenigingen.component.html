@@ -1,0 +1,29 @@
+<div class="container" *ngIf="pageLoaded">
+  <div class="row mt-5">
+    <div class="col-12">
+      <h1>Verenigingen beheren</h1>
+      <button type="button" class="btn btn-primary float-right mb-5 mr-5"><i
+        class="fa fa-plus"></i> Voeg vereniging toe
+      </button>
+      <table class="table table-borderless table-hover">
+        <thead>
+        <tr>
+          <th scope="col">Naam</th>
+          <th scope="col">Hoofdverantwoordelijke</th>
+          <th scope="col">Contactpersoon</th>
+          <th scope="col">Actief</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let vereniging of verenigingen">
+          <td>{{vereniging.naam}}</td>
+          <td>{{vereniging.hoofdverantwoordelijke}}</td>
+          <td>{{vereniging.contactpersoon}}</td>
+          <td>{{vereniging.actief}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

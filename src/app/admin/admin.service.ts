@@ -14,7 +14,19 @@ export class AdminService {
   }
 
   registreerGebruiker(gebruiker): any {
-    return this.http.post('http://localhost:8000/gebruiker', gebruiker);
+    return this.http.post('http://localhost:8000/registreergebruiker', gebruiker);
+  }
+
+  getRollen(): any {
+    return this.http.get('http://localhost:8000/rols');
+  }
+
+  getGebruikers(): any {
+    return this.http.get('http://localhost:8000/gebruikers');
+  }
+
+  getVerenigingen(): any {
+    return this.http.get('http://localhost:8000/verenigings');
   }
 
   getEvenementen(): any {

@@ -65,7 +65,7 @@ export class EditVerenigingComponent implements OnInit {
     this.verenigingsService.updateVereniging(this.vereniging.id, this.verenigingForm.value).subscribe(
       result => {
         console.log(result);
-        this.toastr.success('Verening geupdate');
+        this.toastr.success('Vereniging geupdate');
         this.router.navigate(['keuzemenu']);
       },
       error => {

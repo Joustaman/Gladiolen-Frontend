@@ -1,1 +1,32 @@
-<p>login works!</p>
+<!-- Form-->
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="form">
+        <div class="form-panel ">
+          <div class="form-header">
+            <h1>Login</h1>
+          </div>
+          <div class="form-content">
+            <form>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" required="required" />
+              </div>
+              <div class="form-group">
+                <label for="password">Wachtwoord</label>
+                <input type="password" id="password" name="password" required="required" />
+              </div>
+              <div class="form-group">
+                <a class="form-recovery float-right link">Wachtwoord vergeten ?</a>
+              </div>
+              <div class="form-group">
+                <button type="submit" [routerLink]="['/keuzemenu']" routerLinkActive="router-link-active" >Log In</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

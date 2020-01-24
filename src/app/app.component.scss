@@ -226,26 +226,7 @@
     margin-bottom: 10px;
 }
 
-.link {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: 'Vollkorn', sans-serif;
-}
 
-.link::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #000;
-    transition: width .3s;
-}
-
-.link:hover::after {
-    width: 100%;
-}
 
 
   

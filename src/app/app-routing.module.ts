@@ -13,6 +13,7 @@ import {KeuzemenuComponent} from './vereniging/keuzemenu/keuzemenu.component';
 import {ManageVerenigingenComponent} from './admin/manage-verenigingen/manage-verenigingen.component';
 import {EditVerenigingComponent} from './vereniging/edit-vereniging/edit-vereniging.component';
 import {CreateVerenigingAdminComponent} from './admin/create-vereniging-admin/create-vereniging-admin.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: 'manageGebruikers', component: ManageGebruikersComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'editlid/:id', component: CreateLidComponent},
   {path: 'spinner', component: SpinnerComponent},
   {path: 'keuzemenu', component: KeuzemenuComponent},
-  {path: 'vereniging/editvereniging', component: EditVerenigingComponent}
+  {path: 'vereniging/editvereniging', component: EditVerenigingComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

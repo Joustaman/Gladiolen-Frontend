@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AdminModule} from './admin/admin.module';
@@ -16,6 +15,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { KeuzemenuComponent } from './vereniging/keuzemenu/keuzemenu.component';
 import { EditVerenigingComponent } from './vereniging/edit-vereniging/edit-vereniging.component';
 import { ToastrModule } from 'ngx-toastr';
+import { DetailVerenigingComponent } from './vereniging/detail-vereniging/detail-vereniging.component';
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
     CreateLidComponent,
     SpinnerComponent,
     KeuzemenuComponent,
-    EditVerenigingComponent
+    EditVerenigingComponent,
+    DetailVerenigingComponent
   ],
   imports: [
     BrowserModule,

@@ -117,6 +117,7 @@ export class CreateLidComponent implements OnInit {
     this.verenigingService.updateTshirt(this.lid.id, tshirt).subscribe(
       result =>  {
         console.log(result);
+        this.toast.success('Lid geupdate');
         this.router.navigate(['/leden']);
       }
     );

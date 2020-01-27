@@ -14,6 +14,7 @@ import {Router} from '@angular/router';
 export class ManageEvenementenComponent implements OnInit {
 
   verenigingen: any = [];
+  vereniging: any = {};
   toegewezenVerenigingen: any = [];
   evenementen: any = [];
   evenement: any = [];
@@ -30,6 +31,10 @@ export class ManageEvenementenComponent implements OnInit {
     startdatum: new FormControl(''),
     einddatum: new FormControl(''),
     actief: new FormControl(false),
+  });
+
+  toewijzenVerenigingForm = new FormGroup({
+    vereniging: new FormControl('')
   });
 
   onSubmit() {
@@ -56,6 +61,12 @@ export class ManageEvenementenComponent implements OnInit {
       }
     );
     this.evenement = evenement;
+
+    this.adminService.getVerenigingenByEvenementId(evenement.id).subscribe(
+      result => {
+        this.toegewezenVerenigingen = result;
+      },
+    );
   }
 
   changeActief() {
@@ -79,8 +90,13 @@ export class ManageEvenementenComponent implements OnInit {
     );
   }
 
-  toewijzenVerenigingen(vereniging) {
-    this.adminService.registreerEvenementVereniging(vereniging).subscribe(
+  changeVereniging() {
+    this.vereniging = this.toewijzenVerenigingForm.get('vereniging').value;
+    console.log(this.vereniging);
+  }
+
+  toewijzenVerenigingen() {
+    this.adminService.registreerEvenementVereniging(this.vereniging).subscribe(
       result => {
         console.log(result);
       },
@@ -102,12 +118,6 @@ export class ManageEvenementenComponent implements OnInit {
     this.adminService.getVerenigingen().subscribe(
       result => {
         this.verenigingen = result;
-      },
-    );
-
-    this.adminService.getVerenigingenByEvenementId(this.evenement.id).subscribe(
-      result => {
-        this.toegewezenVerenigingen = result;
       },
     );
   }

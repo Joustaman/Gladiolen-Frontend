@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AdminService} from '../admin.service';
 import {ToastrService} from 'ngx-toastr';
-import { Router, Route, ActivatedRoute } from '@angular/router';
+import {Router, Route, ActivatedRoute} from '@angular/router';
+
 @Component({
   selector: 'app-create-vereniging-admin',
   templateUrl: './create-vereniging-admin.component.html',
@@ -21,7 +22,7 @@ export class CreateVerenigingAdminComponent implements OnInit {
     huisnummer: new FormControl(''),
     gemeente: new FormControl(''),
     postcode: new FormControl(''),
-    actief: new FormControl(false),
+    actief: new FormControl(true),
     inAanvraag: new FormControl(false)
   });
 

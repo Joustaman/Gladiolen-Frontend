@@ -146,17 +146,20 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <label for="vereniging">Vereniging</label>
-          <select name="vereniging" id="vereniging" class="form-control" formControlName="rol_id">
-            <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>
-          </select>
-        </div>
-        <button (click)="toewijzenVerenigingen()" class="btn btn-primary">Vereniging toevoegen</button>
-        <h5>Toegewezen verenigingen</h5>
-        <ul>
-          <li *ngFor="let toegewezenVereniging of toegewezenVerenigingen">{{toegewezenVereniging.naam}}</li>
-        </ul>
+        <form [formGroup]="toewijzenVerenigingForm">
+          <div class="form-group">
+            <label for="vereniging">Vereniging</label>
+            <select name="vereniging" id="vereniging" class="form-control" formControlName="vereniging"
+                    (click)="changeVereniging()">
+              <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>
+            </select>
+          </div>
+          <button (click)="toewijzenVerenigingen()" class="btn btn-primary">Vereniging toevoegen</button>
+          <h5>Toegewezen verenigingen</h5>
+          <ul>
+            <li *ngFor="let toegewezenVereniging of toegewezenVerenigingen">{{toegewezenVereniging.naam}}</li>
+          </ul>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>

@@ -32,9 +32,9 @@ export class ManageVerenigingenComponent implements OnInit {
   onClickDetailVereniging(vereniging: any) {
     this.verenigingForm.patchValue({
         naam: vereniging.naam,
-        hoofdverantwoordelijke: vereniging.hoofdverantwoordelijke,
-        tweedeverantwoordelijke: vereniging.tweedeverantwoordelijke,
-        contactpersoon: vereniging.contactpersoon,
+        hoofdverantwoordelijke: vereniging.hoofd.name,
+        tweedeverantwoordelijke: vereniging.tweede.name,
+        contactpersoon: vereniging.contactpersoon.name,
         rekeningnr: vereniging.rekeningnr,
         btwnr: vereniging.btwnr,
         straat: vereniging.straat,

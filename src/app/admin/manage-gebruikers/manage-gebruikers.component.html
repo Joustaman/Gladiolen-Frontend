@@ -22,7 +22,7 @@
           <td>{{gebruiker.voornaam}}</td>
           <td>{{gebruiker.geboortedatum | date:'MM/dd/yyyy'}}</td>
           <td>{{gebruiker.vereniging}}</td>
-          <td>{{gebruiker.rol_id}}</td>
+          <td>{{gebruiker.rol.naam}}</td>
           <td>
             <button [routerLink]="['/editGebruiker', gebruiker.id]" routerLinkActive="router-link-active"
                     type="button"

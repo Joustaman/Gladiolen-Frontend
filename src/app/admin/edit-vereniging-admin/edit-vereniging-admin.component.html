@@ -56,6 +56,15 @@
                  pattern="[0-9]{4}" required>
         </div>
       </div>
+      <div class="form-group paddingcheck text-center">
+        <div class="pretty p-default p-switch" (click)="changeActief()">
+          <input type="checkbox" id="actief" formControlName="actief" required
+                 [checked]="verenigingForm.get('actief').value"/>
+          <div class="state p-primary">
+            <label>Actief</label>
+          </div>
+        </div>
+      </div>
     </div>
     <button (click)="updateVereniging()" class="btn btn-primary">Update vereniging</button>
   </form>

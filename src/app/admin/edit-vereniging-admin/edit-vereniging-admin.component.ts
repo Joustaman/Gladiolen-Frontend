@@ -26,6 +26,7 @@ export class EditVerenigingAdminComponent implements OnInit {
     huisnummer: new FormControl(''),
     gemeente: new FormControl(''),
     postcode: new FormControl(''),
+    actief: new FormControl(false)
   });
 
   constructor(private readonly adminService: AdminService, private readonly router: Router,
@@ -62,6 +63,7 @@ export class EditVerenigingAdminComponent implements OnInit {
       huisnummer: this.vereniging.huisnummer,
       gemeente: this.vereniging.gemeente,
       postcode: this.vereniging.postcode,
+      actief: this.vereniging.actief
     });
   }
 
@@ -76,5 +78,12 @@ export class EditVerenigingAdminComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  changeActief() {
+    let value = this.verenigingForm.get('actief').value;
+    this.verenigingForm.patchValue({
+      actief: !value
+    });
   }
 }

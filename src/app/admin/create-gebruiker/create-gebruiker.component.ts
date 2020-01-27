@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AdminService} from '../admin.service';
+import { Router, Route, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-gebruiker',
@@ -37,7 +37,7 @@ export class CreateGebruikerComponent implements OnInit {
     rol_id: new FormControl(null),
   });
 
-  constructor(private readonly adminService: AdminService) {
+  constructor(private readonly adminService: AdminService, private readonly router: Router) {
   }
 
   ngOnInit() {
@@ -64,6 +64,7 @@ export class CreateGebruikerComponent implements OnInit {
     this.adminService.registreerGebruiker(this.gebruikerForm.value).subscribe(
       result => {
         console.log(result);
+        this.router.navigate(['/manageGebruikers']);
       },
       error => {
         console.log(error);

@@ -8,9 +8,9 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./manage-verenigingen.component.scss']
 })
 export class ManageVerenigingenComponent implements OnInit {
-
   verenigingen: any = [];
   pageLoaded = false;
+  leden: any = [];
 
   verenigingForm = new FormGroup({
     naam: new FormControl(''),
@@ -51,6 +51,7 @@ export class ManageVerenigingenComponent implements OnInit {
       result => {
         this.verenigingen = result;
         this.pageLoaded = true;
+        console.log(result);
       },
     );
   }

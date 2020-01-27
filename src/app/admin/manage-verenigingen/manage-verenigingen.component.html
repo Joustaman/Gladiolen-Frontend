@@ -21,13 +21,12 @@
           <td>{{vereniging.naam}}</td>
           <td>{{vereniging.hoofdverantwoordelijke}}</td>
           <td>{{vereniging.contactpersoon}}</td>
-          <td>{{vereniging.actief}}</td>
+          <td><div *ngIf="vereniging.actief == 0">Niet Actief</div>
+            <div *ngIf="vereniging.actief == 1">Actief</div></td>
           <td>
             <button [routerLink]="['/editVerenigingAdmin', vereniging.id]" routerLinkActive="router-link-active"
                     type="button"
                     class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
-            <!--            <button (click)="deleteLid(lid.id)" type="button" class="btn btn-danger btn-circle"><i-->
-            <!--              class="fa fa-times"></i></button>-->
           </td>
         </tr>
         </tbody>

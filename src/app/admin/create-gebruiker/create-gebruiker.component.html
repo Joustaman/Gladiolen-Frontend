@@ -124,14 +124,14 @@
               </select>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label for="vereniging">Vereniging</label>
-              <select name="vereniging" id="vereniging" class="form-control" formControlName="rol_id">
-                <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>
-              </select>
-            </div>
-          </div>
+<!--          <div class="col-lg-6">-->
+<!--            <div class="form-group">-->
+<!--              <label for="vereniging">Vereniging</label>-->
+<!--              <select name="vereniging" id="vereniging" class="form-control" formControlName="rol_id">-->
+<!--                <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>-->
+<!--              </select>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
         <input type="submit" class="btn btn-primary">
       </form>
@@ -195,12 +195,12 @@
         </tr>
         <tr>
           <th scope="row">Rol</th>
-          <td>{{gebruikerForm.get('rol').value}}</td>
+          <td>{{gebruikerForm.get('rol_id').value}}</td>
         </tr>
-        <tr>
-          <th scope="row">Vereniging</th>
-          <td>{{gebruikerForm.get('vereniging').value}}</td>
-        </tr>
+<!--        <tr>-->
+<!--          <th scope="row">Vereniging</th>-->
+<!--          <td>{{gebruikerForm.get('vereniging').value}}</td>-->
+<!--        </tr>-->
         </tbody>
       </table>
       <div>

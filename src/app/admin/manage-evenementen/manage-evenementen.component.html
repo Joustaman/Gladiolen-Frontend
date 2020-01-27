@@ -19,11 +19,12 @@
         </thead>
         <tbody>
         <tr *ngFor="let evenement of evenementen" (click)="onClickEditEvenement(evenement)"
-            data-toggle="modal" data-target="#evenementModal">
+            data-toggle="modal" data-target="#editEvenementModal">
           <td>{{evenement.naam}}</td>
           <td>{{evenement.startdatum | date:'MM/dd/yyyy'}}</td>
           <td>{{evenement.einddatum | date:'MM/dd/yyyy'}}</td>
-          <td>{{evenement.actief}}</td>
+          <td> <div *ngIf="evenement.actief == 0">Niet Actief</div>
+          <div *ngIf="evenement.actief == 1">Actief</div></td>
         </tr>
         </tbody>
       </table>
@@ -37,7 +38,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Evenement toevoegen</h5>
+        <h5 class="modal-title" id="addModalLabel">Evenement toevoegen</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -71,6 +72,55 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
           <button type="submit" class="btn btn-primary">Opslaan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="editEvenementModal" tabindex="-1" role="dialog" aria-labelledby="evenementModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Evenement aanpassen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="evenementForm" class="was-validated" novalidate>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="naam" class="col-form-label">Naam:</label>
+            <input type="text" class="form-control" id="naam"
+                   formControlName="naam" required>
+          </div>
+          <div class="form-group">
+            <label for="startdatum" class="col-form-label">Begin datum:</label>
+            <input type="date" class="form-control" id="startdatum"
+                   formControlName="startdatum" required>
+          </div>
+          <div class="form-group">
+            <label for="einddatum" class="col-form-label">Eind datum:</label>
+            <input type="date" class="form-control" id="einddatum"
+                   formControlName="einddatum" required>
+          </div>
+          <div class="form-group paddingcheck text-center">
+            <div class="pretty p-default p-switch" (click)="changeActief()">
+              <input type="checkbox"/>
+              <div class="state p-primary">
+                <label>Actief</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+          <button (click)="updateEvenement()" class="btn btn-primary">Opslaan</button>
         </div>
       </form>
     </div>

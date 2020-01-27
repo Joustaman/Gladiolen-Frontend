@@ -40,4 +40,7 @@ export class AdminService {
   registreerEvenement(evenement): any {
     return this.http.post('http://localhost:8000/evenement', evenement);
   }
+  updateEvenement(id, evenement): any {
+    return this.http.put('http://localhost:8000/evenement/' + id, evenement);
+  }
 }

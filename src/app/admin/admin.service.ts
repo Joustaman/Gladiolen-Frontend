@@ -26,7 +26,7 @@ export class AdminService {
   }
 
   getGebruiker(id): any {
-    return this.http.get('http://localhost:8000/getGebruiker/' + id);
+    return this.http.get('http://localhost:8000/gebruiker/getGebruiker/' + id);
   }
 
   updateGebruiker(id, gebruiker): any {
@@ -38,7 +38,15 @@ export class AdminService {
   }
 
   getVereniging(id): any {
-    return this.http.get('http://localhost:8000/getVereniging/' + id);
+    return this.http.get('http://localhost:8000/vereniging/getVereniging/' + id);
+  }
+
+  getVerenigingenByEvenementId(evenementId): any {
+    return this.http.get('http://localhost:8000/evenementVereniging/getVerenigingenByEvenementId/' + evenementId);
+  }
+
+  registreerEvenementVereniging(evenementVereniging) {
+    return this.http.post('http://localhost:8000/evenementVereniging/postEvenementVereniging', evenementVereniging);
   }
 
   registreerVereniging(vereniging): any {
@@ -56,6 +64,7 @@ export class AdminService {
   registreerEvenement(evenement): any {
     return this.http.post('http://localhost:8000/evenement', evenement);
   }
+
   updateEvenement(id, evenement): any {
     return this.http.put('http://localhost:8000/evenement/' + id, evenement);
   }

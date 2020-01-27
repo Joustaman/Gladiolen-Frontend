@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AdminService} from '../admin.service';
 import {DatePipe} from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
-import {Router} from "@angular/router";
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-manage-evenementen',
@@ -13,12 +13,15 @@ import {Router} from "@angular/router";
 })
 export class ManageEvenementenComponent implements OnInit {
 
+  verenigingen: any = [];
+  toegewezenVerenigingen: any = [];
   evenementen: any = [];
   evenement: any = [];
   startdatum: any;
   einddatum: any;
   pageLoaded = false;
   actief: any;
+
   constructor(private adminService: AdminService, private readonly datepipe: DatePipe, private toastr: ToastrService, private readonly router: Router) {
   }
 
@@ -35,7 +38,7 @@ export class ManageEvenementenComponent implements OnInit {
         console.log(result);
         this.pageLoaded = false;
         this.ngOnInit();
-          window.location.reload();
+        window.location.reload();
       },
       error => {
         console.log(error);
@@ -51,9 +54,8 @@ export class ManageEvenementenComponent implements OnInit {
         actief: evenement.actief,
 
       }
-
     );
-      this.evenement = evenement;
+    this.evenement = evenement;
   }
 
   changeActief() {
@@ -65,15 +67,26 @@ export class ManageEvenementenComponent implements OnInit {
 
   updateEvenement() {
     this.adminService.updateEvenement(this.evenement.id, this.evenementForm.value).subscribe(
-        result => {
-          console.log(result);
-          this.toastr.success('Verening geupdate');
-          this.router.navigate(['manageEvenementen']);
-          window.location.reload();
-        },
-        error => {
-          console.log(error);
-        }
+      result => {
+        console.log(result);
+        this.toastr.success('Verening geupdate');
+        this.router.navigate(['manageEvenementen']);
+        window.location.reload();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  toewijzenVerenigingen(vereniging) {
+    this.adminService.registreerEvenementVereniging(vereniging).subscribe(
+      result => {
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
     );
   }
 
@@ -84,7 +97,18 @@ export class ManageEvenementenComponent implements OnInit {
         console.log(result);
         this.pageLoaded = true;
       },
+    );
 
+    this.adminService.getVerenigingen().subscribe(
+      result => {
+        this.verenigingen = result;
+      },
+    );
+
+    this.adminService.getVerenigingenByEvenementId(this.evenement.id).subscribe(
+      result => {
+        this.toegewezenVerenigingen = result;
+      },
     );
   }
 }

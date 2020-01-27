@@ -18,20 +18,30 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let evenement of evenementen" (click)="onClickEditEvenement(evenement)"
-            data-toggle="modal" data-target="#editEvenementModal">
+        <tr *ngFor="let evenement of evenementen">
           <td>{{evenement.naam}}</td>
           <td>{{evenement.startdatum | date:'MM/dd/yyyy'}}</td>
           <td>{{evenement.einddatum | date:'MM/dd/yyyy'}}</td>
-          <td> <div *ngIf="evenement.actief == 0">Niet Actief</div>
-          <div *ngIf="evenement.actief == 1">Actief</div></td>
+          <td>
+            <div *ngIf="evenement.actief == 0">Niet Actief</div>
+            <div *ngIf="evenement.actief == 1">Actief</div>
+          </td>
+          <td>
+            <button (click)="onClickEditEvenement(evenement)"
+                    routerLinkActive="router-link-active" type="button"
+                    data-toggle="modal" data-target="#editEvenementModal"
+                    class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
+            <button routerLinkActive="router-link-active" type="button"
+                    data-toggle="modal" data-target="#toewijzenVerenigingModal"
+                    class="btn btn-primary">Vereniging toewijzen
+            </button>
+          </td>
         </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-
 
 <div class="modal fade" id="evenementModal" tabindex="-1" role="dialog" aria-labelledby="evenementModalLabel"
      aria-hidden="true">
@@ -71,16 +81,13 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-          <button type="submit" class="btn btn-primary" onclick="$('.editEvenementModal').modal('hide')">Opslaan</button>
+          <button type="submit" class="btn btn-primary" onclick="$('.editEvenementModal').modal('hide')">Opslaan
+          </button>
         </div>
       </form>
     </div>
   </div>
 </div>
-
-
-
-
 
 <div class="modal fade" id="editEvenementModal" tabindex="-1" role="dialog" aria-labelledby="evenementModalLabel"
      aria-hidden="true">
@@ -123,6 +130,37 @@
           <button (click)="updateEvenement()" class="btn btn-primary">Opslaan</button>
         </div>
       </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="toewijzenVerenigingModal" tabindex="-1" role="dialog"
+     aria-labelledby="toewijzenVerenigingModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="toewijzenVerenigingModalLabel">Verenigingen toewijzen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="vereniging">Vereniging</label>
+          <select name="vereniging" id="vereniging" class="form-control" formControlName="rol_id">
+            <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>
+          </select>
+        </div>
+        <button (click)="toewijzenVerenigingen()" class="btn btn-primary">Vereniging toevoegen</button>
+        <h5>Toegewezen verenigingen</h5>
+        <ul>
+          <li *ngFor="let toegewezenVereniging of toegewezenVerenigingen">{{toegewezenVereniging.naam}}</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+      </div>
     </div>
   </div>
 </div>

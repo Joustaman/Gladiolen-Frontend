@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AdminService} from '../admin.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-vereniging-admin',
@@ -23,7 +24,7 @@ export class CreateVerenigingAdminComponent implements OnInit {
     actief: new FormControl(false)
   });
 
-  constructor(private adminService: AdminService) {
+  constructor(private adminService: AdminService, private toast: ToastrService) {
   }
 
   ngOnInit() {
@@ -32,9 +33,11 @@ export class CreateVerenigingAdminComponent implements OnInit {
   createVereniging() {
     this.adminService.registreerVereniging(this.verenigingForm.value).subscribe(
       result => {
+        this.toast.success('Uw aanvraag is verzonden');
         console.log(result);
       },
       error => {
+        this.toast.error('Vul het formulier correct in');
         console.log(error);
       }
     );

@@ -9,10 +9,12 @@ import {AdminHomeComponent} from './admin-home/admin-home.component';
 import {ManageEvenementenComponent} from './manage-evenementen/manage-evenementen.component';
 import {ManageVerenigingenComponent} from './manage-verenigingen/manage-verenigingen.component';
 import {MymaterialModule} from '../mymaterial/mymaterial.module';
-import { CreateVerenigingAdminComponent } from './create-vereniging-admin/create-vereniging-admin.component';
+import {CreateVerenigingAdminComponent} from './create-vereniging-admin/create-vereniging-admin.component';
+import { EditVerenigingAdminComponent } from './edit-vereniging-admin/edit-vereniging-admin.component';
+import { EditGebruikerComponent } from './edit-gebruiker/edit-gebruiker.component';
 
 @NgModule({
-  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent],
+  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent],
   imports: [
     CommonModule,
     RouterModule,

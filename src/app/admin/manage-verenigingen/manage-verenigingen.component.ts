@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AdminService} from '../admin.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-manage-verenigingen',
@@ -11,7 +12,38 @@ export class ManageVerenigingenComponent implements OnInit {
   verenigingen: any = [];
   pageLoaded = false;
 
+  verenigingForm = new FormGroup({
+    naam: new FormControl(''),
+    hoofdverantwoordelijke: new FormControl(null),
+    tweedeverantwoordelijke: new FormControl(null),
+    contactpersoon: new FormControl(null),
+    rekeningnr: new FormControl(''),
+    btwnr: new FormControl(''),
+    straat: new FormControl(''),
+    huisnummer: new FormControl(''),
+    gemeente: new FormControl(''),
+    postcode: new FormControl(''),
+    actief: new FormControl(false)
+  });
+
   constructor(private adminService: AdminService) {
+  }
+
+  onClickDetailVereniging(vereniging: any) {
+    this.verenigingForm.patchValue({
+        naam: vereniging.naam,
+        hoofdverantwoordelijke: vereniging.hoofdverantwoordelijke,
+        tweedeverantwoordelijke: vereniging.tweedeverantwoordelijke,
+        contactpersoon: vereniging.contactpersoon,
+        rekeningnr: vereniging.rekeningnr,
+        btwnr: vereniging.btwnr,
+        straat: vereniging.straat,
+        huisnummer: vereniging.huisnummer,
+        gemeente: vereniging.gemeente,
+        postcode: vereniging.postcode,
+        actief: vereniging.actief
+      }
+    );
   }
 
   ngOnInit() {

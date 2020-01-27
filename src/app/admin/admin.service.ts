@@ -25,12 +25,28 @@ export class AdminService {
     return this.http.get('http://localhost:8000/gebruikers');
   }
 
+  getGebruiker(id): any {
+    return this.http.get('http://localhost:8000/getGebruiker/' + id);
+  }
+
+  updateGebruiker(id, gebruiker): any {
+    return this.http.put('http://localhost:8000/gebruiker/' + id, gebruiker);
+  }
+
   getVerenigingen(): any {
     return this.http.get('http://localhost:8000/verenigings');
   }
 
+  getVereniging(id): any {
+    return this.http.get('http://localhost:8000/getVereniging/' + id);
+  }
+
   registreerVereniging(vereniging): any {
     return this.http.post('http://localhost:8000/vereniging', vereniging);
+  }
+
+  updateVereniging(id, vereniging): any {
+    return this.http.put('http://localhost:8000/vereniging/' + id, vereniging);
   }
 
   getEvenementen(): any {

@@ -71,7 +71,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-          <button type="submit" class="btn btn-primary">Opslaan</button>
+          <button type="submit" class="btn btn-primary" onclick="$('.editEvenementModal').modal('hide')">Opslaan</button>
         </div>
       </form>
     </div>
@@ -111,7 +111,7 @@
           </div>
           <div class="form-group paddingcheck text-center">
             <div class="pretty p-default p-switch" (click)="changeActief()">
-              <input type="checkbox"/>
+              <input type="checkbox" id="actief" formControlName="actief" required/>
               <div class="state p-primary">
                 <label>Actief</label>
               </div>

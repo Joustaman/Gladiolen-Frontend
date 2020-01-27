@@ -40,4 +40,10 @@ export class VerenigingService {
   updateVereniging(id, vereniging): any {
     return this.http.put('http://localhost:8000/vereniging/' + id, vereniging);
   }
+  createTshirt(tshirt): any {
+    return this.http.post('http://localhost:8000/tshirt', tshirt);
+  }
+  updateTshirt(id, tshirt) {
+    return this.http.put('http://localhost:8000/tshirt/' + id, tshirt);
+  }
 }

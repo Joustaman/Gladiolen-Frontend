@@ -53,11 +53,23 @@
                     formControlName="opmerking"></textarea>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-3">
         <div class="form-group">
-          <label for="tshirt">Tshirt</label>
-          <select name="tshirt" id="tshirt" class="form-control" formControlName="tshirt_id">
-            <option *ngFor="let tshirt of tshirts" [value]="tshirt.id">{{tshirt.maat}} - {{tshirt.geslacht}}</option>
+          <label for="geslacht">Geslacht</label>
+          <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
+                  [ngModelOptions]="{standalone: true}">
+            <option value="Man">Man</option>
+            <option value="Vrouw">Vrouw</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label for="tshirt">Tshirt - Maat</label>
+          <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
+                  [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let tshirt of tshirts" [value]="tshirt.id">{{tshirt.maat}}
+              - {{tshirt.geslacht}}</option>
           </select>
         </div>
       </div>
@@ -82,20 +94,10 @@
         </div>
       </div>
       <div class="col-lg-6">
-        <label for="wachtwoord">Wachtwoord</label>
-        <input type="password" class="form-control" name="wachtwoord" id="wachtwoord" formControlName="wachtwoord"
-               pattern=".{6,}" required>
-        <div class="invalid-feedback">Je wachtwoord moet minstens 6 tekens bevatten.</div>
-      </div>
-      <div class="col-lg-6">
-        <label for="herhaalwachtwoord">Herhaal wachtwoord</label>
-        <input type="password" class="form-control" name="herhaalwachtwoord" id="herhaalwachtwoord" pattern=".{6,}"
-               required>
-      </div>
-      <div class="col-lg-6">
         <div class="form-group">
           <label for="rol">Rol</label>
-          <select name="rol" id="rol" class="form-control" formControlName="rol_id" (change)="changeRol()" required>
+          <select name="rol" id="rol" class="form-control" formControlName="rol_id" (change)="changeRol()"
+                  [value]="gebruikerForm.get('rol_id').value" required>
             <option *ngFor="let rol of rollen" [value]="rol.id">{{rol.naam}}</option>
           </select>
         </div>

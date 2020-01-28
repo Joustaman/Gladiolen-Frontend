@@ -12,71 +12,74 @@ export class AdminService {
   $link = 'http://localhost:8000/';
 
   getTshirts(): any {
-    return this.http.get(this.$link + 'tshirts');
+    return this.http.get(this.$link + 'tshirt');
   }
 
   createTshirt(tshirt): any {
     return this.http.post('http://localhost:8000/tshirt', tshirt);
   }
 
-  getRollen(): any {
-    return this.http.get(this.$link + 'rols');
+  updateTshirt(id, tshirt) {
+    return this.http.put('http://localhost:8000/tshirt/' + id, tshirt);
   }
 
   getGebruikers(): any {
-    return this.http.get(this.$link + 'gebruikers');
+    return this.http.get(this.$link + 'api/gebruikers');
   }
 
   getGebruiker(id): any {
-    return this.http.get(this.$link + 'gebruiker/getGebruiker/' + id);
+    return this.http.get(this.$link + 'api/gebruiker/getGebruiker/' + id);
   }
 
   registreerGebruiker(gebruiker): any {
-    return this.http.post(this.$link + 'registreergebruiker', gebruiker);
+    return this.http.post(this.$link + 'api/gebruiker/registreergebruiker', gebruiker);
   }
 
   updateGebruiker(id, gebruiker): any {
-    return this.http.put(this.$link + 'gebruiker/' + id, gebruiker);
-  }
-
-  getVerenigingen(): any {
-    return this.http.get(this.$link + 'verenigings');
-  }
-
-  getVereniging(id): any {
-
-    return this.http.get(this.$link + 'vereniging/getVereniging/' + id);
-  }
-
-  getVerenigingenByEvenementId(evenementId): any {
-    return this.http.get(this.$link + 'evenementVereniging/getVerenigingenByEvenementId/' + evenementId);
-  }
-
-  registreerEvenementVereniging(evenementVereniging) {
-    return this.http.post(this.$link + 'evenementVereniging/postEvenementVereniging', evenementVereniging);
-  }
-
-  getVerenigingenMetLeden(): any {
-    return this.http.get(this.$link + 'vereniging/verenigingmetleden');
-  }
-
-  registreerVereniging(vereniging): any {
-    return this.http.post(this.$link + 'vereniging', vereniging);
-  }
-
-  updateVereniging(id, vereniging): any {
-    return this.http.put(this.$link + 'vereniging/' + id, vereniging);
+    return this.http.put(this.$link + 'api/gebruiker/' + id, gebruiker);
   }
 
   getEvenementen(): any {
-    return this.http.get(this.$link + 'evenement');
+    return this.http.get(this.$link + 'api/evenement');
   }
 
   registreerEvenement(evenement): any {
-    return this.http.post(this.$link + 'evenement', evenement);
+    return this.http.post(this.$link + 'api/evenement', evenement);
   }
 
   updateEvenement(id, evenement): any {
-    return this.http.put(this.$link + 'evenement/' + id, evenement);
+    return this.http.put(this.$link + 'api/evenement/' + id, evenement);
+  }
+
+  getVerenigingen(): any {
+    return this.http.get(this.$link + 'api/vereniging');
+  }
+
+  getVereniging(id): any {
+    return this.http.get(this.$link + 'api/vereniging/getVereniging/' + id);
+  }
+
+  getVerenigingenMetLeden(): any {
+    return this.http.get(this.$link + 'api/vereniging/verenigingmetleden');
+  }
+
+  registreerVereniging(vereniging): any {
+    return this.http.post(this.$link + 'api/vereniging', vereniging);
+  }
+
+  updateVereniging(id, vereniging): any {
+    return this.http.put(this.$link + 'api/vereniging/' + id, vereniging);
+  }
+
+  getVerenigingenByEvenementId(evenementId): any {
+    return this.http.get(this.$link + 'api/evenementVereniging/getVerenigingenByEvenementId/' + evenementId);
+  }
+
+  registreerEvenementVereniging(evenementVereniging) {
+    return this.http.post(this.$link + 'api/evenementVereniging/postEvenementVereniging', evenementVereniging);
+  }
+
+  getRollen(): any {
+    return this.http.get(this.$link + 'api/rol');
   }
 }

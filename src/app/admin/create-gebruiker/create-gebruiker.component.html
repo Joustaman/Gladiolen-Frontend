@@ -24,26 +24,6 @@
           </div>
           <div class="col-lg-6">
             <div class="form-group">
-              <label for="straat">Straat</label>
-              <input class="form-control" type="text" id="straat" name="straat" formControlName="straat">
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="form-group">
-              <label for="huisnummer">Huisnummer</label>
-              <input class="form-control" type="number" id="huisnummer" name="huisnummer" formControlName="huisnummer">
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="form-group">
-              <label for="postcode">Postcode</label>
-              <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode"
-                     pattern="[0-9]{4}">
-              <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven</div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="form-group">
               <label for="emailadres">Email</label>
               <input class="form-control" type="text" id="emailadres" name="emailadres" formControlName="emailadres">
             </div>
@@ -124,14 +104,14 @@
               </select>
             </div>
           </div>
-<!--          <div class="col-lg-6">-->
-<!--            <div class="form-group">-->
-<!--              <label for="vereniging">Vereniging</label>-->
-<!--              <select name="vereniging" id="vereniging" class="form-control" formControlName="rol_id">-->
-<!--                <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>-->
-<!--              </select>-->
-<!--            </div>-->
-<!--          </div>-->
+          <!--          <div class="col-lg-6">-->
+          <!--            <div class="form-group">-->
+          <!--              <label for="vereniging">Vereniging</label>-->
+          <!--              <select name="vereniging" id="vereniging" class="form-control" formControlName="rol_id">-->
+          <!--                <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>-->
+          <!--              </select>-->
+          <!--            </div>-->
+          <!--          </div>-->
         </div>
         <input type="submit" class="btn btn-primary">
       </form>
@@ -197,10 +177,10 @@
           <th scope="row">Rol</th>
           <td>{{gebruikerForm.get('rol_id').value}}</td>
         </tr>
-<!--        <tr>-->
-<!--          <th scope="row">Vereniging</th>-->
-<!--          <td>{{gebruikerForm.get('vereniging').value}}</td>-->
-<!--        </tr>-->
+        <!--        <tr>-->
+        <!--          <th scope="row">Vereniging</th>-->
+        <!--          <td>{{gebruikerForm.get('vereniging').value}}</td>-->
+        <!--        </tr>-->
         </tbody>
       </table>
       <div>

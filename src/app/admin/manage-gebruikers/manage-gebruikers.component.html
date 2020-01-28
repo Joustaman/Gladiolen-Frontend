@@ -18,7 +18,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let gebruiker of gebruikers" [routerLink]="['/detailGebruiker']">
-          <td>{{gebruiker.naam}}</td>
+          <td>{{gebruiker.name}}</td>
           <td>{{gebruiker.voornaam}}</td>
           <td>{{gebruiker.geboortedatum | date:'MM/dd/yyyy'}}</td>
           <td>{{gebruiker.vereniging}}</td>

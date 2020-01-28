@@ -18,18 +18,15 @@ export class EditGebruikerComponent implements OnInit {
   pageLoaded = false;
 
   gebruikerForm = new FormGroup({
-    naam: new FormControl(''),
+    name: new FormControl(''),
     voornaam: new FormControl(''),
     roepnaam: new FormControl(''),
-    straat: new FormControl(''),
-    huisnummer: new FormControl(''),
     geboortedatum: new FormControl(''),
-    emailadres: new FormControl(''),
+    email: new FormControl(''),
     telefoon: new FormControl(''),
     tweedetshirt: new FormControl(false),
     opmerking: new FormControl(''),
     rijksregisternr: new FormControl(''),
-    postcode: new FormControl(''),
     wachtwoord: new FormControl(''),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
@@ -80,18 +77,15 @@ export class EditGebruikerComponent implements OnInit {
 
   fillForm() {
     this.gebruikerForm.patchValue({
-      naam: this.gebruiker.naam,
+      name: this.gebruiker.name,
       voornaam: this.gebruiker.voornaam,
       roepnaam: this.gebruiker.roepnaam,
-      straat: this.gebruiker.straat,
-      huisnummer: this.gebruiker.huisnummer,
       geboortedatum: this.gebruiker.geboortedatum,
-      emailadres: this.gebruiker.emailadres,
+      email: this.gebruiker.email,
       telefoon: this.gebruiker.telefoon,
       tweedetshirt: this.gebruiker.tweedetshirt,
       opmerking: this.gebruiker.opmerking,
       rijksregisternr: this.gebruiker.rijksregisternr,
-      postcode: this.gebruiker.postcode,
       wachtwoord: this.gebruiker.wachtwoord,
       eersteAanmelding: this.gebruiker.eersteAanmelding,
       lunchpakket: this.gebruiker.lunchpakket,

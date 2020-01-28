@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AdminService} from '../admin.service';
-import { Router, Route, ActivatedRoute } from '@angular/router';
+import {Router, Route, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-create-gebruiker',

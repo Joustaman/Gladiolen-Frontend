@@ -26,7 +26,8 @@
                 data-toggle="modal" data-target="#verenigingModal">
               <td>{{vereniging.naam}}</td>
               <td>{{vereniging.hoofd.name}} {{vereniging.hoofd.voornaam}}</td>
-              <td>{{vereniging.contactpersoon.name}} {{vereniging.contactpersoon.voornaam}}</td>
+              <td *ngIf="vereniging.contact != null">{{vereniging.contact.name}} {{vereniging.contact.voornaam}}</td>
+              <td *ngIf="vereniging.contact == null">Geen contactpersoon</td>
               <td>
                 <div *ngIf="vereniging.actief == 0">Niet Actief</div>
                 <div *ngIf="vereniging.actief == 1">Actief</div>

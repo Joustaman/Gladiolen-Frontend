@@ -87,9 +87,13 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="actief">Actief</label>
-                                    <input class="form-control" type="text" id="actief" name="actief"
+                                    <input *ngIf="gebruiker.actief == 0" value="Niet actief" class="form-control" type="text" id="actief" name="actief"
                                            formControlName="actief"
                                            readonly>
+                                    <input *ngIf="gebruiker.actief == 1" value="Actief" class="form-control" type="text" id="actief" name="actief"
+                                           formControlName="actief"
+                                           readonly>
+
                                 </div>
                             </div>
                             <div class="col-lg-4">

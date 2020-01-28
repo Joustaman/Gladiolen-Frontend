@@ -7,10 +7,10 @@
     <div>
       <div>
         <ul>
-          <li (click)="menuClick()" class="link">Inloggen</li>
-          <li (click)="menuClick()" class="link" [routerLink]="['/vereniging/editvereniging']" routerLinkActive="router-link-active">Vereniging</li>
-          <li (click)="menuClick()" class="link" [routerLink]="['/leden']" routerLinkActive="router-link-active">Leden</li>
-          <li (click)="menuClick()" class="link">Uitloggen</li>
+          <li *ngIf="!checkIfLoggedIn()" (click)="menuClick()" class="link">Inloggen</li>
+          <li *ngIf="checkIfLoggedIn()" (click)="menuClick()" class="link" [routerLink]="['/vereniging/editvereniging']" routerLinkActive="router-link-active">Vereniging</li>
+          <li *ngIf="checkIfLoggedIn()" (click)="menuClick()" class="link" [routerLink]="['/leden']" routerLinkActive="router-link-active">Leden</li>
+          <li *ngIf="checkIfLoggedIn()"(click)="logOut()" class="link">Uitloggen</li>
         </ul>
       </div>
     </div>

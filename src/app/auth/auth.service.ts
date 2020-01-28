@@ -15,9 +15,9 @@ export class AuthService {
   private readonly api = 'http://localhost:8000';
   private readonly JWT_TOKEN = 'token';
 
-  tryLogin(user: { email: string; password: string }) {
+  tryLogin(email: string, password: string) {
     return this.http
-      .post<any>(`${this.api}/api/login`, user)
+      .post<any>(`${this.api}/api/login`, {email, password})
       .pipe(tap(token => this.doLogin(token.token.toString())));
   }
 

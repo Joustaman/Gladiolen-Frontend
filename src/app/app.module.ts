@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {AdminModule} from './admin/admin.module';
 import {CreateVerenigingComponent} from './vereniging/create-vereniging/create-vereniging.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {MymaterialModule} from './mymaterial/mymaterial.module';
 import {LoginComponent} from './login/login.component';
@@ -16,6 +16,7 @@ import {KeuzemenuComponent} from './vereniging/keuzemenu/keuzemenu.component';
 import {EditVerenigingComponent} from './vereniging/edit-vereniging/edit-vereniging.component';
 import {ToastrModule} from 'ngx-toastr';
 import {DetailVerenigingComponent} from './vereniging/detail-vereniging/detail-vereniging.component';
+import { TokenInterceptor } from './auth/token.interceptor';
 
 
 @NgModule({
@@ -41,7 +42,13 @@ import {DetailVerenigingComponent} from './vereniging/detail-vereniging/detail-v
     ReactiveFormsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

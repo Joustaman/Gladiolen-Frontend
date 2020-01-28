@@ -8,20 +8,20 @@
             <h1>Login</h1>
           </div>
           <div class="form-content">
-            <form>
+            <form [formGroup]="loginForm">
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" required="required" />
+                <input type="text" id="email" name="email" required="required" formControlName="email" />
               </div>
               <div class="form-group">
                 <label for="password">Wachtwoord</label>
-                <input type="password" id="password" name="password" required="required" />
+                <input type="password" id="password" name="password" required="required" formControlName="password" />
               </div>
               <div class="form-group">
                 <a class="form-recovery float-right link">Wachtwoord vergeten ?</a>
               </div>
               <div class="form-group">
-                <button type="submit" [routerLink]="['/keuzemenu']" routerLinkActive="router-link-active" >Log In</button>
+                <button type="submit" (click)="login()">Log In</button>
               </div>
             </form>
           </div>

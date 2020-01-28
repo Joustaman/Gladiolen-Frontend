@@ -13,7 +13,9 @@ import {KeuzemenuComponent} from './vereniging/keuzemenu/keuzemenu.component';
 import {ManageVerenigingenComponent} from './admin/manage-verenigingen/manage-verenigingen.component';
 import {EditVerenigingComponent} from './vereniging/edit-vereniging/edit-vereniging.component';
 import {CreateVerenigingAdminComponent} from './admin/create-vereniging-admin/create-vereniging-admin.component';
-import { LoginComponent } from './login/login.component';
+import {LoginComponent} from './login/login.component';
+import {EditVerenigingAdminComponent} from './admin/edit-vereniging-admin/edit-vereniging-admin.component';
+import {EditGebruikerComponent} from './admin/edit-gebruiker/edit-gebruiker.component';
 
 const routes: Routes = [
   {path: 'manageGebruikers', component: ManageGebruikersComponent},
@@ -22,8 +24,10 @@ const routes: Routes = [
   {path: 'manageEvenementen', component: ManageEvenementenComponent},
   {path: 'createEvenement', component: CreateVerenigingComponent},
   {path: 'detailGebruiker', component: DetailGebruikerComponent},
+  {path: 'editGebruiker/:id', component: EditGebruikerComponent},
   {path: 'manageVerenigingen', component: ManageVerenigingenComponent},
   {path: 'createVerenigingAdmin', component: CreateVerenigingAdminComponent},
+  {path: 'editVerenigingAdmin/:id', component: EditVerenigingAdminComponent},
   {path: 'createvereniging', component: CreateVerenigingComponent},
   {path: 'leden', component: LedenComponent},
   {path: 'maaklid', component: CreateLidComponent},

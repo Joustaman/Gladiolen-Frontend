@@ -1,0 +1,71 @@
+<div class="container" *ngIf="pageLoaded">
+  <form [formGroup]="verenigingForm" class="was-validated" novalidate class="mt-5">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="naam">Naam</label>
+          <input class="form-control" type="text" id="naam" name="naam" formControlName="naam" required>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="tweedeverantwoordelijke">Verander van tweede verantwoordelijke</label>
+          <select class="form-control" name="tweedeverantwoordelijke" id="tweedeverantwoordelijke"
+                  formControlName="tweedeverantwoordelijke">
+            <option *ngFor="let lid of leden" [value]="lid.id">{{lid.naam}} {{lid.voornaam}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="rekeningnr">Rekening Nummer</label>
+          <input class="form-control" type="text" id="rekeningnr" name="rekeningnr" formControlName="rekeningnr"
+                 pattern="[BE]{2}[0-9]{14}" required>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="btwnr">BTW Nummer</label>
+          <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr"
+                 pattern="[BE]{2}[0]{1}[0-9]{9}" required>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label for="straat">Straat</label>
+          <input class="form-control" type="text" id="straat" name="straat" formControlName=straat required>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label for="huisnummer">Huisnummer</label>
+          <input class="form-control" type="number" id="huisnummer" name="huisnummer" formControlName="huisnummer"
+                 required>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label for="gemeente">Gemeente</label>
+          <input class="form-control" type="text" id="gemeente" name="gemeente" formControlName="gemeente" required>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label for="postcode">Postcode</label>
+          <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode"
+                 pattern="[0-9]{4}" required>
+        </div>
+      </div>
+      <div class="form-group paddingcheck text-center">
+        <div class="pretty p-default p-switch" (click)="changeActief()">
+          <input type="checkbox" id="actief" formControlName="actief" required
+                 [checked]="verenigingForm.get('actief').value"/>
+          <div class="state p-primary">
+            <label>Actief</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button (click)="updateVereniging()" class="btn btn-primary">Update vereniging</button>
+  </form>
+</div>

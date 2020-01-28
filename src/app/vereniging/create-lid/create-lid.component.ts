@@ -14,30 +14,28 @@ import { ToastrService } from 'ngx-toastr';
 export class CreateLidComponent implements OnInit {
 
   lidForm = new FormGroup({
-    naam: new FormControl(''),
+    name: new FormControl(''),
     voornaam: new FormControl(''),
     roepnaam: new FormControl(''),
-    straat: new FormControl(''),
-    huisnummer: new FormControl(''),
     geboortedatum: new FormControl(''),
-    emailadres: new FormControl(''),
+    email: new FormControl(''),
     telefoon: new FormControl(''),
-    tweedetshirt: new FormControl(false),
     opmerking: new FormControl(''),
+    rol_id: new FormControl(null),
     rijksregisternr: new FormControl(''),
-    postcode: new FormControl(''),
-    wachtwoord: new FormControl(null),
+    password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
-    qrcode: new FormControl(null),
+    actief: new FormControl(null),
     foto: new FormControl(null),
-    tshirt_id: new FormControl(null),
-    rol_id: new FormControl(null),
   });
+
   tshirts: any = [];
   lid: any = {};
   updateGebruiker = false;
   pageLoaded = false;
+  maat: any;
+  geslacht: any;
   constructor(private readonly verenigingService: VerenigingService, private readonly router: Router,
               private readonly route: ActivatedRoute, private readonly datepipe: DatePipe,
               private readonly toast: ToastrService) { }
@@ -72,12 +70,6 @@ export class CreateLidComponent implements OnInit {
     );
   }
 
-  changeTshirt() {
-    let value = this.lidForm.get('tweedetshirt').value;
-    this.lidForm.patchValue({
-      tweedetshirt: !value
-    });
-  }
   changeLunch() {
     let value = this.lidForm.get('lunchpakket').value;
     this.lidForm.patchValue({
@@ -87,9 +79,8 @@ export class CreateLidComponent implements OnInit {
 
   createLid() {
     this.verenigingService.addLid(this.lidForm.value).subscribe(
-      () => {
-        this.toast.success('Lid aangemaakt');
-        this.router.navigate(['/leden']);
+      result => {
+        this.createTshirt(result.id);
       },
       error => {
         console.log(error);
@@ -97,42 +88,61 @@ export class CreateLidComponent implements OnInit {
       }
     );
   }
+  createTshirt(gebruikerId) {
+    let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null};
 
-  fillForm() {
-    this.lidForm.patchValue({
-      naam: this.lid.naam,
-      voornaam: this.lid.voornaam,
-      roepnaam: this.lid.roepnaam,
-      straat: this.lid.straat,
-      huisnummer: this.lid.huisnummer,
-      geboortedatum: this.datepipe.transform(this.lid.geboortedatum, 'yyyy-MM-dd'),
-      emailadres: this.lid.emailadres,
-      telefoon: this.lid.telefoon,
-      tweedetshirt: this.lid.tweedetshirt,
-      opmerking: this.lid.opmerking,
-      rijksregisternr: this.lid.rijksregisternr,
-      postcode: this.lid.postcode,
-      lunchpakket: this.lid.lunchpakket,
-      tshirt_id: this.lid.tshirt_id,
-      wachtwoord: this.lid.wachtwoord,
-      eersteAanmelding: this.lid.eersteAanmelding,
-      qrcode: this.lid.qrcode,
-      foto: this.lid.foto,
-      rol_id: this.lid.rol_id,
-    });
-
+    this.verenigingService.createTshirt(tshirt).subscribe(
+      () => {
+        this.toast.success('Lid aangemaakt');
+        this.router.navigate(['/leden']);
+      }
+    );
   }
 
   updateLid() {
     this.verenigingService.updateLid(this.lid.id, this.lidForm.value).subscribe(
       result => {
         console.log(result);
-        this.router.navigate(['/leden']);
+        this.updateTshirt();
       },
       error => {
         console.log(error);
       }
     );
   }
+
+  updateTshirt() {
+    let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: this.lid.id, tshirttype_id: null};
+    console.log(tshirt);
+    this.verenigingService.updateTshirt(this.lid.id, tshirt).subscribe(
+      result =>  {
+        console.log(result);
+        this.toast.success('Lid geupdate');
+        this.router.navigate(['/leden']);
+      }
+    );
+  }
+
+  fillForm() {
+    this.lidForm.patchValue({
+      name: this.lid.name,
+      voornaam: this.lid.voornaam,
+      roepnaam: this.lid.roepnaam,
+      geboortedatum: this.datepipe.transform(this.lid.geboortedatum, 'yyyy-MM-dd'),
+      email: this.lid.email,
+      telefoon: this.lid.telefoon,
+      opmerking: this.lid.opmerking,
+      rol_id: this.lid.rol_id,
+      rijksregisternr: this.lid.rijksregisternr,
+      password: null,
+      eersteAanmelding: this.lid.eersteAanmelding,
+      lunchpakket: this.lid.lunchpakket,
+      actief: this.lid.actief,
+      foto: this.lid.foto,
+    });
+    this.maat = this.lid.tshirts[0].maat;
+    this.geslacht = this.lid.tshirts[0].geslacht;
+  }
+
 
 }

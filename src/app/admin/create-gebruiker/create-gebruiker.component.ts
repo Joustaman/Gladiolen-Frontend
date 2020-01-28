@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AdminService} from '../admin.service';
+import {Router, Route, ActivatedRoute} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-gebruiker',
@@ -13,31 +14,30 @@ export class CreateGebruikerComponent implements OnInit {
   tshirts: any = [];
   rollen: any = [];
   verenigingen: any = [];
-  visible: any = '';
+  gebruiker: any = {};
+  maat: any;
+  geslacht: any;
+  pageLoaded = false;
 
   gebruikerForm = new FormGroup({
-    naam: new FormControl(''),
+    name: new FormControl(''),
     voornaam: new FormControl(''),
     roepnaam: new FormControl(''),
-    straat: new FormControl(''),
-    huisnummer: new FormControl(''),
     geboortedatum: new FormControl(''),
-    emailadres: new FormControl(''),
+    email: new FormControl(''),
     telefoon: new FormControl(''),
-    tweedetshirt: new FormControl(false),
     opmerking: new FormControl(''),
+    rol_id: new FormControl(null),
     rijksregisternr: new FormControl(''),
-    postcode: new FormControl(''),
-    wachtwoord: new FormControl(''),
+    password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
-    qrcode: new FormControl(null),
+    actief: new FormControl(null),
     foto: new FormControl(null),
-    tshirt_id: new FormControl(null),
-    rol_id: new FormControl(null),
   });
 
-  constructor(private readonly adminService: AdminService) {
+  constructor(private readonly adminService: AdminService, private readonly router: Router,
+              private readonly toast: ToastrService) {
   }
 
   ngOnInit() {
@@ -63,10 +63,22 @@ export class CreateGebruikerComponent implements OnInit {
   submitForm() {
     this.adminService.registreerGebruiker(this.gebruikerForm.value).subscribe(
       result => {
-        console.log(result);
+        this.createTshirt(result.id);
       },
       error => {
         console.log(error);
+        this.toast.error('Vul het formulier correct in');
+      }
+    );
+  }
+
+  createTshirt(gebruikerId) {
+    let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null};
+
+    this.adminService.createTshirt(tshirt).subscribe(
+      () => {
+        this.toast.success('Lid aangemaakt');
+        this.router.navigate(['/manageGebruikers']);
       }
     );
   }

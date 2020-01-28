@@ -11,25 +11,20 @@ import { ToastrService } from 'ngx-toastr';
 export class CreateVerenigingComponent implements OnInit {
 
   verantwoordelijkeForm = new FormGroup({
-    naam: new FormControl(''),
+    name: new FormControl(''),
     voornaam: new FormControl(''),
     roepnaam: new FormControl(''),
-    straat: new FormControl(''),
-    huisnummer: new FormControl(''),
     geboortedatum: new FormControl(''),
-    emailadres: new FormControl(''),
+    email: new FormControl(''),
     telefoon: new FormControl(''),
-    tweedetshirt: new FormControl(false),
     opmerking: new FormControl(''),
+    rol_id: new FormControl(null),
     rijksregisternr: new FormControl(''),
-    postcode: new FormControl(''),
-    wachtwoord: new FormControl(''),
+    password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
-    qrcode: new FormControl(null),
+    actief: new FormControl(null),
     foto: new FormControl(null),
-    tshirt_id: new FormControl(null),
-    rol_id: new FormControl(null),
   });
   verenigingForm = new FormGroup({
     naam: new FormControl(''),
@@ -43,9 +38,11 @@ export class CreateVerenigingComponent implements OnInit {
     gemeente: new FormControl(''),
     postcode: new FormControl(''),
     actief: new FormControl(false),
+    inAanvraag: new FormControl(false),
   });
-
   tshirts: any = [];
+  maat: any;
+  geslacht: any;
   constructor(private readonly verenigingService: VerenigingService, private toast: ToastrService) { }
 
   ngOnInit() {
@@ -56,12 +53,6 @@ export class CreateVerenigingComponent implements OnInit {
     );
   }
 
-  changeTshirt() {
-    let value = this.verantwoordelijkeForm.get('tweedetshirt').value;
-    this.verantwoordelijkeForm.patchValue({
-      tweedetshirt: !value
-    });
-  }
   changeLunch() {
     let value = this.verantwoordelijkeForm.get('lunchpakket').value;
     this.verantwoordelijkeForm.patchValue({
@@ -70,13 +61,12 @@ export class CreateVerenigingComponent implements OnInit {
   }
 
   createVerantwoordelijke() {
-    console.log("test");
     this.verenigingService.registreerVerantwoordelijke(this.verantwoordelijkeForm.value).subscribe(
       result => {
         this.verenigingForm.patchValue({
           hoofdverantwoordelijke: result.id,
         });
-        this.createVereniging();
+        this.createTshirt(result.id);
       },
       error => {
         console.log(error);
@@ -84,6 +74,16 @@ export class CreateVerenigingComponent implements OnInit {
     );
   }
 
+  createTshirt(gebruikerId) {
+    let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null};
+
+    this.verenigingService.createTshirt(tshirt).subscribe(
+      result => {
+        this.createVereniging();
+        console.log(result);
+      }
+    );
+  }
   createVereniging() {
     this.verenigingService.registreerVereniging(this.verenigingForm.value).subscribe(
       result => {

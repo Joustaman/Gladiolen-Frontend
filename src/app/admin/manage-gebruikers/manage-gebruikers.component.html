@@ -18,11 +18,16 @@
         </thead>
         <tbody>
         <tr *ngFor="let gebruiker of gebruikers" [routerLink]="['/detailGebruiker']">
-          <td>{{gebruiker.naam}}</td>
+          <td>{{gebruiker.name}}</td>
           <td>{{gebruiker.voornaam}}</td>
           <td>{{gebruiker.geboortedatum | date:'MM/dd/yyyy'}}</td>
           <td>{{gebruiker.vereniging}}</td>
-          <td>{{gebruiker.rol_id}}</td>
+          <td>{{gebruiker.rol.naam}}</td>
+          <td>
+            <button [routerLink]="['/editGebruiker', gebruiker.id]" routerLinkActive="router-link-active"
+                    type="button"
+                    class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
+          </td>
         </tr>
         </tbody>
       </table>

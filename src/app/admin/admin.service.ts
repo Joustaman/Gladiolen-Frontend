@@ -15,8 +15,8 @@ export class AdminService {
     return this.http.get(this.$link + 'tshirts');
   }
 
-  registreerGebruiker(gebruiker): any {
-    return this.http.post(this.$link + 'registreergebruiker', gebruiker);
+  createTshirt(tshirt): any {
+    return this.http.post('http://localhost:8000/tshirt', tshirt);
   }
 
   getRollen(): any {
@@ -29,6 +29,10 @@ export class AdminService {
 
   getGebruiker(id): any {
     return this.http.get(this.$link + 'gebruiker/getGebruiker/' + id);
+  }
+
+  registreerGebruiker(gebruiker): any {
+    return this.http.post(this.$link + 'registreergebruiker', gebruiker);
   }
 
   updateGebruiker(id, gebruiker): any {

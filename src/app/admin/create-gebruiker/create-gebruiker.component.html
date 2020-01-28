@@ -6,8 +6,8 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="form-group">
-              <label for="naam">Naam</label>
-              <input class="form-control" type="text" id="naam" name="naam" formControlName="naam" required>
+              <label for="name">Naam</label>
+              <input class="form-control" type="text" id="name" name="name" formControlName="name" required>
             </div>
           </div>
           <div class="col-lg-4">
@@ -24,8 +24,8 @@
           </div>
           <div class="col-lg-6">
             <div class="form-group">
-              <label for="emailadres">Email</label>
-              <input class="form-control" type="text" id="emailadres" name="emailadres" formControlName="emailadres">
+              <label for="email">Email</label>
+              <input class="form-control" type="text" id="email" name="email" formControlName="email">
             </div>
           </div>
           <div class="col-lg-3">
@@ -56,10 +56,20 @@
                         formControlName="opmerking"></textarea>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-3">
             <div class="form-group">
-              <label for="tshirt">Tshirt</label>
-              <select name="tshirt" id="tshirt" class="form-control" formControlName="tshirt_id">
+              <label for="geslacht">Geslacht</label>
+              <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht" [ngModelOptions]="{standalone: true}">
+                <option value="Man">Man</option>
+                <option value="Vrouw">Vrouw</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="tshirt">Tshirt - Maat</label>
+              <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
+                      [ngModelOptions]="{standalone: true}">
                 <option *ngFor="let tshirt of tshirts" [value]="tshirt.id">{{tshirt.maat}}
                   - {{tshirt.geslacht}}</option>
               </select>
@@ -86,8 +96,8 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <label for="wachtwoord">Wachtwoord</label>
-            <input type="password" class="form-control" name="wachtwoord" id="wachtwoord" formControlName="wachtwoord"
+            <label for="password">Wachtwoord</label>
+            <input type="password" class="form-control" name="password" id="password" formControlName="password"
                    pattern=".{6,}" required>
             <div class="invalid-feedback">Je wachtwoord moet minstens 6 tekens bevatten.</div>
           </div>
@@ -104,14 +114,6 @@
               </select>
             </div>
           </div>
-          <!--          <div class="col-lg-6">-->
-          <!--            <div class="form-group">-->
-          <!--              <label for="vereniging">Vereniging</label>-->
-          <!--              <select name="vereniging" id="vereniging" class="form-control" formControlName="rol_id">-->
-          <!--                <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>-->
-          <!--              </select>-->
-          <!--            </div>-->
-          <!--          </div>-->
         </div>
         <input type="submit" class="btn btn-primary">
       </form>
@@ -127,7 +129,7 @@
         <tbody>
         <tr>
           <th scope="row">Naam</th>
-          <td>{{gebruikerForm.get('naam').value}}</td>
+          <td>{{gebruikerForm.get('name').value}}</td>
         </tr>
         <tr>
           <th scope="row">Voornaam</th>
@@ -138,20 +140,8 @@
           <td>{{gebruikerForm.get('roepnaam').value}}</td>
         </tr>
         <tr>
-          <th scope="row">Straat</th>
-          <td>{{gebruikerForm.get('straat').value}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Huisnummer</th>
-          <td>{{gebruikerForm.get('huisnummer').value}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Postcode</th>
-          <td>{{gebruikerForm.get('postcode').value}}</td>
-        </tr>
-        <tr>
           <th scope="row">Email</th>
-          <td>{{gebruikerForm.get('emailadres').value}}</td>
+          <td>{{gebruikerForm.get('email').value}}</td>
         </tr>
         <tr>
           <th scope="row">Telefoon</th>
@@ -170,17 +160,9 @@
           <td>{{gebruikerForm.get('opmerking').value}}</td>
         </tr>
         <tr>
-          <th scope="row">T-shirt</th>
-          <td>{{gebruikerForm.get('tshirt_id').value}}</td>
-        </tr>
-        <tr>
           <th scope="row">Rol</th>
           <td>{{gebruikerForm.get('rol_id').value}}</td>
         </tr>
-        <!--        <tr>-->
-        <!--          <th scope="row">Vereniging</th>-->
-        <!--          <td>{{gebruikerForm.get('vereniging').value}}</td>-->
-        <!--        </tr>-->
         </tbody>
       </table>
       <div>

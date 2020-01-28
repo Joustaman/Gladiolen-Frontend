@@ -13,6 +13,24 @@ export class DetailGebruikerComponent implements OnInit {
 
   gebruiker: any = {};
   pageLoaded = false;
+
+  gebruikerForm = new FormGroup({
+    name: new FormControl(''),
+    voornaam: new FormControl(''),
+    roepnaam: new FormControl(''),
+    geboortedatum: new FormControl(''),
+    email: new FormControl(''),
+    telefoon: new FormControl(''),
+    opmerking: new FormControl(''),
+    rol_id: new FormControl(''),
+    rijksregisternr: new FormControl(''),
+    password: new FormControl(null),
+    eersteAanmelding: new FormControl(false),
+    lunchpakket: new FormControl(false),
+    actief: new FormControl(null),
+    foto: new FormControl(null),
+  });
+
   constructor(private readonly adminService: AdminService, private readonly router: Router,
               private readonly route: ActivatedRoute, private toastr: ToastrService) { }
 
@@ -34,22 +52,7 @@ export class DetailGebruikerComponent implements OnInit {
           }
         });
   }
-  gebruikerForm = new FormGroup({
-      name: new FormControl(''),
-      voornaam: new FormControl(''),
-      roepnaam: new FormControl(''),
-      geboortedatum: new FormControl(''),
-      email: new FormControl(''),
-      telefoon: new FormControl(''),
-      opmerking: new FormControl(''),
-      rol_id: new FormControl(''),
-      rijksregisternr: new FormControl(''),
-      password: new FormControl(null),
-      eersteAanmelding: new FormControl(false),
-      lunchpakket: new FormControl(false),
-      actief: new FormControl(null),
-      foto: new FormControl(null),
-  });
+
   fillForm() {
     this.gebruikerForm.patchValue({
       name: this.gebruiker.name,

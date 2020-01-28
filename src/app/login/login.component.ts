@@ -25,8 +25,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.tryLogin(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(
       result => {
-        console.log(result);
-        this.router.navigate(['keuzemenu']);
       },
       error => {
         this.toastr.error('Incorrecte inloggegevens');

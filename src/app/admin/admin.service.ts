@@ -11,21 +11,12 @@ export class AdminService {
 
   $link = 'http://localhost:8000/';
 
-  getTshirts(): any {
-    return this.http.get(this.$link + 'tshirt');
-  }
-
-
   registreerVerantwoordelijke(gebruiker): any {
-    return this.http.post(this.$link+'gebruiker/registreerverantwoordelijke', gebruiker);
-  }
-
-  updateTshirt(id, tshirt) {
-    return this.http.put('http://localhost:8000/tshirt/' + id, tshirt);
+    return this.http.post(this.$link + 'api/gebruiker/registreerverantwoordelijke', gebruiker);
   }
 
   getGebruikers(): any {
-    return this.http.get(this.$link + 'api/gebruikers');
+    return this.http.get(this.$link + 'api/gebruiker');
   }
 
   getGebruiker(id): any {
@@ -52,7 +43,6 @@ export class AdminService {
     return this.http.put(this.$link + 'api/evenement/' + id, evenement);
   }
 
-
   getVerenigingen(): any {
     return this.http.get(this.$link + 'api/vereniging');
   }
@@ -77,6 +67,10 @@ export class AdminService {
     return this.http.get(this.$link + 'api/evenementVereniging/getVerenigingenByEvenementId/' + evenementId);
   }
 
+  getVerenigingByIdMetLeden(id): any {
+    return this.http.get(this.$link + 'api/vereniging/verenigingbyidmetleden/' + id);
+  }
+
   registreerEvenementVereniging(evenementVereniging) {
     return this.http.post(this.$link + 'api/evenementVereniging/postEvenementVereniging', evenementVereniging);
   }
@@ -84,11 +78,20 @@ export class AdminService {
   getRollen(): any {
     return this.http.get(this.$link + 'api/rol');
   }
+
   getKernleden(): any {
     return this.http.get(this.$link + 'api/gebruiker/getKernleden');
   }
-  createTshirt(tshirt): any {
-    return this.http.post(this.$link+'api/tshirt', tshirt);
+
+  getTshirts(): any {
+    return this.http.get(this.$link + 'api/tshirt');
   }
 
+  createTshirt(tshirt): any {
+    return this.http.post(this.$link + 'api/tshirt', tshirt);
+  }
+
+  updateTshirt(id, tshirt) {
+    return this.http.put(this.$link + 'api/tshirt/' + id, tshirt);
+  }
 }

@@ -37,9 +37,11 @@ export class EditVerenigingAdminComponent implements OnInit {
     this.route.paramMap.subscribe(
       params => {
         if (params.get('id') !== null) {
-          this.adminService.getVereniging(params.get('id')).subscribe(
+          this.adminService.getVerenigingByIdMetLeden(params.get('id')).subscribe(
             result => {
+              console.log(result);
               this.vereniging = result;
+              this.leden = result.gebruikers;
               this.fillForm();
               this.pageLoaded = true;
             },

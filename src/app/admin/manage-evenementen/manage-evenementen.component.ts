@@ -43,7 +43,6 @@ export class ManageEvenementenComponent implements OnInit {
         console.log(result);
         this.pageLoaded = false;
         this.ngOnInit();
-        window.location.reload();
       },
       error => {
         console.log(error);
@@ -81,8 +80,7 @@ export class ManageEvenementenComponent implements OnInit {
       result => {
         console.log(result);
         this.toastr.success('Verening geupdate');
-        this.router.navigate(['manageEvenementen']);
-        window.location.reload();
+        this.ngOnInit();
       },
       error => {
         console.log(error);

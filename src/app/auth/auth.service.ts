@@ -24,7 +24,15 @@ export class AuthService {
 
   private doLogin(token: string) {
     localStorage.setItem(this.JWT_TOKEN, token);
-    this.router.navigate(['keuzemenu']);
+    this.getIngelogdeGebruiker().subscribe(
+      result => {
+        if (result.rol_id === 1) {
+          this.router.navigate(['adminHome']);
+        } else if (result.rol_id === 3) {
+          this.router.navigate(['keuzemenu']);
+        }
+      }
+    );
   }
 
 
@@ -50,5 +58,9 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.router.navigate(['login']);
+  }
+
+  getIngelogdeGebruiker(): any {
+    return this.http.get('http://localhost:8000/api/gebruiker/ingelogdegebruiker');
   }
 }

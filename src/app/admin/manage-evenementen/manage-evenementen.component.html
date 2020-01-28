@@ -53,7 +53,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form (ngSubmit)="onSubmit()" [formGroup]="evenementForm" class="was-validated" novalidate>
+      <form [formGroup]="evenementForm" class="was-validated" novalidate>
         <div class="modal-body">
           <div class="form-group">
             <label for="naam" class="col-form-label">Naam:</label>
@@ -81,7 +81,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-          <button type="submit" class="btn btn-primary" onclick="$('.editEvenementModal').modal('hide')">Opslaan
+          <button (click)="onSubmit()" class="btn btn-primary" data-dismiss="modal">Opslaan
           </button>
         </div>
       </form>

@@ -15,8 +15,9 @@ export class AdminService {
     return this.http.get(this.$link + 'tshirt');
   }
 
-  createTshirt(tshirt): any {
-    return this.http.post('http://localhost:8000/tshirt', tshirt);
+
+  registreerVerantwoordelijke(gebruiker): any {
+    return this.http.post(this.$link+'gebruiker/registreerverantwoordelijke', gebruiker);
   }
 
   updateTshirt(id, tshirt) {
@@ -51,6 +52,7 @@ export class AdminService {
     return this.http.put(this.$link + 'api/evenement/' + id, evenement);
   }
 
+
   getVerenigingen(): any {
     return this.http.get(this.$link + 'api/vereniging');
   }
@@ -82,4 +84,11 @@ export class AdminService {
   getRollen(): any {
     return this.http.get(this.$link + 'api/rol');
   }
+  getKernleden(): any {
+    return this.http.get(this.$link + 'api/gebruiker/getKernleden');
+  }
+  createTshirt(tshirt): any {
+    return this.http.post(this.$link+'api/tshirt', tshirt);
+  }
+
 }

@@ -1,75 +1,109 @@
-<form [formGroup]="verantwoordelijkeForm">
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="form-group">
-        <label for="naam">Naam</label>
-        <input class="form-control" type="text" id="naam" name="naam" formControlName="naam" readonly>
-      </div>
+<div class="container" *ngIf="pageLoaded">
+    <div class="card">
+        <div class="card-header">
+            <h4>Gebruikers beheren</h4>
+        </div>
+        <div class="card-body">
+            <div class="row mt-5">
+                <div class="col-12">
+                    <form [formGroup]="gebruikerForm">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="name">Naam</label>
+                                    <input class="form-control" type="text" id="name" name="name" formControlName="name"
+                                           readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="voornaam">Rekeningnummer</label>
+                                    <input class="form-control" type="text" id="voornaam" name="voornaam"
+                                           formControlName="voornaam"
+                                           readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="roepnaam">BTW nummer</label>
+                                    <input class="form-control" type="text" id="roepnaam" name="roepnaam"
+                                           formControlName="roepnaam" readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="geboortedatum">Straat</label>
+                                    <input class="form-control" type="text" id="geboortedatum" name="geboortedatum"
+                                           formControlName="geboortedatum" readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="email">Huisnummer</label>
+                                    <input class="form-control" type="email" id="email" name="email"
+                                           formControlName="email"
+                                           readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="telefoon">Gemeente</label>
+                                    <input class="form-control" type="text" id="telefoon" name="telefoon"
+                                           formControlName="telefoon"
+                                           readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="opmerking">Postcode</label>
+                                    <input class="form-control" type="text" id="opmerking" name="opmerking"
+                                           formControlName="opmerking"
+                                           readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="rol_id">Contactpersoon</label>
+                                    <input class="form-control" type="text" id="rol_id" name="rol_id"
+                                           formControlName="rol_id" readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="rijksregisternr">Hoofdverantwoordelijke</label>
+                                    <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
+                                           formControlName="rijksregisternr"
+                                           readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="lunchpakket">Tweede verantwoordelijke</label>
+                                    <input class="form-control" type="text" id="lunchpakket" name="lunchpakket"
+                                           formControlName="lunchpakket"
+                                           readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="actief">Tweede verantwoordelijke</label>
+                                    <input class="form-control" type="text" id="actief" name="actief"
+                                           formControlName="actief"
+                                           readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="foto">Tweede verantwoordelijke</label>
+                                    <input class="form-control" type="text" id="foto" name="foto"
+                                           formControlName="foto"
+                                           readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-lg-3">
-      <div class="form-group">
-        <label for="rekeningnr">Rekeningnummer</label>
-        <input class="form-control" type="text" id="rekeningnr" name="rekeningnr" formControlName="rekeningnr"
-               readonly>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="form-group">
-        <label for="btwnr">BTW nummer</label>
-        <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr" readonly>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="form-group">
-        <label for="straat">Straat</label>
-        <input class="form-control" type="text" id="straat" name="straat" formControlName="btwnr" readonly>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="form-group">
-        <label for="huisnummer">Huisnummer</label>
-        <input class="form-control" type="number" id="huisnummer" name="huisnummer"
-               formControlName="huisnummer"
-               readonly>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="form-group">
-        <label for="gemeente">Gemeente</label>
-        <input class="form-control" type="text" id="gemeente" name="gemeente" formControlName="gemeente"
-               readonly>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="form-group">
-        <label for="postcode">Postcode</label>
-        <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode"
-               readonly>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="form-group">
-        <label for="contactpersoon">Contactpersoon</label>
-        <input class="form-control" type="text" id="contactpersoon" name="contactpersoon"
-               formControlName="contactpersoon" readonly>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="form-group">
-        <label for="hoofdverantwoordelijke">Hoofdverantwoordelijke</label>
-        <input class="form-control" type="text" id="hoofdverantwoordelijke" name="hoofdverantwoordelijke"
-               formControlName="hoofdverantwoordelijke"
-               readonly>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="form-group">
-        <label for="tweedeverantwoordelijke">Tweede verantwoordelijke</label>
-        <input class="form-control" type="text" id="tweedeverantwoordelijke" name="tweedeverantwoordelijke"
-               formControlName="tweedeverantwoordelijke"
-               readonly>
-      </div>
-    </div>
-  </div>
-</form>
 </div>

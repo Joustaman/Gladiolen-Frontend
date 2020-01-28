@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'adminHome', component: AdminHomeComponent, canActivate: [AuthGuardService]},
   {path: 'manageEvenementen', component: ManageEvenementenComponent, canActivate: [AuthGuardService]},
   {path: 'createEvenement', component: CreateVerenigingComponent, canActivate: [AuthGuardService]},
-  {path: 'detailGebruiker', component: DetailGebruikerComponent, canActivate: [AuthGuardService]},
+  {path: 'detailGebruiker/:id', component: DetailGebruikerComponent, canActivate: [AuthGuardService]},
   {path: 'editGebruiker/:id', component: EditGebruikerComponent, canActivate: [AuthGuardService]},
   {path: 'manageVerenigingen', component: ManageVerenigingenComponent, canActivate: [AuthGuardService]},
   {path: 'createVerenigingAdmin', component: CreateVerenigingAdminComponent, canActivate: [AuthGuardService]},

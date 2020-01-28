@@ -37,12 +37,15 @@ export class ManageEvenementenComponent implements OnInit {
     vereniging: new FormControl('')
   });
 
+  evenementId: any;
+
+
   onSubmit() {
     this.adminService.registreerEvenement(this.evenementForm.value).subscribe(
       result => {
         console.log(result);
         this.pageLoaded = false;
-        this.ngOnInit();
+        this.getEvenementen();
       },
       error => {
         console.log(error);
@@ -50,6 +53,9 @@ export class ManageEvenementenComponent implements OnInit {
     );
   }
 
+  changeEvenementId(id) {
+    this.evenementId = id;
+  }
   onClickEditEvenement(evenement: any) {
     this.evenementForm.patchValue({
         naam: evenement.naam,
@@ -80,7 +86,7 @@ export class ManageEvenementenComponent implements OnInit {
       result => {
         console.log(result);
         this.toastr.success('Verening geupdate');
-        this.ngOnInit();
+        this.getEvenementen();
       },
       error => {
         console.log(error);
@@ -90,11 +96,12 @@ export class ManageEvenementenComponent implements OnInit {
 
   changeVereniging() {
     this.vereniging = this.toewijzenVerenigingForm.get('vereniging').value;
-    console.log(this.vereniging);
+    console.log('id: ',this.vereniging);
   }
 
   toewijzenVerenigingen() {
-    this.adminService.registreerEvenementVereniging(this.vereniging).subscribe(
+    const data = {verenigingid: this.vereniging, evenementid: this.evenementId };
+    this.adminService.registreerEvenementVereniging(data).subscribe(
       result => {
         console.log(result);
       },
@@ -105,6 +112,11 @@ export class ManageEvenementenComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getEvenementen();
+    this.getVerenigingen();
+  }
+
+  getEvenementen() {
     this.adminService.getEvenementen().subscribe(
       result => {
         this.evenementen = result;
@@ -112,7 +124,9 @@ export class ManageEvenementenComponent implements OnInit {
         this.pageLoaded = true;
       },
     );
+  }
 
+  getVerenigingen() {
     this.adminService.getVerenigingen().subscribe(
       result => {
         this.verenigingen = result;

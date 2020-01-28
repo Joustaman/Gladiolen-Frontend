@@ -58,37 +58,25 @@
                         formControlName="opmerking"></textarea>
             </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-5">
             <div class="form-group">
               <label for="geslacht">Geslacht</label>
-              <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
-                      [ngModelOptions]="{standalone: true}">
+              <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht" [ngModelOptions]="{standalone: true}">
                 <option value="Man">Man</option>
                 <option value="Vrouw">Vrouw</option>
               </select>
             </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-5">
             <div class="form-group">
               <label for="tshirt">Tshirt - Maat</label>
-              <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
-                      [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let tshirt of tshirts" [value]="tshirt.id">{{tshirt.maat}}
-                  - {{tshirt.geslacht}}</option>
+              <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat" [ngModelOptions]="{standalone: true}">
+                <option value="XS">XS</option>
+                <option value="S">S</option>
               </select>
             </div>
           </div>
-          <div class="col-lg-3">
-            <div class="form-group paddingcheck text-center">
-              <div class="pretty p-default p-switch" (click)="changeTshirt()">
-                <input type="checkbox"/>
-                <div class="state p-primary">
-                  <label>Extra shirt</label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
+          <div class="col-lg-2">
             <div class="form-group paddingcheck text-center">
               <div class="pretty p-default p-switch" (click)="changeLunch()">
                 <input type="checkbox"/>

@@ -28,7 +28,7 @@ export class AdminService {
   }
 
   updateGebruiker(id, gebruiker): any {
-    return this.http.put(this.$link + 'api/gebruiker/' + id, gebruiker);
+    return this.http.put(this.$link + 'api/gebruiker/updatelid/' + id, gebruiker);
   }
 
   getEvenementen(): any {

@@ -37,7 +37,7 @@
                         class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
                 <button routerLinkActive="router-link-active" type="button"
                         data-toggle="modal" data-target="#toewijzenVerenigingModal"
-                        class="btn btn-primary">Vereniging toewijzen
+                        class="btn btn-primary" (click)="changeEvenementId(evenement.id)">Vereniging toewijzen
                 </button>
               </td>
             </tr>
@@ -161,7 +161,7 @@
             </select>
           </div>
           <button (click)="toewijzenVerenigingen()" class="btn btn-primary">Vereniging toevoegen</button>
-          <h5>Toegewezen verenigingen</h5>
+          <h5 class="mt-5">Toegewezen verenigingen</h5>
           <ul>
             <li *ngFor="let toegewezenVereniging of toegewezenVerenigingen">{{toegewezenVereniging.naam}}</li>
           </ul>

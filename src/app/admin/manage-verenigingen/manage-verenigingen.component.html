@@ -1,38 +1,46 @@
 <div class="container" *ngIf="pageLoaded">
-  <div class="row mt-5">
-    <div class="col-12">
-      <h1>Verenigingen beheren</h1>
-      <button type="button" class="btn btn-primary float-right mb-5 mr-5" [routerLink]="['/createVerenigingAdmin']"><i
-        class="fa fa-plus"></i> Voeg vereniging toe
-      </button>
-      <table class="table table-borderless table-hover">
-        <thead>
-        <tr>
-          <th scope="col">Naam</th>
-          <th scope="col">Hoofdverantwoordelijke</th>
-          <th scope="col">Contactpersoon</th>
-          <th scope="col">Actief</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let vereniging of verenigingen" (click)="onClickDetailVereniging(vereniging)"
-            data-toggle="modal" data-target="#verenigingModal">
-          <td>{{vereniging.naam}}</td>
-          <td>{{vereniging.hoofd.name}} {{vereniging.hoofd.voornaam}}</td>
-          <td>{{vereniging.contactpersoon.name}} {{vereniging.contactpersoon.voornaam}}</td>
-          <td>
-            <div *ngIf="vereniging.actief == 0">Niet Actief</div>
-            <div *ngIf="vereniging.actief == 1">Actief</div>
-          </td>
-          <td>
-            <button [routerLink]="['/editVerenigingAdmin', vereniging.id]" routerLinkActive="router-link-active"
-                    type="button"
-                    class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+  <div class="card">
+    <div class="card-header">
+      <h4>Verenigingen beheren</h4>
+    </div>
+    <div class="card-body">
+      <div class="row mt-5">
+        <div class="col-12">
+          <h1>Verenigingen beheren</h1>
+          <button type="button" class="btn btn-primary float-right mb-5" [routerLink]="['/createVerenigingAdmin']">
+            <i
+              class="fa fa-plus"></i> Voeg vereniging toe
+          </button>
+          <table class="table table-borderless table-hover">
+            <thead>
+            <tr>
+              <th scope="col">Naam</th>
+              <th scope="col">Hoofdverantwoordelijke</th>
+              <th scope="col">Contactpersoon</th>
+              <th scope="col">Actief</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let vereniging of verenigingen" (click)="onClickDetailVereniging(vereniging)"
+                data-toggle="modal" data-target="#verenigingModal">
+              <td>{{vereniging.naam}}</td>
+              <td>{{vereniging.hoofd.name}} {{vereniging.hoofd.voornaam}}</td>
+              <td>{{vereniging.contactpersoon.name}} {{vereniging.contactpersoon.voornaam}}</td>
+              <td>
+                <div *ngIf="vereniging.actief == 0">Niet Actief</div>
+                <div *ngIf="vereniging.actief == 1">Actief</div>
+              </td>
+              <td>
+                <button [routerLink]="['/editVerenigingAdmin', vereniging.id]" routerLinkActive="router-link-active"
+                        type="button"
+                        class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

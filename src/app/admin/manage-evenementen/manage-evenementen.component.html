@@ -1,44 +1,50 @@
 <div class="container" *ngIf="pageLoaded">
-  <div class="row mt-5">
-    <div class="col-12">
-      <h1>Evenementen beheren</h1>
-      <button type="button" class="btn btn-primary float-right mb-5 mr-5" data-toggle="modal"
-              data-target="#evenementModal"><i
-        class="fa fa-plus"></i> Voeg evenement toe
-      </button>
-
-      <table class="table table-borderless table-hover">
-        <thead>
-        <tr>
-          <th scope="col">Naam</th>
-          <th scope="col">Startdatum</th>
-          <th scope="col">Einddatum</th>
-          <th scope="col">Actief</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let evenement of evenementen">
-          <td>{{evenement.naam}}</td>
-          <td>{{evenement.startdatum | date:'MM/dd/yyyy'}}</td>
-          <td>{{evenement.einddatum | date:'MM/dd/yyyy'}}</td>
-          <td>
-            <div *ngIf="evenement.actief == 0">Niet Actief</div>
-            <div *ngIf="evenement.actief == 1">Actief</div>
-          </td>
-          <td>
-            <button (click)="onClickEditEvenement(evenement)"
-                    routerLinkActive="router-link-active" type="button"
-                    data-toggle="modal" data-target="#editEvenementModal"
-                    class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
-            <button routerLinkActive="router-link-active" type="button"
-                    data-toggle="modal" data-target="#toewijzenVerenigingModal"
-                    class="btn btn-primary">Vereniging toewijzen
-            </button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+  <div class="card">
+    <div class="card-header">
+      <h4>Evenementen beheren</h4>
+    </div>
+    <div class="card-body">
+      <div class="row mt-5">
+        <div class="col-12">
+          <h1>Evenementen beheren</h1>
+          <button type="button" class="btn btn-primary float-right mb-5" data-toggle="modal"
+                  data-target="#evenementModal"><i
+            class="fa fa-plus"></i> Voeg evenement toe
+          </button>
+          <table class="table table-borderless table-hover">
+            <thead>
+            <tr>
+              <th scope="col">Naam</th>
+              <th scope="col">Startdatum</th>
+              <th scope="col">Einddatum</th>
+              <th scope="col">Actief</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let evenement of evenementen">
+              <td>{{evenement.naam}}</td>
+              <td>{{evenement.startdatum | date:'MM/dd/yyyy'}}</td>
+              <td>{{evenement.einddatum | date:'MM/dd/yyyy'}}</td>
+              <td>
+                <div *ngIf="evenement.actief == 0">Niet Actief</div>
+                <div *ngIf="evenement.actief == 1">Actief</div>
+              </td>
+              <td>
+                <button (click)="onClickEditEvenement(evenement)"
+                        routerLinkActive="router-link-active" type="button"
+                        data-toggle="modal" data-target="#editEvenementModal"
+                        class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
+                <button routerLinkActive="router-link-active" type="button"
+                        data-toggle="modal" data-target="#toewijzenVerenigingModal"
+                        class="btn btn-primary">Vereniging toewijzen
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

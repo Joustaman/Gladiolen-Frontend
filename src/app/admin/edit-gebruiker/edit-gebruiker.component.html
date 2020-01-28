@@ -1,116 +1,123 @@
 <div class="container">
-  <form [formGroup]="gebruikerForm" class="mt-5 was-validated" novalidate>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="form-group">
-          <label for="name">Naam</label>
-          <input class="form-control" type="text" id="name" name="name" formControlName="name" required>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="form-group">
-          <label for="roepnaam">Roepnaam</label>
-          <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam">
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="form-group">
-          <label for="voornaam">Voornaam</label>
-          <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" required>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input class="form-control" type="text" id="email" name="email" formControlName="email">
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="form-group">
-          <label for="telefoon">Telefoon</label>
-          <input class="form-control" type="telefoon" id="telefoon" name="telefoon" formControlName="telefoon">
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="form-group">
-          <label for="geboortedatum">Geboortedatum</label>
-          <input class="form-control" type="date" id="geboortedatum" name="geboortedatum"
-                 formControlName="geboortedatum">
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="rijksregisternr">Rijksregister</label>
-          <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
-                 formControlName="rijksregisternr" pattern="[0-9]{11}">
-          <div class="invalid-feedback">Gelieve de 11 cijfers van je rijksregisternummer in te vullen.</div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="opmerking">Opmerking</label>
-          <textarea class="form-control" type="text" id="opmerking" name="opmerking"
-                    formControlName="opmerking"></textarea>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="form-group">
-          <label for="geslacht">Geslacht</label>
-          <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
-                  [ngModelOptions]="{standalone: true}">
-            <option value="Man">Man</option>
-            <option value="Vrouw">Vrouw</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="form-group">
-          <label for="tshirt">Tshirt - Maat</label>
-          <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
-                  [ngModelOptions]="{standalone: true}">
-            <option *ngFor="let tshirt of tshirts" [value]="tshirt.id">{{tshirt.maat}}
-              - {{tshirt.geslacht}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="form-group paddingcheck text-center">
-          <div class="pretty p-default p-switch" (click)="changeTshirt()">
-            <input type="checkbox"/>
-            <div class="state p-primary">
-              <label>Extra shirt</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="form-group paddingcheck text-center">
-          <div class="pretty p-default p-switch" (click)="changeLunch()">
-            <input type="checkbox"/>
-            <div class="state p-primary">
-              <label>Lunchpakket</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="rol">Rol</label>
-          <select name="rol" id="rol" class="form-control" formControlName="rol_id" (change)="changeRol()"
-                  [value]="gebruikerForm.get('rol_id').value" required>
-            <option *ngFor="let rol of rollen" [value]="rol.id">{{rol.naam}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="vereniging">Vereniging</label>
-          <select name="vereniging" id="vereniging" class="form-control" formControlName="rol_id">
-            <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>
-          </select>
-        </div>
-      </div>
+  <div class="card">
+    <div class="card-header">
+      <h4>Wijzig gebruiker</h4>
     </div>
-    <button (click)="updateGebruiker()" class="btn btn-primary">Update gebruiker</button>
-  </form>
+    <div class="card-body">
+      <form [formGroup]="gebruikerForm" class="mt-5 was-validated" novalidate>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label for="name">Naam</label>
+              <input class="form-control" type="text" id="name" name="name" formControlName="name" required>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label for="roepnaam">Roepnaam</label>
+              <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label for="voornaam">Voornaam</label>
+              <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" required>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input class="form-control" type="text" id="email" name="email" formControlName="email">
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="telefoon">Telefoon</label>
+              <input class="form-control" type="telefoon" id="telefoon" name="telefoon" formControlName="telefoon">
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="geboortedatum">Geboortedatum</label>
+              <input class="form-control" type="date" id="geboortedatum" name="geboortedatum"
+                     formControlName="geboortedatum">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="rijksregisternr">Rijksregister</label>
+              <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
+                     formControlName="rijksregisternr" pattern="[0-9]{11}">
+              <div class="invalid-feedback">Gelieve de 11 cijfers van je rijksregisternummer in te vullen.</div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="opmerking">Opmerking</label>
+              <textarea class="form-control" type="text" id="opmerking" name="opmerking"
+                        formControlName="opmerking"></textarea>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="geslacht">Geslacht</label>
+              <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
+                      [ngModelOptions]="{standalone: true}">
+                <option value="Man">Man</option>
+                <option value="Vrouw">Vrouw</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="tshirt">Tshirt - Maat</label>
+              <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
+                      [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let tshirt of tshirts" [value]="tshirt.id">{{tshirt.maat}}
+                  - {{tshirt.geslacht}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group paddingcheck text-center">
+              <div class="pretty p-default p-switch" (click)="changeTshirt()">
+                <input type="checkbox"/>
+                <div class="state p-primary">
+                  <label>Extra shirt</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group paddingcheck text-center">
+              <div class="pretty p-default p-switch" (click)="changeLunch()">
+                <input type="checkbox"/>
+                <div class="state p-primary">
+                  <label>Lunchpakket</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="rol">Rol</label>
+              <select name="rol" id="rol" class="form-control" formControlName="rol_id" (change)="changeRol()"
+                      [value]="gebruikerForm.get('rol_id').value" required>
+                <option *ngFor="let rol of rollen" [value]="rol.id">{{rol.naam}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="vereniging">Vereniging</label>
+              <select name="vereniging" id="vereniging" class="form-control" formControlName="rol_id">
+                <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button (click)="updateGebruiker()" class="btn btn-primary">Update gebruiker</button>
+      </form>
+    </div>
+  </div>
 </div>

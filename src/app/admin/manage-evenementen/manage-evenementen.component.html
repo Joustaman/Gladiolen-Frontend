@@ -6,7 +6,6 @@
     <div class="card-body">
       <div class="row mt-5">
         <div class="col-12">
-          <h1>Evenementen beheren</h1>
           <button type="button" class="btn btn-primary float-right mb-5" data-toggle="modal"
                   data-target="#evenementModal"><i
             class="fa fa-plus"></i> Voeg evenement toe
@@ -37,7 +36,8 @@
                         class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
                 <button routerLinkActive="router-link-active" type="button"
                         data-toggle="modal" data-target="#toewijzenVerenigingModal"
-                        class="btn btn-primary" (click)="changeEvenementId(evenement.id)">Vereniging toewijzen
+                        class="btn btn-primary" (click)="changeEvenementId(evenement.id, evenement)">Vereniging
+                  toewijzen
                 </button>
               </td>
             </tr>
@@ -161,10 +161,12 @@
             </select>
           </div>
           <button (click)="toewijzenVerenigingen()" class="btn btn-primary">Vereniging toevoegen</button>
-          <h5 class="mt-5">Toegewezen verenigingen</h5>
-          <ul>
-            <li *ngFor="let toegewezenVereniging of toegewezenVerenigingen">{{toegewezenVereniging.naam}}</li>
-          </ul>
+          <div>
+            <h5 class="mt-5">Toegewezen verenigingen</h5>
+            <ul>
+              <li (click)="verwijderVerenigingVanEvenement(vereniging.id)" class="link" *ngFor="let vereniging of evenementVerenigingen"><span class="mt-1">{{vereniging.naam}}</span></li>
+            </ul>
+          </div>
         </form>
       </div>
       <div class="modal-footer">

@@ -75,6 +75,10 @@ export class AdminService {
     return this.http.post(this.$link + 'api/evenementVereniging/postEvenementVereniging', evenementVereniging);
   }
 
+  deleteVerenigingFromEvenement(ids) {
+    return this.http.post(this.$link + "api/evenementvereniging/deleteverenigingfromevenement", ids);
+  }
+
   getRollen(): any {
     return this.http.get(this.$link + 'api/rol');
   }

@@ -17,11 +17,12 @@ export class ManageEvenementenComponent implements OnInit {
   vereniging: any = {};
   toegewezenVerenigingen: any = [];
   evenementen: any = [];
-  evenement: any = [];
+  evenement: any = null;
   startdatum: any;
   einddatum: any;
   pageLoaded = false;
   actief: any;
+  evenementVerenigingen: any = [];
 
   constructor(private adminService: AdminService, private readonly datepipe: DatePipe, private toastr: ToastrService, private readonly router: Router) {
   }
@@ -53,9 +54,14 @@ export class ManageEvenementenComponent implements OnInit {
     );
   }
 
-  changeEvenementId(id) {
+  changeEvenementId(id, evenement) {
     this.evenementId = id;
+    this.evenement = evenement;
+    if(this.evenement !== null) {
+      this.evenementVerenigingen = evenement.verenigingen;
+    }
   }
+
   onClickEditEvenement(evenement: any) {
     this.evenementForm.patchValue({
         naam: evenement.naam,
@@ -66,12 +72,6 @@ export class ManageEvenementenComponent implements OnInit {
       }
     );
     this.evenement = evenement;
-
-    this.adminService.getVerenigingenByEvenementId(evenement.id).subscribe(
-      result => {
-        this.toegewezenVerenigingen = result;
-      },
-    );
   }
 
   changeActief() {
@@ -96,7 +96,6 @@ export class ManageEvenementenComponent implements OnInit {
 
   changeVereniging() {
     this.vereniging = this.toewijzenVerenigingForm.get('vereniging').value;
-    console.log('id: ',this.vereniging);
   }
 
   toewijzenVerenigingen() {
@@ -104,6 +103,7 @@ export class ManageEvenementenComponent implements OnInit {
     this.adminService.registreerEvenementVereniging(data).subscribe(
       result => {
         console.log(result);
+        this.getEvenementen();
       },
       error => {
         console.log(error);
@@ -120,6 +120,10 @@ export class ManageEvenementenComponent implements OnInit {
     this.adminService.getEvenementen().subscribe(
       result => {
         this.evenementen = result;
+        if(this.evenement !== null) {
+          this.evenement = this.evenementen.find((evenement) => evenement.id === this.evenementId);
+          this.changeEvenementId(this.evenementId, this.evenement);
+        }
         console.log(result);
         this.pageLoaded = true;
       },
@@ -131,6 +135,20 @@ export class ManageEvenementenComponent implements OnInit {
       result => {
         this.verenigingen = result;
       },
+    );
+  }
+
+  verwijderVerenigingVanEvenement(verenigingId) {
+    const ids = {verenigingid: verenigingId, evenementid: this.evenementId};
+    console.log(ids);
+    this.adminService.deleteVerenigingFromEvenement(ids).subscribe(
+      result => {
+        console.log(result);
+        this.getEvenementen();
+      },
+      error => {
+        console.log(error);
+      }
     );
   }
 }

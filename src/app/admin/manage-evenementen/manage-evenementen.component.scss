@@ -1,0 +1,14 @@
+ul {
+  list-style-image: url('../../../assets/images/kruis.png');
+}
+li {
+  &:hover {
+    color: red;
+  }
+}
+
+.link::after {
+  background: red;
+}
+
+

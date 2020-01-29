@@ -26,6 +26,10 @@ export class AppComponent  {
   }
 
   getRol() {
-    return this.authService.getRol().toString();
+    if (this.authService.getRol() === null) {
+      return 'niet ingelogd';
+    } else {
+      return this.authService.getRol().toString();
+    }
   }
 }

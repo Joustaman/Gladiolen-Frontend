@@ -13,7 +13,10 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   tijdsregistraties: any = [];
   tijdsregistratie: any = [];
   pageLoaded = false;
-
+  verenigingen: any = [];
+  vereniging: any = {};
+  evenementen: any = [];
+  evenement: any = null;
   constructor(private adminService: AdminService, private toastr: ToastrService, private readonly router: Router) {
   }
 
@@ -60,8 +63,29 @@ export class ManageTijdsregistratiesComponent implements OnInit {
         checkIn: tijdsregistratie.checkIn,
         checkOut: tijdsregistratie.checkOut,
         manCheckIn: tijdsregistratie.manCheckIn,
+        manCheckOut: tijdsregistratie.manCheckOut,
+        adminCheckIn: tijdsregistratie.adminCheckIn,
+        adminCheckOut: tijdsregistratie.adminCheckOut,
       }
     );
     this.tijdsregistratie = tijdsregistratie;
   }
+    getEvenementen() {
+        this.adminService.getEvenementen().subscribe(
+            result => {
+                this.evenementen = result;
+                console.log(result);
+                this.pageLoaded = true;
+            },
+        );
+    }
+    getVerenigingen() {
+        this.adminService.getVerenigingen().subscribe(
+            result => {
+                this.verenigingen = result;
+                console.log(result);
+                this.pageLoaded = true;
+            },
+        );
+    }
 }

@@ -1,48 +1,43 @@
 <app-spinner *ngIf="!pageLoaded"></app-spinner>
 <div class="container" *ngIf="pageLoaded">
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-          <h4>Leden</h4>
+  <div class="card table-wrapper shadow-lg">
+    <div class="card-header table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2><b>Leden</b></h2>
         </div>
-        <div class="card-body">
-          <div class="row mt-5">
-            <div class="col-12">
-              <button [routerLink]="['/maaklid']" routerLinkActive="router-link-active" type="button"
-                class="btn btn-primary float-right mb-4"><i class="fa fa-plus"></i> Voeg lid toe</button>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Naam</th>
-                    <th scope="col">Voornaam</th>
-                    <th scope="col">Straat</th>
-                    <th scope="col">Huisnummer</th>
-                    <th scope="col">Geboortedatum</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let lid of leden | paginate: { itemsPerPage: 2, currentPage: p }">
-                    <th scope="row">{{lid.name}}</th>
-                    <td>{{lid.voornaam}}</td>
-                    <td>{{lid.rijksregisternr}}</td>
-                    <td>{{lid.email}}</td>
-                    <td>{{lid.geboortedatum | date}}</td>
-                    <td>
-                      <button [routerLink]="['/editlid', lid.id]" routerLinkActive="router-link-active" type="button"
-                        class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
-                      <button (click)="deleteLid(lid.id)" type="button" class="btn btn-danger btn-circle"><i
-                          class="fa fa-times"></i></button>
-                    </td>
-                  </tr>
-                </tbody>
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
-              </table>
-            </div>
-          </div>
+        <div class="col-sm-6">
+          <a class="btn btn-success" [routerLink]="['/maaklid']" routerLinkActive="router-link-active"><i class="material-icons">&#xE147;</i> <span>Voeg lid toe</span></a>
         </div>
       </div>
     </div>
-  </div>
+    <div class="card-body">
+  <table class="card-body table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Naam</th>
+        <th scope="col">Voornaam</th>
+        <th scope="col">Straat</th>
+        <th scope="col">Huisnummer</th>
+        <th scope="col">Geboortedatum</th>
+        <th scope="col">Acties</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lid of leden | paginate: { itemsPerPage: 2, currentPage: p }">
+        <th scope="row">{{lid.name}}</th>
+        <td>{{lid.voornaam}}</td>
+        <td>{{lid.rijksregisternr}}</td>
+        <td>{{lid.email}}</td>
+        <td>{{lid.geboortedatum | date}}</td>
+        <td>
+          <a [routerLink]="['/editlid', lid.id]" class="edit"><i class="material-icons" data-toggle="tooltip" title="Bewerken">&#xE254;</i></a>
+          <a (click)="deleteLid(lid.id)" routerLinkActive="router-link-active" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+</div>
 </div>

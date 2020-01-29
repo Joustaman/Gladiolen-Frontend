@@ -17,6 +17,7 @@ import {EditVerenigingComponent} from './vereniging/edit-vereniging/edit-verenig
 import {ToastrModule} from 'ngx-toastr';
 import {DetailVerenigingComponent} from './vereniging/detail-vereniging/detail-vereniging.component';
 import { TokenInterceptor } from './auth/token.interceptor';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { TokenInterceptor } from './auth/token.interceptor';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     ToastrModule.forRoot(),
   ],
   providers: [

@@ -14,6 +14,11 @@
   cursor: pointer;
 }
 
+.tijdsregristratie {
+  background-image: url("src/assets/images/tijdsregristratie.jpg");
+  cursor: pointer;
+}
+
 // - Pop -
 .pop:before {
   $overlay-color: hsla(128, 100%, 50%, 0.3);

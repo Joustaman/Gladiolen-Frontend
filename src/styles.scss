@@ -3,22 +3,13 @@
 //@import "./../node_modules/shards-ui/src/scss/shards.scss";
 @import '../node_modules/ngx-toastr/toastr';
 
-html, body {
-  height: 100%;
-}
-
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Varela Round', sans-serif;
 }
 
 html, body {
   height: 100vh;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .container {

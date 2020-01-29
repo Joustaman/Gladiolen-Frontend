@@ -12,9 +12,10 @@ import {MymaterialModule} from '../mymaterial/mymaterial.module';
 import {CreateVerenigingAdminComponent} from './create-vereniging-admin/create-vereniging-admin.component';
 import { EditVerenigingAdminComponent } from './edit-vereniging-admin/edit-vereniging-admin.component';
 import { EditGebruikerComponent } from './edit-gebruiker/edit-gebruiker.component';
+import { ManageTijdsregistratiesComponent } from './manage-tijdsregistraties/manage-tijdsregistraties.component';
 
 @NgModule({
-  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent],
+  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent, ManageTijdsregistratiesComponent],
 
   imports: [
     CommonModule,

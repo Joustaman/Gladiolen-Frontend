@@ -18,6 +18,9 @@ export class AdminService {
   getGebruikers(): any {
     return this.http.get(this.$link + 'api/gebruiker');
   }
+  getTijdsregistraties(): any {
+    return this.http.get(this.$link + 'api/tijdsregistratie');
+  }
 
   getGebruiker(id): any {
     return this.http.get(this.$link + 'api/gebruiker/getGebruiker/' + id);
@@ -29,6 +32,9 @@ export class AdminService {
 
   updateGebruiker(id, gebruiker): any {
     return this.http.put(this.$link + 'api/gebruiker/updatelid/' + id, gebruiker);
+  }
+  updateTijdsregistratie(id, tijdsregistratie): any {
+    return this.http.put(this.$link + 'api/gebruiker/updatetijdsregistratie/' + id, tijdsregistratie);
   }
 
   getEvenementen(): any {

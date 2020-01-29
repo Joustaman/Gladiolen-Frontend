@@ -14,6 +14,7 @@ export class AuthService {
 
   private readonly api = 'http://localhost:8000';
   private readonly JWT_TOKEN = 'token';
+  private readonly ROL = 'rol';
 
   tryLogin(email: string, password: string) {
     return this.http
@@ -26,6 +27,7 @@ export class AuthService {
     localStorage.setItem(this.JWT_TOKEN, token);
     this.getIngelogdeGebruiker().subscribe(
       result => {
+        localStorage.setItem(this.ROL, result.rol_id);
         if (result.rol_id === 1) {
           this.router.navigate(['adminHome']);
         } else if (result.rol_id === 3) {
@@ -44,17 +46,13 @@ export class AuthService {
     }
   }
 
-
   getToken() {
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
-
-  getAccountInformation(): any {
-    return this.http.get<any>(`${this.api}/user/me`);
+  getRol() {
+    return localStorage.getItem(this.ROL);
   }
-
-
   logout() {
     localStorage.clear();
     this.router.navigate(['login']);
@@ -63,4 +61,6 @@ export class AuthService {
   getIngelogdeGebruiker(): any {
     return this.http.get('http://localhost:8000/api/gebruiker/ingelogdegebruiker');
   }
+
+
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, Route } from '@angular/router';
 import { AuthService } from './auth/auth.service';
 @Component({
@@ -7,10 +7,12 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.scss'],
 
 })
-export class AppComponent {
-
-  constructor(private readonly authService: AuthService) {}
+export class AppComponent  {
   openMenu = false;
+  gebruiker: any = {};
+  rol: any;
+  constructor(private readonly authService: AuthService) {}
+
   menuClick() {
     this.openMenu = !this.openMenu;
   }
@@ -21,5 +23,9 @@ export class AppComponent {
 
   logOut() {
     this.authService.logout();
+  }
+
+  getRol() {
+    return this.authService.getRol().toString();
   }
 }

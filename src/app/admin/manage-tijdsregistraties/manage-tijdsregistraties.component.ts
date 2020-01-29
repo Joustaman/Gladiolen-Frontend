@@ -11,12 +11,13 @@ import {Router} from '@angular/router';
 })
 export class ManageTijdsregistratiesComponent implements OnInit {
   tijdsregistraties: any = [];
-  tijdsregistratie: any = [];
+  tijdsregistratie: any = {};
   pageLoaded = false;
   verenigingen: any = [];
   vereniging: any = {};
   evenementen: any = [];
   evenement: any = null;
+
   constructor(private adminService: AdminService, private toastr: ToastrService, private readonly router: Router) {
   }
 
@@ -55,7 +56,6 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   }
 
   onClickEditTijdsregistratie(tijdsregistratie: any) {
-    console.log(tijdsregistratie);
     this.tijdsregistratieForm.patchValue({
         gebruiker: tijdsregistratie.gebruiker.name,
         vereniging: tijdsregistratie.vereniging.naam,
@@ -68,24 +68,27 @@ export class ManageTijdsregistratiesComponent implements OnInit {
         adminCheckOut: tijdsregistratie.adminCheckOut,
       }
     );
+
     this.tijdsregistratie = tijdsregistratie;
   }
-    getEvenementen() {
-        this.adminService.getEvenementen().subscribe(
-            result => {
-                this.evenementen = result;
-                console.log(result);
-                this.pageLoaded = true;
-            },
-        );
-    }
-    getVerenigingen() {
-        this.adminService.getVerenigingen().subscribe(
-            result => {
-                this.verenigingen = result;
-                console.log(result);
-                this.pageLoaded = true;
-            },
-        );
-    }
+
+  getEvenementen() {
+    this.adminService.getEvenementen().subscribe(
+      result => {
+        this.evenementen = result;
+        console.log(result);
+        this.pageLoaded = true;
+      },
+    );
+  }
+
+  getVerenigingen() {
+    this.adminService.getVerenigingen().subscribe(
+      result => {
+        this.verenigingen = result;
+        console.log(result);
+        this.pageLoaded = true;
+      },
+    );
+  }
 }

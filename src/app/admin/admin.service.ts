@@ -108,6 +108,6 @@ export class AdminService {
   }
 
   updateTijdsregistratie(id, tijdsregistratie): any {
-    return this.http.put(this.$link + 'api/tijdsregistratie' + id, tijdsregistratie);
+    return this.http.put(this.$link + 'api/tijdsregistratie/' + id, tijdsregistratie);
   }
 }

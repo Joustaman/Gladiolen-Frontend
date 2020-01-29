@@ -25,11 +25,11 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     vereniging_id: new FormControl(''),
     evenement_id: new FormControl(''),
     checkIn: new FormControl(''),
-    checkOut: new FormControl(''),
+    checkUit: new FormControl(''),
     manCheckIn: new FormControl(''),
-    manCheckOut: new FormControl(''),
+    manCheckUit: new FormControl(''),
     adminCheckIn: new FormControl(''),
-    adminCheckOut: new FormControl('')
+    adminCheckUit: new FormControl('')
   });
   constructor(
     private adminService: AdminService,
@@ -43,20 +43,23 @@ export class ManageTijdsregistratiesComponent implements OnInit {
       this.pageLoaded = true;
       console.log(result);
     });
+    this.getEvenementen();
+    this.getGebruikers();
+    this.getVerenigingen();
   }
 
 
   updateTijdsregistratie() {
     console.log(this.tijdsregistratieForm.value);
-    // this.adminService.updateTijdsregistratie(this.tijdsregistratie.id, this.tijdsregistratieForm.value).subscribe(
-    //   result => {
-    //     console.log(result);
-    //     this.toastr.success('Verening geupdate');
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // );
+    this.adminService.updateTijdsregistratie(this.tijdsregistratie.id, this.tijdsregistratieForm.value).subscribe(
+      result => {
+        console.log(result);
+        this.toastr.success('Verening geupdate');
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   onClickEditTijdsregistratie(tijdsregistratie: any) {
@@ -65,14 +68,14 @@ export class ManageTijdsregistratiesComponent implements OnInit {
       vereniging_id: tijdsregistratie.vereniging_id,
       evenement_id: tijdsregistratie.evenement_id,
       checkIn: tijdsregistratie.checkIn,
-      checkOut: tijdsregistratie.checkOut,
+      checkUit: tijdsregistratie.checkUit,
       manCheckIn: tijdsregistratie.manCheckIn,
-      manCheckOut: tijdsregistratie.manCheckOut,
+      manCheckUit: tijdsregistratie.manCheckUit,
       adminCheckIn: tijdsregistratie.adminCheckIn,
-      adminCheckOut: tijdsregistratie.adminCheckOut
+      adminCheckUit: tijdsregistratie.adminCheckUit
     });
     this.evenement = this.evenementen.find(
-      evenement => evenement.id === tijdsregistratie.evenement_id
+      (evenement) => evenement.id === tijdsregistratie.evenement_id
     );
     this.gebruiker = this.gebruikers.find(
       gebruiker => gebruiker.id === tijdsregistratie.gebruiker_id
@@ -80,6 +83,9 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     this.vereniging = this.verenigingen.find(
       vereniging => vereniging.id === tijdsregistratie.vereniging_id
     );
+    console.log(this.evenement);
+    console.log(this.gebruiker);
+    console.log(this.vereniging);
     this.tijdsregistratie = tijdsregistratie;
   }
 

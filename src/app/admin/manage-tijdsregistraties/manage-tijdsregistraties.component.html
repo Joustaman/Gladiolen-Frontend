@@ -3,47 +3,44 @@
     <div class="card-header">
       <h4>Tijdsregistraties beheren</h4>
     </div>
-    <button type="button"
-            data-toggle="modal" data-target="#createTijdsregistratieModal"
-            class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
+    <button type="button" data-toggle="modal" data-target="#createTijdsregistratieModal"
+      class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
     <div class="card-body">
       <div class="row mt-5">
         <div class="col-12">
           <table class="table table-borderless table-hover">
             <thead>
-            <tr>
-              <th scope="col">Lid</th>
-              <th scope="col">Vereniging</th>
-              <th scope="col">Evenement</th>
-              <th scope="col">Check-in</th>
-              <th scope="col">Check-out</th>
-              <th scope="col">Manuele check-in</th>
-              <th scope="col">Manuele check-out</th>
-              <th scope="col">Aangepaste check-in</th>
-              <th scope="col">Aangepaste check-out</th>
-              <th></th>
-            </tr>
+              <tr>
+                <th scope="col">Lid</th>
+                <th scope="col">Vereniging</th>
+                <th scope="col">Evenement</th>
+                <th scope="col">Check-in</th>
+                <th scope="col">Check-out</th>
+                <th scope="col">Manuele check-in</th>
+                <th scope="col">Manuele check-out</th>
+                <th scope="col">Aangepaste check-in</th>
+                <th scope="col">Aangepaste check-out</th>
+                <th></th>
+              </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let tijdsregistratie of tijdsregistraties"
-                data-toggle="modal" data-target="#verenigingModal">
-              <td>{{tijdsregistratie.gebruiker.name}} {{tijdsregistratie.gebruiker.voornaam}}</td>
-              <td>{{tijdsregistratie.vereniging.naam}}</td>
-              <td>{{tijdsregistratie.evenement.naam}}</td>
-              <td>{{tijdsregistratie.checkIn}}</td>
-              <td>{{tijdsregistratie.checkUit}}</td>
-              <td>{{tijdsregistratie.manCheckIn}}</td>
-              <td>{{tijdsregistratie.manCheckUit}}</td>
-              <td>{{tijdsregistratie.adminCheckIn}}</td>
-              <td>{{tijdsregistratie.adminCheckUit}}</td>
+              <tr *ngFor="let tijdsregistratie of tijdsregistraties" data-toggle="modal" data-target="#verenigingModal">
+                <td>{{tijdsregistratie.gebruiker.name}} {{tijdsregistratie.gebruiker.voornaam}}</td>
+                <td>{{tijdsregistratie.vereniging.naam}}</td>
+                <td>{{tijdsregistratie.evenement.naam}}</td>
+                <td>{{tijdsregistratie.checkIn}}</td>
+                <td>{{tijdsregistratie.checkUit}}</td>
+                <td>{{tijdsregistratie.manCheckIn}}</td>
+                <td>{{tijdsregistratie.manCheckUit}}</td>
+                <td>{{tijdsregistratie.adminCheckIn}}</td>
+                <td>{{tijdsregistratie.adminCheckUit}}</td>
 
-              <td>
-                <button (click)="onClickEditTijdsregistratie(tijdsregistratie)"
-                        routerLinkActive="router-link-active" type="button"
-                        data-toggle="modal" data-target="#editTijdsregistratieModal"
-                        class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
-              </td>
-            </tr>
+                <td>
+                  <button (click)="onClickEditTijdsregistratie(tijdsregistratie)" routerLinkActive="router-link-active"
+                    type="button" data-toggle="modal" data-target="#editTijdsregistratieModal"
+                    class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -54,8 +51,7 @@
 
 
 <div class="modal fade" id="editTijdsregistratieModal" tabindex="-1" role="dialog"
-     aria-labelledby="tijdsregistratieModalLabel"
-     aria-hidden="true">
+  aria-labelledby="tijdsregistratieModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -68,48 +64,42 @@
         <div class="modal-body">
           <div class="form-group">
             <label for="gebruiker" class="col-form-label">Lid:</label>
-            <input type="text" class="form-control" id="gebruiker"
-                   [(ngModel)]="gebruiker.name" [ngModelOptions]="{standalone: true}" disabled>
+            <input type="text" class="form-control" id="gebruiker" [(ngModel)]="gebruiker.name"
+              [ngModelOptions]="{standalone: true}" disabled>
           </div>
           <div class="form-group">
             <label for="vereniging" class="col-form-label">Vereniging:</label>
-            <input type="text" class="form-control" id="vereniging"
-                   [(ngModel)]="vereniging.naam" [ngModelOptions]="{standalone: true}" disabled>
+            <input type="text" class="form-control" id="vereniging" [(ngModel)]="vereniging.naam"
+              [ngModelOptions]="{standalone: true}" disabled>
           </div>
           <div class="form-group">
             <label for="evenement" class="col-form-label">Evenement: </label>
-            <input type="text" class="form-control" id="evenement"
-                   [(ngModel)]="evenement.naam" [ngModelOptions]="{standalone: true}" disabled>
+            <input type="text" class="form-control" id="evenement" [(ngModel)]="evenement.naam"
+              [ngModelOptions]="{standalone: true}" disabled>
           </div>
           <div class="form-group">
             <label for="checkIn" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="checkIn"
-                   formControlName="checkIn" disabled>
+            <input type="text" class="form-control" id="checkIn" formControlName="checkIn" disabled>
           </div>
           <div class="form-group">
             <label for="checkOut" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="checkOut"
-                   formControlName="checkOut" disabled>
+            <input type="text" class="form-control" id="checkOut" formControlName="checkOut" disabled>
           </div>
           <div class="form-group">
             <label for="manCheckIn" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="manCheckIn"
-                   formControlName="manCheckIn" disabled>
+            <input type="text" class="form-control" id="manCheckIn" formControlName="manCheckIn" disabled>
           </div>
           <div class="form-group">
             <label for="manCheckOut" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="manCheckOut"
-                   formControlName="manCheckOut" disabled>
+            <input type="text" class="form-control" id="manCheckOut" formControlName="manCheckOut" disabled>
           </div>
           <div class="form-group">
             <label for="adminCheckIn" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="adminCheckIn"
-                   formControlName="adminCheckIn">
+            <input type="text" class="form-control" id="adminCheckIn" formControlName="adminCheckIn">
           </div>
           <div class="form-group">
             <label for="adminCheckOut" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="adminCheckOut"
-                   formControlName="adminCheckOut">
+            <input type="text" class="form-control" id="adminCheckOut" formControlName="adminCheckOut">
           </div>
         </div>
         <div class="modal-footer">
@@ -123,8 +113,7 @@
 
 
 <div class="modal fade" id="createTijdsregistratieModal" tabindex="-1" role="dialog"
-     aria-labelledby="tijdsregistratieModalLabel"
-     aria-hidden="true">
+  aria-labelledby="tijdsregistratieModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -137,48 +126,42 @@
         <div class="modal-body">
           <div class="form-group">
             <label for="gebruiker" class="col-form-label">Lid:</label>
-            <input type="text" class="form-control" id="gebruiker"
-                   formControlName="gebruiker">
+            <input type="text" class="form-control" id="gebruiker" [(ngModel)]="gebruiker.name"
+              [ngModelOptions]="{standalone: true}" disabled>
           </div>
           <div class="form-group">
             <label for="vereniging" class="col-form-label">Vereniging:</label>
-            <input type="text" class="form-control" id="vereniging"
-                   formControlName="vereniging">
+            <input type="text" class="form-control" id="vereniging" [(ngModel)]="vereniging.naam"
+              [ngModelOptions]="{standalone: true}" disabled>
           </div>
           <div class="form-group">
             <label for="evenement" class="col-form-label">Evenement: </label>
-            <input type="text" class="form-control" id="evenement"
-                   formControlName="evenement">
+            <input type="text" class="form-control" id="evenement" [(ngModel)]="evenement.naam"
+              [ngModelOptions]="{standalone: true}" disabled>
           </div>
           <div class="form-group">
             <label for="checkIn" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="checkIn"
-                   formControlName="checkIn">
+            <input type="text" class="form-control" id="checkIn" formControlName="checkIn">
           </div>
           <div class="form-group">
             <label for="checkOut" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="checkOut"
-                   formControlName="checkOut">
+            <input type="text" class="form-control" id="checkOut" formControlName="checkOut">
           </div>
           <div class="form-group">
             <label for="manCheckIn" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="manCheckIn"
-                   formControlName="manCheckIn">
+            <input type="text" class="form-control" id="manCheckIn" formControlName="manCheckIn">
           </div>
           <div class="form-group">
             <label for="manCheckOut" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="manCheckOut"
-                   formControlName="manCheckOut">
+            <input type="text" class="form-control" id="manCheckOut" formControlName="manCheckOut">
           </div>
           <div class="form-group">
             <label for="adminCheckIn" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="adminCheckIn"
-                   formControlName="adminCheckIn">
+            <input type="text" class="form-control" id="adminCheckIn" formControlName="adminCheckIn">
           </div>
           <div class="form-group">
             <label for="adminCheckOut" class="col-form-label">Check-in:</label>
-            <input type="text" class="form-control" id="adminCheckOut"
-                   formControlName="adminCheckOut">
+            <input type="text" class="form-control" id="adminCheckOut" formControlName="adminCheckOut">
           </div>
         </div>
         <div class="modal-footer">
@@ -189,4 +172,3 @@
     </div>
   </div>
 </div>
-

@@ -17,6 +17,7 @@ import {LoginComponent} from './login/login.component';
 import {EditVerenigingAdminComponent} from './admin/edit-vereniging-admin/edit-vereniging-admin.component';
 import {EditGebruikerComponent} from './admin/edit-gebruiker/edit-gebruiker.component';
 import { AuthGuardService } from './auth/auth-guard.service';
+import {ManageTijdsregistratiesComponent} from "./admin/manage-tijdsregistraties/manage-tijdsregistraties.component";
 
 const routes: Routes = [
   {path: 'manageGebruikers', component: ManageGebruikersComponent, canActivate: [AuthGuardService]},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'manageVerenigingen', component: ManageVerenigingenComponent, canActivate: [AuthGuardService]},
   {path: 'createVerenigingAdmin', component: CreateVerenigingAdminComponent, canActivate: [AuthGuardService]},
   {path: 'editVerenigingAdmin/:id', component: EditVerenigingAdminComponent, canActivate: [AuthGuardService]},
+  {path: 'manageTijdsregistraties', component: ManageTijdsregistratiesComponent, canActivate: [AuthGuardService]},
   {path: 'createvereniging', component: CreateVerenigingComponent},
   {path: 'leden', component: LedenComponent, canActivate: [AuthGuardService]},
   {path: 'maaklid', component: CreateLidComponent, canActivate: [AuthGuardService]},

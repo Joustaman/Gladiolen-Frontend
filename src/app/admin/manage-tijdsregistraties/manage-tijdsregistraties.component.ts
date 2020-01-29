@@ -25,7 +25,7 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     );
   }
   tijdsregistratieForm = new FormGroup({
-    lid: new FormControl(''),
+    gebruiker: new FormControl(''),
     vereniging: new FormControl(''),
     evenement: new FormControl(''),
     checkin: new FormControl(''),
@@ -47,4 +47,21 @@ export class ManageTijdsregistratiesComponent implements OnInit {
         }
     );
   }
+    onClickEditTijdsregistratie(tijdsregistratie: any) {
+        console.log(tijdsregistratie);
+        this.tijdsregistratieForm.patchValue({
+
+            gebruiker: tijdsregistratie.gebruiker.name,
+            vereniging: tijdsregistratie.vereniging.naam,
+            evenement: tijdsregistratie.evenement.naam,
+            checkIn: tijdsregistratie.checkIn,
+            // checkOut: tijdsregistratie.checkOut,
+            // manCheckIn: tijdsregistratie.manCheckIn,
+
+
+
+            }
+        );
+        this.tijdsregistratie = tijdsregistratie;
+    }
 }

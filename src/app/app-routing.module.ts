@@ -16,25 +16,26 @@ import {CreateVerenigingAdminComponent} from './admin/create-vereniging-admin/cr
 import {LoginComponent} from './login/login.component';
 import {EditVerenigingAdminComponent} from './admin/edit-vereniging-admin/edit-vereniging-admin.component';
 import {EditGebruikerComponent} from './admin/edit-gebruiker/edit-gebruiker.component';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 const routes: Routes = [
-  {path: 'manageGebruikers', component: ManageGebruikersComponent},
-  {path: 'createGebruiker', component: CreateGebruikerComponent},
-  {path: 'adminHome', component: AdminHomeComponent},
-  {path: 'manageEvenementen', component: ManageEvenementenComponent},
-  {path: 'createEvenement', component: CreateVerenigingComponent},
-  {path: 'detailGebruiker', component: DetailGebruikerComponent},
-  {path: 'editGebruiker/:id', component: EditGebruikerComponent},
-  {path: 'manageVerenigingen', component: ManageVerenigingenComponent},
-  {path: 'createVerenigingAdmin', component: CreateVerenigingAdminComponent},
-  {path: 'editVerenigingAdmin/:id', component: EditVerenigingAdminComponent},
+  {path: 'manageGebruikers', component: ManageGebruikersComponent, canActivate: [AuthGuardService]},
+  {path: 'createGebruiker', component: CreateGebruikerComponent, canActivate: [AuthGuardService]},
+  {path: 'adminHome', component: AdminHomeComponent, canActivate: [AuthGuardService]},
+  {path: 'manageEvenementen', component: ManageEvenementenComponent, canActivate: [AuthGuardService]},
+  {path: 'createEvenement', component: CreateVerenigingComponent, canActivate: [AuthGuardService]},
+  {path: 'detailGebruiker/:id', component: DetailGebruikerComponent, canActivate: [AuthGuardService]},
+  {path: 'editGebruiker/:id', component: EditGebruikerComponent, canActivate: [AuthGuardService]},
+  {path: 'manageVerenigingen', component: ManageVerenigingenComponent, canActivate: [AuthGuardService]},
+  {path: 'createVerenigingAdmin', component: CreateVerenigingAdminComponent, canActivate: [AuthGuardService]},
+  {path: 'editVerenigingAdmin/:id', component: EditVerenigingAdminComponent, canActivate: [AuthGuardService]},
   {path: 'createvereniging', component: CreateVerenigingComponent},
-  {path: 'leden', component: LedenComponent},
-  {path: 'maaklid', component: CreateLidComponent},
-  {path: 'editlid/:id', component: CreateLidComponent},
+  {path: 'leden', component: LedenComponent, canActivate: [AuthGuardService]},
+  {path: 'maaklid', component: CreateLidComponent, canActivate: [AuthGuardService]},
+  {path: 'editlid/:id', component: CreateLidComponent, canActivate: [AuthGuardService]},
   {path: 'spinner', component: SpinnerComponent},
-  {path: 'keuzemenu', component: KeuzemenuComponent},
-  {path: 'vereniging/editvereniging', component: EditVerenigingComponent},
+  {path: 'keuzemenu', component: KeuzemenuComponent, canActivate: [AuthGuardService]},
+  {path: 'vereniging/editvereniging', component: EditVerenigingComponent, canActivate: [AuthGuardService]},
   {path: 'login', component: LoginComponent}
 ];
 

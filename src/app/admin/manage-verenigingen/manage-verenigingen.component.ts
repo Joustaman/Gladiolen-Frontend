@@ -10,13 +10,12 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class ManageVerenigingenComponent implements OnInit {
   verenigingen: any = [];
   pageLoaded = false;
-  leden: any = [];
 
   verenigingForm = new FormGroup({
     naam: new FormControl(''),
     hoofdverantwoordelijke: new FormControl(null),
     tweedeverantwoordelijke: new FormControl(null),
-    contactpersoon: new FormControl(null),
+    contact: new FormControl(null),
     rekeningnr: new FormControl(''),
     btwnr: new FormControl(''),
     straat: new FormControl(''),
@@ -30,11 +29,26 @@ export class ManageVerenigingenComponent implements OnInit {
   }
 
   onClickDetailVereniging(vereniging: any) {
+    let contact;
+    let tweede;
+
+    if (vereniging.contact === null) {
+      contact = 'Geen contactpersoon';
+    } else {
+      contact = vereniging.contact.name;
+    }
+
+    if (vereniging.tweede === null) {
+      tweede = 'Geen tweede verantwoordelijke';
+    } else {
+      tweede = vereniging.tweede.name;
+    }
+
     this.verenigingForm.patchValue({
         naam: vereniging.naam,
         hoofdverantwoordelijke: vereniging.hoofd.name,
-        tweedeverantwoordelijke: vereniging.tweede.name,
-        contactpersoon: vereniging.contactpersoon.name,
+        tweedeverantwoordelijke: tweede,
+        contact: contact,
         rekeningnr: vereniging.rekeningnr,
         btwnr: vereniging.btwnr,
         straat: vereniging.straat,

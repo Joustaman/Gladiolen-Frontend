@@ -15,16 +15,24 @@ export class AuthService {
   private readonly api = 'http://localhost:8000';
   private readonly JWT_TOKEN = 'token';
 
-  tryLogin(user: { email: string; password: string }) {
+  tryLogin(email: string, password: string) {
     return this.http
-      .post<any>(`${this.api}/api/login`, user)
+      .post<any>(`${this.api}/api/login`, {email, password})
       .pipe(tap(token => this.doLogin(token.token.toString())));
   }
 
 
   private doLogin(token: string) {
     localStorage.setItem(this.JWT_TOKEN, token);
-    this.router.navigate(['keuzemenu']);
+    this.getIngelogdeGebruiker().subscribe(
+      result => {
+        if (result.rol_id === 1) {
+          this.router.navigate(['adminHome']);
+        } else if (result.rol_id === 3) {
+          this.router.navigate(['keuzemenu']);
+        }
+      }
+    );
   }
 
 
@@ -50,5 +58,9 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.router.navigate(['login']);
+  }
+
+  getIngelogdeGebruiker(): any {
+    return this.http.get('http://localhost:8000/api/gebruiker/ingelogdegebruiker');
   }
 }

@@ -11,6 +11,9 @@ import {Router, Route, ActivatedRoute} from '@angular/router';
 })
 export class CreateVerenigingAdminComponent implements OnInit {
 
+  kernleden: any = [];
+  pageLoaded = false;
+
   verenigingForm = new FormGroup({
     naam: new FormControl(''),
     hoofdverantwoordelijke: new FormControl(null),
@@ -26,12 +29,42 @@ export class CreateVerenigingAdminComponent implements OnInit {
     inAanvraag: new FormControl(false)
   });
 
+  verantwoordelijkeForm = new FormGroup({
+    name: new FormControl(''),
+    voornaam: new FormControl(''),
+    roepnaam: new FormControl(''),
+    geboortedatum: new FormControl(''),
+    email: new FormControl(''),
+    telefoon: new FormControl(''),
+    opmerking: new FormControl(''),
+    rol_id: new FormControl(''),
+    rijksregisternr: new FormControl(''),
+    password: new FormControl(null),
+    eersteAanmelding: new FormControl(false),
+    lunchpakket: new FormControl(false),
+    actief: new FormControl(null),
+    foto: new FormControl(null),
+  });
+  tshirts: any = [];
+  maat: any;
+  geslacht: any;
   constructor(private adminService: AdminService, private toast: ToastrService, private readonly router: Router, private readonly route: ActivatedRoute) {
   }
 
-  ngOnInit() {
+  ngOnInit(
+  ) {
+    this.adminService.getKernleden().subscribe(
+        result => {
+          this.kernleden = result;
+          this.pageLoaded = true;
+          console.log(result);
+        },
+    );
   }
 
+  changeContact() {
+    let value = this.verenigingForm.get('contactpersoon').value;
+  }
   createVereniging() {
 
     this.adminService.registreerVereniging(this.verenigingForm.value).subscribe(
@@ -46,4 +79,42 @@ export class CreateVerenigingAdminComponent implements OnInit {
       }
     );
   }
+  changeLunch() {
+    let value = this.verantwoordelijkeForm.get('lunchpakket').value;
+    this.verantwoordelijkeForm.patchValue({
+      lunchpakket: !value
+    });
+  }
+
+  createVerantwoordelijke() {
+    this.verantwoordelijkeForm.patchValue(
+        {
+          rol_id: 4,
+        }
+    );
+    this.adminService.registreerVerantwoordelijke(this.verantwoordelijkeForm.value).subscribe(
+        result => {
+          this.verenigingForm.patchValue({
+            hoofdverantwoordelijke: result.id,
+          });
+          this.createTshirt(result.id);
+          console.log(result);
+        },
+        error => {
+          console.log(error);
+        }
+    );
+  }
+
+  createTshirt(gebruikerId) {
+    let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null};
+
+    this.adminService.createTshirt(tshirt).subscribe(
+        result => {
+          this.createVereniging();
+          console.log(result);
+        }
+    );
+  }
+
 }

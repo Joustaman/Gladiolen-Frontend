@@ -15,6 +15,7 @@ import { EditGebruikerComponent } from './edit-gebruiker/edit-gebruiker.componen
 
 @NgModule({
   declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent],
+
   imports: [
     CommonModule,
     RouterModule,
@@ -22,6 +23,7 @@ import { EditGebruikerComponent } from './edit-gebruiker/edit-gebruiker.componen
     MymaterialModule,
     FormsModule
   ]
+
 })
 export class AdminModule {
 }

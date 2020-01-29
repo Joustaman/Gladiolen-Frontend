@@ -1,29 +1,111 @@
-<div class="row mt-5 justify-content-center">
-  <div class="container col-lg-8 col-md-8 col-sm-10">
-    <div class="card shadow-sm">
-      <div class="card-body">
-        <div class="mt-3"><label>Naam:</label>Naam<br/></div>
-        <div class="mt-3"><label>Voornaam:</label>Voornaam<br/></div>
-        <div class="mt-3"><label>Roepnaam:</label>Roepnaam<br/></div>
-        <div class="mt-3"><label>Vereniging:</label>Vereniging<br/></div>
-        <div class="mt-3"><label>Postcode:</label>Postcode<br/></div>
-        <div class="mt-3"><label>Straat:</label>Straat<br/></div>
-        <div class="mt-3"><label>Huisnummer:</label>Huisnummer<br/></div>
-        <div class="mt-3"><label>Geboortedatum:</label>Geboortedatum<br/></div>
-        <div class="mt-3"><label>Email:</label>Email<br/></div>
-        <div class="mt-3"><label>Telefoon:</label>Telefoon<br/></div>
-        <div class="mt-3"><label>T-shirt maat:</label>T-shirt maat<br/></div>
-        <div class="mt-3"><label>Lunchpakket:</label>Lunchpakket<br/></div>
-        <div class="mt-3"><label>Geslacht:</label>Geslacht<br/></div>
-        <div class="mt-3"><label>Rijksregisternummer:</label>Rijksregisternummer<br/></div>
-        <div class="mt-3"><label>Opmerking:</label>Opmerking<br/></div>
-        <div class="mt-3"><label>Verantwoordelijke:</label>Ja<br/></div>
-        <div class="mt-3"><label>Actief:</label><br/>
-          <input type="radio" name="active" value="active" checked="checked"> Actief<br>
-          <input type="radio" name="active" value="inactive"> Inactief<br>
+<div class="container" *ngIf="pageLoaded">
+  <div class="card">
+    <div class="card-header">
+      <h4>Detail gebruiker</h4>
+    </div>
+    <div class="card-body">
+      <div class="row mt-5">
+        <div class="col-12">
+          <form [formGroup]="gebruikerForm">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="name">Naam</label>
+                  <input class="form-control" type="text" id="name" name="name" formControlName="name"
+                         readonly>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="voornaam">Voornaam</label>
+                  <input class="form-control" type="text" id="voornaam" name="voornaam"
+                         formControlName="voornaam"
+                         readonly>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="roepnaam">Roepnaam</label>
+                  <input class="form-control" type="text" id="roepnaam" name="roepnaam"
+                         formControlName="roepnaam" readonly>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="geboortedatum">Geboortedatum</label>
+                  <input class="form-control" type="text" id="geboortedatum" name="geboortedatum"
+                         formControlName="geboortedatum" readonly>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input class="form-control" type="email" id="email" name="email"
+                         formControlName="email"
+                         readonly>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="telefoon">Telefoon</label>
+                  <input class="form-control" type="text" id="telefoon" name="telefoon"
+                         formControlName="telefoon"
+                         readonly>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="opmerking">Opmerking</label>
+                  <input class="form-control" type="text" id="opmerking" name="opmerking"
+                         formControlName="opmerking"
+                         readonly>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="rol_id">Rol</label>
+                  <input class="form-control" type="text" id="rol_id" name="rol_id"
+                         formControlName="rol_id" readonly>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="rijksregisternr">Rijksregisternummer</label>
+                  <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
+                         formControlName="rijksregisternr"
+                         readonly>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="lunchpakket">Lunchpakket</label>
+                  <input class="form-control" type="text" id="lunchpakket" name="lunchpakket"
+                         formControlName="lunchpakket"
+                         readonly>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="actief">Status</label>
+                  <input *ngIf="gebruikerForm.get('actief').value === 0" value="Niet actief" class="form-control"
+                         type="text" id="actief"
+                         name="actief" readonly>
+                  <input *ngIf="gebruikerForm.get('actief').value === 1" value="Actief" class="form-control" type="text"
+                         id="actief"
+                         name="actief" readonly>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="foto">Foto</label>
+                  <input class="form-control" type="text" id="foto" name="foto"
+                         formControlName="foto"
+                         readonly>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
-        <button type="button" class="btn btn-primary">Bewerk</button>
-        <button type="button" class="btn btn-danger" [routerLink]="['/manageGebruikers']">Terug</button>
       </div>
     </div>
   </div>

@@ -3,11 +3,13 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {AdminService} from '../admin.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-edit-gebruiker',
   templateUrl: './edit-gebruiker.component.html',
-  styleUrls: ['./edit-gebruiker.component.scss']
+  styleUrls: ['./edit-gebruiker.component.scss'],
+  providers: [DatePipe]
 })
 export class EditGebruikerComponent implements OnInit {
 
@@ -16,6 +18,8 @@ export class EditGebruikerComponent implements OnInit {
   rollen: any = [];
   verenigingen: any = [];
   pageLoaded = false;
+  maat: any;
+  geslacht: any;
 
   gebruikerForm = new FormGroup({
     name: new FormControl(''),
@@ -24,19 +28,19 @@ export class EditGebruikerComponent implements OnInit {
     geboortedatum: new FormControl(''),
     email: new FormControl(''),
     telefoon: new FormControl(''),
-    tweedetshirt: new FormControl(false),
     opmerking: new FormControl(''),
+    rol_id: new FormControl(null),
     rijksregisternr: new FormControl(''),
-    wachtwoord: new FormControl(''),
+    password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
-    qrcode: new FormControl(null),
-    foto: new FormControl(null),
-    tshirt_id: new FormControl(null),
-    rol_id: new FormControl(null),
+    actief: new FormControl(null),
+    foto: new FormControl(null)
   });
 
-  constructor(private readonly adminService: AdminService, private readonly router: Router, private readonly route: ActivatedRoute, private toastr: ToastrService) {
+  constructor(private readonly adminService: AdminService, private readonly router: Router,
+              private readonly route: ActivatedRoute, private readonly datepipe: DatePipe,
+              private readonly toast: ToastrService) {
   }
 
   ngOnInit() {
@@ -45,6 +49,7 @@ export class EditGebruikerComponent implements OnInit {
         if (params.get('id') !== null) {
           this.adminService.getGebruiker(params.get('id')).subscribe(
             result => {
+              console.log(result);
               this.gebruiker = result;
               this.fillForm();
               this.pageLoaded = true;
@@ -56,11 +61,6 @@ export class EditGebruikerComponent implements OnInit {
         }
       });
 
-    this.adminService.getTshirts().subscribe(
-      result => {
-        this.tshirts = result;
-      },
-    );
 
     this.adminService.getRollen().subscribe(
       result => {
@@ -80,27 +80,43 @@ export class EditGebruikerComponent implements OnInit {
       name: this.gebruiker.name,
       voornaam: this.gebruiker.voornaam,
       roepnaam: this.gebruiker.roepnaam,
-      geboortedatum: this.gebruiker.geboortedatum,
+      geboortedatum: this.datepipe.transform(this.gebruiker.geboortedatum, 'yyyy-MM-dd'),
       email: this.gebruiker.email,
       telefoon: this.gebruiker.telefoon,
-      tweedetshirt: this.gebruiker.tweedetshirt,
       opmerking: this.gebruiker.opmerking,
       rijksregisternr: this.gebruiker.rijksregisternr,
-      wachtwoord: this.gebruiker.wachtwoord,
       eersteAanmelding: this.gebruiker.eersteAanmelding,
       lunchpakket: this.gebruiker.lunchpakket,
       qrcode: this.gebruiker.qrcode,
       foto: this.gebruiker.foto,
-      tshirt_id: this.gebruiker.tshirt_id,
       rol_id: this.gebruiker.rol_id
     });
+    this.maat = this.gebruiker.tshirts[0].maat;
+    this.geslacht = this.gebruiker.tshirts[0].geslacht;
   }
 
-  changeTshirt() {
-    let value = this.gebruikerForm.get('tweedetshirt').value;
-    this.gebruikerForm.patchValue({
-      tweedetshirt: !value
-    });
+  updateGebruiker() {
+    this.adminService.updateGebruiker(this.gebruiker.id, this.gebruikerForm.value).subscribe(
+      result => {
+        console.log(result);
+        this.updateTshirt();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  updateTshirt() {
+    let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: this.gebruiker.id, tshirttype_id: null};
+    console.log(tshirt);
+    this.adminService.updateTshirt(this.gebruiker.id, tshirt).subscribe(
+      result => {
+        console.log(result);
+        this.toast.success('Gebruiker geupdate');
+        this.router.navigate(['/manageGebruikers']);
+      }
+    );
   }
 
   changeLunch() {
@@ -112,18 +128,5 @@ export class EditGebruikerComponent implements OnInit {
 
   changeRol() {
     let value = this.gebruikerForm.get('rol_id').value;
-  }
-
-  updateGebruiker() {
-    this.adminService.updateGebruiker(this.gebruiker.id, this.gebruikerForm.value).subscribe(
-      result => {
-        console.log(result);
-        this.toastr.success('Gebruiker geupdate');
-        this.router.navigate(['manageGebruikers']);
-      },
-      error => {
-        console.log(error);
-      }
-    );
   }
 }

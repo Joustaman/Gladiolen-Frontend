@@ -3,6 +3,7 @@ import {AdminService} from '../admin.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
+import {generateBuildStats} from '@angular-devkit/build-angular/src/angular-cli-files/utilities/stats';
 
 @Component({
   selector: 'app-manage-tijdsregistraties',
@@ -14,9 +15,11 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   tijdsregistratie: any = {};
   pageLoaded = false;
   verenigingen: any = [];
-  vereniging: any = {};
+  vereniging: any = {name: 'test'};
   evenementen: any = [];
-  evenement: any = null;
+  evenement: any = {naam: 'test'};
+  gebruikers: any = [];
+  gebruiker: any = {name: 'test'};
 
   constructor(private adminService: AdminService, private toastr: ToastrService, private readonly router: Router) {
   }
@@ -32,9 +35,9 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   }
 
   tijdsregistratieForm = new FormGroup({
-    gebruiker: new FormControl(''),
-    vereniging: new FormControl(''),
-    evenement: new FormControl(''),
+    gebruiker_id: new FormControl(''),
+    vereniging_id: new FormControl(''),
+    evenement_id: new FormControl(''),
     checkIn: new FormControl(''),
     checkOut: new FormControl(''),
     manCheckIn: new FormControl(''),
@@ -42,24 +45,24 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     adminCheckIn: new FormControl(''),
     adminCheckOut: new FormControl(''),
   });
-
   updateTijdsregistratie() {
-    this.adminService.updateTijdsregistratie(this.tijdsregistratie.id, this.tijdsregistratieForm.value).subscribe(
-      result => {
-        console.log(result);
-        this.toastr.success('Verening geupdate');
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    console.log(this.tijdsregistratieForm.value);
+    // this.adminService.updateTijdsregistratie(this.tijdsregistratie.id, this.tijdsregistratieForm.value).subscribe(
+    //   result => {
+    //     console.log(result);
+    //     this.toastr.success('Verening geupdate');
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
   }
 
   onClickEditTijdsregistratie(tijdsregistratie: any) {
     this.tijdsregistratieForm.patchValue({
-        gebruiker: tijdsregistratie.gebruiker.name,
-        vereniging: tijdsregistratie.vereniging.naam,
-        evenement: tijdsregistratie.evenement.naam,
+        gebruiker_id: tijdsregistratie.gebruiker_id,
+        vereniging_id: tijdsregistratie.vereniging_id,
+        evenement_id: tijdsregistratie.evenement_id,
         checkIn: tijdsregistratie.checkIn,
         checkOut: tijdsregistratie.checkOut,
         manCheckIn: tijdsregistratie.manCheckIn,
@@ -68,7 +71,9 @@ export class ManageTijdsregistratiesComponent implements OnInit {
         adminCheckOut: tijdsregistratie.adminCheckOut,
       }
     );
-
+    this.evenement = this.evenementen.find((evenement) => evenement.id === tijdsregistratie.evenement_id);
+    this.gebruiker = this.gebruikers.find((gebruiker) => gebruiker.id === tijdsregistratie.gebruiker_id);
+    this.vereniging = this.verenigingen.find((vereniging) => vereniging.id === tijdsregistratie.vereniging_id);
     this.tijdsregistratie = tijdsregistratie;
   }
 
@@ -87,6 +92,16 @@ export class ManageTijdsregistratiesComponent implements OnInit {
       result => {
         this.verenigingen = result;
         console.log(result);
+        this.pageLoaded = true;
+      },
+    );
+  }
+
+  getGebruikers() {
+    this.adminService.getGebruikers().subscribe(
+      result => {
+        console.log(result);
+        this.gebruikers = result;
         this.pageLoaded = true;
       },
     );

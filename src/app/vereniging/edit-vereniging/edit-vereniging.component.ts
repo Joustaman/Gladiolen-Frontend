@@ -45,7 +45,9 @@ export class EditVerenigingComponent implements OnInit {
       }
     );
   }
-
+    /**
+     * Vult het update-formulier op met de huidige informatie van de geselecteerde vereniging.
+     */
   fillForm() {
     this.verenigingForm.patchValue({
       naam: this.vereniging.naam,
@@ -61,6 +63,9 @@ export class EditVerenigingComponent implements OnInit {
     });
   }
 
+    /**
+     * Updatet de informatie van een vereniging.
+     */
   updateVereniging() {
     this.verenigingsService.updateVereniging(this.vereniging.id, this.verenigingForm.value).subscribe(
       result => {

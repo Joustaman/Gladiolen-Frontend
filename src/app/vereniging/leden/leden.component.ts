@@ -25,7 +25,10 @@ export class LedenComponent implements OnInit {
       }
     );
   }
-
+    /**
+     * * @param {int} id  Het ID van de gebruiker die verwijderd wordt.
+     * Deletet de informatie van een lid.
+     */
   deleteLid(id) {
     this.verenigingService.deleteLid(id).subscribe(
       () => {

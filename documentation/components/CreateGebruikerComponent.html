@@ -1,0 +1,1194 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>gladiolen-frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">gladiolen-frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>CreateGebruikerComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/admin/create-gebruiker/create-gebruiker.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-create-gebruiker</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./create-gebruiker.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./create-gebruiker.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#gebruiker">gebruiker</a>
+                            </li>
+                            <li>
+                                <a href="#gebruikerForm">gebruikerForm</a>
+                            </li>
+                            <li>
+                                <a href="#geslacht">geslacht</a>
+                            </li>
+                            <li>
+                                <a href="#maat">maat</a>
+                            </li>
+                            <li>
+                                <a href="#pageLoaded">pageLoaded</a>
+                            </li>
+                            <li>
+                                <a href="#rollen">rollen</a>
+                            </li>
+                            <li>
+                                <a href="#tshirts">tshirts</a>
+                            </li>
+                            <li>
+                                <a href="#verenigingen">verenigingen</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#changeLunch">changeLunch</a>
+                            </li>
+                            <li>
+                                <a href="#changeRol">changeRol</a>
+                            </li>
+                            <li>
+                                <a href="#changeTshirt">changeTshirt</a>
+                            </li>
+                            <li>
+                                <a href="#createTshirt">createTshirt</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#submitForm">submitForm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(adminService: <a href="../injectables/AdminService.html">AdminService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, toast: ToastrService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>adminService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AdminService.html" target="_self" >AdminService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toast</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeLunch"></a>
+                    <span class="name">
+                        <b>
+                            changeLunch
+                        </b>
+                        <a href="#changeLunch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeLunch()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeRol"></a>
+                    <span class="name">
+                        <b>
+                            changeRol
+                        </b>
+                        <a href="#changeRol"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeRol()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:100</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeTshirt"></a>
+                    <span class="name">
+                        <b>
+                            changeTshirt
+                        </b>
+                        <a href="#changeTshirt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeTshirt()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:86</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createTshirt"></a>
+                    <span class="name">
+                        <b>
+                            createTshirt
+                        </b>
+                        <a href="#createTshirt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createTshirt(gebruikerId)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:75</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>gebruikerId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:43</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitForm"></a>
+                    <span class="name">
+                        <b>
+                            submitForm
+                        </b>
+                        <a href="#submitForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>submitForm()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="gebruiker"></a>
+                        <span class="name">
+                            <b>
+                            gebruiker</b>
+                            <a href="#gebruiker"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="gebruikerForm"></a>
+                        <span class="name">
+                            <b>
+                            gebruikerForm</b>
+                            <a href="#gebruikerForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new FormGroup({
+    name: new FormControl(&#x27;&#x27;),
+    voornaam: new FormControl(&#x27;&#x27;),
+    roepnaam: new FormControl(&#x27;&#x27;),
+    geboortedatum: new FormControl(&#x27;&#x27;),
+    email: new FormControl(&#x27;&#x27;),
+    telefoon: new FormControl(&#x27;&#x27;),
+    opmerking: new FormControl(&#x27;&#x27;),
+    rol_id: new FormControl(null),
+    rijksregisternr: new FormControl(&#x27;&#x27;),
+    password: new FormControl(null),
+    eersteAanmelding: new FormControl(false),
+    lunchpakket: new FormControl(false),
+    actief: new FormControl(null),
+    foto: new FormControl(null),
+  })</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="geslacht"></a>
+                        <span class="name">
+                            <b>
+                            geslacht</b>
+                            <a href="#geslacht"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="maat"></a>
+                        <span class="name">
+                            <b>
+                            maat</b>
+                            <a href="#maat"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageLoaded"></a>
+                        <span class="name">
+                            <b>
+                            pageLoaded</b>
+                            <a href="#pageLoaded"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rollen"></a>
+                        <span class="name">
+                            <b>
+                            rollen</b>
+                            <a href="#rollen"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tshirts"></a>
+                        <span class="name">
+                            <b>
+                            tshirts</b>
+                            <a href="#tshirts"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="verenigingen"></a>
+                        <span class="name">
+                            <b>
+                            verenigingen</b>
+                            <a href="#verenigingen"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/admin/create-gebruiker/create-gebruiker.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, OnInit} from &#x27;@angular/core&#x27;;
+import {FormControl, FormGroup} from &#x27;@angular/forms&#x27;;
+import {AdminService} from &#x27;../admin.service&#x27;;
+import {Router, Route, ActivatedRoute} from &#x27;@angular/router&#x27;;
+import {ToastrService} from &#x27;ngx-toastr&#x27;;
+
+@Component({
+  selector: &#x27;app-create-gebruiker&#x27;,
+  templateUrl: &#x27;./create-gebruiker.component.html&#x27;,
+  styleUrls: [&#x27;./create-gebruiker.component.scss&#x27;]
+})
+export class CreateGebruikerComponent implements OnInit {
+
+  tshirts: any &#x3D; [];
+  rollen: any &#x3D; [];
+  verenigingen: any &#x3D; [];
+  gebruiker: any &#x3D; {};
+  maat: any;
+  geslacht: any;
+  pageLoaded &#x3D; false;
+
+  gebruikerForm &#x3D; new FormGroup({
+    name: new FormControl(&#x27;&#x27;),
+    voornaam: new FormControl(&#x27;&#x27;),
+    roepnaam: new FormControl(&#x27;&#x27;),
+    geboortedatum: new FormControl(&#x27;&#x27;),
+    email: new FormControl(&#x27;&#x27;),
+    telefoon: new FormControl(&#x27;&#x27;),
+    opmerking: new FormControl(&#x27;&#x27;),
+    rol_id: new FormControl(null),
+    rijksregisternr: new FormControl(&#x27;&#x27;),
+    password: new FormControl(null),
+    eersteAanmelding: new FormControl(false),
+    lunchpakket: new FormControl(false),
+    actief: new FormControl(null),
+    foto: new FormControl(null),
+  });
+
+  constructor(private readonly adminService: AdminService, private readonly router: Router,
+              private readonly toast: ToastrService) {
+  }
+
+  ngOnInit() {
+    this.adminService.getTshirts().subscribe(
+      result &#x3D;&gt; {
+        this.tshirts &#x3D; result;
+      },
+    );
+
+    this.adminService.getRollen().subscribe(
+      result &#x3D;&gt; {
+        this.rollen &#x3D; result;
+      },
+    );
+
+    this.adminService.getVerenigingen().subscribe(
+      result &#x3D;&gt; {
+        this.verenigingen &#x3D; result;
+      },
+    );
+  }
+
+  submitForm() {
+    this.adminService.registreerGebruiker(this.gebruikerForm.value).subscribe(
+      result &#x3D;&gt; {
+        this.createTshirt(result.id);
+      },
+      error &#x3D;&gt; {
+        console.log(error);
+        this.toast.error(&#x27;Vul het formulier correct in&#x27;);
+      }
+    );
+  }
+
+  createTshirt(gebruikerId) {
+    let tshirt &#x3D; {maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null};
+
+    this.adminService.createTshirt(tshirt).subscribe(
+      () &#x3D;&gt; {
+        this.toast.success(&#x27;Lid aangemaakt&#x27;);
+        this.router.navigate([&#x27;/manageGebruikers&#x27;]);
+      }
+    );
+  }
+
+  changeTshirt() {
+    let value &#x3D; this.gebruikerForm.get(&#x27;tweedetshirt&#x27;).value;
+    this.gebruikerForm.patchValue({
+      tweedetshirt: !value
+    });
+  }
+
+  changeLunch() {
+    let value &#x3D; this.gebruikerForm.get(&#x27;lunchpakket&#x27;).value;
+    this.gebruikerForm.patchValue({
+      lunchpakket: !value
+    });
+  }
+
+  changeRol() {
+    let value &#x3D; this.gebruikerForm.get(&#x27;rol_id&#x27;).value;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot;&gt;
+  &lt;div class&#x3D;&quot;card&quot;&gt;
+    &lt;div class&#x3D;&quot;card-header&quot;&gt;
+      &lt;h4&gt;Voeg een gebruiker toe&lt;/h4&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;card-body&quot;&gt;
+      &lt;mat-horizontal-stepper #stepper&gt;
+        &lt;mat-step&gt;
+          &lt;ng-template matStepLabel&gt;Gebruiker&lt;/ng-template&gt;
+          &lt;form [formGroup]&#x3D;&quot;gebruikerForm&quot; (ngSubmit)&#x3D;&quot;submitForm()&quot; class&#x3D;&quot;mt-5 was-validated&quot; novalidate&gt;
+            &lt;div class&#x3D;&quot;row&quot;&gt;
+              &lt;div class&#x3D;&quot;col-lg-4&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;name&quot;&gt;Naam&lt;/label&gt;
+                  &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;name&quot; name&#x3D;&quot;name&quot; formControlName&#x3D;&quot;name&quot; required&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-4&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;roepnaam&quot;&gt;Roepnaam&lt;/label&gt;
+                  &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;roepnaam&quot; name&#x3D;&quot;roepnaam&quot; formControlName&#x3D;&quot;roepnaam&quot;&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-4&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;voornaam&quot;&gt;Voornaam&lt;/label&gt;
+                  &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;voornaam&quot; name&#x3D;&quot;voornaam&quot; formControlName&#x3D;&quot;voornaam&quot; required&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-6&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;email&quot;&gt;Email&lt;/label&gt;
+                  &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;email&quot; name&#x3D;&quot;email&quot; formControlName&#x3D;&quot;email&quot;&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;telefoon&quot;&gt;Telefoon&lt;/label&gt;
+                  &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;telefoon&quot; id&#x3D;&quot;telefoon&quot; name&#x3D;&quot;telefoon&quot; formControlName&#x3D;&quot;telefoon&quot;&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;geboortedatum&quot;&gt;Geboortedatum&lt;/label&gt;
+                  &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;date&quot; id&#x3D;&quot;geboortedatum&quot; name&#x3D;&quot;geboortedatum&quot;
+                         formControlName&#x3D;&quot;geboortedatum&quot;&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-6&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;rijksregisternr&quot;&gt;Rijksregister&lt;/label&gt;
+                  &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;rijksregisternr&quot; name&#x3D;&quot;rijksregisternr&quot;
+                         formControlName&#x3D;&quot;rijksregisternr&quot; pattern&#x3D;&quot;[0-9]{11}&quot;&gt;
+                  &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;Gelieve de 11 cijfers van je rijksregisternummer in te vullen.&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-6&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;opmerking&quot;&gt;Opmerking&lt;/label&gt;
+                  &lt;textarea class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;opmerking&quot; name&#x3D;&quot;opmerking&quot;
+                            formControlName&#x3D;&quot;opmerking&quot;&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;geslacht&quot;&gt;Geslacht&lt;/label&gt;
+                  &lt;select name&#x3D;&quot;geslacht&quot; id&#x3D;&quot;geslacht&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;geslacht&quot; [ngModelOptions]&#x3D;&quot;{standalone: true}&quot;&gt;
+                    &lt;option value&#x3D;&quot;Man&quot;&gt;Man&lt;/option&gt;
+                    &lt;option value&#x3D;&quot;Vrouw&quot;&gt;Vrouw&lt;/option&gt;
+                  &lt;/select&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;tshirt&quot;&gt;Tshirt - Maat&lt;/label&gt;
+                  &lt;select name&#x3D;&quot;tshirt&quot; id&#x3D;&quot;tshirt&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;maat&quot;
+                          [ngModelOptions]&#x3D;&quot;{standalone: true}&quot;&gt;
+                    &lt;option *ngFor&#x3D;&quot;let tshirt of tshirts&quot; [value]&#x3D;&quot;tshirt.id&quot;&gt;{{tshirt.maat}}
+                      - {{tshirt.geslacht}}&lt;/option&gt;
+                  &lt;/select&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group paddingcheck text-center&quot;&gt;
+                  &lt;div class&#x3D;&quot;pretty p-default p-switch&quot; (click)&#x3D;&quot;changeTshirt()&quot;&gt;
+                    &lt;input type&#x3D;&quot;checkbox&quot;/&gt;
+                    &lt;div class&#x3D;&quot;state p-primary&quot;&gt;
+                      &lt;label&gt;Extra shirt&lt;/label&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group paddingcheck text-center&quot;&gt;
+                  &lt;div class&#x3D;&quot;pretty p-default p-switch&quot; (click)&#x3D;&quot;changeLunch()&quot;&gt;
+                    &lt;input type&#x3D;&quot;checkbox&quot;/&gt;
+                    &lt;div class&#x3D;&quot;state p-primary&quot;&gt;
+                      &lt;label&gt;Lunchpakket&lt;/label&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-6&quot;&gt;
+                &lt;label for&#x3D;&quot;password&quot;&gt;Wachtwoord&lt;/label&gt;
+                &lt;input type&#x3D;&quot;password&quot; class&#x3D;&quot;form-control&quot; name&#x3D;&quot;password&quot; id&#x3D;&quot;password&quot; formControlName&#x3D;&quot;password&quot;
+                       pattern&#x3D;&quot;.{6,}&quot; required&gt;
+                &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;Je wachtwoord moet minstens 6 tekens bevatten.&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-6&quot;&gt;
+                &lt;label for&#x3D;&quot;herhaalwachtwoord&quot;&gt;Herhaal wachtwoord&lt;/label&gt;
+                &lt;input type&#x3D;&quot;password&quot; class&#x3D;&quot;form-control&quot; name&#x3D;&quot;herhaalwachtwoord&quot; id&#x3D;&quot;herhaalwachtwoord&quot; pattern&#x3D;&quot;.{6,}&quot;
+                       required&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-lg-6&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                  &lt;label for&#x3D;&quot;rol&quot;&gt;Rol&lt;/label&gt;
+                  &lt;select name&#x3D;&quot;rol&quot; id&#x3D;&quot;rol&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;rol_id&quot; (change)&#x3D;&quot;changeRol()&quot; required&gt;
+                    &lt;option *ngFor&#x3D;&quot;let rol of rollen&quot; [value]&#x3D;&quot;rol.id&quot;&gt;{{rol.naam}}&lt;/option&gt;
+                  &lt;/select&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;input type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;
+          &lt;/form&gt;
+          &lt;div&gt;
+
+            &lt;button mat-button matStepperNext&gt;Next&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/mat-step&gt;
+        &lt;mat-step&gt;
+          &lt;ng-template matStepLabel&gt;Overzicht&lt;/ng-template&gt;
+
+          &lt;table class&#x3D;&quot;table&quot;&gt;
+            &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;th scope&#x3D;&quot;row&quot;&gt;Naam&lt;/th&gt;
+              &lt;td&gt;{{gebruikerForm.get(&#x27;name&#x27;).value}}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope&#x3D;&quot;row&quot;&gt;Voornaam&lt;/th&gt;
+              &lt;td&gt;{{gebruikerForm.get(&#x27;voornaam&#x27;).value}}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope&#x3D;&quot;row&quot;&gt;Roepnaam&lt;/th&gt;
+              &lt;td&gt;{{gebruikerForm.get(&#x27;roepnaam&#x27;).value}}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope&#x3D;&quot;row&quot;&gt;Email&lt;/th&gt;
+              &lt;td&gt;{{gebruikerForm.get(&#x27;email&#x27;).value}}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope&#x3D;&quot;row&quot;&gt;Telefoon&lt;/th&gt;
+              &lt;td&gt;{{gebruikerForm.get(&#x27;telefoon&#x27;).value}}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope&#x3D;&quot;row&quot;&gt;Geboortedatum&lt;/th&gt;
+              &lt;td&gt;{{gebruikerForm.get(&#x27;geboortedatum&#x27;).value}}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope&#x3D;&quot;row&quot;&gt;Rijsregisternummer&lt;/th&gt;
+              &lt;td&gt;{{gebruikerForm.get(&#x27;rijksregisternr&#x27;).value}}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope&#x3D;&quot;row&quot;&gt;Opmerking&lt;/th&gt;
+              &lt;td&gt;{{gebruikerForm.get(&#x27;opmerking&#x27;).value}}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope&#x3D;&quot;row&quot;&gt;Rol&lt;/th&gt;
+              &lt;td&gt;{{gebruikerForm.get(&#x27;rol_id&#x27;).value}}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+          &lt;div&gt;
+            &lt;button mat-button matStepperPrevious&gt;Back&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/mat-step&gt;
+      &lt;/mat-horizontal-stepper&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./create-gebruiker.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container">  <div class="card">    <div class="card-header">      <h4>Voeg een gebruiker toe</h4>    </div>    <div class="card-body">      <mat-horizontal-stepper #stepper>        <mat-step>          <ng-template matStepLabel>Gebruiker</ng-template>          <form [formGroup]="gebruikerForm" (ngSubmit)="submitForm()" class="mt-5 was-validated" novalidate>            <div class="row">              <div class="col-lg-4">                <div class="form-group">                  <label for="name">Naam</label>                  <input class="form-control" type="text" id="name" name="name" formControlName="name" required>                </div>              </div>              <div class="col-lg-4">                <div class="form-group">                  <label for="roepnaam">Roepnaam</label>                  <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam">                </div>              </div>              <div class="col-lg-4">                <div class="form-group">                  <label for="voornaam">Voornaam</label>                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" required>                </div>              </div>              <div class="col-lg-6">                <div class="form-group">                  <label for="email">Email</label>                  <input class="form-control" type="text" id="email" name="email" formControlName="email">                </div>              </div>              <div class="col-lg-3">                <div class="form-group">                  <label for="telefoon">Telefoon</label>                  <input class="form-control" type="telefoon" id="telefoon" name="telefoon" formControlName="telefoon">                </div>              </div>              <div class="col-lg-3">                <div class="form-group">                  <label for="geboortedatum">Geboortedatum</label>                  <input class="form-control" type="date" id="geboortedatum" name="geboortedatum"                         formControlName="geboortedatum">                </div>              </div>              <div class="col-lg-6">                <div class="form-group">                  <label for="rijksregisternr">Rijksregister</label>                  <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"                         formControlName="rijksregisternr" pattern="[0-9]{11}">                  <div class="invalid-feedback">Gelieve de 11 cijfers van je rijksregisternummer in te vullen.</div>                </div>              </div>              <div class="col-lg-6">                <div class="form-group">                  <label for="opmerking">Opmerking</label>                  <textarea class="form-control" type="text" id="opmerking" name="opmerking"                            formControlName="opmerking"></textarea>                </div>              </div>              <div class="col-lg-3">                <div class="form-group">                  <label for="geslacht">Geslacht</label>                  <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht" [ngModelOptions]="{standalone: true}">                    <option value="Man">Man</option>                    <option value="Vrouw">Vrouw</option>                  </select>                </div>              </div>              <div class="col-lg-3">                <div class="form-group">                  <label for="tshirt">Tshirt - Maat</label>                  <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"                          [ngModelOptions]="{standalone: true}">                    <option *ngFor="let tshirt of tshirts" [value]="tshirt.id">{{tshirt.maat}}                      - {{tshirt.geslacht}}</option>                  </select>                </div>              </div>              <div class="col-lg-3">                <div class="form-group paddingcheck text-center">                  <div class="pretty p-default p-switch" (click)="changeTshirt()">                    <input type="checkbox"/>                    <div class="state p-primary">                      <label>Extra shirt</label>                    </div>                  </div>                </div>              </div>              <div class="col-lg-3">                <div class="form-group paddingcheck text-center">                  <div class="pretty p-default p-switch" (click)="changeLunch()">                    <input type="checkbox"/>                    <div class="state p-primary">                      <label>Lunchpakket</label>                    </div>                  </div>                </div>              </div>              <div class="col-lg-6">                <label for="password">Wachtwoord</label>                <input type="password" class="form-control" name="password" id="password" formControlName="password"                       pattern=".{6,}" required>                <div class="invalid-feedback">Je wachtwoord moet minstens 6 tekens bevatten.</div>              </div>              <div class="col-lg-6">                <label for="herhaalwachtwoord">Herhaal wachtwoord</label>                <input type="password" class="form-control" name="herhaalwachtwoord" id="herhaalwachtwoord" pattern=".{6,}"                       required>              </div>              <div class="col-lg-6">                <div class="form-group">                  <label for="rol">Rol</label>                  <select name="rol" id="rol" class="form-control" formControlName="rol_id" (change)="changeRol()" required>                    <option *ngFor="let rol of rollen" [value]="rol.id">{{rol.naam}}</option>                  </select>                </div>              </div>            </div>            <input type="submit" class="btn btn-primary">          </form>          <div>            <button mat-button matStepperNext>Next</button>          </div>        </mat-step>        <mat-step>          <ng-template matStepLabel>Overzicht</ng-template>          <table class="table">            <tbody>            <tr>              <th scope="row">Naam</th>              <td>{{gebruikerForm.get(\'name\').value}}</td>            </tr>            <tr>              <th scope="row">Voornaam</th>              <td>{{gebruikerForm.get(\'voornaam\').value}}</td>            </tr>            <tr>              <th scope="row">Roepnaam</th>              <td>{{gebruikerForm.get(\'roepnaam\').value}}</td>            </tr>            <tr>              <th scope="row">Email</th>              <td>{{gebruikerForm.get(\'email\').value}}</td>            </tr>            <tr>              <th scope="row">Telefoon</th>              <td>{{gebruikerForm.get(\'telefoon\').value}}</td>            </tr>            <tr>              <th scope="row">Geboortedatum</th>              <td>{{gebruikerForm.get(\'geboortedatum\').value}}</td>            </tr>            <tr>              <th scope="row">Rijsregisternummer</th>              <td>{{gebruikerForm.get(\'rijksregisternr\').value}}</td>            </tr>            <tr>              <th scope="row">Opmerking</th>              <td>{{gebruikerForm.get(\'opmerking\').value}}</td>            </tr>            <tr>              <th scope="row">Rol</th>              <td>{{gebruikerForm.get(\'rol_id\').value}}</td>            </tr>            </tbody>          </table>          <div>            <button mat-button matStepperPrevious>Back</button>          </div>        </mat-step>      </mat-horizontal-stepper>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminHomeComponent', 'selector': 'app-admin-home'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateGebruikerComponent', 'selector': 'app-create-gebruiker'},{'name': 'CreateLidComponent', 'selector': 'app-create-lid'},{'name': 'CreateVerenigingAdminComponent', 'selector': 'app-create-vereniging-admin'},{'name': 'CreateVerenigingComponent', 'selector': 'app-create-vereniging'},{'name': 'DetailGebruikerComponent', 'selector': 'app-detail-gebruiker'},{'name': 'DetailVerenigingComponent', 'selector': 'app-detail-vereniging'},{'name': 'EditGebruikerComponent', 'selector': 'app-edit-gebruiker'},{'name': 'EditVerenigingAdminComponent', 'selector': 'app-edit-vereniging-admin'},{'name': 'EditVerenigingComponent', 'selector': 'app-edit-vereniging'},{'name': 'KeuzemenuComponent', 'selector': 'app-keuzemenu'},{'name': 'LedenComponent', 'selector': 'app-leden'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ManageEvenementenComponent', 'selector': 'app-manage-evenementen'},{'name': 'ManageGebruikersComponent', 'selector': 'app-manage-gebruikers'},{'name': 'ManageVerenigingenComponent', 'selector': 'app-manage-verenigingen'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CreateGebruikerComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CreateGebruikerComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

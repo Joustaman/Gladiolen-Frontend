@@ -69,14 +69,18 @@ export class CreateLidComponent implements OnInit {
       },
     );
   }
-
+    /**
+     * Verandert de lunch-waarde van de gebruiker 0 naar 1 en omgekeerd.
+     */
   changeLunch() {
     let value = this.lidForm.get('lunchpakket').value;
     this.lidForm.patchValue({
       lunchpakket: !value
     });
   }
-
+    /**
+     * Creëert een nieuwe vrijwilliger en voert de functie createTshirt uit.
+     */
   createLid() {
     this.verenigingService.addLid(this.lidForm.value).subscribe(
       result => {
@@ -88,6 +92,10 @@ export class CreateLidComponent implements OnInit {
       }
     );
   }
+    /**
+     * @param {int} gebruikerId  Het ID van de gebruiker voor wie het Tshirt-object wordt aangemaakt.
+     * Creëert een nieuw Tshirt-object
+     */
   createTshirt(gebruikerId) {
     let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null};
 
@@ -99,6 +107,9 @@ export class CreateLidComponent implements OnInit {
     );
   }
 
+    /**
+     * Updatet de informatie van een lid en voert de functie updateTshirt uit.
+     */
   updateLid() {
     this.verenigingService.updateLid(this.lid.id, this.lidForm.value).subscribe(
       result => {
@@ -111,6 +122,9 @@ export class CreateLidComponent implements OnInit {
     );
   }
 
+    /**
+     * Updatet het Tshirt-object van de geselecteerde gebruiker.
+     */
   updateTshirt() {
     let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: this.lid.id, tshirttype_id: null};
     console.log(tshirt);
@@ -122,7 +136,9 @@ export class CreateLidComponent implements OnInit {
       }
     );
   }
-
+    /**
+     * Vult het update-formulier op met de huidige informatie van de geselecteerde gebruiker.
+     */
   fillForm() {
     this.lidForm.patchValue({
       name: this.lid.name,

@@ -52,7 +52,9 @@ export class CreateVerenigingComponent implements OnInit {
       },
     );
   }
-
+    /**
+     * Verandert de lunch-waarde van de verantwoordelijke van 0 naar 1 en omgekeerd.
+     */
   changeLunch() {
     let value = this.verantwoordelijkeForm.get('lunchpakket').value;
     this.verantwoordelijkeForm.patchValue({
@@ -60,6 +62,9 @@ export class CreateVerenigingComponent implements OnInit {
     });
   }
 
+    /**
+     * Creëert een nieuwe verantwoordelijke en voert de functie createTshirt uit.
+     */
   createVerantwoordelijke() {
     this.verenigingService.registreerVerantwoordelijke(this.verantwoordelijkeForm.value).subscribe(
       result => {
@@ -73,7 +78,10 @@ export class CreateVerenigingComponent implements OnInit {
       }
     );
   }
-
+    /**
+     * @param {int} gebruikerId  Het ID van de verantwoordelijke voor wie het Tshirt-object wordt aangemaakt.
+     * Creëert een nieuw Tshirt-object
+     */
   createTshirt(gebruikerId) {
     let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null};
 
@@ -84,6 +92,9 @@ export class CreateVerenigingComponent implements OnInit {
       }
     );
   }
+    /**
+     * Creëert een nieuwe vereniging.
+     */
   createVereniging() {
     this.verenigingService.registreerVereniging(this.verenigingForm.value).subscribe(
       result => {

@@ -19,7 +19,7 @@
             <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link" [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active">Gebruikers</li>
             <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link" [routerLink]="['/manageEvenementen']" routerLinkActive="router-link-active">Evenementen</li>
             <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link" [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active">Verenigingen</li>
-            <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link" [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active">Tijdsregistraties'</li>
+            <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link" [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active">Tijdsregistraties</li>
             <li *ngIf="checkIfLoggedIn()" (click)="logOut()" class="link">Uitloggen</li>
           </ul>
         </div>

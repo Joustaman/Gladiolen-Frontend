@@ -9,7 +9,7 @@ body {
     border-radius: 7px;
 }
 .table-title {
-    background: #435d7d;
+    background: #0c225d;
     color: #fff;
     padding: 16px 30px;
     margin: -20px -25px 10px;
@@ -80,16 +80,20 @@ table.table td a {
     outline: none !important;
 }
 table.table td a:hover {
-    color: #2196F3;
+    color: #217fff;
+}
+
+a.toevoegen {
+    background-color: #329B72;
 }
 table.table td a.detail {
-    color: #2196f3;
+    color: #217fff;
 }
 table.table td a.edit {
-    color: #FFC107;
+    color: #ffa821;
 }
 table.table td a.delete {
-    color: #F44336;
+    color: #ff2121;
 }
 table.table td i {
     font-size: 19px;
@@ -97,4 +101,8 @@ table.table td i {
 
 pagination-controls {
     text-align: center;
+}
+
+li.current {
+    background: #0c225d !important;
 }

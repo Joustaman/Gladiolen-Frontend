@@ -61,6 +61,21 @@ export class ManageTijdsregistratiesComponent implements OnInit {
       }
     );
   }
+  createTijdsregistratie(){
+      console.log(this.tijdsregistratieForm.value);
+      this.adminService.createTijdsregistraties(this.tijdsregistratieForm.value).subscribe(
+          result=> {
+              this.toastr.success('Succesvol toegevoegd');
+              console.log(result);
+
+          },
+          error => {
+              this.toastr.error('Vul het formulier correct in');
+              console.log(error);
+          }
+      );
+  }
+
 
   onClickEditTijdsregistratie(tijdsregistratie: any) {
     this.tijdsregistratieForm.patchValue({
@@ -112,4 +127,23 @@ export class ManageTijdsregistratiesComponent implements OnInit {
       this.pageLoaded = true;
     });
   }
+    changeGebruiker() {
+        let value = this.tijdsregistratieForm.get('gebruiker_id').value;
+        console.log(this.gebruiker.id)
+        this.tijdsregistratieForm.patchValue({
+            gebruiker_id: !value
+    });
+    }
+    changeVereniging() {
+        let value = this.tijdsregistratieForm.get('vereniging_id').value;
+        this.tijdsregistratieForm.patchValue({
+            vereniging_id: !value
+        });
+    }
+    changeEvenement() {
+        let value = this.tijdsregistratieForm.get('evenement_id').value;
+        this.tijdsregistratieForm.patchValue({
+            evenement_id: !value
+        });
+    }
 }

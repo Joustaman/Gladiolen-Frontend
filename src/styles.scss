@@ -2,7 +2,7 @@
 @import "./../node_modules/bootstrap/scss/bootstrap";
 //@import "./../node_modules/shards-ui/src/scss/shards.scss";
 @import '../node_modules/ngx-toastr/toastr';
-
+@import '../node_modules/handsontable/dist/handsontable.full.css';
 body {
   margin: 0;
   font-family: 'Varela Round', sans-serif;
@@ -52,3 +52,16 @@ h4 {
 a {
   cursor: pointer;
 }
+
+.handsontable {
+  z-index: 0;
+  th {
+    background-color: white;
+    color: #0c225d;
+  }
+  tr td a {
+    z-index: 50;
+  }
+}
+
+

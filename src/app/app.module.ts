@@ -18,7 +18,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {DetailVerenigingComponent} from './vereniging/detail-vereniging/detail-vereniging.component';
 import { TokenInterceptor } from './auth/token.interceptor';
 import {NgxPaginationModule} from 'ngx-pagination';
-
+import { HotTableModule } from '@handsontable/angular';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ReactiveFormsModule,
     NgxPaginationModule,
     ToastrModule.forRoot(),
+    HotTableModule.forRoot(),
   ],
   providers: [
     {

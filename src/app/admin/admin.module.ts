@@ -13,9 +13,10 @@ import {CreateVerenigingAdminComponent} from './create-vereniging-admin/create-v
 import { EditVerenigingAdminComponent } from './edit-vereniging-admin/edit-vereniging-admin.component';
 import { EditGebruikerComponent } from './edit-gebruiker/edit-gebruiker.component';
 import { ManageTijdsregistratiesComponent } from './manage-tijdsregistraties/manage-tijdsregistraties.component';
+import { AanvraagVerenigingComponent } from './aanvraag-vereniging/aanvraag-vereniging.component';
 
 @NgModule({
-  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent, ManageTijdsregistratiesComponent],
+  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent, ManageTijdsregistratiesComponent, AanvraagVerenigingComponent],
 
   imports: [
     CommonModule,

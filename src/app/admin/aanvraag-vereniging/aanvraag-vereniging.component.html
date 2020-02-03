@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="card table-wrapper shadow-lg">
+    <div class="card-header table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2><b>Aangevraagde verenigingen</b></h2>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Naam</th>
+            <th scope="col">Hoofdverantwoordelijke</th>
+            <th scope="col">Adres</th>
+            <th scope="col">Rekeningnummer</th>
+            <th scope="col">Accepteren</th>
+            <th scope="col">Weigeren</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ver of verenigingen">
+            <td>{{ ver.naam }}</td>
+            <td>
+              {{ ver.hoofd.voornaam }}
+              {{ ver.hoofd.name }}
+            </td>
+            <td>{{ ver.straat }} {{ ver.huisnummer }} {{ ver.gemeente }}</td>
+            <td>{{ ver.rekeningnr }}</td>
+            <td>
+              <a style="color: green;" (click)="accept(ver.id)">
+                <i
+                  class="material-icons green"
+                  data-toggle="tooltip"
+                  title="Accepteren"
+                >
+                  done
+                </i>
+              </a>
+              
+            </td>
+            <td>
+              <a style="color: red;" (click)="deny(ver.id)">
+                <i
+                  class="material-icons red"
+                  data-toggle="tooltip"
+                  title="Weigeren"
+                >
+                  clear
+                </i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

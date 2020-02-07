@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -111,13 +111,28 @@ export class AdminService {
   updateTijdsregistratie(id, tijdsregistratie): any {
     return this.http.put(this.$link + 'api/tijdsregistratie/' + id, tijdsregistratie);
   }
-  getVerenigingenInAanvraag():Observable<any[]>{ 
-      return this.http.get<any[]>(this.$link+"api/vereniging/inAanvraag");
+
+  getVerenigingenInAanvraag(): Observable<any[]> {
+    return this.http.get<any[]>(this.$link + 'api/vereniging/inAanvraag');
   }
-  acceptVereningInAanvraag(id:number):any{
-    return this.http.get(this.$link + "api/vereniging/accept/"+id)
+
+  acceptVereningInAanvraag(id: number): any {
+    return this.http.get(this.$link + 'api/vereniging/accept/' + id);
   }
-  denyVereningInAanvraag(id:number):any{
-    return this.http.delete(this.$link+"api/vereniging/deny/"+id);
+
+  denyVereningInAanvraag(id: number): any {
+    return this.http.delete(this.$link + 'api/vereniging/deny/' + id);
+  }
+
+  getTaken(): any {
+    return this.http.get(this.$link + 'api/taak');
+  }
+
+  createTaak(taak): any {
+    return this.http.post(this.$link + 'api/taak', taak);
+  }
+
+  updateTaak(id, taak): any {
+    return this.http.put(this.$link + 'api/taak/' + id, taak);
   }
 }

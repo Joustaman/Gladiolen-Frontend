@@ -18,6 +18,11 @@
   cursor: pointer;
 }
 
+.taken {
+  background-image: url("src/assets/images/taken.jpg");
+  cursor: pointer;
+}
+
 // - Pop -
 .pop:before {
   $overlay-color: hsla(128, 100%, 50%, 0.3);

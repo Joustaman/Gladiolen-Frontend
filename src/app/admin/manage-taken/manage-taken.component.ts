@@ -73,6 +73,7 @@ export class ManageTakenComponent implements OnInit {
     this.adminService.getTaken().subscribe(
       result => {
         this.taken = result;
+        console.log(this.taken);
         this.pageLoaded = true;
       }
     );

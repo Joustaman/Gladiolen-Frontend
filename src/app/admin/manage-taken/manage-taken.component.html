@@ -15,17 +15,17 @@
       <table class="table table-striped table-hover">
         <thead>
         <tr>
-          <th scope="col">subtaak_id</th>
-          <th scope="col">taakgroep_id</th>
-          <th scope="col">startDatum</th>
-          <th scope="col">eindDatum</th>
-          <th scope="col">aantalPersonen</th>
+          <th scope="col">Subtaak</th>
+          <th scope="col">Taakgroep</th>
+          <th scope="col">Start datum</th>
+          <th scope="col">Eind datum</th>
+          <th scope="col">Aantal personen</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let taak of taken">
-          <td>{{taak.subtaak_id}}</td>
-          <td>{{taak.taakgroep_id}}</td>
+          <td>{{taak.subtaak.naam}}</td>
+          <td>{{taak.taakgroep.naam}}</td>
           <td>{{taak.startDatum | date:'MM/dd/yyyy'}}</td>
           <td>{{taak.eindDatum | date:'MM/dd/yyyy'}}</td>
           <td>{{taak.aantalPersonen}}</td>

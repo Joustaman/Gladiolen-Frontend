@@ -24,8 +24,8 @@
         <tbody>
         <tr *ngFor="let evenement of evenementen">
           <td>{{evenement.naam}}</td>
-          <td>{{evenement.startdatum | date:'MM/dd/yyyy'}}</td>
-          <td>{{evenement.einddatum | date:'MM/dd/yyyy'}}</td>
+          <td>{{evenement.startdatum | date:'dd/MM/yyyy'}}</td>
+          <td>{{evenement.einddatum | date:'dd/MM/yyyy'}}</td>
           <td>
             <div *ngIf="evenement.actief == 0">Niet Actief</div>
             <div *ngIf="evenement.actief == 1">Actief</div>

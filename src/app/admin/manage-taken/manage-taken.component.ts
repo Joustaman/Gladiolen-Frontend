@@ -3,11 +3,13 @@ import {AdminService} from '../admin.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-manage-taken',
   templateUrl: './manage-taken.component.html',
-  styleUrls: ['./manage-taken.component.scss']
+  styleUrls: ['./manage-taken.component.scss'],
+  providers: [DatePipe]
 })
 export class ManageTakenComponent implements OnInit {
 
@@ -15,7 +17,7 @@ export class ManageTakenComponent implements OnInit {
   taak: any = {};
   pageLoaded = false;
 
-  constructor(private adminService: AdminService,
+  constructor(private adminService: AdminService, private readonly datepipe: DatePipe,
               private toastr: ToastrService, private readonly router: Router) {
   }
 
@@ -47,8 +49,8 @@ export class ManageTakenComponent implements OnInit {
     this.taakForm.patchValue({
         subtaak_id: taak.subtaak_id,
         taakgroep_id: taak.taakgroep_id,
-        startDatum: taak.startDatum,
-        eindDatum: taak.eindDatum,
+        startDatum: this.datepipe.transform(taak.startDatum, 'yyyy-MM-dd'),
+        eindDatum: this.datepipe.transform(taak.eindDatum, 'yyyy-MM-dd'),
         aantalPersonen: taak.aantalPersonen
       }
     );
@@ -71,7 +73,6 @@ export class ManageTakenComponent implements OnInit {
     this.adminService.getTaken().subscribe(
       result => {
         this.taken = result;
-        console.log(this.taken);
         this.pageLoaded = true;
       }
     );

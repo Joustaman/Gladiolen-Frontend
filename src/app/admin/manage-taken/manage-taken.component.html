@@ -53,14 +53,18 @@
       <form [formGroup]="taakForm" class="was-validated" novalidate>
         <div class="modal-body">
           <div class="form-group">
-            <label for="subtaak_id" class="col-form-label">Subtaak:</label>
-            <input type="text" class="form-control" id="subtaak_id"
-                   formControlName="subtaak_id" required>
+            <label for="subtaak" class="col-form-label">Subtaak:</label>
+            <select name="subtaak" id="subtaak" class="form-control" formControlName="subtaak_id"
+                    [value]="taakForm.get('subtaak_id').value" required>
+              <option *ngFor="let subtaak of subtaken" [value]="subtaak.id">{{subtaak.naam}}</option>
+            </select>
           </div>
           <div class="form-group">
-            <label for="taakgroep_id" class="col-form-label">Taakgroep:</label>
-            <input type="text" class="form-control" id="taakgroep_id"
-                   formControlName="taakgroep_id" required>
+            <label for="taakgroep" class="col-form-label">Taakgroep:</label>
+            <select name="taakgroep" id="taakgroep" class="form-control" formControlName="taakgroep_id"
+                    [value]="taakForm.get('taakgroep_id').value" required>
+              <option *ngFor="let taakgroep of taakgroepen" [value]="taakgroep.id">{{taakgroep.naam}}</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="startDatum" class="col-form-label">Start datum:</label>
@@ -101,14 +105,18 @@
       <form [formGroup]="taakForm" class="was-validated" novalidate>
         <div class="modal-body">
           <div class="form-group">
-            <label for="subtaak_id" class="col-form-label">Subtaak:</label>
-            <input type="text" class="form-control" id="subtaak_id"
-                   formControlName="subtaak_id" required>
+            <label for="subtaak" class="col-form-label">Subtaak:</label>
+            <select name="subtaak" id="subtaak" class="form-control" formControlName="subtaak_id"
+                    [value]="taakForm.get('subtaak_id').value" required>
+              <option *ngFor="let subtaak of subtaken" [value]="subtaak.id">{{subtaak.naam}}</option>
+            </select>
           </div>
           <div class="form-group">
-            <label for="taakgroep_id" class="col-form-label">Taakgroep:</label>
-            <input type="text" class="form-control" id="taakgroep_id"
-                   formControlName="taakgroep_id" required>
+            <label for="taakgroep" class="col-form-label">Taakgroep:</label>
+            <select name="taakgroep" id="taakgroep" class="form-control" formControlName="taakgroep_id"
+                    [value]="taakForm.get('taakgroep_id').value" required>
+              <option *ngFor="let taakgroep of taakgroepen" [value]="taakgroep.id">{{taakgroep.naam}}</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="startDatum" class="col-form-label">Start datum:</label>

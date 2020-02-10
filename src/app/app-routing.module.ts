@@ -21,6 +21,8 @@ import {ManageTijdsregistratiesComponent} from './admin/manage-tijdsregistraties
 import {AanvraagVerenigingComponent} from './admin/aanvraag-vereniging/aanvraag-vereniging.component';
 import {AanvragenResolverService} from './admin/aanvraag-vereniging/aanvragen-resolver.service';
 import {ManageTakenComponent} from './admin/manage-taken/manage-taken.component';
+import { TabletStatusBekijkenComponent } from './admin/tablet-status-bekijken/tablet-status-bekijken.component';
+import { TabletResolverService } from './admin/tablet-status-bekijken/tablet-resolver.service';
 
 const routes: Routes = [
   {
@@ -125,6 +127,12 @@ const routes: Routes = [
     component: AanvraagVerenigingComponent,
     canActivate: [AuthGuardService],
     resolve: {verenigingen: AanvragenResolverService}
+  },{
+    path: 'tabletStatus',
+    component: TabletStatusBekijkenComponent,
+    canActivate:[AuthGuardService],
+    resolve:{tablets:TabletResolverService}
+
   }
 ];
 

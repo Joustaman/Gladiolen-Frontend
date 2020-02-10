@@ -135,4 +135,8 @@ export class AdminService {
   updateTaak(id, taak): any {
     return this.http.put(this.$link + 'api/taak/' + id, taak);
   }
+
+  getTabletStatus():any{
+    return this.http.get(this.$link + 'api/tablet')
+  }
 }

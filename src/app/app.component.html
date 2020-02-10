@@ -1,57 +1,156 @@
 <nav class="navbar bg-light">
   <div class="navbar-header d-flex col">
-    <a class="navbar-brand" href="#"><img src="../assets/images/keizerkarel.png"><b>Keizer Karel Olen</b></a>
+    <a class="navbar-brand" href="#"
+      ><img src="../assets/images/keizerkarel.png" /><b>Keizer Karel Olen</b></a
+    >
     <div class="menu-wrap">
-      <input type="checkbox" class="toggler" [checked]="openMenu" (click)="menuClick()">
-      <div class="hamburger" matBadge="{{notificationsMenu}}" matBadgePosition="below before" matBadgeColor="warn"
-           matBadgeSize="medium">
+      <input
+        type="checkbox"
+        class="toggler"
+        [checked]="openMenu"
+        (click)="menuClick()"
+      />
+      <div
+        class="hamburger"
+        matBadge="{{ notificationsMenu }}"
+        matBadgePosition="below before"
+        matBadgeColor="warn"
+        matBadgeSize="medium"
+      >
         <div></div>
       </div>
       <div class="menu">
         <div>
           <div>
             <ul>
-              <li *ngIf="!checkIfLoggedIn()" (click)="menuClick()" [routerLink]="['/login']"
-                  routerLinkActive="router-link-active" class="link">Inloggen
+              <li
+                *ngIf="!checkIfLoggedIn()"
+                (click)="menuClick()"
+                [routerLink]="['/login']"
+                routerLinkActive="router-link-active"
+                class="link"
+              >
+                Inloggen
               </li>
-              <li *ngIf="!checkIfLoggedIn()" (click)="menuClick()" [routerLink]="['/createvereniging']"
-                  routerLinkActive="router-link-active" class="link">Vraag vereniging aan
+              <li
+                *ngIf="!checkIfLoggedIn()"
+                (click)="menuClick()"
+                [routerLink]="['/createvereniging']"
+                routerLinkActive="router-link-active"
+                class="link"
+              >
+                Vraag vereniging aan
               </li>
-              <li *ngIf="checkIfLoggedIn() && getRol() === '3'" (click)="menuClick()" class="link"
-                  [routerLink]="['/keuzemenu']" routerLinkActive="router-link-active">Home
+              <li
+                *ngIf="checkIfLoggedIn() && getRol() === '3'"
+                (click)="menuClick()"
+                class="link"
+                [routerLink]="['/keuzemenu']"
+                routerLinkActive="router-link-active"
+              >
+                Home
               </li>
-              <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link"
-                  [routerLink]="['/adminHome']" routerLinkActive="router-link-active">Home
+              <li
+                *ngIf="checkIfLoggedIn() && getRol() === '1'"
+                (click)="menuClick()"
+                class="link"
+                [routerLink]="['/adminHome']"
+                routerLinkActive="router-link-active"
+              >
+                Home
               </li>
-              <li *ngIf="checkIfLoggedIn() && getRol() === '3'" (click)="menuClick()" class="link"
-                  [routerLink]="['/vereniging/editvereniging']" routerLinkActive="router-link-active">Vereniging
+              <li
+                *ngIf="checkIfLoggedIn() && getRol() === '3'"
+                (click)="menuClick()"
+                class="link"
+                [routerLink]="['/vereniging/editvereniging']"
+                routerLinkActive="router-link-active"
+              >
+                Vereniging
               </li>
-              <li *ngIf="checkIfLoggedIn() && getRol() === '3'" (click)="menuClick()" class="link"
-                  [routerLink]="['/leden']" routerLinkActive="router-link-active">Leden
+              <li
+                *ngIf="checkIfLoggedIn() && getRol() === '3'"
+                (click)="menuClick()"
+                class="link"
+                [routerLink]="['/leden']"
+                routerLinkActive="router-link-active"
+              >
+                Leden
               </li>
-              <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link"
-                  [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active">Gebruikers
+              <li
+                *ngIf="checkIfLoggedIn() && getRol() === '1'"
+                (click)="menuClick()"
+                class="link"
+                [routerLink]="['/manageGebruikers']"
+                routerLinkActive="router-link-active"
+              >
+                Gebruikers
               </li>
-              <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link"
-                  [routerLink]="['/manageEvenementen']" routerLinkActive="router-link-active">Evenementen
+              <li
+                *ngIf="checkIfLoggedIn() && getRol() === '1'"
+                (click)="menuClick()"
+                class="link"
+                [routerLink]="['/manageEvenementen']"
+                routerLinkActive="router-link-active"
+              >
+                Evenementen
               </li>
-              <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link"
-                  [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active">Verenigingen
+              <li
+                *ngIf="checkIfLoggedIn() && getRol() === '1'"
+                (click)="menuClick()"
+                class="link"
+                [routerLink]="['/manageVerenigingen']"
+                routerLinkActive="router-link-active"
+              >
+                Verenigingen
               </li>
-              <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link"
-                  [routerLink]="['/manageTaken']" routerLinkActive="router-link-active">Taken
+              <li
+                *ngIf="checkIfLoggedIn() && getRol() === '1'"
+                (click)="menuClick()"
+                class="link"
+                [routerLink]="['/manageTaken']"
+                routerLinkActive="router-link-active"
+              >
+                Taken
               </li>
-              <li *ngIf="checkIfLoggedIn() && getRol() === '1' && notifications!==''" (click)="menuClick()" class="link"
-                  [routerLink]="['/aanvragenVerenigingen']" routerLinkActive="router-link-active">
-                <span matBadge="{{notifications}}" matBadgeOverlap="false" matBadgeColor="warn" matBadgeSize="medium">Aangevraagde verenigingen</span>
+              <li
+                *ngIf="
+                  checkIfLoggedIn() && getRol() === '1' && notifications !== ''
+                "
+                (click)="menuClick()"
+                class="link"
+                [routerLink]="['/aanvragenVerenigingen']"
+                routerLinkActive="router-link-active"
+              >
+                <span
+                  matBadge="{{ notifications }}"
+                  matBadgeOverlap="false"
+                  matBadgeColor="warn"
+                  matBadgeSize="medium"
+                  >Aangevraagde verenigingen</span
+                >
               </li>
-              <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link"
-                  [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active">Tijdsregistraties
+              <li
+                *ngIf="checkIfLoggedIn() && getRol() === '1'"
+                (click)="menuClick()"
+                class="link"
+                [routerLink]="['/manageTijdsregistraties']"
+                routerLinkActive="router-link-active"
+              >
+                Tijdsregistraties
               </li>
-              <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link"
-                  [routerLink]="['/tabletStatus']" routerLinkActive="router-link-active">Tablet status
+              <li
+                *ngIf="checkIfLoggedIn() && getRol() === '1'"
+                (click)="menuClick()"
+                class="link"
+                [routerLink]="['/tabletStatus']"
+                routerLinkActive="router-link-active"
+              >
+                Tablet status
               </li>
-              <li *ngIf="checkIfLoggedIn()" (click)="logOut()" class="link">Uitloggen</li>
+              <li *ngIf="checkIfLoggedIn()" (click)="logOut()" class="link">
+                Uitloggen
+              </li>
             </ul>
           </div>
         </div>
@@ -62,4 +161,3 @@
 <app-spinner *ngIf="loading"></app-spinner>
 
 <router-outlet></router-outlet>
-

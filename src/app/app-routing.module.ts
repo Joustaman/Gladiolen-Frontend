@@ -1,138 +1,142 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {CreateVerenigingComponent} from './vereniging/create-vereniging/create-vereniging.component';
-import {ManageGebruikersComponent} from './admin/manage-gebruikers/manage-gebruikers.component';
-import {DetailGebruikerComponent} from './admin/detail-gebruiker/detail-gebruiker.component';
-import {CreateGebruikerComponent} from './admin/create-gebruiker/create-gebruiker.component';
-import {AdminHomeComponent} from './admin/admin-home/admin-home.component';
-import {ManageEvenementenComponent} from './admin/manage-evenementen/manage-evenementen.component';
-import {LedenComponent} from './vereniging/leden/leden.component';
-import {CreateLidComponent} from './vereniging/create-lid/create-lid.component';
-import {SpinnerComponent} from './spinner/spinner.component';
-import {KeuzemenuComponent} from './vereniging/keuzemenu/keuzemenu.component';
-import {ManageVerenigingenComponent} from './admin/manage-verenigingen/manage-verenigingen.component';
-import {EditVerenigingComponent} from './vereniging/edit-vereniging/edit-vereniging.component';
-import {CreateVerenigingAdminComponent} from './admin/create-vereniging-admin/create-vereniging-admin.component';
-import {LoginComponent} from './login/login.component';
-import {EditVerenigingAdminComponent} from './admin/edit-vereniging-admin/edit-vereniging-admin.component';
-import {EditGebruikerComponent} from './admin/edit-gebruiker/edit-gebruiker.component';
-import {AuthGuardService} from './auth/auth-guard.service';
-import {ManageTijdsregistratiesComponent} from './admin/manage-tijdsregistraties/manage-tijdsregistraties.component';
-import {AanvraagVerenigingComponent} from './admin/aanvraag-vereniging/aanvraag-vereniging.component';
-import {AanvragenResolverService} from './admin/aanvraag-vereniging/aanvragen-resolver.service';
-import {ManageTakenComponent} from './admin/manage-taken/manage-taken.component';
-import { TabletStatusBekijkenComponent } from './admin/tablet-status-bekijken/tablet-status-bekijken.component';
-import { TabletResolverService } from './admin/tablet-status-bekijken/tablet-resolver.service';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { CreateVerenigingComponent } from "./vereniging/create-vereniging/create-vereniging.component";
+import { ManageGebruikersComponent } from "./admin/manage-gebruikers/manage-gebruikers.component";
+import { DetailGebruikerComponent } from "./admin/detail-gebruiker/detail-gebruiker.component";
+import { CreateGebruikerComponent } from "./admin/create-gebruiker/create-gebruiker.component";
+import { AdminHomeComponent } from "./admin/admin-home/admin-home.component";
+import { ManageEvenementenComponent } from "./admin/manage-evenementen/manage-evenementen.component";
+import { LedenComponent } from "./vereniging/leden/leden.component";
+import { CreateLidComponent } from "./vereniging/create-lid/create-lid.component";
+import { SpinnerComponent } from "./spinner/spinner.component";
+import { KeuzemenuComponent } from "./vereniging/keuzemenu/keuzemenu.component";
+import { ManageVerenigingenComponent } from "./admin/manage-verenigingen/manage-verenigingen.component";
+import { EditVerenigingComponent } from "./vereniging/edit-vereniging/edit-vereniging.component";
+import { CreateVerenigingAdminComponent } from "./admin/create-vereniging-admin/create-vereniging-admin.component";
+import { LoginComponent } from "./login/login.component";
+import { EditVerenigingAdminComponent } from "./admin/edit-vereniging-admin/edit-vereniging-admin.component";
+import { EditGebruikerComponent } from "./admin/edit-gebruiker/edit-gebruiker.component";
+import { AuthGuardService } from "./auth/auth-guard.service";
+import { ManageTijdsregistratiesComponent } from "./admin/manage-tijdsregistraties/manage-tijdsregistraties.component";
+import { AanvraagVerenigingComponent } from "./admin/aanvraag-vereniging/aanvraag-vereniging.component";
+import { AanvragenResolverService } from "./admin/aanvraag-vereniging/aanvragen-resolver.service";
+import { ManageTakenComponent } from "./admin/manage-taken/manage-taken.component";
+import { TabletStatusBekijkenComponent } from "./admin/tablet-status-bekijken/tablet-status-bekijken.component";
+import { TabletResolverService } from "./admin/tablet-status-bekijken/tablet-resolver.service";
+import { AdminGuardService } from "./auth/admin-guard.service";
+import { VerantwoordelijkeGuardService } from "./auth/verantwoordelijke-guard.service";
+import { HomeGuardService } from "./auth/home-guard.service";
+import { AppComponent } from "./app.component";
 
 const routes: Routes = [
   {
-    path: 'manageGebruikers',
+    path: "manageGebruikers",
     component: ManageGebruikersComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'createGebruiker',
+    path: "createGebruiker",
     component: CreateGebruikerComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [VerantwoordelijkeGuardService]
   },
   {
-    path: 'adminHome',
+    path: "adminHome",
     component: AdminHomeComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'manageEvenementen',
+    path: "manageEvenementen",
     component: ManageEvenementenComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'createEvenement',
+    path: "createEvenement",
     component: CreateVerenigingComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'detailGebruiker/:id',
+    path: "detailGebruiker/:id",
     component: DetailGebruikerComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'editGebruiker/:id',
+    path: "editGebruiker/:id",
     component: EditGebruikerComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'manageVerenigingen',
+    path: "manageVerenigingen",
     component: ManageVerenigingenComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'createVerenigingAdmin',
+    path: "createVerenigingAdmin",
     component: CreateVerenigingAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'editVerenigingAdmin/:id',
+    path: "editVerenigingAdmin/:id",
     component: EditVerenigingAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'manageTijdsregistraties',
+    path: "manageTijdsregistraties",
     component: ManageTijdsregistratiesComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'manageTaken',
+    path: "manageTaken",
     component: ManageTakenComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'createvereniging',
+    path: "createvereniging",
     component: CreateVerenigingComponent
   },
   {
-    path: 'leden',
+    path: "leden",
     component: LedenComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [VerantwoordelijkeGuardService]
   },
   {
-    path: 'maaklid',
+    path: "maaklid",
     component: CreateLidComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [VerantwoordelijkeGuardService]
   },
   {
-    path: 'editlid/:id',
+    path: "editlid/:id",
     component: CreateLidComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [VerantwoordelijkeGuardService]
   },
   {
-    path: 'spinner',
+    path: "spinner",
     component: SpinnerComponent
   },
   {
-    path: 'keuzemenu',
+    path: "keuzemenu",
     component: KeuzemenuComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [VerantwoordelijkeGuardService]
   },
   {
-    path: 'vereniging/editvereniging',
+    path: "vereniging/editvereniging",
     component: EditVerenigingComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [VerantwoordelijkeGuardService]
   },
   {
-    path: 'login',
+    path: "login",
     component: LoginComponent
   },
   {
-    path: 'aanvragenVerenigingen',
+    path: "aanvragenVerenigingen",
     component: AanvraagVerenigingComponent,
-    canActivate: [AuthGuardService],
-    resolve: {verenigingen: AanvragenResolverService}
-  },{
-    path: 'tabletStatus',
+    canActivate: [AdminGuardService],
+    resolve: { verenigingen: AanvragenResolverService }
+  },
+  {
+    path: "tabletStatus",
     component: TabletStatusBekijkenComponent,
-    canActivate:[AuthGuardService],
-    resolve:{tablets:TabletResolverService}
-
+    canActivate: [AdminGuardService],
+    resolve: { tablets: TabletResolverService }
   }
 ];
 
@@ -140,5 +144,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

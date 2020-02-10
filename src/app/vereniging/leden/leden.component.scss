@@ -103,6 +103,19 @@ pagination-controls {
     text-align: center;
 }
 
-li.current {
+.ngx-pagination {
+    padding-left: 0px !important;
+}
+
+pagination-controls,
+.btn-info {
     background: #0c225d !important;
+}
+
+.ngx-pagination .current:hover {
+    background: #0c225d !important;
+}
+
+#hot-container {
+    width: 100%;
 }

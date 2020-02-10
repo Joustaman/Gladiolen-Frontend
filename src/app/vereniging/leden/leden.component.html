@@ -7,48 +7,92 @@
           <h2><b>Leden</b></h2>
         </div>
         <div class="col-sm-6">
-          <a class="btn toevoegen" [routerLink]="['/maaklid']" routerLinkActive="router-link-active"><i
-              class="material-icons">&#xE147;</i> <span>Voeg lid toe</span></a>
+          <a class="btn toevoegen" (click)="changeExcel()" *ngIf="!excelModus"><i class="far fa-file-excel"></i>
+            <span>Excel modus</span></a>
+          <a class="btn toevoegen" [routerLink]="['/maaklid']" routerLinkActive="router-link-active"
+            *ngIf="!excelModus"><i class="material-icons">&#xE147;</i> <span>Voeg lid toe</span></a>
+          <a class="btn toevoegen" (click)="changeExcel()" *ngIf="excelModus"><i class="fas fa-edit"></i>
+            <span>Edit modus</span></a>
+          <a class="btn toevoegen" (click)="export()" *ngIf="excelModus"><i class="fas fa-file-export"></i>
+            <span>Export data</span></a>
+          <a class="btn" data-toggle="modal" data-target="#qrCodeModal" (click)="changeToAll()"><i
+            class="material-icons">picture_as_pdf</i><span>Export QR-lijst</span></a>
         </div>
       </div>
     </div>
     <div class="card-body">
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Voornaam</th>
-            <th scope="col">Rijksregisternummer</th>
-            <th scope="col">Geslacht</th>
-            <th scope="col">T-shirt maat</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let lid of leden | paginate: { itemsPerPage: 2, currentPage: p }">
-            <th scope="row">{{lid.name}}</th>
-            <td>{{lid.voornaam}}</td>
-            <td>{{lid.rijksregisternr}}</td>
-            <td>{{lid.tshirts[0].geslacht}}</td>
-            <td>{{lid.tshirts[0].maat}}</td>
-            <td>
-              <a [routerLink]="['/editlid', lid.id]" routerLinkActive="router-link-active" class="edit"><i
-                  class="material-icons" data-toggle="tooltip" title="Bewerken">&#xE254;</i></a>
-              <a (click)="deleteLid(lid.id)" class="delete"><i class="material-icons" data-toggle="tooltip"
-                  title="Delete">&#xE872;</i></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <div class="row" *ngIf="!excelModus">
+        <div class="col-12 table-responsive">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Naam</th>
+                <th scope="col">Voornaam</th>
+                <th scope="col">Rijksregisternummer</th>
+                <th scope="col">Geslacht</th>
+                <th scope="col">T-shirt maat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let lid of leden | paginate: { itemsPerPage: 10, currentPage: p }">
+                <th scope="row">{{lid.name}}</th>
+                <td>{{lid.voornaam}}</td>
+                <td>{{lid.rijksregisternr}}</td>
+                <td>{{lid.tshirts[0].geslacht}}</td>
+                <td>{{lid.tshirts[0].maat}}</td>
+                <td>
+                  <a [routerLink]="['/editlid', lid.id]" routerLinkActive="router-link-active" class="edit"><i
+                      class="material-icons" data-toggle="tooltip" title="Bewerken">&#xE254;</i></a>
+                  <a (click)="deleteLid(lid.id)" class="delete"><i class="material-icons" data-toggle="tooltip"
+                      title="Delete">&#xE872;</i></a>
+                  <a (click)="onClickExportQRCode(lid)" data-toggle="modal" data-target="#qrCodeModal"
+                     class="exportAsPdf"><i class="material-icons" data-toggle="tooltip"
+                                            title="export as PDF">picture_as_pdf</i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event" directionLinks="true" responsive="true" previousLabel="Vorige"
+            nextLabel="Volgende"></pagination-controls>
+        </div>
+      </div>
+      <div class="row" *ngIf="excelModus">
+        <div class="col-12">
+          <hot-table class="w-100" #hot [data]="data" [colHeaders]="colHeaders" [rowHeaders]="false" [hotId]="id"
+            licenseKey="non-commercial-and-evaluation" [columns]="columns" [dropdownMenu]="dropdownMenu" filters="true"
+            [language]="language" stretchH="all" columnSorting="true"></hot-table>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12">
-        <hot-table #hot [data]="data" [colHeaders]="colHeaders" [rowHeaders]="false"
-        licenseKey="non-commercial-and-evaluation" [columns]="columns" dropdownMenu="true"
-        filters="true" [language]="language" [(ngModel)]="hotInstance" name="fieldName" ngDefaultControl></hot-table>
-        <button (click)="saveChanges()">Save</button>
-        <button (click)="export()">Export</button>
+
+  <div class="modal fade" id="qrCodeModal" tabindex="-1" role="dialog" aria-labelledby="qrCodeModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="qrCodeModal">QR code(s) exporteren</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="lidGekozen == true">
+            <h4>{{lid.voornaam}}</h4>
+            <qrcode id="canvas" qrdata="{{lid.id}}" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+          </div>
+          <div *ngIf="lidGekozen == false">
+            <div *ngFor="let lid of leden">
+              <h4>{{lid.voornaam}}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button (click)="exportQrCode()" data-dismiss="modal" class="btn btn-primary">Export naar PDF</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+

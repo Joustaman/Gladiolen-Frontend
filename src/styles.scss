@@ -3,9 +3,21 @@
 //@import "./../node_modules/shards-ui/src/scss/shards.scss";
 @import '../node_modules/ngx-toastr/toastr';
 @import '../node_modules/handsontable/dist/handsontable.full.css';
+
+@font-face {
+  font-family: CircularStd;
+  src: url(assets/CircularStd-Book.woff);
+}
+
+@font-face {
+  font-family: CircularStd;
+  src: url(assets/CircularStd-Bold.woff);
+  font-weight: bold;
+}
+
 body {
   margin: 120px 0 0 0;
-  font-family: 'Varela Round', sans-serif;
+  font-family: CircularStd, sans-serif;
 }
 
 html, body {

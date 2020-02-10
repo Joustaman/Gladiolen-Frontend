@@ -135,4 +135,12 @@ export class AdminService {
   updateTaak(id, taak): any {
     return this.http.put(this.$link + 'api/taak/' + id, taak);
   }
+
+  getTaakgroepen(): any {
+    return this.http.get(this.$link + 'api/taakgroep');
+  }
+
+  getSubtaken(): any {
+    return this.http.get(this.$link + 'api/subtaak');
+  }
 }

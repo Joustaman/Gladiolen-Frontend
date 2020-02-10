@@ -13,8 +13,10 @@ import {DatePipe} from '@angular/common';
 })
 export class ManageTakenComponent implements OnInit {
 
-  taken: any = [];
   taak: any = {};
+  taken: any = [];
+  taakgroepen: any = [];
+  subtaken: any = [];
   pageLoaded = false;
 
   constructor(private adminService: AdminService, private readonly datepipe: DatePipe,
@@ -23,6 +25,8 @@ export class ManageTakenComponent implements OnInit {
 
   ngOnInit() {
     this.getTaken();
+    this.getTaakgroepen();
+    this.getSubtaken();
   }
 
   taakForm = new FormGroup({
@@ -73,7 +77,24 @@ export class ManageTakenComponent implements OnInit {
     this.adminService.getTaken().subscribe(
       result => {
         this.taken = result;
-        console.log(this.taken);
+        this.pageLoaded = true;
+      }
+    );
+  };
+
+  getTaakgroepen() {
+    this.adminService.getTaakgroepen().subscribe(
+      result => {
+        this.taakgroepen = result;
+        this.pageLoaded = true;
+      }
+    );
+  };
+
+  getSubtaken() {
+    this.adminService.getSubtaken().subscribe(
+      result => {
+        this.subtaken = result;
         this.pageLoaded = true;
       }
     );

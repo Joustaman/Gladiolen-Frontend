@@ -17,7 +17,9 @@ import {EditVerenigingComponent} from './vereniging/edit-vereniging/edit-verenig
 import {ToastrModule} from 'ngx-toastr';
 import {DetailVerenigingComponent} from './vereniging/detail-vereniging/detail-vereniging.component';
 import { TokenInterceptor } from './auth/token.interceptor';
-
+import {NgxPaginationModule} from 'ngx-pagination';
+import { HotTableModule } from '@handsontable/angular';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,10 @@ import { TokenInterceptor } from './auth/token.interceptor';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     ToastrModule.forRoot(),
+    HotTableModule.forRoot(),
+    QRCodeModule
   ],
   providers: [
     {

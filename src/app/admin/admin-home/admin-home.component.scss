@@ -1,6 +1,5 @@
 .leden {
   background-image: url("src/assets/images/leden.jpeg");
-  text-align: right;
   cursor: pointer;
 }
 
@@ -16,6 +15,11 @@
 
 .tijdsregristratie {
   background-image: url("src/assets/images/tijdsregristratie.jpg");
+  cursor: pointer;
+}
+
+.taken {
+  background-image: url("src/assets/images/taken.jpg");
   cursor: pointer;
 }
 
@@ -38,7 +42,7 @@
   box-sizing: border-box;
   position: relative;
   width: 100vw;
-  height: 35vw;
+  height: 20vw;
   margin: 1vw;
   padding: 1vw;
   overflow: hidden;

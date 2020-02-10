@@ -13,7 +13,6 @@
   }
   
   body {
-    font-family: 'Roboto', sans-serif;
     line-height: 1.4;
   }
   .menu {
@@ -23,7 +22,7 @@
     max-width: 960px;
     margin: auto;
     overflow: hidden;
-    padding: 0 3rem;
+    padding: 3rem;
   }
   
   .showcase {
@@ -80,15 +79,15 @@
   .menu-wrap {
     position: fixed;
     top: 0;
-    left: 0;
-    z-index: 1;
+    right: 60px;
+    z-index: 10;
   }
   
   .menu-wrap .toggler {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
+    top: 8px;
+    right: -60px;
+    z-index: 20;
     cursor: pointer;
     width: 50px;
     height: 50px;
@@ -97,9 +96,9 @@
   
   .menu-wrap .hamburger {
     position: absolute;
-    top: 0;
+    top: 8px;
     left: 0;
-    z-index: 1;
+    z-index: 10;
     width: 60px;
     height: 60px;
     padding: 1rem;
@@ -115,7 +114,7 @@
     flex: none;
     width: 100%;
     height: 2px;
-    background: black;
+    background: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -127,7 +126,7 @@
   .menu-wrap .hamburger > div::after {
     content: '';
     position: absolute;
-    z-index: 1;
+    z-index: 10;
     top: -10px;
     width: 100%;
     height: 2px;
@@ -142,6 +141,7 @@
   /* Toggler Animation */
   .menu-wrap .toggler:checked + .hamburger > div {
     transform: rotate(135deg);
+    background: black;
   }
   
   /* Turns Lines Into X */
@@ -149,6 +149,7 @@
   .menu-wrap .toggler:checked + .hamburger > div:after {
     top: 0;
     transform: rotate(90deg);
+    background: black;
   }
   
   /* Rotate On Hover When Checked */
@@ -226,8 +227,140 @@
     margin-bottom: 10px;
 }
 
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  color: white;
+  background: #0c225d !important;
+  padding: 10px 20px;
+  border-radius: 0;
+  border: none;
+  box-shadow: 0 0 4px rgba(0,0,0,.1);
+}
+.navbar .navbar-brand {
+  color: white;
+  padding: 10px;
+  font-size: 24px;
+}
+.navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
+  color: white;
+}
+.navbar .nav-item i {
+  font-size: 18px;
+}
+.navbar .nav-item span {
+  position: relative;
+  top: 3px;
+}
+.navbar .nav > li a {
+  color: #efe5ff;
+  padding: 8px 15px;
+  font-size: 14px;
+}
+.navbar .nav > li a:hover, .navbar .nav > li a:focus {
+  color: #fff;
+  text-shadow: 0 0 4px rgba(255,255,255,0.3);
+}
+.navbar .nav > li > a > i {
+  display: block;
+  text-align: center;
+}
+.navbar .dropdown-item i {
+  font-size: 16px;
+  min-width: 22px;
+}
+.navbar .dropdown-item .material-icons {
+  font-size: 21px;
+  line-height: 16px;
+  vertical-align: middle;
+  margin-top: -2px;
+}
+.navbar .nav-item.open > a, .navbar .nav-item.open > a:hover, .navbar .nav-item.open > a:focus {
+  color: #fff;
+  background: none !important;
+}
+.navbar .dropdown-menu {
+  border-radius: 1px;
+  border-color: #e5e5e5;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.navbar .dropdown-menu li a {
+  color: #777 !important;
+  padding: 8px 20px;
+  line-height: normal;
+}
+.navbar .dropdown-menu li a:hover, .navbar .dropdown-menu li a:focus {
+  color: #333 !important;
+  background: transparent !important;
+}
+.navbar .nav .active a, .navbar .nav .active a:hover, .navbar .nav .active a:focus {
+  color: #fff;
+  text-shadow: 0 0 4px rgba(255,255,255,0.2);
+  background: transparent !important;
+}
+.navbar .nav .user-action {
+  padding: 9px 15px;
+}
+
+.navbar .navbar-toggle .icon-bar {
+  background: #fff;
+}
+.navbar .navbar-toggle:focus, .navbar .navbar-toggle:hover {
+  background: transparent;
+}
+.navbar .navbar-nav .open .dropdown-menu {
+  background: #faf7fd;
+  border-radius: 1px;
+  border-color: #faf7fd;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.navbar .divider {
+  background-color: #e9ecef !important;
+}
+
+.navbar img {
+  height: 35px;
+  margin-right: 10px;
+}
+@media (min-width: 1200px){
+  .form-inline .input-group {
+    width: 350px;
+    margin-left: 30px;
+  }
+}
+@media (max-width: 1199px){
+  .navbar .nav > li > a > i {
+    display: inline-block;
+    text-align: left;
+    min-width: 30px;
+    position: relative;
+    top: 4px;
+  }
+  .navbar .navbar-collapse {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .navbar .navbar-form {
+    border: none;
+    display: block;
+    margin: 10px 0;
+    padding: 0;
+  }
+  .navbar .navbar-nav {
+    margin: 8px 0;
+  }
+  .navbar .navbar-toggle {
+    margin-right: 0;
+  }
+  .input-group {
+    width: 100%;
+  }
+}
 
 
 
-  
+
   

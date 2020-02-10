@@ -1,0 +1,144 @@
+<div class="container" *ngIf="pageLoaded">
+  <div class="card table-wrapper shadow-lg">
+    <div class="card-header table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2><b>Taken beheren</b></h2>
+        </div>
+        <div class="col-sm-6">
+          <a class="btn btn-success" data-toggle="modal" data-target="#addTaakModal"><i
+            class="material-icons">&#xE147;</i> <span>Voeg taak toe</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th scope="col">Subtaak</th>
+          <th scope="col">Taakgroep</th>
+          <th scope="col">Start datum</th>
+          <th scope="col">Eind datum</th>
+          <th scope="col">Aantal personen</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let taak of taken">
+          <td>{{taak.subtaak.naam}}</td>
+          <td>{{taak.taakgroep.naam}}</td>
+          <td>{{taak.startDatum | date:'MM/dd/yyyy'}}</td>
+          <td>{{taak.eindDatum | date:'MM/dd/yyyy'}}</td>
+          <td>{{taak.aantalPersonen}}</td>
+          <td>
+            <a (click)="onClickEditTaak(taak)" data-toggle="modal" data-target="#editTaakModal"
+               class="edit"><i class="material-icons" data-toggle="tooltip" title="Bewerken">&#xE254;</i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addTaakModal" tabindex="-1" role="dialog" aria-labelledby="addTaakModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addTaakModalLabel">Taak toevoegen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="taakForm" class="was-validated" novalidate>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="subtaak" class="col-form-label">Subtaak:</label>
+            <select name="subtaak" id="subtaak" class="form-control" formControlName="subtaak_id"
+                    [value]="taakForm.get('subtaak_id').value" required>
+              <option *ngFor="let subtaak of subtaken" [value]="subtaak.id">{{subtaak.naam}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="taakgroep" class="col-form-label">Taakgroep:</label>
+            <select name="taakgroep" id="taakgroep" class="form-control" formControlName="taakgroep_id"
+                    [value]="taakForm.get('taakgroep_id').value" required>
+              <option *ngFor="let taakgroep of taakgroepen" [value]="taakgroep.id">{{taakgroep.naam}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="startDatum" class="col-form-label">Start datum:</label>
+            <input type="date" class="form-control" id="startDatum"
+                   formControlName="startDatum" required>
+          </div>
+          <div class="form-group">
+            <label for="eindDatum" class="col-form-label">Eind datum:</label>
+            <input type="date" class="form-control" id="eindDatum"
+                   formControlName="eindDatum" required>
+          </div>
+          <div class="form-group">
+            <label for="aantalPersonen" class="col-form-label">Aantal personen:</label>
+            <input type="text" class="form-control" id="aantalPersonen"
+                   formControlName="aantalPersonen" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+          <button (click)="onSubmit()" class="btn btn-primary" data-dismiss="modal">Opslaan
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editTaakModal" tabindex="-1" role="dialog" aria-labelledby="editTaakModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editTaakModal">Taak aanpassen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="taakForm" class="was-validated" novalidate>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="subtaak" class="col-form-label">Subtaak:</label>
+            <select name="subtaak" id="subtaak" class="form-control" formControlName="subtaak_id"
+                    [value]="taakForm.get('subtaak_id').value" required>
+              <option *ngFor="let subtaak of subtaken" [value]="subtaak.id">{{subtaak.naam}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="taakgroep" class="col-form-label">Taakgroep:</label>
+            <select name="taakgroep" id="taakgroep" class="form-control" formControlName="taakgroep_id"
+                    [value]="taakForm.get('taakgroep_id').value" required>
+              <option *ngFor="let taakgroep of taakgroepen" [value]="taakgroep.id">{{taakgroep.naam}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="startDatum" class="col-form-label">Start datum:</label>
+            <input type="date" class="form-control" id="startDatum"
+                   formControlName="startDatum" required>
+          </div>
+          <div class="form-group">
+            <label for="eindDatum" class="col-form-label">Eind datum:</label>
+            <input type="date" class="form-control" id="eindDatum"
+                   formControlName="eindDatum" required>
+          </div>
+          <div class="form-group">
+            <label for="aantalPersonen" class="col-form-label">Aantal personen:</label>
+            <input type="text" class="form-control" id="aantalPersonen"
+                   formControlName="aantalPersonen" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+          <button (click)="updateTaak()" data-dismiss="modal" class="btn btn-primary">Opslaan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

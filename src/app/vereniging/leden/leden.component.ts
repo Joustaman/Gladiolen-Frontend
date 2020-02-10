@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { VerenigingService } from '../vereniging.service';
+import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {VerenigingService} from '../vereniging.service';
 import 'handsontable/languages/nl-NL';
 import { CsvDataService } from 'src/app/csv-data.service';
 import * as Handsontable from 'handsontable';
 import { HotTableRegisterer } from '@handsontable/angular';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-leden',
@@ -11,12 +12,15 @@ import { HotTableRegisterer } from '@handsontable/angular';
   styleUrls: ['./leden.component.scss']
 })
 export class LedenComponent implements OnInit {
+  lidGekozen: boolean = false;
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';
   vereniging: any = {};
   leden: any = [];
+  lidd: any = {id: 0};
   pageLoaded = false;
   data: any = [];
+  test = 'test';
   colHeaders = [
     'Naam',
     'Voornaam',
@@ -52,6 +56,7 @@ export class LedenComponent implements OnInit {
       }
     );
   }
+
   /**
    * * @param {int} id  Het ID van de gebruiker die verwijderd wordt.
    * Deletet de informatie van een lid.
@@ -106,5 +111,27 @@ export class LedenComponent implements OnInit {
 
   changeExcel() {
     this.excelModus = !this.excelModus;
+  }
+
+  exportQrCode() {
+    const elementToPrint = document.getElementById('canvas');
+    const qrCode = elementToPrint.firstChild.firstChild;
+    const volledigeNaam = this.lidd.voornaam + ' ' + this.lidd.name;
+
+    const pdf = new jsPDF('p', 'pt', 'a4');
+
+    pdf.text(40, 40, volledigeNaam);
+    pdf.addImage(qrCode, 'png', 10, 40, 400, 400);
+    pdf.save('qrCode' + this.lidd.voornaam + this.lidd.name.replace(' ', '') + '.pdf');
+  }
+
+  onClickExportQRCode(lid) {
+    this.lidd = lid;
+    this.lidGekozen = true;
+    console.log(this.lidd);
+  }
+
+  changeToAll() {
+    this.lidGekozen = false;
   }
 }

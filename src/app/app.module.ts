@@ -19,6 +19,7 @@ import {DetailVerenigingComponent} from './vereniging/detail-vereniging/detail-v
 import { TokenInterceptor } from './auth/token.interceptor';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { HotTableModule } from '@handsontable/angular';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { HotTableModule } from '@handsontable/angular';
     NgxPaginationModule,
     ToastrModule.forRoot(),
     HotTableModule.forRoot(),
+    QRCodeModule
   ],
   providers: [
     {

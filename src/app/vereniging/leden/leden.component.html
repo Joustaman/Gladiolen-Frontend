@@ -15,6 +15,10 @@
             <span>Edit modus</span></a>
           <a class="btn toevoegen" (click)="export()" *ngIf="excelModus"><i class="fas fa-file-export"></i>
             <span>Export data</span></a>
+          <a class="btn toevoegen" [routerLink]="['/maaklid']" routerLinkActive="router-link-active"><i
+            class="material-icons">&#xE147;</i> <span>Voeg lid toe</span></a>
+          <a class="btn" data-toggle="modal" data-target="#qrCodeModal" (click)="changeToAll()"><i
+            class="material-icons">picture_as_pdf</i><span>Export QR-lijst</span></a>
         </div>
       </div>
     </div>
@@ -60,4 +64,46 @@
       </div>
     </div>
   </div>
+
+
+  <div class="row">
+    <div class="col-12">
+      <hot-table #hot [data]="data" [colHeaders]="colHeaders" [rowHeaders]="false"
+                 licenseKey="non-commercial-and-evaluation" [columns]="columns" dropdownMenu="true"
+                 filters="true" [language]="language" [(ngModel)]="hotInstance" name="fieldName"
+                 ngDefaultControl></hot-table>
+      <button (click)="saveChanges()">Save</button>
+      <button (click)="export()">Export</button>
+    </div>
+  </div>
+
+  <div class="modal fade" id="qrCodeModal" tabindex="-1" role="dialog" aria-labelledby="qrCodeModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="qrCodeModal">QR code(s) exporteren</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="lidGekozen == true">
+            <h4>{{lidd.voornaam}}</h4>
+            <qrcode id="canvas" qrdata="{{lidd.id}}" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+          </div>
+          <div *ngIf="lidGekozen == false">
+            <div *ngFor="let lid of leden">
+              <h4>{{lid.voornaam}}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button (click)="exportQrCode()" data-dismiss="modal" class="btn btn-primary">Export naar PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+

@@ -48,6 +48,9 @@
               <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link"
                   [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active">Tijdsregistraties
               </li>
+              <li *ngIf="checkIfLoggedIn() && getRol() === '1'" (click)="menuClick()" class="link"
+                  [routerLink]="['/tabletStatus']" routerLinkActive="router-link-active">Tablet status
+              </li>
               <li *ngIf="checkIfLoggedIn()" (click)="logOut()" class="link">Uitloggen</li>
             </ul>
           </div>
@@ -56,6 +59,7 @@
     </div>
   </div>
 </nav>
+<app-spinner *ngIf="loading"></app-spinner>
 
 <router-outlet></router-outlet>
 

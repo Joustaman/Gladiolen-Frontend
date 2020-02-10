@@ -78,17 +78,19 @@
         </div>
         <div class="modal-body">
           <div *ngIf="lidGekozen == true">
-            <h4>{{lid.voornaam}}</h4>
+            <h3>{{lid.voornaam}} {{lid.name}}</h3>
             <qrcode id="canvas" qrdata="{{lid.id}}" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
           </div>
-          <div *ngIf="lidGekozen == false">
+          <div id="QR" *ngIf="lidGekozen == false">
             <div *ngFor="let lid of leden">
-              <h4>{{lid.voornaam}}</h4>
+              <li>{{lid.voornaam}} {{lid.name}}</li>
+                <qrcode hidden id="canvas" qrdata="{{lid.id}}" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button (click)="exportQrCode()" data-dismiss="modal" class="btn btn-primary">Export naar PDF</button>
+          <button *ngIf="lidGekozen == true" (click)="exportQrCode()" data-dismiss="modal" class="btn btn-primary">Export naar PDF</button>
+          <button *ngIf="lidGekozen == false" (click)="exportAllQrCode()" data-dismiss="modal" class="btn btn-primary">Export naar PDF</button>
         </div>
       </div>
     </div>

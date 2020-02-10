@@ -78,8 +78,8 @@
         </div>
         <div class="modal-body">
           <div *ngIf="lidGekozen == true">
-            <h4>{{lidd.voornaam}}</h4>
-            <qrcode id="canvas" qrdata="{{lidd.id}}" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+            <h4>{{lid.voornaam}}</h4>
+            <qrcode id="canvas" qrdata="{{lid.id}}" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
           </div>
           <div *ngIf="lidGekozen == false">
             <div *ngFor="let lid of leden">

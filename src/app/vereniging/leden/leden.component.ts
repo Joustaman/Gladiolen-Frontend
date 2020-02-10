@@ -17,7 +17,7 @@ export class LedenComponent implements OnInit {
   id = 'hotInstance';
   vereniging: any = {};
   leden: any = [];
-  lidd: any = {id: 0};
+  lid: any = {id: 0};
   pageLoaded = false;
   data: any = [];
   test = 'test';
@@ -116,19 +116,19 @@ export class LedenComponent implements OnInit {
   exportQrCode() {
     const elementToPrint = document.getElementById('canvas');
     const qrCode = elementToPrint.firstChild.firstChild;
-    const volledigeNaam = this.lidd.voornaam + ' ' + this.lidd.name;
+    const volledigeNaam = this.lid.voornaam + ' ' + this.lid.name;
 
     const pdf = new jsPDF('p', 'pt', 'a4');
 
     pdf.text(40, 40, volledigeNaam);
     pdf.addImage(qrCode, 'png', 10, 40, 400, 400);
-    pdf.save('qrCode' + this.lidd.voornaam + this.lidd.name.replace(' ', '') + '.pdf');
+    pdf.save('qrCode' + this.lid.voornaam + this.lid.name.replace(' ', '') + '.pdf');
   }
 
   onClickExportQRCode(lid) {
-    this.lidd = lid;
+    this.lid = lid;
     this.lidGekozen = true;
-    console.log(this.lidd);
+    console.log(this.lid);
   }
 
   changeToAll() {

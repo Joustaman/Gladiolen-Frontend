@@ -1,10 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import {
   RouterOutlet,
   Route,
   Router,
   NavigationStart,
-  NavigationError
+  NavigationError,
+  NavigationEnd,
+  NavigationCancel
 } from "@angular/router";
 import { AuthService } from "./auth/auth.service";
 import { AdminService } from "./admin/admin.service";
@@ -19,10 +21,32 @@ export class AppComponent {
   rol: any;
   notificationsMenu = "";
   notifications = "";
+  loading:boolean;
   constructor(
     private readonly authService: AuthService,
-    private readonly adminService: AdminService
-  ) {}
+    private readonly adminService: AdminService,private router: Router,
+    private ref: ChangeDetectorRef
+  ) {
+    this.loading = false;
+    router.events.subscribe(event => {
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.loading = true;
+          break;
+        }
+
+        case event instanceof NavigationEnd:
+        case event instanceof NavigationCancel:
+        case event instanceof NavigationError: {
+          this.loading = false;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
+  }
 
   menuClick() {
     this.openMenu = !this.openMenu;

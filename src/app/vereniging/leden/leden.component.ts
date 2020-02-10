@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { VerenigingService } from '../vereniging.service';
 import 'handsontable/languages/nl-NL';
-import Handsontable from 'handsontable';
 import { CsvDataService } from 'src/app/csv-data.service';
+import * as Handsontable from 'handsontable';
+import { HotTableRegisterer } from '@handsontable/angular';
 
 @Component({
   selector: 'app-leden',
@@ -10,6 +11,8 @@ import { CsvDataService } from 'src/app/csv-data.service';
   styleUrls: ['./leden.component.scss']
 })
 export class LedenComponent implements OnInit {
+  private hotRegisterer = new HotTableRegisterer();
+  id = 'hotInstance';
   vereniging: any = {};
   leden: any = [];
   pageLoaded = false;
@@ -19,20 +22,18 @@ export class LedenComponent implements OnInit {
     'Voornaam',
     'Rijksregisternummer',
     'Geslacht',
-    'Tshirt',
-    'Acties'
+    'Tshirt'
   ];
   columns: any = [
     { data: 'naam', readOnly: true },
     { data: 'voornaam', readOnly: true },
     { data: 'rijksregisternr', readOnly: true },
     { data: 'geslacht', readOnly: true },
-    { data: 'tshirt', readOnly: true },
-    { data: 'acties', renderer: 'html', readOnly: true }
+    { data: 'tshirt', readOnly: true }
   ];
+  dropdownMenu = true;
   language = 'nl-NL';
-
-  @ViewChild('hot', { read: ViewContainerRef, static: false}) hot;
+  excelModus = false;
 
   constructor(private readonly verenigingService: VerenigingService) {}
 
@@ -74,24 +75,36 @@ export class LedenComponent implements OnInit {
         voornaam: gebruiker.voornaam,
         rijksregisternr: gebruiker.rijksregisternr,
         geslacht: gebruiker.tshirts[0].geslacht,
-        tshirt: gebruiker.tshirts[0].maat,
-        acties:
-          '<a [routerLink]="[\'/editlid\',' +
-          gebruiker.id +
-          ']"' +
-          'routerLinkActive="router-link-active" onclick="saveChanges()" class="edit">' +
-          '<i class="material-icons" data-toggle="tooltip" title="Bewerken">&#xE254;</i></a>'
+        tshirt: gebruiker.tshirts[0].maat
       });
     });
   }
 
   saveChanges() {
-    console.log('ok');
+    console.log(this.hotRegisterer.getInstance(this.id).getData());
   }
 
   export() {
-    let exportdata = [...this.data];
-    exportdata.forEach((d) => delete d.acties);
-    CsvDataService.exportToCsv('leden_' + this.vereniging.naam + '.csv', this.data);
+    // let exportdata = [...this.data];
+    // exportdata.forEach((d) => delete d.acties);
+    // CsvDataService.exportToCsv('leden_' + this.vereniging.naam + '.csv', this.data);
+
+
+    // access to exportFile plugin instance
+    const exportPlugin = this.hotRegisterer.getInstance(this.id).getPlugin('exportFile');
+
+    exportPlugin.downloadFile('csv', {
+      columnDelimiter: ',',
+      columnHeaders: true,
+      exportHiddenColumns: true,
+      exportHiddenRows: true,
+      fileExtension: 'csv',
+      filename: this.vereniging.naam + '_[YYYY]-[MM]-[DD]',
+      mimeType: 'text/csv',
+    });
+  }
+
+  changeExcel() {
+    this.excelModus = !this.excelModus;
   }
 }

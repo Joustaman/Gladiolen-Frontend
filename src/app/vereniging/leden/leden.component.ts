@@ -76,6 +76,7 @@ export class LedenComponent implements OnInit {
   createDataForTable(apiData: any) {
     apiData.forEach(gebruiker => {
       this.data.push({
+        id: gebruiker.id,
         naam: gebruiker.name,
         voornaam: gebruiker.voornaam,
         rijksregisternr: gebruiker.rijksregisternr,
@@ -90,12 +91,6 @@ export class LedenComponent implements OnInit {
   }
 
   export() {
-    // let exportdata = [...this.data];
-    // exportdata.forEach((d) => delete d.acties);
-    // CsvDataService.exportToCsv('leden_' + this.vereniging.naam + '.csv', this.data);
-
-
-    // access to exportFile plugin instance
     const exportPlugin = this.hotRegisterer.getInstance(this.id).getPlugin('exportFile');
 
     exportPlugin.downloadFile('csv', {
@@ -111,6 +106,8 @@ export class LedenComponent implements OnInit {
 
   changeExcel() {
     this.excelModus = !this.excelModus;
+    console.log(this.hotRegisterer.getInstance(this.id).getData());
+    const filteredData = this.hotRegisterer.getInstance(this.id).getData();
   }
 
   exportQrCode() {

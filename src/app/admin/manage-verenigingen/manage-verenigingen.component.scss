@@ -101,3 +101,8 @@ table.table td i {
 pagination-controls {
   text-align: center;
 }
+
+.handsontable, .htColumnHeaders {
+  overflow: scroll;
+}
+    

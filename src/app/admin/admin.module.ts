@@ -16,6 +16,7 @@ import {ManageTijdsregistratiesComponent} from './manage-tijdsregistraties/manag
 import {AanvraagVerenigingComponent} from './aanvraag-vereniging/aanvraag-vereniging.component';
 import {ManageTakenComponent} from './manage-taken/manage-taken.component';
 import { TabletStatusBekijkenComponent } from './tablet-status-bekijken/tablet-status-bekijken.component';
+import { HotTableModule } from '@handsontable/angular';
 
 @NgModule({
   declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent, ManageTijdsregistratiesComponent, AanvraagVerenigingComponent, ManageTakenComponent, TabletStatusBekijkenComponent],
@@ -25,7 +26,9 @@ import { TabletStatusBekijkenComponent } from './tablet-status-bekijken/tablet-s
     RouterModule,
     ReactiveFormsModule,
     MymaterialModule,
-    FormsModule
+    FormsModule,
+    HotTableModule.forRoot(),
+
   ]
 })
 export class AdminModule {

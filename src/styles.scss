@@ -17,7 +17,11 @@
 
 body {
   margin: 120px 0 0 0;
-  font-family: CircularStd, sans-serif;
+  font-family: CircularStd, sans-serif !important;
+}
+
+.mat-stepper-horizontal, .mat-button {
+  font-family: CircularStd, sans-serif !important;
 }
 
 html, body {
@@ -25,6 +29,7 @@ html, body {
 }
 
 .btn-primary {
+  color: white !important;
   background-color: #0c225d !important;
 }
 
@@ -165,18 +170,19 @@ table.table td a:hover {
   color: #217fff;
 }
 
-a.add-button {
+a.add-button, button.add-button, a.add-button:hover, button.add-button:hover {
   color: white;
   background-color: #329B72;
 }
-a.excel {
+a.excel, a.excel:hover{
+  color: white;
   background-color: #1d6f42;
 }
-a.pdf {
+a.pdf, button.pdf, a.pdf:hover, button.pdf:hover {
   color: white;
   background-color: #ff2121;
 }
-a.edit-button {
+a.edit-button, a.edit-button:hover {
   color: white;
   background-color: #ffa821;
 }

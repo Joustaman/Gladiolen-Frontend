@@ -21,6 +21,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { HotTableModule } from '@handsontable/angular';
 import { QRCodeModule } from 'angularx-qrcode';
 import { LedenFilterPipe } from './vereniging/leden/leden-filter.pipe';
+import { ProfielComponent } from './profiel/profiel.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { LedenFilterPipe } from './vereniging/leden/leden-filter.pipe';
     KeuzemenuComponent,
     EditVerenigingComponent,
     DetailVerenigingComponent,
-    LedenFilterPipe
+    LedenFilterPipe,
+    ProfielComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { LedenFilterPipe } from './vereniging/leden/leden-filter.pipe';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

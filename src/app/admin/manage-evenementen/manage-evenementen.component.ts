@@ -184,8 +184,8 @@ export class ManageEvenementenComponent implements OnInit {
       });
       this.data.push({
         naam: evenement.naam,
-        startdatum: evenement.startdatum,
-        einddatum: evenement.einddatum,
+        startdatum: this.datepipe.transform(evenement.startdatum, 'yyyy-MM-dd'),
+        einddatum: this.datepipe.transform(evenement.einddatum, 'yyyy-MM-dd'),
         actief: evenement.actief === 1 ? 'Ja' : 'Nee',
         verenigingen: verenigingenString,
       });

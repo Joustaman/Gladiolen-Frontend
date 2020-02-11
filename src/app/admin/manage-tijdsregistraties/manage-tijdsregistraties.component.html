@@ -48,7 +48,8 @@
             <tbody>
               <tr
                 *ngFor="
-                  let tijdsregistratie of tijdsregistraties|tijdsregistratieFilter:str
+                  let tijdsregistratie of tijdsregistraties
+                    | tijdsregistratieFilter: str
                     | paginate: { itemsPerPage: 10, currentPage: p }
                 "
                 data-toggle="modal"
@@ -60,12 +61,26 @@
                 </td>
                 <td>{{ tijdsregistratie.vereniging.naam }}</td>
                 <td>{{ tijdsregistratie.evenement.naam }}</td>
-                <td>{{ tijdsregistratie.checkIn }}</td>
-                <td>{{ tijdsregistratie.checkUit }}</td>
-                <td>{{ tijdsregistratie.manCheckIn }}</td>
-                <td>{{ tijdsregistratie.manCheckUit }}</td>
-                <td>{{ tijdsregistratie.adminCheckIn }}</td>
-                <td>{{ tijdsregistratie.adminCheckUit }}</td>
+                <td>
+                  {{ tijdsregistratie.checkIn | date: "dd/MM/yyyy hh:mm" }}
+                </td>
+                <td>
+                  {{ tijdsregistratie.checkUit | date: "dd/MM/yyyy hh:mm" }}
+                </td>
+                <td>
+                  {{ tijdsregistratie.manCheckIn | date: "dd/MM/yyyy hh:mm" }}
+                </td>
+                <td>
+                  {{ tijdsregistratie.manCheckUit | date: "dd/MM/yyyy hh:mm" }}
+                </td>
+                <td>
+                  {{ tijdsregistratie.adminCheckIn | date: "dd/MM/yyyy hh:mm" }}
+                </td>
+                <td>
+                  {{
+                    tijdsregistratie.adminCheckUit | date: "dd/MM/yyyy hh:mm"
+                  }}
+                </td>
 
                 <td>
                   <a
@@ -80,6 +95,8 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="col-12 mt-2">
           <pagination-controls
             (pageChange)="p = $event"
             directionLinks="true"

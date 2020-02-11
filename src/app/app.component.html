@@ -1,5 +1,6 @@
 <nav class="navbar bg-light shadow-lg">
   <div class="navbar-header d-flex col">
+    
     <a class="navbar-brand" href="#"
       ><img src="../assets/images/keizerkarel.png" /><b>Keizer Karel Olen</b></a
     >
@@ -148,6 +149,9 @@
               >
                 Tablet status
               </li>
+              <li *ngIf="checkIfLoggedIn()" (click)="menuClick()" [routerLink]="['/profiel']" routerLinkActive="router-link-active"  class="link">
+                  Profiel
+                </li>
               <li *ngIf="checkIfLoggedIn()" (click)="logOut()" class="link">
                 Uitloggen
               </li>

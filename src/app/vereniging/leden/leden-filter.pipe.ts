@@ -8,6 +8,8 @@ export class LedenFilterPipe implements PipeTransform {
     if (!gebruikers || !filter || filter === "") {
       return gebruikers;
     }
+    filter = filter.toLowerCase();
+
     let filters = filter.split(" ");
     let alle: any[] = [];
     let first: boolean = true;

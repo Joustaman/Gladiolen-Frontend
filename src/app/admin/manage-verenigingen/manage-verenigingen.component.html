@@ -18,7 +18,16 @@
         </div>
       </div>
     </div>
-
+    <div class="row">
+        <div class="col-12">
+            <input
+            id="str"
+            [(ngModel)]="str"
+            class="form-control w-100 m-1 float-right"
+            placeholder="Zoek vereniging"
+          />
+        </div>
+      </div>
     <div class="card-body">
       <div class="row" *ngIf="!excelModus">
         <div class="col-12 table-responsive">
@@ -33,7 +42,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let vereniging of verenigingen | paginate: { itemsPerPage: 10, currentPage: p }">
+              <tr *ngFor="let vereniging of verenigingen | verenigingFilter:str | paginate: { itemsPerPage: 10, currentPage: p }">
                 <td>{{vereniging.naam}}</td>
                 <td>{{vereniging.hoofd.name}} {{vereniging.hoofd.voornaam}}</td>
                 <td *ngIf="vereniging.contact != null">{{vereniging.contact.name}} {{vereniging.contact.voornaam}}</td>

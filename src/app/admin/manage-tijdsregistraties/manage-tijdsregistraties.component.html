@@ -24,7 +24,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let tijdsregistratie of tijdsregistraties" data-toggle="modal" data-target="#verenigingModal">
+              <tr *ngFor="let tijdsregistratie of tijdsregistraties | paginate: { itemsPerPage: 10, currentPage: p }" data-toggle="modal" data-target="#verenigingModal">
                 <td>{{tijdsregistratie.gebruiker.name}} {{tijdsregistratie.gebruiker.voornaam}}</td>
                 <td>{{tijdsregistratie.vereniging.naam}}</td>
                 <td>{{tijdsregistratie.evenement.naam}}</td>
@@ -43,6 +43,8 @@
               </tr>
             </tbody>
           </table>
+          <pagination-controls (pageChange)="p = $event" directionLinks="true" responsive="true" previousLabel="Vorige"
+                               nextLabel="Volgende"></pagination-controls>
         </div>
       </div>
     </div>
@@ -124,22 +126,23 @@
       </div>
       <form [formGroup]="tijdsregistratieForm" class="was-validated" novalidate>
         <div class="modal-body">
-          <div class="form-group">
-            <label for="gebruiker" class="col-form-label">Lid:</label>
-            <select name="gebruiker" id="gebruiker" class="form-control" formControlName="gebruiker_id"  required>
-              <option *ngFor="let gebruiker of gebruikers" [value]="gebruiker.id">{{gebruiker.name}} {{gebruiker.voornaam}}</option>
-            </select>
-          </div>
+
           <div class="form-group">
             <label for="vereniging" class="col-form-label">Vereniging:</label>
-            <select name="vereniging" id="vereniging" class="form-control" formControlName="vereniging_id"  required>
+            <select name="vereniging" id="vereniging" class="form-control" formControlName="vereniging_id"  required (change)="changeVereniging()">
               <option *ngFor="let vereniging of verenigingen" [value]="vereniging.id">{{vereniging.naam}}</option>
             </select>
           </div>
           <div class="form-group">
+            <label for="gebruiker" class="col-form-label">Lid:</label>
+            <select name="gebruiker" id="gebruiker" class="form-control" formControlName="gebruiker_id"  required>
+              <option *ngFor="let gebruiker of verenigingLeden.gebruikers" [value]="gebruiker.id">{{gebruiker.name}} {{gebruiker.voornaam}}</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label for="evenement" class="col-form-label">Evenement: </label>
-            <select name="evenement" id="evenement" class="form-control" formControlName="evenement_id"  required>
-              <option *ngFor="let evenement of evenementen" [value]="evenement.id">{{evenement.naam}}</option>
+            <select name="evenement" id="evenement" class="form-control" formControlName="evenement_id"  required >
+              <option  *ngFor="let evenement of evenementen" [value]="evenement.id"  >{{evenement.naam}}</option>
             </select>
           </div>
           <div class="form-group">

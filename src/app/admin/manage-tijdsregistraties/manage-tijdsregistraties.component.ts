@@ -15,6 +15,8 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   tijdsregistratie: any = {};
   pageLoaded = false;
   verenigingen: any = [];
+  verenigingLeden: any = [];
+  verenigingLid: any = {name: 'test'};
   vereniging: any = {name: 'test'};
   evenementen: any = [];
   evenement: any = {naam: 'test'};
@@ -123,6 +125,14 @@ export class ManageTijdsregistratiesComponent implements OnInit {
       this.pageLoaded = true;
     });
   }
+  getVerenigingByIdMetLeden(id){
+    this.adminService.getVerenigingByIdMetLeden(id).subscribe(result=>
+    {
+      this.verenigingLeden = result;
+      console.log(result);
+      this.pageLoaded = true;
+    });
+  }
 
   getGebruikers() {
     this.adminService.getGebruikers().subscribe(result => {
@@ -141,10 +151,11 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   }
 
   changeVereniging() {
-    let value = this.tijdsregistratieForm.get('vereniging_id').value;
-    this.tijdsregistratieForm.patchValue({
-      vereniging_id: !value
-    });
+    // let value = this.tijdsregistratieForm.get('vereniging_id').value;
+    // this.tijdsregistratieForm.patchValue({
+    //   vereniging_id: !value
+    // });
+    this.getVerenigingByIdMetLeden(this.tijdsregistratieForm.get('vereniging_id').value);
   }
 
   changeEvenement() {

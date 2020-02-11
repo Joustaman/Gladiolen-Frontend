@@ -23,7 +23,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let taak of taken">
+        <tr *ngFor="let taak of taken | paginate: { itemsPerPage: 10, currentPage: p }">
           <td>{{taak.subtaak.naam}}</td>
           <td>{{taak.taakgroep.naam}}</td>
           <td>{{taak.startDatum | date:'MM/dd/yyyy'}}</td>
@@ -36,6 +36,8 @@
         </tr>
         </tbody>
       </table>
+      <pagination-controls (pageChange)="p = $event" directionLinks="true" responsive="true" previousLabel="Vorige"
+                           nextLabel="Volgende"></pagination-controls>
     </div>
   </div>
 </div>

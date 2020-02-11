@@ -106,8 +106,6 @@ export class LedenComponent implements OnInit {
 
   changeExcel() {
     this.excelModus = !this.excelModus;
-    console.log(this.hotRegisterer.getInstance(this.id).getData());
-    const filteredData = this.hotRegisterer.getInstance(this.id).getData();
   }
 
   exportQrCode() {

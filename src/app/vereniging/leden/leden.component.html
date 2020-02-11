@@ -7,15 +7,15 @@
           <h2><b>Leden</b></h2>
         </div>
         <div class="col-sm-6">
-          <a class="btn toevoegen" (click)="changeExcel()" *ngIf="!excelModus"><i class="far fa-file-excel"></i>
+          <a class="btn add-button" (click)="changeExcel()" *ngIf="!excelModus"><i class="far fa-file-excel"></i>
             <span>Excel modus</span></a>
-          <a class="btn toevoegen" [routerLink]="['/maaklid']" routerLinkActive="router-link-active"
+          <a class="btn add-button" [routerLink]="['/maaklid']" routerLinkActive="router-link-active"
             *ngIf="!excelModus"><i class="material-icons">&#xE147;</i> <span>Voeg lid toe</span></a>
-          <a class="btn toevoegen" (click)="changeExcel()" *ngIf="excelModus"><i class="fas fa-edit"></i>
+          <a class="btn edit-button" (click)="changeExcel()" *ngIf="excelModus"><i class="fas fa-pencil-alt"></i>
             <span>Edit modus</span></a>
-          <a class="btn toevoegen" (click)="export()" *ngIf="excelModus"><i class="fas fa-file-export"></i>
+          <a class="btn add-button" (click)="export()" *ngIf="excelModus"><i class="fas fa-file-export"></i>
             <span>Export data</span></a>
-          <a class="btn" data-toggle="modal" data-target="#qrCodeModal" (click)="changeToAll()"><i
+          <a class="btn pdf" data-toggle="modal" data-target="#qrCodeModal" (click)="changeToAll()"><i
             class="material-icons">picture_as_pdf</i><span>Export QR-lijst</span></a>
         </div>
       </div>
@@ -31,6 +31,7 @@
                 <th scope="col">Rijksregisternummer</th>
                 <th scope="col">Geslacht</th>
                 <th scope="col">T-shirt maat</th>
+                <th class="acties">Acties</th>
               </tr>
             </thead>
             <tbody>
@@ -44,10 +45,9 @@
                   <a [routerLink]="['/editlid', lid.id]" routerLinkActive="router-link-active" class="edit"><i
                       class="material-icons" data-toggle="tooltip" title="Bewerken">&#xE254;</i></a>
                   <a (click)="deleteLid(lid.id)" class="delete"><i class="material-icons" data-toggle="tooltip"
-                      title="Delete">&#xE872;</i></a>
+                      title="Verwijderen">&#xE872;</i></a>
                   <a (click)="onClickExportQRCode(lid)" data-toggle="modal" data-target="#qrCodeModal"
-                     class="exportAsPdf"><i class="material-icons" data-toggle="tooltip"
-                                            title="export as PDF">picture_as_pdf</i></a>
+                     class="delete"><i class="material-icons" data-toggle="tooltip" title="Export als PDF">picture_as_pdf</i></a>
                 </td>
               </tr>
             </tbody>
@@ -76,7 +76,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body text-center">
           <div *ngIf="lidGekozen == true">
             <h3>{{lid.voornaam}} {{lid.name}}</h3>
             <qrcode id="canvas" qrdata="{{lid.id}}" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>

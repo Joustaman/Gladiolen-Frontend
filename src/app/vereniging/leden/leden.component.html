@@ -20,6 +20,16 @@
         </div>
       </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <input
+            id="str"
+            [(ngModel)]="str"
+            class="form-control w-100 m-1 float-right"
+            placeholder="Zoek lid"
+          />
+        </div>
+      </div>
     <div class="card-body">
       <div class="row" *ngIf="!excelModus">
         <div class="col-12 table-responsive">
@@ -35,7 +45,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let lid of leden | paginate: { itemsPerPage: 10, currentPage: p }">
+              <tr *ngFor="let lid of leden |ledenFilter:str | paginate: { itemsPerPage: 10, currentPage: p }">
                 <th scope="row">{{lid.name}}</th>
                 <td>{{lid.voornaam}}</td>
                 <td>{{lid.rijksregisternr}}</td>

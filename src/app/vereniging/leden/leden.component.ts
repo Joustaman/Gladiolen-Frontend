@@ -21,6 +21,7 @@ export class LedenComponent implements OnInit {
   pageLoaded = false;
   data: any = [];
   test = 'test';
+  str="";
   colHeaders = [
     'Naam',
     'Voornaam',

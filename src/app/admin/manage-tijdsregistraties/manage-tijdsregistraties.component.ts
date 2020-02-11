@@ -43,11 +43,7 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.adminService.getTijdsregistraties().subscribe(result => {
-      this.tijdsregistraties = result;
-      this.pageLoaded = true;
-      console.log(result);
-    });
+    this.getTijdsregistraties();
     this.getEvenementen();
     this.getGebruikers();
     this.getVerenigingen();
@@ -65,6 +61,7 @@ export class ManageTijdsregistratiesComponent implements OnInit {
         console.log(error);
       }
     );
+    this.getTijdsregistraties();
   }
 
   createTijdsregistratie() {
@@ -80,6 +77,9 @@ export class ManageTijdsregistratiesComponent implements OnInit {
         console.log(error);
       }
     );
+
+    this.getTijdsregistraties();
+
   }
 
 
@@ -110,6 +110,13 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     this.tijdsregistratie = tijdsregistratie;
   }
 
+  getTijdsregistraties(){
+    this.adminService.getTijdsregistraties().subscribe(result => {
+      this.tijdsregistraties = result;
+      this.pageLoaded = true;
+      console.log(result);
+    });
+  }
   getEvenementen() {
     this.adminService.getEvenementen().subscribe(result => {
       this.evenementen = result;

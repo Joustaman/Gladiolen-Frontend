@@ -76,6 +76,7 @@ export class LedenComponent implements OnInit {
   createDataForTable(apiData: any) {
     apiData.forEach(gebruiker => {
       this.data.push({
+        id: gebruiker.id,
         naam: gebruiker.name,
         voornaam: gebruiker.voornaam,
         rijksregisternr: gebruiker.rijksregisternr,
@@ -90,12 +91,6 @@ export class LedenComponent implements OnInit {
   }
 
   export() {
-    // let exportdata = [...this.data];
-    // exportdata.forEach((d) => delete d.acties);
-    // CsvDataService.exportToCsv('leden_' + this.vereniging.naam + '.csv', this.data);
-
-
-    // access to exportFile plugin instance
     const exportPlugin = this.hotRegisterer.getInstance(this.id).getPlugin('exportFile');
 
     exportPlugin.downloadFile('csv', {
@@ -111,6 +106,8 @@ export class LedenComponent implements OnInit {
 
   changeExcel() {
     this.excelModus = !this.excelModus;
+    console.log(this.hotRegisterer.getInstance(this.id).getData());
+    const filteredData = this.hotRegisterer.getInstance(this.id).getData();
   }
 
   exportQrCode() {
@@ -120,15 +117,32 @@ export class LedenComponent implements OnInit {
 
     const pdf = new jsPDF('p', 'pt', 'a4');
 
-    pdf.text(40, 40, volledigeNaam);
-    pdf.addImage(qrCode, 'png', 10, 40, 400, 400);
+    pdf.text(70, 70, volledigeNaam);
+    pdf.addImage(qrCode, 'png', 20, 90, 550, 550);
     pdf.save('qrCode' + this.lid.voornaam + this.lid.name.replace(' ', '') + '.pdf');
+  }
+
+  exportAllQrCode() {
+    const elementToPrint = document.getElementById('QR');
+    const qrCodes = elementToPrint.childNodes;
+
+    const pdf = new jsPDF('p', 'pt', 'a4');
+
+    for(var i=1; i<qrCodes.length;i++){
+      const volledigeNaam = this.leden[i-1].voornaam + ' ' + this.leden[i-1].name;
+      const qrCode = qrCodes.item(i).lastChild.firstChild.firstChild;
+      
+      pdf.text(70, 70, volledigeNaam);
+      pdf.addImage(qrCode, 'png', 20, 90, 550, 550);
+      pdf.addPage();
+    }
+
+    pdf.save('qrCode' +this.vereniging.naam+ '.pdf');
   }
 
   onClickExportQRCode(lid) {
     this.lid = lid;
     this.lidGekozen = true;
-    console.log(this.lid);
   }
 
   changeToAll() {

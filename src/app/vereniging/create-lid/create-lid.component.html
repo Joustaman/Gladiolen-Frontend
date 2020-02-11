@@ -1,8 +1,9 @@
 <app-spinner *ngIf="!pageLoaded"></app-spinner>
 <div class="container" *ngIf="pageLoaded">
-  <div class="card">
-    <div class="card-header">
-      <h4>Voeg een lid toe!</h4>
+  <div class="card table-wrapper shadow-lg">
+    <div class="card-header table-title">
+      <h2 *ngIf="!updateGebruiker">Lid toevoegen</h2>
+      <h2 *ngIf="updateGebruiker">Lid bewerken</h2>
     </div>
     <div class="card-body">
       <form [formGroup]="lidForm" class="mt-5 was-validated" novalidate>
@@ -91,8 +92,8 @@
               </div>
             </div>
           </div>
-          <button *ngIf="!updateGebruiker" class="btn btn-primary ml-3" (click)="createLid()">Voeg lid toe</button>
-          <button *ngIf="updateGebruiker" class="btn btn-primary ml-3" (click)="updateLid()">Update lid</button>
+          <a *ngIf="!updateGebruiker" class="btn add-button ml-3" (click)="createLid()"><i class="fas fa-plus-circle"></i><span> Lid toevoegen</span></a>
+          <a *ngIf="updateGebruiker" class="btn edit-button ml-3" (click)="updateLid()"><i class="fas fa-pencil-alt"></i><span> Lid bewerken</span></a>
         </div>
       </form>
     </div>

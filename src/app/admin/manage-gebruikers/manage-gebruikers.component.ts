@@ -28,7 +28,7 @@ export class ManageGebruikersComponent implements OnInit {
     'Opmerking',
     'Rijksregisternummer',
     'Actief',
-  ];
+  ]
   excelModus = false;
   columns: any = [
     { data: 'naam', readOnly: true },

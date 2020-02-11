@@ -26,6 +26,10 @@ export class AdminService {
     return this.http.get(this.$link + 'api/gebruiker/getGebruiker/' + id);
   }
 
+  getVrijwilligers(id): any {
+    return this.http.get(this.$link + "api/gebruiker/getVrijwilligers/" + id);
+  }
+
   registreerGebruiker(gebruiker): any {
     return this.http.post(
       this.$link + 'api/gebruiker/registreergebruiker',

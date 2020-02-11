@@ -27,6 +27,7 @@ import { AdminGuardService } from "./auth/admin-guard.service";
 import { VerantwoordelijkeGuardService } from "./auth/verantwoordelijke-guard.service";
 import { HomeGuardService } from "./auth/home-guard.service";
 import { AppComponent } from "./app.component";
+import { ManageVerenigingLedenAdminComponent } from './admin/manage-vereniging-leden-admin/manage-vereniging-leden-admin.component';
 
 const routes: Routes = [
   {
@@ -79,6 +80,12 @@ const routes: Routes = [
     component: EditVerenigingAdminComponent,
     canActivate: [AdminGuardService]
   },
+  {
+    path: "manageVerenigingLedenAdmin/:id",
+    component: ManageVerenigingLedenAdminComponent,
+    canActivate: [AdminGuardService]
+  },
+
   {
     path: "manageTijdsregistraties",
     component: ManageTijdsregistratiesComponent,

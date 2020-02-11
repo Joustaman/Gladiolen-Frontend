@@ -37,7 +37,7 @@ const routes: Routes = [
   {
     path: "createGebruiker",
     component: CreateGebruikerComponent,
-    canActivate: [VerantwoordelijkeGuardService]
+    canActivate: [AdminGuardService]
   },
   {
     path: "adminHome",

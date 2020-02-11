@@ -22,7 +22,9 @@
   background-image: url("src/assets/images/taken.jpg");
   cursor: pointer;
 }
-
+.tablet {
+  background-image: url("src/assets/images/tablet.jpg");
+}
 // - Pop -
 .pop:before {
   $overlay-color: hsla(128, 100%, 50%, 0.3);

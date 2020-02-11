@@ -73,6 +73,18 @@ export class ManageTakenComponent implements OnInit {
     );
   }
 
+  deleteTaak() {
+    this.adminService.deleteTaak(this.taak.id).subscribe(
+      result => {
+        this.toastr.success('Taak verwijderd');
+        this.getTaken();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
   getTaken() {
     this.adminService.getTaken().subscribe(
       result => {
@@ -99,4 +111,14 @@ export class ManageTakenComponent implements OnInit {
       }
     );
   };
+
+  clearTaakForm() {
+    this.taakForm.patchValue({
+      subtaak_id: '',
+      taakgroep_id: '',
+      startDatum: '',
+      eindDatum: '',
+      aantalPersonen: ''
+    });
+  }
 }

@@ -61,6 +61,11 @@ export class EditGebruikerComponent implements OnInit {
         }
       });
 
+    this.adminService.getTshirts().subscribe(
+      result => {
+        this.tshirts = result;
+      },
+    );
 
     this.adminService.getRollen().subscribe(
       result => {

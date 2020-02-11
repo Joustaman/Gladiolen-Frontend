@@ -18,9 +18,13 @@ import {ManageTakenComponent} from './manage-taken/manage-taken.component';
 import { TabletStatusBekijkenComponent } from './tablet-status-bekijken/tablet-status-bekijken.component';
 import { HotTableModule } from '@handsontable/angular';
 import { ManageVerenigingLedenAdminComponent } from './manage-vereniging-leden-admin/manage-vereniging-leden-admin.component';
+import { GebruikerFilterPipe } from './manage-gebruikers/gebruiker-filter.pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
-  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent, ManageTijdsregistratiesComponent, AanvraagVerenigingComponent, ManageTakenComponent, TabletStatusBekijkenComponent, ManageVerenigingLedenAdminComponent],
+  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent, ManageTijdsregistratiesComponent, AanvraagVerenigingComponent, ManageTakenComponent, TabletStatusBekijkenComponent, GebruikerFilterPipe, ManageVerenigingLedenAdminComponent],
+
+
 
   imports: [
     CommonModule,
@@ -29,6 +33,7 @@ import { ManageVerenigingLedenAdminComponent } from './manage-vereniging-leden-a
     MymaterialModule,
     FormsModule,
     HotTableModule.forRoot(),
+    NgxPaginationModule,
 
   ]
 })

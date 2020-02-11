@@ -14,6 +14,7 @@ export class ManageGebruikersComponent implements OnInit {
 
   gebruikers: any = [];
   pageLoaded = false;
+  str="";
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';
   data: any = [];
@@ -42,7 +43,7 @@ export class ManageGebruikersComponent implements OnInit {
   ];
   constructor(private adminService: AdminService) {
   }
-
+ 
   ngOnInit() {
     this.adminService.getGebruikers().subscribe(
       result => {

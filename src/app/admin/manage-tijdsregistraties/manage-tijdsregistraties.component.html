@@ -1,14 +1,20 @@
 <div class="container" *ngIf="pageLoaded">
-  <div class="card">
-    <div class="card-header">
-      <h4>Tijdsregistraties beheren</h4>
+  <div class="card table-wrapper shadow-lg">
+    <div class="card-header table-title">
+      <div class="row">
+        <div class="col-sm-6">
+      <h2>Tijdsregistraties beheren</h2>
+        </div>
+        <div class="col-sm-6">
+    <a (click)="clearTijdsregistratieForm()" data-toggle="modal" data-target="#createTijdsregistratieModal"
+       class="btn add-button mr-2"><i class="fas fa-plus-circle"></i> <span>Tijdsregistratie aanmaken</span></a>
+        </div>
+      </div>
     </div>
-    <button type="button" (click)="clearTijdsregistratieForm()" data-toggle="modal" data-target="#createTijdsregistratieModal"
-      class="btn btn-primary btn-circle mr-2">Tijdsregistratie aanmaken</button>
     <div class="card-body">
-      <div class="row mt-5">
+      <div class="row">
         <div class="col-12">
-          <table class="table table-borderless table-hover">
+          <table class="table table-striped table-hover">
             <thead>
               <tr>
                 <th scope="col">Lid</th>
@@ -20,7 +26,7 @@
                 <th scope="col">Manuele check-out</th>
                 <th scope="col">Aangepaste check-in</th>
                 <th scope="col">Aangepaste check-out</th>
-                <th></th>
+                <th class="acties">Acties</th>
               </tr>
             </thead>
             <tbody>
@@ -36,9 +42,8 @@
                 <td>{{tijdsregistratie.adminCheckUit}}</td>
 
                 <td>
-                  <button (click)="onClickEditTijdsregistratie(tijdsregistratie)" routerLinkActive="router-link-active"
-                    type="button" data-toggle="modal" data-target="#editTijdsregistratieModal"
-                    class="btn btn-primary btn-circle mr-2"><i class="far fa-edit"></i></button>
+                  <a (click)="onClickEditTijdsregistratie(tijdsregistratie)" routerLinkActive="router-link-active" data-toggle="modal" data-target="#editTijdsregistratieModal"
+                    class="edit"><i class="fas fa-pencil-alt"></i></a>
                 </td>
               </tr>
             </tbody>
@@ -105,8 +110,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-          <button (click)="updateTijdsregistratie()" data-dismiss="modal" class="btn btn-primary">Opslaan</button>
+          <a class="btn pdf" data-dismiss="modal">Sluiten</a>
+          <a (click)="updateTijdsregistratie()" data-dismiss="modal" class="btn btn-primary">Opslaan</a>
         </div>
       </form>
     </div>
@@ -155,8 +160,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-          <button (click)="createTijdsregistratie()" data-dismiss="modal" class="btn btn-primary">Opslaan</button>
+          <a class="btn pdf" data-dismiss="modal">Sluiten</a>
+          <a (click)="createTijdsregistratie()" data-dismiss="modal" class="btn btn-primary">Opslaan</a>
         </div>
       </form>
     </div>

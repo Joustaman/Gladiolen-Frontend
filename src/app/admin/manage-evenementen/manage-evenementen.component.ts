@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { AdminService } from '../admin.service';
-import { DatePipe } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
-import { HotTableRegisterer } from '@handsontable/angular';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {AdminService} from '../admin.service';
+import {DatePipe} from '@angular/common';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
+import {HotTableRegisterer} from '@handsontable/angular';
 
 @Component({
   selector: 'app-manage-evenementen',
@@ -29,11 +29,11 @@ export class ManageEvenementenComponent implements OnInit {
   colHeaders = ['Naam', 'Startdatum', 'Einddatum', 'Actief', 'Verenigingen'];
   excelModus = false;
   columns: any = [
-    { data: 'naam', readOnly: true },
-    { data: 'startdatum', readOnly: true },
-    { data: 'einddatum', readOnly: true },
-    { data: 'actief', readOnly: true },
-    { data: 'verenigingen', readOnly: true }
+    {data: 'naam', readOnly: true},
+    {data: 'startdatum', readOnly: true},
+    {data: 'einddatum', readOnly: true},
+    {data: 'actief', readOnly: true},
+    {data: 'verenigingen', readOnly: true}
   ];
 
   constructor(
@@ -41,7 +41,8 @@ export class ManageEvenementenComponent implements OnInit {
     private readonly datepipe: DatePipe,
     private toastr: ToastrService,
     private readonly router: Router
-  ) {}
+  ) {
+  }
 
   evenementForm = new FormGroup({
     naam: new FormControl(''),
@@ -59,8 +60,6 @@ export class ManageEvenementenComponent implements OnInit {
   onSubmit() {
     this.adminService.registreerEvenement(this.evenementForm.value).subscribe(
       result => {
-        console.log(result);
-        this.pageLoaded = false;
         this.getEvenementen();
       },
       error => {
@@ -156,7 +155,7 @@ export class ManageEvenementenComponent implements OnInit {
   }
 
   verwijderVerenigingVanEvenement(verenigingId) {
-    const ids = { verenigingid: verenigingId, evenementid: this.evenementId };
+    const ids = {verenigingid: verenigingId, evenementid: this.evenementId};
     console.log(ids);
     this.adminService.deleteVerenigingFromEvenement(ids).subscribe(
       result => {
@@ -192,9 +191,11 @@ export class ManageEvenementenComponent implements OnInit {
       });
     });
   }
+
   changeExcel() {
     this.excelModus = !this.excelModus;
   }
+
   export() {
     const exportPlugin = this.hotRegisterer
       .getInstance(this.id)

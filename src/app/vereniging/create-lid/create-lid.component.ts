@@ -13,6 +13,17 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CreateLidComponent implements OnInit {
 
+  tshirts: any = [];
+  lid: any = {};
+  updateGebruiker = false;
+  pageLoaded = false;
+  maat: any;
+  geslacht: any;
+
+  constructor(private readonly verenigingService: VerenigingService, private readonly router: Router,
+              private readonly route: ActivatedRoute, private readonly datepipe: DatePipe,
+              private readonly toast: ToastrService) { }
+
   lidForm = new FormGroup({
     name: new FormControl(''),
     voornaam: new FormControl(''),
@@ -29,17 +40,6 @@ export class CreateLidComponent implements OnInit {
     actief: new FormControl(null),
     foto: new FormControl(null),
   });
-
-  tshirts: any = [];
-  lid: any = {};
-  updateGebruiker = false;
-  pageLoaded = false;
-  maat: any;
-  geslacht: any;
-  constructor(private readonly verenigingService: VerenigingService, private readonly router: Router,
-              private readonly route: ActivatedRoute, private readonly datepipe: DatePipe,
-              private readonly toast: ToastrService) { }
-
 
   ngOnInit() {
     this.route.paramMap.subscribe(
@@ -159,6 +159,4 @@ export class CreateLidComponent implements OnInit {
     this.maat = this.lid.tshirts[0].maat;
     this.geslacht = this.lid.tshirts[0].geslacht;
   }
-
-
 }

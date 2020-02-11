@@ -11,6 +11,9 @@ import {Router, Route, ActivatedRoute} from '@angular/router';
 })
 export class CreateVerenigingAdminComponent implements OnInit {
 
+  tshirts: any = [];
+  maat: any;
+  geslacht: any;
   kernleden: any = [];
   pageLoaded = false;
 
@@ -45,26 +48,31 @@ export class CreateVerenigingAdminComponent implements OnInit {
     actief: new FormControl(null),
     foto: new FormControl(null),
   });
-  tshirts: any = [];
-  maat: any;
-  geslacht: any;
-  constructor(private adminService: AdminService, private toast: ToastrService, private readonly router: Router, private readonly route: ActivatedRoute) {
+
+  constructor(private adminService: AdminService, private toast: ToastrService,
+              private readonly router: Router, private readonly route: ActivatedRoute) {
   }
 
-  ngOnInit(
-  ) {
+  ngOnInit() {
     this.adminService.getKernleden().subscribe(
-        result => {
-          this.kernleden = result;
-          this.pageLoaded = true;
-          console.log(result);
-        },
+      result => {
+        this.kernleden = result;
+        this.pageLoaded = true;
+        console.log(result);
+      },
+    );
+
+    this.adminService.getTshirts().subscribe(
+      result => {
+        this.tshirts = result;
+      },
     );
   }
 
   changeContact() {
     let value = this.verenigingForm.get('contactpersoon').value;
   }
+
   createVereniging() {
 
     this.adminService.registreerVereniging(this.verenigingForm.value).subscribe(
@@ -79,6 +87,7 @@ export class CreateVerenigingAdminComponent implements OnInit {
       }
     );
   }
+
   changeLunch() {
     let value = this.verantwoordelijkeForm.get('lunchpakket').value;
     this.verantwoordelijkeForm.patchValue({
@@ -88,21 +97,22 @@ export class CreateVerenigingAdminComponent implements OnInit {
 
   createVerantwoordelijke() {
     this.verantwoordelijkeForm.patchValue(
-        {
-          rol_id: 4,
-        }
+      {
+        rol_id: 4,
+      }
     );
+
     this.adminService.registreerVerantwoordelijke(this.verantwoordelijkeForm.value).subscribe(
-        result => {
-          this.verenigingForm.patchValue({
-            hoofdverantwoordelijke: result.id,
-          });
-          this.createTshirt(result.id);
-          console.log(result);
-        },
-        error => {
-          console.log(error);
-        }
+      result => {
+        this.verenigingForm.patchValue({
+          hoofdverantwoordelijke: result.id,
+        });
+        this.createTshirt(result.id);
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
     );
   }
 
@@ -110,11 +120,10 @@ export class CreateVerenigingAdminComponent implements OnInit {
     let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null};
 
     this.adminService.createTshirt(tshirt).subscribe(
-        result => {
-          this.createVereniging();
-          console.log(result);
-        }
+      result => {
+        this.createVereniging();
+        console.log(result);
+      }
     );
   }
-
 }

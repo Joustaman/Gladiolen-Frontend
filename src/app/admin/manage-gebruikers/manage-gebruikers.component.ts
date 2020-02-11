@@ -14,9 +14,7 @@ export class ManageGebruikersComponent implements OnInit {
 
   gebruikers: any = [];
   pageLoaded = false;
-<<<<<<< HEAD
   str="";
-=======
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';
   data: any = [];
@@ -43,7 +41,6 @@ export class ManageGebruikersComponent implements OnInit {
     { data: 'rijksregisternummer', readOnly: true },
     { data: 'actief', readOnly: true },
   ];
->>>>>>> 28723c0a4ef8bf95a88d5b4231e658b9133a728a
   constructor(private adminService: AdminService) {
   }
  

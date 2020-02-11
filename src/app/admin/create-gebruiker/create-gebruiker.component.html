@@ -11,33 +11,33 @@
             <div class="row">
               <div class="col-lg-4">
                 <div class="form-group">
-                  <label for="name">Naam</label>
-                  <input class="form-control" type="text" id="name" name="name" formControlName="name" required>
+                  <label for="voornaam">Voornaam</label>
+                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" pattern="[^0-9]"
+                         required>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="roepnaam">Roepnaam</label>
-                  <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam">
+                  <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam" pattern="[^0-9]">
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="form-group">
-                  <label for="voornaam">Voornaam</label>
-                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam"
-                         required>
+                  <label for="name">Achternaam</label>
+                  <input class="form-control" type="text" id="name" name="name" formControlName="name" pattern="[^0-9]" required>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input class="form-control" type="text" id="email" name="email" formControlName="email">
+                  <input class="form-control" type="email" id="email" name="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" formControlName="email">
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="telefoon">Telefoon</label>
-                  <input class="form-control" type="telefoon" id="telefoon" name="telefoon" formControlName="telefoon">
+                  <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]" formControlName="telefoon">
                 </div>
               </div>
               <div class="col-lg-3">
@@ -126,10 +126,7 @@
 
           <table class="table">
             <tbody>
-            <tr>
-              <th scope="row">Naam</th>
-              <td>{{gebruikerForm.get('name').value}}</td>
-            </tr>
+
             <tr>
               <th scope="row">Voornaam</th>
               <td>{{gebruikerForm.get('voornaam').value}}</td>
@@ -137,6 +134,10 @@
             <tr>
               <th scope="row">Roepnaam</th>
               <td>{{gebruikerForm.get('roepnaam').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Achternaam</th>
+              <td>{{gebruikerForm.get('name').value}}</td>
             </tr>
             <tr>
               <th scope="row">Email</th>

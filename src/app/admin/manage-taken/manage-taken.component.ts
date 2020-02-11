@@ -99,4 +99,14 @@ export class ManageTakenComponent implements OnInit {
       }
     );
   };
+
+  clearTaakForm() {
+    this.taakForm.patchValue({
+      subtaak_id: '',
+      taakgroep_id: '',
+      startDatum: '',
+      eindDatum: '',
+      aantalPersonen: ''
+    });
+  }
 }

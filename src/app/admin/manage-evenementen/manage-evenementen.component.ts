@@ -57,7 +57,7 @@ export class ManageEvenementenComponent implements OnInit {
   changeEvenementId(id, evenement) {
     this.evenementId = id;
     this.evenement = evenement;
-    if(this.evenement !== null) {
+    if (this.evenement !== null) {
       this.evenementVerenigingen = evenement.verenigingen;
     }
   }
@@ -99,7 +99,7 @@ export class ManageEvenementenComponent implements OnInit {
   }
 
   toewijzenVerenigingen() {
-    const data = {verenigingid: this.vereniging, evenementid: this.evenementId };
+    const data = {verenigingid: this.vereniging, evenementid: this.evenementId};
     this.adminService.registreerEvenementVereniging(data).subscribe(
       result => {
         console.log(result);
@@ -120,7 +120,7 @@ export class ManageEvenementenComponent implements OnInit {
     this.adminService.getEvenementen().subscribe(
       result => {
         this.evenementen = result;
-        if(this.evenement !== null) {
+        if (this.evenement !== null) {
           this.evenement = this.evenementen.find((evenement) => evenement.id === this.evenementId);
           this.changeEvenementId(this.evenementId, this.evenement);
         }
@@ -150,5 +150,13 @@ export class ManageEvenementenComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  clearEvenementForm() {
+    this.evenementForm.patchValue({
+      naam: '',
+      startdatum: '',
+      einddatum: ''
+    });
   }
 }

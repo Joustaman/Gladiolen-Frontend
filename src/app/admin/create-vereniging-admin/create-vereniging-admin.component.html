@@ -9,7 +9,7 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="naam">Naam</label>
-                  <input class="form-control" type="text" id="naam" name="naam" formControlName="naam" required>
+                  <input class="form-control" type="text" id="naam" name="naam" formControlName="naam" pattern="[^0-9]*" required>
                 </div>
               </div>
               <div class="col-lg-3">
@@ -26,7 +26,7 @@
                 <div class="form-group">
                   <label for="btwnr">BTW nummer</label>
                   <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr"
-                         pattern="[BE]{2}[0]{1}[0-9]{9}" required>
+                         pattern="[BE]{2}[0]{1}[0-9]{9}">
                   <div class="invalid-feedback">Gelieve een correct rekeningnummer in te vullen in het formaat
                     BE0xxxxxxxxx
                   </div>
@@ -35,7 +35,7 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="straat">Straat</label>
-                  <input class="form-control" type="text" id="straat" name="straat" pattern="[^0-9]" formControlName=straat>
+                  <input class="form-control" type="text" id="straat" name="straat" pattern="[^0-9]*" formControlName=straat>
                 </div>
               </div>
               <div class="col-lg-3">
@@ -48,7 +48,7 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="gemeente">Gemeente</label>
-                  <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]" formControlName="gemeente">
+                  <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]*" formControlName="gemeente">
                 </div>
               </div>
               <div class="col-lg-3">
@@ -88,20 +88,20 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="voornaam">Voornaam</label>
-                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" pattern="[^0-9]"
+                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" pattern="[^0-9]*"
                          required>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="roepnaam">Roepnaam</label>
-                  <input class="form-control" type="text" id="roepnaam" name="roepnaam" pattern="[^0-9]" formControlName="roepnaam">
+                  <input class="form-control" type="text" id="roepnaam" name="roepnaam" pattern="[^0-9]*" formControlName="roepnaam">
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="name">Achternaam</label>
-                  <input class="form-control" type="text" id="name" name="naam" formControlName="name" pattern="[^0-9]" required>
+                  <input class="form-control" type="text" id="name" name="naam" formControlName="name" pattern="[^0-9]*" required>
                 </div>
               </div>
               <div class="col-lg-6">
@@ -115,7 +115,7 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="telefoon">Telefoon</label>
-                  <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]" formControlName="telefoon">
+                  <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]*" formControlName="telefoon">
                 </div>
               </div>
               <div class="col-lg-3">
@@ -153,8 +153,7 @@
                 <div class="form-group">
                   <label for="tshirt">Tshirt - Maat</label>
                   <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat" [ngModelOptions]="{standalone: true}">
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
+                    <option *ngFor="let tshirt of tshirts" [value]="tshirt.maat">{{tshirt.maat}}</option>
                   </select>
                 </div>
               </div>

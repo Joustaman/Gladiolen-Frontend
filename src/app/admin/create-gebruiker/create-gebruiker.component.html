@@ -12,32 +12,37 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="voornaam">Voornaam</label>
-                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" pattern="[^0-9]"
+                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam"
+                         pattern="[^0-9]"
                          required>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="roepnaam">Roepnaam</label>
-                  <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam" pattern="[^0-9]">
+                  <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam"
+                         pattern="[^0-9]">
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="name">Achternaam</label>
-                  <input class="form-control" type="text" id="name" name="name" formControlName="name" pattern="[^0-9]" required>
+                  <input class="form-control" type="text" id="name" name="name" formControlName="name" pattern="[^0-9]"
+                         required>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input class="form-control" type="email" id="email" name="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" formControlName="email">
+                  <input class="form-control" type="email" id="email" name="email"
+                         pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" formControlName="email">
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="telefoon">Telefoon</label>
-                  <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]" formControlName="telefoon">
+                  <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]"
+                         formControlName="telefoon">
                 </div>
               </div>
               <div class="col-lg-3">
@@ -77,8 +82,7 @@
                   <label for="tshirt">Tshirt - Maat</label>
                   <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
                           [ngModelOptions]="{standalone: true}">
-                    <option *ngFor="let tshirt of tshirts" [value]="tshirt.id">{{tshirt.maat}}
-                      - {{tshirt.geslacht}}</option>
+                    <option *ngFor="let tshirt of tshirts" [value]="tshirt.maat">{{tshirt.maat}}</option>
                   </select>
                 </div>
               </div>

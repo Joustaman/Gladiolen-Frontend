@@ -97,7 +97,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-          <button (click)="onSubmit()" class="btn btn-primary" data-dismiss="modal">Opslaan
+          <button (click)="onSubmit()" class="btn btn-primary" data-dismiss="modal" *ngIf="evenementForm.valid">Opslaan
           </button>
         </div>
       </form>
@@ -140,7 +140,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-          <button (click)="updateEvenement()" data-dismiss="modal" class="btn btn-primary">Opslaan</button>
+          <button (click)="updateEvenement()" data-dismiss="modal" class="btn btn-primary"*ngIf="evenementForm.valid">Opslaan</button>
         </div>
       </form>
     </div>

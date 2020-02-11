@@ -26,13 +26,15 @@
         </div>
       </div>
     </div>
-    <div class="card-header">
-      <input
-        id="str"
-        [(ngModel)]="str"
-        class="form-control w-25 m-1"
-        placeholder="Zoek gebruiker"
-      />
+    <div class="row">
+      <div class="col-12">
+          <input
+          id="str"
+          [(ngModel)]="str"
+          class="form-control w-100 m-1 float-right"
+          placeholder="Zoek gebruiker"
+        />
+      </div>
     </div>
     <div class="card-body">
       <div class="row" *ngIf="!excelModus">
@@ -51,7 +53,7 @@
               <tr
                 *ngFor="
                   let gebruiker of gebruikers | gebruikerFilter:str
-                    | paginate: { itemsPerPage: 10, currentPage: p }
+                    | paginate: { itemsPerPage: 5, currentPage: p }
                 "
               >
                 <td>{{ gebruiker.name }}</td>

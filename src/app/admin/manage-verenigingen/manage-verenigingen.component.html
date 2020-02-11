@@ -33,7 +33,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let vereniging of verenigingen" (click)="onClickDetailVereniging(vereniging)"
+              <tr *ngFor="let vereniging of verenigingen | paginate: { itemsPerPage: 10, currentPage: p }" (click)="onClickDetailVereniging(vereniging)"
                 data-toggle="modal" data-target="#verenigingModal">
                 <td>{{vereniging.naam}}</td>
                 <td>{{vereniging.hoofd.name}} {{vereniging.hoofd.voornaam}}</td>
@@ -50,6 +50,8 @@
               </tr>
             </tbody>
           </table>
+          <pagination-controls (pageChange)="p = $event" directionLinks="true" responsive="true" previousLabel="Vorige"
+                               nextLabel="Volgende"></pagination-controls>
         </div>
       </div>
       <div class="row handtable" *ngIf="excelModus">

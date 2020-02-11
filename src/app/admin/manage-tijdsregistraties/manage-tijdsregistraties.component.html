@@ -24,7 +24,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let tijdsregistratie of tijdsregistraties" data-toggle="modal" data-target="#verenigingModal">
+              <tr *ngFor="let tijdsregistratie of tijdsregistraties | paginate: { itemsPerPage: 10, currentPage: p }" data-toggle="modal" data-target="#verenigingModal">
                 <td>{{tijdsregistratie.gebruiker.name}} {{tijdsregistratie.gebruiker.voornaam}}</td>
                 <td>{{tijdsregistratie.vereniging.naam}}</td>
                 <td>{{tijdsregistratie.evenement.naam}}</td>
@@ -43,6 +43,8 @@
               </tr>
             </tbody>
           </table>
+          <pagination-controls (pageChange)="p = $event" directionLinks="true" responsive="true" previousLabel="Vorige"
+                               nextLabel="Volgende"></pagination-controls>
         </div>
       </div>
     </div>

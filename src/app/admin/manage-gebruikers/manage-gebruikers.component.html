@@ -31,7 +31,6 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let gebruiker of gebruikers" [routerLink]="['/detailGebruiker', gebruiker.id]">
                 <td>{{gebruiker.name}}</td>
                 <td>{{gebruiker.voornaam}}</td>
                 <td>{{gebruiker.geboortedatum | date:'MM/dd/yyyy'}}</td>
@@ -52,6 +51,8 @@
             language="nl-NL" stretchH="all" columnSorting="true" height="200"></hot-table>
         </div>
       </div>
+        <tr *ngFor="let gebruiker of gebruikers | paginate: { itemsPerPage: 10, currentPage: p }"
+      <pagination-controls (pageChange)="p = $event" directionLinks="true" responsive="true" previousLabel="Vorige"
     </div>
   </div>
 </div>

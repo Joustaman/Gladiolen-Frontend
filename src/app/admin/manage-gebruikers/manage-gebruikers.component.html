@@ -10,6 +10,10 @@
         </div>
       </div>
     </div>
+    <div class="card-header">
+      <input id="str" [(ngModel)]="str" class="form-control w-25 m-1" placeholder="Zoek gebruiker" />
+
+  </div>
     <div class="card-body">
       <table class="table table-striped table-hover">
         <thead>
@@ -22,7 +26,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let gebruiker of gebruikers" [routerLink]="['/detailGebruiker', gebruiker.id]">
+        <tr *ngFor="let gebruiker of gebruikers | gebruikerFilter:str" [routerLink]="['/detailGebruiker', gebruiker.id]">
           <td>{{gebruiker.name}}</td>
           <td>{{gebruiker.voornaam}}</td>
           <td>{{gebruiker.geboortedatum | date:'MM/dd/yyyy'}}</td>

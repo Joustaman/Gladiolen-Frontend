@@ -11,10 +11,10 @@ export class ManageGebruikersComponent implements OnInit {
 
   gebruikers: any = [];
   pageLoaded = false;
-
+  str="";
   constructor(private adminService: AdminService) {
   }
-
+ 
   ngOnInit() {
     this.adminService.getGebruikers().subscribe(
       result => {

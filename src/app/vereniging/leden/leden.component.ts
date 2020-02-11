@@ -131,7 +131,6 @@ export class LedenComponent implements OnInit {
     for(var i=1; i<qrCodes.length;i++){
       const volledigeNaam = this.leden[i-1].voornaam + ' ' + this.leden[i-1].name;
       const qrCode = qrCodes.item(i).lastChild.firstChild.firstChild;
-      
       pdf.text(70, 70, volledigeNaam);
       pdf.addImage(qrCode, 'png', 20, 90, 550, 550);
       pdf.addPage();

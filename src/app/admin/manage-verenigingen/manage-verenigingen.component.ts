@@ -63,15 +63,15 @@ export class ManageVerenigingenComponent implements OnInit {
     apiData.forEach(vereniging => {
       this.data.push({
         naam: vereniging.naam,
-        hoofdverantwoordelijke: vereniging.hoofd.name + vereniging.hoofd.voornaam,
-        contactpersoon: vereniging.contact.name + vereniging.contact.voornaam,
+        hoofdverantwoordelijke: vereniging.hoofd.name + ' ' + vereniging.hoofd.voornaam,
+        contactpersoon: vereniging.contact.name + ' ' + vereniging.contact.voornaam,
         rekeningnummer: vereniging.rekeningnr,
         btwnummer: vereniging.btwnr,
         straat: vereniging.straat,
         huisnummer: vereniging.huisnummer,
         gemeente: vereniging.gemeente,
         postcode: vereniging.postcode,
-        actief: vereniging.actief
+        actief: vereniging.actief === 1 ? 'Ja' : 'Nee',
       });
     });
   }

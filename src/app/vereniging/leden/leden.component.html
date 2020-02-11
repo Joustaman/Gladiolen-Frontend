@@ -58,9 +58,9 @@
       </div>
       <div class="row" *ngIf="excelModus">
         <div class="col-12">
-          <hot-table class="w-100" #hot [data]="data" [colHeaders]="colHeaders" [rowHeaders]="false" [hotId]="id"
+          <hot-table #hot [data]="data" [colHeaders]="colHeaders" [rowHeaders]="false" [hotId]="id"
             licenseKey="non-commercial-and-evaluation" [columns]="columns" [dropdownMenu]="dropdownMenu" filters="true"
-            [language]="language" stretchH="all" columnSorting="true"></hot-table>
+            [language]="language" stretchH="all" columnSorting="true" height="200"></hot-table>
         </div>
       </div>
     </div>

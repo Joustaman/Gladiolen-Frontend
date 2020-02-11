@@ -52,11 +52,11 @@
           </table>
         </div>
       </div>
-      <div class="row" *ngIf="excelModus">
-        <div class="col-12 handtable">
+      <div class="row handtable" *ngIf="excelModus">
+        <div class="col-12">
           <hot-table [data]="data" [colHeaders]="colHeaders" [rowHeaders]="false" [hotId]="id"
             licenseKey="non-commercial-and-evaluation" [columns]="columns" dropdownMenu="true" filters="true"
-            language="nl-NL" columnSorting="true"></hot-table>
+            language="nl-NL" columnSorting="true" height="200"></hot-table>
         </div>
       </div>
     </div>

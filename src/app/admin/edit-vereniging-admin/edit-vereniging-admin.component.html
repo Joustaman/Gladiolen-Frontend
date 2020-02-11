@@ -21,19 +21,25 @@
           <label for="rekeningnr">Rekening Nummer</label>
           <input class="form-control" type="text" id="rekeningnr" name="rekeningnr" formControlName="rekeningnr"
                  pattern="[BE]{2}[0-9]{14}" required>
+          <div class="invalid-feedback">Gelieve een correct rekeningnummer in te vullen in het formaat
+            BExxxxxxxxxxxxxx
+          </div>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
           <label for="btwnr">BTW Nummer</label>
           <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr"
-                 pattern="[BE]{2}[0]{1}[0-9]{9}" required>
+                 pattern="[BE]{2}[0]{1}[0-9]{9}">
+        </div>
+        <div class="invalid-feedback">Gelieve een correct rekeningnummer in te vullen in het formaat
+          BE0xxxxxxxxx
         </div>
       </div>
       <div class="col-lg-3">
         <div class="form-group">
           <label for="straat">Straat</label>
-          <input class="form-control" type="text" id="straat" name="straat" formControlName=straat required>
+          <input class="form-control" type="text" id="straat" name="straat" pattern="[^0-9]" formControlName=straat required>
         </div>
       </div>
       <div class="col-lg-3">
@@ -46,7 +52,7 @@
       <div class="col-lg-3">
         <div class="form-group">
           <label for="gemeente">Gemeente</label>
-          <input class="form-control" type="text" id="gemeente" name="gemeente" formControlName="gemeente" required>
+          <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]" formControlName="gemeente" required>
         </div>
       </div>
       <div class="col-lg-3">
@@ -54,6 +60,7 @@
           <label for="postcode">Postcode</label>
           <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode"
                  pattern="[0-9]{4}" required>
+          <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven</div>
         </div>
       </div>
       <div class="col-lg-1">

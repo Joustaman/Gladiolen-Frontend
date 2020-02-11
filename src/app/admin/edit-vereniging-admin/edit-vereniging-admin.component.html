@@ -9,6 +9,25 @@
       </div>
       <div class="col-lg-6">
         <div class="form-group">
+          <label for="contactpersoon">Contactpersoon</label>
+          <select class="form-control" name="contactpersoon" id="contactpersoon"
+                  formControlName="contactpersoon">
+            <option *ngFor="let kernlid of kernleden"
+                    [value]="kernlid.id">{{kernlid.naam}} {{kernlid.voornaam}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="hoofdverantwoordelijke">Hoofd verantwoordelijke</label>
+          <select class="form-control" name="hoofdverantwoordelijke" id="hoofdverantwoordelijke"
+                  formControlName="hoofdverantwoordelijke">
+            <option *ngFor="let lid of leden" [value]="lid.id">{{lid.naam}} {{lid.voornaam}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
           <label for="tweedeverantwoordelijke">Verander van tweede verantwoordelijke</label>
           <select class="form-control" name="tweedeverantwoordelijke" id="tweedeverantwoordelijke"
                   formControlName="tweedeverantwoordelijke">
@@ -39,7 +58,8 @@
       <div class="col-lg-3">
         <div class="form-group">
           <label for="straat">Straat</label>
-          <input class="form-control" type="text" id="straat" name="straat" pattern="[^0-9]" formControlName=straat required>
+          <input class="form-control" type="text" id="straat" name="straat" pattern="[^0-9]" formControlName=straat
+                 required>
         </div>
       </div>
       <div class="col-lg-3">
@@ -52,7 +72,8 @@
       <div class="col-lg-3">
         <div class="form-group">
           <label for="gemeente">Gemeente</label>
-          <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]" formControlName="gemeente" required>
+          <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]"
+                 formControlName="gemeente" required>
         </div>
       </div>
       <div class="col-lg-3">

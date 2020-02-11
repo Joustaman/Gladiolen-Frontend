@@ -79,19 +79,19 @@
             <input type="text" class="form-control" id="evenement" [(ngModel)]="evenement.naam"
               [ngModelOptions]="{standalone: true}" disabled>
           </div>
-          <div class="form-group">
+          <div class="form-group" *ngIf="tijdsregistratie.checkIn != null">
             <label for="checkIn" class="col-form-label">Check-in:</label>
             <input type="text" class="form-control" id="checkIn" formControlName="checkIn" disabled>
           </div>
-          <div class="form-group">
+          <div class="form-group" *ngIf="tijdsregistratie.checkUit != null">
             <label for="checkUit" class="col-form-label">Check-out:</label>
             <input type="text" class="form-control" id="checkUit" formControlName="checkUit" disabled>
           </div>
-          <div class="form-group">
+          <div class="form-group" *ngIf="tijdsregistratie.manCheckIn != null">
             <label for="manCheckIn" class="col-form-label">Manuele check-in:</label>
             <input type="text" class="form-control" id="manCheckIn" formControlName="manCheckIn" disabled>
           </div>
-          <div class="form-group">
+          <div class="form-group" *ngIf="tijdsregistratie.manCheckOut != null">
             <label for="manCheckUit" class="col-form-label">Manuele check-out:</label>
             <input type="text" class="form-control" id="manCheckUit" formControlName="manCheckUit" disabled>
           </div>

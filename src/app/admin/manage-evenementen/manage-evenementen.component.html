@@ -6,7 +6,8 @@
           <h2><b>Evenementen beheren</b></h2>
         </div>
         <div class="col-sm-6">
-          <a class="btn btn-success" (click)="clearEvenementForm()" data-toggle="modal" data-target="#evenementModal"><i class="material-icons">&#xE147;</i> <span>Voeg evenement toe</span></a>
+          <a class="btn btn-success" (click)="clearEvenementForm()" data-toggle="modal" data-target="#evenementModal"><i
+            class="material-icons">&#xE147;</i> <span>Voeg evenement toe</span></a>
         </div>
       </div>
     </div>
@@ -22,7 +23,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let evenement of evenementen">
+        <tr *ngFor="let evenement of evenementen | paginate: { itemsPerPage: 10, currentPage: p }">
           <td>{{evenement.naam}}</td>
           <td>{{evenement.startdatum | date:'dd/MM/yyyy'}}</td>
           <td>{{evenement.einddatum | date:'dd/MM/yyyy'}}</td>
@@ -31,12 +32,17 @@
             <div *ngIf="evenement.actief == 1">Actief</div>
           </td>
           <td>
-            <a (click)="onClickEditEvenement(evenement)" data-toggle="modal" data-target="#editEvenementModal" class="edit"><i class="material-icons" data-toggle="tooltip" title="Bewerken">&#xE254;</i></a>
-            <a (click)="changeEvenementId(evenement.id, evenement)" data-toggle="modal" data-target="#toewijzenVerenigingModal" class="add"><i class="material-icons" data-toggle="tooltip" title="Vereniging toewijzen">add</i></a>
+            <a (click)="onClickEditEvenement(evenement)" data-toggle="modal" data-target="#editEvenementModal"
+               class="edit"><i class="material-icons" data-toggle="tooltip" title="Bewerken">&#xE254;</i></a>
+            <a (click)="changeEvenementId(evenement.id, evenement)" data-toggle="modal"
+               data-target="#toewijzenVerenigingModal" class="add"><i class="material-icons" data-toggle="tooltip"
+                                                                      title="Vereniging toewijzen">add</i></a>
           </td>
         </tr>
         </tbody>
       </table>
+      <pagination-controls (pageChange)="p = $event" directionLinks="true" responsive="true" previousLabel="Vorige"
+                           nextLabel="Volgende"></pagination-controls>
     </div>
   </div>
 </div>
@@ -156,7 +162,8 @@
           <div>
             <h5 class="mt-5">Toegewezen verenigingen</h5>
             <ul>
-              <li (click)="verwijderVerenigingVanEvenement(vereniging.id)" class="link" *ngFor="let vereniging of evenementVerenigingen"><span class="mt-1">{{vereniging.naam}}</span></li>
+              <li (click)="verwijderVerenigingVanEvenement(vereniging.id)" class="link"
+                  *ngFor="let vereniging of evenementVerenigingen"><span class="mt-1">{{vereniging.naam}}</span></li>
             </ul>
           </div>
         </form>

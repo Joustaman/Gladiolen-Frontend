@@ -91,15 +91,18 @@ a {
   color: #fff;
   padding: 16px 30px;
   margin: -20px -25px 10px;
-  border-radius: 7px 7px 0px 0px;
+  border-radius: 7px 7px 0px 0px !important;
 }
+
 .table-title h2 {
   margin: 5px 0 0;
   font-size: 24px;
 }
+
 .table-title .btn-group {
   float: right;
 }
+
 .table-title .btn {
   color: #fff;
   float: right;
@@ -116,6 +119,7 @@ a {
   font-size: 21px;
   margin-right: 5px;
 }
+
 .table-title .btn span {
   float: left;
   margin-top: 2px;
@@ -162,6 +166,7 @@ table.table td a:hover {
 }
 
 a.add-button {
+  color: white;
   background-color: #329B72;
 }
 a.excel {
@@ -171,6 +176,7 @@ a.pdf {
   background-color: #ff2121;
 }
 a.edit-button {
+  color: white;
   background-color: #ffa821;
 }
 
@@ -211,4 +217,12 @@ pagination-controls,
 
 .ngx-pagination .current:hover {
   background: #0c225d !important;
+}
+
+.pretty.p-switch input:checked~.state.p-primary:before {
+  border-color: #0c225d !important;
+}
+
+.pretty input:checked~.state.p-primary label:after, .pretty.p-toggle .state.p-primary label:after {
+  background-color: #0c225d !important;
 }

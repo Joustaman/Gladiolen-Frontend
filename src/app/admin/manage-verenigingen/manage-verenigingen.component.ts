@@ -109,7 +109,7 @@ export class ManageVerenigingenComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.adminService.getVerenigingen().subscribe(
+    this.adminService.getGeacepteerdeVerenigingen().subscribe(
       result => {
         this.verenigingen = result;
         this.createDataForTable(result);

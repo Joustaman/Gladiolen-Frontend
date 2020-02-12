@@ -5,6 +5,7 @@ import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {generateBuildStats} from '@angular-devkit/build-angular/src/angular-cli-files/utilities/stats';
 import { HotTableRegisterer } from '@handsontable/angular';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-manage-tijdsregistraties',
@@ -57,7 +58,8 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   constructor(
     private adminService: AdminService,
     private toastr: ToastrService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly datepipe: DatePipe
   ) {
   }
 
@@ -141,8 +143,8 @@ export class ManageTijdsregistratiesComponent implements OnInit {
       checkUit: tijdsregistratie.checkUit,
       manCheckIn: tijdsregistratie.manCheckIn,
       manCheckUit: tijdsregistratie.manCheckUit,
-      adminCheckIn: tijdsregistratie.adminCheckIn,
-      adminCheckUit: tijdsregistratie.adminCheckUit
+      adminCheckIn: this.datepipe.transform(tijdsregistratie.adminCheckIn, 'yyyy-MM-ddTHH:mm'),
+      adminCheckUit: this.datepipe.transform(tijdsregistratie.adminCheckUit, 'yyyy-MM-ddTHH:mm')
     });
     this.evenement = this.evenementen.find(
       (evenement) => evenement.id === tijdsregistratie.evenement_id

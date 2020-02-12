@@ -73,8 +73,11 @@
               <label for="tshirt">Tshirt - Maat</label>
               <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
                       [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let tshirt of tshirts" [value]="tshirt.maat">{{tshirt.maat}}</option>
-              </select>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>              </select>
             </div>
           </div>
           <div class="col-lg-2">

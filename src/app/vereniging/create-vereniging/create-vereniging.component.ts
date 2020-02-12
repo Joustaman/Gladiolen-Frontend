@@ -32,7 +32,7 @@ export class CreateVerenigingComponent implements OnInit {
     password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
-    actief: new FormControl(null),
+    actief: new FormControl(true),
     foto: new FormControl(null)
   });
 
@@ -47,7 +47,7 @@ export class CreateVerenigingComponent implements OnInit {
     huisnummer: new FormControl(''),
     gemeente: new FormControl(''),
     postcode: new FormControl(''),
-    actief: new FormControl(false),
+    actief: new FormControl(true),
     inAanvraag: new FormControl(true)
   });
 

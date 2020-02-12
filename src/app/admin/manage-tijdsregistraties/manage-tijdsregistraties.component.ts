@@ -4,6 +4,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {generateBuildStats} from '@angular-devkit/build-angular/src/angular-cli-files/utilities/stats';
+import { HotTableRegisterer } from '@handsontable/angular';
 
 @Component({
   selector: 'app-manage-tijdsregistraties',
@@ -22,7 +23,24 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   evenement: any = {naam: 'test'};
   gebruikers: any = [];
   gebruiker: any = {name: 'test'};
-  str="";
+  str = '';
+  private hotRegisterer = new HotTableRegisterer();
+  id = 'hotInstance';
+  data: any = [];
+  colHeaders = ['Lid', 'Vereniging', 'Evenement', 'Check-In', 'Check-Out', 'Manuele Check-In',
+  'Manuele Check-Out', 'Aangepaste Check-In', 'Aangepaste Check-Out'];
+  excelModus = false;
+  columns: any = [
+    {data: 'lid', readOnly: true},
+    {data: 'vereniging', readOnly: true},
+    {data: 'evenement', readOnly: true},
+    {data: 'checkin', readOnly: true},
+    {data: 'checkuit', readOnly: true},
+    {data: 'manuelecheckin', readOnly: true},
+    {data: 'manuelecheckuit', readOnly: true},
+    {data: 'aangepastecheckin', readOnly: true},
+    {data: 'aangepastecheckuit', readOnly: true},
+  ];
 
   tijdsregistratieForm = new FormGroup({
     gebruiker_id: new FormControl(''),
@@ -50,7 +68,37 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     this.getVerenigingen();
   }
 
+  changeExcel() {
+    this.excelModus = !this.excelModus;
+  }
+  createDataForTable(apiData: any) {
+    apiData.forEach(tr => {
+      this.data.push({
+        lid: tr.gebruiker.name + ' ' + tr.gebruiker.voornaam,
+        evenement: tr.evenement.naam,
+        vereniging: tr.vereniging.naam,
+        checkin: tr.checkIn,
+        checkuit: tr.checkUit,
+        manuelecheckin: tr.manCheckIn,
+        manuelecheckuit: tr.manCheckUit,
+        aangepastecheckin: tr.adminCheckIn,
+        aangepastecheckuit: tr.adminCheckUit,
+      });
+    });
+  }
+  export() {
+    const exportPlugin = this.hotRegisterer.getInstance(this.id).getPlugin('exportFile');
 
+    exportPlugin.downloadFile('csv', {
+      columnDelimiter: ',',
+      columnHeaders: true,
+      exportHiddenColumns: true,
+      exportHiddenRows: true,
+      fileExtension: 'csv',
+      filename:   'Tijdsregistraties_[YYYY]-[MM]-[DD]',
+      mimeType: 'text/csv',
+    });
+  }
   updateTijdsregistratie() {
     console.log(this.tijdsregistratieForm.value);
     this.adminService.updateTijdsregistratie(this.tijdsregistratie.id, this.tijdsregistratieForm.value).subscribe(
@@ -114,6 +162,7 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   getTijdsregistraties(){
     this.adminService.getTijdsregistraties().subscribe(result => {
       this.tijdsregistraties = result;
+      this.createDataForTable(result);
       this.pageLoaded = true;
       console.log(result);
     });

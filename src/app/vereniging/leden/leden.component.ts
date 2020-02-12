@@ -135,7 +135,7 @@ export class LedenComponent implements OnInit {
       pdf.addPage();
     }
 
-    pdf.save('qrCode' +this.vereniging.naam+ '.pdf');
+    pdf.save('qrCodes' +this.vereniging.naam+ '.pdf');
   }
 
   onClickExportQRCode(lid) {

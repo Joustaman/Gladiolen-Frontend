@@ -22,6 +22,7 @@ export class ManageEvenementenComponent implements OnInit {
   einddatum: any;
   pageLoaded = false;
   actief: any;
+  str = '';
   evenementVerenigingen: any = [];
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';

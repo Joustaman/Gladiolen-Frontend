@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-  name: "gebruikerFilter"
+  name: "evenementenFilter"
 })
-export class GebruikerFilterPipe implements PipeTransform {
+export class EvenementenFilterPipe implements PipeTransform {
   transform(gebruikers: any[], filter: any): any {
     if (!gebruikers || !filter || filter === "") {
       return gebruikers;
@@ -14,15 +14,15 @@ export class GebruikerFilterPipe implements PipeTransform {
     let alle: any[] = [];
     let first: boolean = true;
     filters = filters.filter(Boolean);
+    console.log(filters);
 
     filters.forEach(f => {
       let gefilterden: any[] = [];
 
       gebruikers.forEach(gebruiker => {
-        let naam = gebruiker.name.toLowerCase();
-        let voornaam = gebruiker.voornaam.toLowerCase();
-        //let roepnaam = gebruiker.roepnaam.toLowerCase()
-        if (naam.includes(f) || voornaam.includes(f)) {
+        let naam = gebruiker.naam.toLowerCase();
+
+        if (naam.includes(f)) {
           if (gefilterden.indexOf(gebruiker) === -1) {
             gefilterden.push(gebruiker);
           }
@@ -36,11 +36,7 @@ export class GebruikerFilterPipe implements PipeTransform {
         let nieuwe: any[] = [];
         alle.forEach(al => {
           gefilterden.forEach(gef => {
-            if (
-              al.voornaam === gef.voornaam &&
-              al.name == gef.name &&
-              al.geboortedatum === gef.geboortedatum
-            ) {
+            if (al.id === gef.id) {
               nieuwe.push(al);
             }
           });

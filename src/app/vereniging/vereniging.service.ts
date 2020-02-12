@@ -50,6 +50,14 @@ export class VerenigingService {
     return this.http.get('http://localhost:8000/api/vereniging/verenigingmetleden');
   }
 
+  getAccountRol(): any {
+    return this.http.get('http://localhost:8000/api/gebruiker/getAccountRol');
+  }
+
+  getVerenigingMetLedenById(id): any {
+    return this.http.get('http://localhost:8000/api/vereniging/verenigingbyidmetledentshirt/' + id);
+  }
+
   getVerenigingVanIngelogdeGebruiker(): any {
     return this.http.get('http://localhost:8000/api/vereniging/verenigingingelogd');
   }

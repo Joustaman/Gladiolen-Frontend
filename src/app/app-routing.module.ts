@@ -83,7 +83,7 @@ const routes: Routes = [
   },
   {
     path: "manageVerenigingLedenAdmin/:id",
-    component: ManageVerenigingLedenAdminComponent,
+    component: LedenComponent,
     canActivate: [AdminGuardService]
   },
   {
@@ -109,6 +109,11 @@ const routes: Routes = [
     path: 'maaklid',
     component: CreateLidComponent,
     canActivate: [VerantwoordelijkeGuardService]
+  },
+  {
+    path: 'adminmaaklid',
+    component: CreateLidComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'editlid/:id',

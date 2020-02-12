@@ -96,6 +96,8 @@
           <a *ngIf="updateGebruiker" class="btn edit-button ml-3" (click)="updateLid()"><i class="fas fa-pencil-alt"></i><span> Lid bewerken</span></a>
         </div>
       </form>
+      <a [routerLink]="['/leden']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar leden</i></a>
+
     </div>
   </div>
 </div>

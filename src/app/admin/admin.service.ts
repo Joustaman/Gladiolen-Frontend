@@ -27,7 +27,7 @@ export class AdminService {
   }
 
   getVrijwilligers(id): any {
-    return this.http.get(this.$link + "api/gebruiker/getVrijwilligers/" + id);
+    return this.http.get(this.$link + 'api/gebruiker/getVrijwilligers/' + id);
   }
 
   registreerGebruiker(gebruiker): any {
@@ -66,6 +66,10 @@ export class AdminService {
 
   getVerenigingenMetLeden(): any {
     return this.http.get(this.$link + 'api/vereniging/verenigingmetleden');
+  }
+
+  getGeacepteerdeVerenigingen(): any {
+    return this.http.get(this.$link + 'api/vereniging/getGeacepteerdeVerenigingen');
   }
 
   registreerVereniging(vereniging): any {

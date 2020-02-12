@@ -58,20 +58,20 @@
                     | paginate: { itemsPerPage: 10, currentPage: p }
                 "
               >
-                <td>{{ vereniging.naam }}</td>
-                <td>
+                <td *ngIf="vereniging.inAanvraag == 0">{{ vereniging.naam }}</td>
+                <td *ngIf="vereniging.inAanvraag == 0">
                   {{ vereniging.hoofd.name }} {{ vereniging.hoofd.voornaam }}
                 </td>
-                <td *ngIf="vereniging.contact != null">
+                <td *ngIf="vereniging.contact != null && vereniging.inAanvraag == 0">
                   {{ vereniging.contact.name }}
                   {{ vereniging.contact.voornaam }}
                 </td>
-                <td *ngIf="vereniging.contact == null">Geen contactpersoon</td>
-                <td>
+                <td *ngIf="vereniging.contact == null && vereniging.inAanvraag == 0">Geen contactpersoon</td>
+                <td *ngIf="vereniging.inAanvraag == 0">
                   <div *ngIf="vereniging.actief == 0">Niet Actief</div>
                   <div *ngIf="vereniging.actief == 1">Actief</div>
                 </td>
-                <td>
+                <td *ngIf="vereniging.inAanvraag == 0">
                   <a
                     (click)="onClickDetailVereniging(vereniging)"
                     data-toggle="modal"

@@ -31,11 +31,15 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   'Manuele Check-Out', 'Aangepaste Check-In', 'Aangepaste Check-Out'];
   excelModus = false;
   columns: any = [
-    {data: 'naam', readOnly: true},
-    {data: 'startdatum', readOnly: true},
-    {data: 'einddatum', readOnly: true},
-    {data: 'actief', readOnly: true},
-    {data: 'verenigingen', readOnly: true}
+    {data: 'lid', readOnly: true},
+    {data: 'vereniging', readOnly: true},
+    {data: 'evenement', readOnly: true},
+    {data: 'checkin', readOnly: true},
+    {data: 'checkuit', readOnly: true},
+    {data: 'manuelecheckin', readOnly: true},
+    {data: 'manuelecheckuit', readOnly: true},
+    {data: 'aangepastecheckin', readOnly: true},
+    {data: 'aangepastecheckuit', readOnly: true},
   ];
 
   tijdsregistratieForm = new FormGroup({
@@ -64,7 +68,37 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     this.getVerenigingen();
   }
 
+  changeExcel() {
+    this.excelModus = !this.excelModus;
+  }
+  createDataForTable(apiData: any) {
+    apiData.forEach(tr => {
+      this.data.push({
+        lid: tr.gebruiker.name + ' ' + tr.gebruiker.voornaam,
+        evenement: tr.evenement.naam,
+        vereniging: tr.vereniging.naam,
+        checkin: tr.checkIn,
+        checkuit: tr.checkUit,
+        manuelecheckin: tr.manCheckIn,
+        manuelecheckuit: tr.manCheckUit,
+        aangepastecheckin: tr.adminCheckIn,
+        aangepastecheckuit: tr.adminCheckUit,
+      });
+    });
+  }
+  export() {
+    const exportPlugin = this.hotRegisterer.getInstance(this.id).getPlugin('exportFile');
 
+    exportPlugin.downloadFile('csv', {
+      columnDelimiter: ',',
+      columnHeaders: true,
+      exportHiddenColumns: true,
+      exportHiddenRows: true,
+      fileExtension: 'csv',
+      filename:   'Tijdsregistraties_[YYYY]-[MM]-[DD]',
+      mimeType: 'text/csv',
+    });
+  }
   updateTijdsregistratie() {
     console.log(this.tijdsregistratieForm.value);
     this.adminService.updateTijdsregistratie(this.tijdsregistratie.id, this.tijdsregistratieForm.value).subscribe(
@@ -128,6 +162,7 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   getTijdsregistraties(){
     this.adminService.getTijdsregistraties().subscribe(result => {
       this.tijdsregistraties = result;
+      this.createDataForTable(result);
       this.pageLoaded = true;
       console.log(result);
     });

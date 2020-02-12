@@ -23,6 +23,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { LedenFilterPipe } from './vereniging/leden/leden-filter.pipe';
 import { ProfielComponent } from './profiel/profiel.component';
 import { DatePipe } from '@angular/common';
+import { BevestigingAanvraagComponent } from './vereniging/bevestiging-aanvraag/bevestiging-aanvraag.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DatePipe } from '@angular/common';
     EditVerenigingComponent,
     DetailVerenigingComponent,
     LedenFilterPipe,
-    ProfielComponent
+    ProfielComponent,
+    BevestigingAanvraagComponent
   ],
   imports: [
     BrowserModule,

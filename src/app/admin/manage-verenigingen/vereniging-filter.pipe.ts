@@ -12,6 +12,8 @@ export class VerenigingFilterPipe implements PipeTransform {
     let filters = filter.split(" ");
     let alle: any[] = [];
     let first: boolean = true;
+    filters = filters.filter(Boolean);
+
 
     filters.forEach(f => {
       let gefilterden: any[] = [];

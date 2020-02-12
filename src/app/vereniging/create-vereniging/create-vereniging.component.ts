@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {VerenigingService} from '../vereniging.service';
 import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-vereniging',
@@ -13,8 +14,9 @@ export class CreateVerenigingComponent implements OnInit {
   tshirts: any = [];
   maat: any;
   geslacht: any;
+  buttonEnabled: boolean = true;
 
-  constructor(private readonly verenigingService: VerenigingService, private toast: ToastrService) {
+  constructor(private readonly verenigingService: VerenigingService, private toast: ToastrService, private router: Router) {
   }
 
   verantwoordelijkeForm = new FormGroup({
@@ -30,9 +32,10 @@ export class CreateVerenigingComponent implements OnInit {
     password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
-    actief: new FormControl(null),
-    foto: new FormControl(null),
+    actief: new FormControl(true),
+    foto: new FormControl(null)
   });
+
   verenigingForm = new FormGroup({
     naam: new FormControl(''),
     hoofdverantwoordelijke: new FormControl(null),
@@ -44,8 +47,8 @@ export class CreateVerenigingComponent implements OnInit {
     huisnummer: new FormControl(''),
     gemeente: new FormControl(''),
     postcode: new FormControl(''),
-    actief: new FormControl(false),
-    inAanvraag: new FormControl(false),
+    actief: new FormControl(true),
+    inAanvraag: new FormControl(true)
   });
 
   ngOnInit() {
@@ -102,13 +105,16 @@ export class CreateVerenigingComponent implements OnInit {
    * Creëert een nieuwe vereniging.
    */
   createVereniging() {
+    this.buttonEnabled = false;
+
     this.verenigingService.registreerVereniging(this.verenigingForm.value).subscribe(
       result => {
         this.toast.success('Uw aanvraag is verzonden');
-        console.log(result);
+        this.router.navigate(['bevestigingAanvraag']);
       },
       error => {
         this.toast.error('Vul het formulier correct in');
+        this.buttonEnabled = true;
         console.log(error);
       }
     );

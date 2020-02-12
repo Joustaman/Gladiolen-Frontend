@@ -1,159 +1,166 @@
 <div class="container">
-    <div class="card">
-      <div class="card-header">
-        <h4>Voeg een vrijwilliger toe</h4>
-      </div>
-      <div class="card-body">
-        <mat-horizontal-stepper #stepper>
-          <mat-step>
-            <ng-template matStepLabel>Vrijwilliger</ng-template>
-            <form [formGroup]="gebruikerForm" (ngSubmit)="submitForm()" class="mt-5 was-validated" novalidate>
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label for="voornaam">Voornaam</label>
-                    <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam"
-                           pattern="[^0-9]*"
-                           required>
-                  </div>
+  <div class="card">
+    <div class="card-header">
+      <h4>Voeg een vrijwilliger toe</h4>
+    </div>
+    <div class="card-body">
+      <mat-horizontal-stepper #stepper>
+        <mat-step>
+          <ng-template matStepLabel>Vrijwilliger</ng-template>
+          <form [formGroup]="gebruikerForm" (ngSubmit)="submitForm()" class="mt-5 was-validated" novalidate>
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="voornaam">Voornaam</label>
+                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam"
+                         pattern="[^0-9]*"
+                         required>
                 </div>
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label for="roepnaam">Roepnaam</label>
-                    <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam"
-                           pattern="[^0-9]*">
-                  </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="roepnaam">Roepnaam</label>
+                  <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam"
+                         pattern="[^0-9]*">
                 </div>
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label for="name">Achternaam</label>
-                    <input class="form-control" type="text" id="name" name="name" formControlName="name" pattern="[^0-9]*"
-                           required>
-                  </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="name">Achternaam</label>
+                  <input class="form-control" type="text" id="name" name="name" formControlName="name" pattern="[^0-9]*"
+                         required>
                 </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="email">Email</label>
-                    <input class="form-control" type="email" id="email" name="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" formControlName="email">
-                    <div class="invalid-feedback">Gelieve een geldig e-mailadres in te vullen van het formaat test@test.be</div>
-  
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input class="form-control" type="email" id="email" name="email"
+                         pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" formControlName="email">
+                  <div class="invalid-feedback">Gelieve een geldig e-mailadres in te vullen van het formaat
+                    test@test.be
                   </div>
+
                 </div>
-                <div class="col-lg-3">
-                  <div class="form-group">
-                    <label for="telefoon">Telefoon</label>
-                    <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]*"
-                           formControlName="telefoon">
-                  </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="telefoon">Telefoon</label>
+                  <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]*"
+                         formControlName="telefoon">
                 </div>
-                <div class="col-lg-3">
-                  <div class="form-group">
-                    <label for="geboortedatum">Geboortedatum</label>
-                    <input class="form-control" type="date" id="geboortedatum" name="geboortedatum"
-                           formControlName="geboortedatum">
-                  </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="geboortedatum">Geboortedatum</label>
+                  <input class="form-control" type="date" id="geboortedatum" name="geboortedatum"
+                         formControlName="geboortedatum">
                 </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="rijksregisternr">Rijksregister</label>
-                    <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
-                           formControlName="rijksregisternr" pattern="[0-9]{11}">
-                    <div class="invalid-feedback">Gelieve de 11 cijfers van je rijksregisternummer in te vullen.</div>
-                  </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="rijksregisternr">Rijksregister</label>
+                  <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
+                         formControlName="rijksregisternr" pattern="[0-9]{11}">
+                  <div class="invalid-feedback">Gelieve de 11 cijfers van je rijksregisternummer in te vullen.</div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="opmerking">Opmerking</label>
-                    <textarea class="form-control" type="text" id="opmerking" name="opmerking"
-                              formControlName="opmerking"></textarea>
-                  </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="opmerking">Opmerking</label>
+                  <textarea class="form-control" type="text" id="opmerking" name="opmerking"
+                            formControlName="opmerking"></textarea>
                 </div>
-                <div class="col-lg-3">
-                  <div class="form-group">
-                    <label for="geslacht">Geslacht</label>
-                    <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
-                            [ngModelOptions]="{standalone: true}">
-                      <option value="Man">Man</option>
-                      <option value="Vrouw">Vrouw</option>
-                    </select>
-                  </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="geslacht">Geslacht</label>
+                  <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
+                          [ngModelOptions]="{standalone: true}">
+                    <option value="Man">Man</option>
+                    <option value="Vrouw">Vrouw</option>
+                  </select>
                 </div>
-                <div class="col-lg-3">
-                  <div class="form-group">
-                    <label for="tshirt">Tshirt - Maat</label>
-                    <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
-                            [ngModelOptions]="{standalone: true}">
-                      <option *ngFor="let tshirt of tshirts" [value]="tshirt.maat">{{tshirt.maat}}</option>
-                    </select>
-                  </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label for="tshirt">Tshirt - Maat</label>
+                  <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
+                          [ngModelOptions]="{standalone: true}">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                  </select>
                 </div>
-                <div class="col-lg-2">
-                  <div class="form-group paddingcheck text-center">
-                    <div class="pretty p-default p-switch" (click)="changeLunch()">
-                      <input type="checkbox"/>
-                      <div class="state p-primary">
-                        <label>Lunchpakket</label>
-                      </div>
+              </div>
+              <div class="col-lg-2">
+                <div class="form-group paddingcheck text-center">
+                  <div class="pretty p-default p-switch" (click)="changeLunch()">
+                    <input type="checkbox"/>
+                    <div class="state p-primary">
+                      <label>Lunchpakket</label>
                     </div>
                   </div>
                 </div>
               </div>
-              <input type="submit" class="btn btn-primary">
-            </form>
-            <div>
-  
-              <button mat-button matStepperNext>Next</button>
             </div>
-          </mat-step>
-          <mat-step>
-            <ng-template matStepLabel>Overzicht</ng-template>
-  
-            <table class="table">
-              <tbody>
-  
-              <tr>
-                <th scope="row">Voornaam</th>
-                <td>{{gebruikerForm.get('voornaam').value}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Roepnaam</th>
-                <td>{{gebruikerForm.get('roepnaam').value}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Achternaam</th>
-                <td>{{gebruikerForm.get('name').value}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Email</th>
-                <td>{{gebruikerForm.get('email').value}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Telefoon</th>
-                <td>{{gebruikerForm.get('telefoon').value}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Geboortedatum</th>
-                <td>{{gebruikerForm.get('geboortedatum').value}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Rijsregisternummer</th>
-                <td>{{gebruikerForm.get('rijksregisternr').value}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Opmerking</th>
-                <td>{{gebruikerForm.get('opmerking').value}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Rol</th>
-                <td>{{gebruikerForm.get('rol_id').value}}</td>
-              </tr>
-              </tbody>
-            </table>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-            </div>
-          </mat-step>
-        </mat-horizontal-stepper>
-      </div>
+            <input type="submit" class="btn btn-primary">
+          </form>
+          <div>
+
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Overzicht</ng-template>
+
+          <table class="table">
+            <tbody>
+
+            <tr>
+              <th scope="row">Voornaam</th>
+              <td>{{gebruikerForm.get('voornaam').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Roepnaam</th>
+              <td>{{gebruikerForm.get('roepnaam').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Achternaam</th>
+              <td>{{gebruikerForm.get('name').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Email</th>
+              <td>{{gebruikerForm.get('email').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Telefoon</th>
+              <td>{{gebruikerForm.get('telefoon').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Geboortedatum</th>
+              <td>{{gebruikerForm.get('geboortedatum').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Rijsregisternummer</th>
+              <td>{{gebruikerForm.get('rijksregisternr').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Opmerking</th>
+              <td>{{gebruikerForm.get('opmerking').value}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Rol</th>
+              <td>{{gebruikerForm.get('rol_id').value}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
     </div>
   </div>
+</div>

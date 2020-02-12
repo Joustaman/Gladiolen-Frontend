@@ -62,5 +62,8 @@ export class AuthService {
     return this.http.get('http://localhost:8000/api/gebruiker/ingelogdegebruiker');
   }
 
+  updateProfiel(user): any {
+    return this.http.put('http://localhost:8000/api/gebruiker/updateingelogdegebruiker', user);
+  }
 
 }

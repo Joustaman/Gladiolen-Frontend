@@ -78,7 +78,9 @@
             </div>
           </form>
           <div>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperNext *ngIf="verenigingForm.valid">Next</button>
+            <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar beheren</i></a>
+
           </div>
         </mat-step>
         <mat-step>
@@ -169,7 +171,9 @@
               </div>
               <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperNext *ngIf="verantwoordelijkeForm.valid">Next</button>
+                <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar beheren</i></a>
+
               </div>
             </div>
           </form>
@@ -217,6 +221,8 @@
             <button mat-button (click)="stepper.reset()">Reset</button>
             <button class="btn btn-primary float-right" (click)="createVerantwoordelijke()">Registreren</button>
           </div>
+          <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar beheren</i></a>
+
         </mat-step>
       </mat-horizontal-stepper>
     </div>

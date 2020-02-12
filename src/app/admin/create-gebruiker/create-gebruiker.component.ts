@@ -71,6 +71,17 @@ export class CreateGebruikerComponent implements OnInit {
       }
     );
   }
+  createGebruiker() {
+    this.adminService.registreerGebruiker(this.gebruikerForm.value).subscribe(
+      result => {
+        this.createTshirt(result.id);
+      },
+      error => {
+        console.log(error);
+        this.toast.error('Vul het formulier correct in');
+      }
+    );
+  }
 
   createTshirt(gebruikerId) {
     let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null};

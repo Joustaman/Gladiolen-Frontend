@@ -235,7 +235,7 @@
                 <button class="btn pdf" mat-button (click)="stepper.reset()"><i
                   class="fas fa-undo-alt"></i> Reset
                 </button>
-                <button class="btn add-button float-right" (click)="createVerantwoordelijke()"><i
+                <button *ngIf="buttonEnabled" class="btn add-button float-right" (click)="createVerantwoordelijke()"><i
                   class="fas fa-check"></i> Registreren
                 </button>
               </div>

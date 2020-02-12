@@ -10,6 +10,7 @@ import { ToastrService } from "ngx-toastr";
 })
 export class AanvraagVerenigingComponent implements OnInit {
   verenigingen: any[];
+  contactpersonen:any[];
   constructor(
     private route: ActivatedRoute,
     private adminService: AdminService,
@@ -21,6 +22,8 @@ export class AanvraagVerenigingComponent implements OnInit {
   @Output() notificationChanged: EventEmitter<String> = new EventEmitter();
   ngOnInit() {
     this.verenigingen = this.route.snapshot.data["verenigingen"];
+    this.contactpersonen = this.route.snapshot.data["contactpersonen"];
+    
   }
 
   accept(id) {

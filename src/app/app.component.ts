@@ -75,6 +75,10 @@ export class AppComponent {
     this.updateNotifications();
   }
 
+notChangedHandler(count:string){
+  this.notifications = count;
+}
+
   private updateNotifications() {
     if (this.authService.getRol() === "1") {
       this.adminService.getVerenigingenInAanvraag().subscribe(result => {

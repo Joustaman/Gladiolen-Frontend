@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { AdminService } from "../admin.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
@@ -14,9 +14,11 @@ export class AanvraagVerenigingComponent implements OnInit {
     private route: ActivatedRoute,
     private adminService: AdminService,
     private readonly toastr: ToastrService,
-    private router: Router
+    private router: Router,
+  
   ) {}
 
+  @Output() notificationChanged: EventEmitter<String> = new EventEmitter();
   ngOnInit() {
     this.verenigingen = this.route.snapshot.data["verenigingen"];
   }
@@ -37,6 +39,7 @@ export class AanvraagVerenigingComponent implements OnInit {
   private updateVerenigingen() {
     this.adminService.getVerenigingenInAanvraag().subscribe(res => {
       this.verenigingen = res;
+      this.notificationChanged.emit(res.length===0?"":res.length+"");
       if(res.length===0){
         this.router.navigateByUrl("/adminHome")
       }

@@ -40,4 +40,5 @@ import { EvenementenFilterPipe } from './manage-evenementen/evenementen-filter.p
   ]
 })
 export class AdminModule {
+  
 }

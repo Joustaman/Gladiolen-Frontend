@@ -14,14 +14,7 @@
             class="btn add-button"
             [routerLink]="['/maaklid']"
             routerLinkActive="router-link-active"
-            *ngIf="!excelModus && rol==3"
-            ><i class="fas fa-plus-circle"></i><span> Voeg lid toe</span></a
-          >
-          <a 
-            class="btn add-button"
-            [routerLink]="['/adminmaaklid']"
-            routerLinkActive="router-link-active"
-            *ngIf="!excelModus && (rol==1||rol==5)"
+            *ngIf="!excelModus"
             ><i class="fas fa-plus-circle"></i><span> Voeg lid toe</span></a
           >
           <a class="btn edit-button" (click)="changeExcel()" *ngIf="excelModus"

@@ -1,11 +1,11 @@
 <app-spinner *ngIf="!pageLoaded"></app-spinner>
 <div class="container" *ngIf="pageLoaded">
-  <div class="card">
-    <div class="card-header">
-        <h4 class="card-title float-right">Pas uw vereniging aan</h4>
+  <div class="card table-wrapper shadow-lg">
+    <div class="card-header table-title">
+        <h2>Pas uw vereniging aan</h2>
     </div>
     <div class="card-body">
-      <form [formGroup]="verenigingForm" class="was-validated mt-5" novalidate>
+      <form [formGroup]="verenigingForm" class="was-validated" novalidate>
         <div class="row">
           <div class="col-lg-6">
             <div class="form-group">
@@ -63,10 +63,9 @@
             </div>
           </div>
         </div>
-        <button (click)="updateVereniging()" class="btn btn-primary">Update vereniging</button>
+        <button (click)="updateVereniging()" class="btn btn-primary float-right"><i class="fas fa-save"></i> Update vereniging</button>
       </form>
-      <a [routerLink]="['/keuzemenu']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar home</i></a>
-
+      <a class="btn btn-secondary float-left" [routerLink]="['/keuzemenu']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug naar home</a>
     </div>
   </div>
 </div>

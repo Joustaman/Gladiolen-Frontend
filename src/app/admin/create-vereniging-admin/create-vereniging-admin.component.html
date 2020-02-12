@@ -78,9 +78,8 @@
             </div>
           </form>
           <div>
-            <button mat-button matStepperNext *ngIf="verenigingForm.valid">Next</button>
-            <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar beheren</i></a>
-
+            <button mat-button matStepperNext *ngIf="verenigingForm.valid">Next <i class="fas fa-arrow-right"></i></button>
+            <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug naar beheren</a>
           </div>
         </mat-step>
         <mat-step>
@@ -175,9 +174,8 @@
               </div>
               <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext *ngIf="verantwoordelijkeForm.valid">Next</button>
-                <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar beheren</i></a>
-
+                <button mat-button matStepperNext *ngIf="verantwoordelijkeForm.valid">Next <i class="fas fa-arrow-right"></i></button>
+                <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug naar beheren</a>
               </div>
             </div>
           </form>
@@ -221,12 +219,11 @@
             </tbody>
           </table>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperPrevious><i class="fas fa-arrow-left"></i> Back</button>
             <button mat-button (click)="stepper.reset()">Reset</button>
             <button class="btn btn-primary float-right" (click)="createVerantwoordelijke()">Registreren</button>
           </div>
-          <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar beheren</i></a>
-
+          <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug naar beheren</a>
         </mat-step>
       </mat-horizontal-stepper>
     </div>

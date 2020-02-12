@@ -5,7 +5,6 @@ import { CsvDataService } from 'src/app/csv-data.service';
 import * as Handsontable from 'handsontable';
 import { HotTableRegisterer } from '@handsontable/angular';
 import * as jsPDF from 'jspdf';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-leden',
@@ -19,7 +18,6 @@ export class LedenComponent implements OnInit {
   vereniging: any = {};
   leden: any = [];
   lid: any = { id: 0 };
-  rol = 0;
   pageLoaded = false;
   data: any = [];
   test = 'test';
@@ -42,92 +40,24 @@ export class LedenComponent implements OnInit {
   language = 'nl-NL';
   excelModus = false;
 
-  constructor(private readonly verenigingService: VerenigingService, private readonly router: Router,
-    private readonly route: ActivatedRoute) { }
+  constructor(private readonly verenigingService: VerenigingService) { }
 
   ngOnInit() {
-
-    this.verenigingService.getAccountRol().subscribe(
+    this.verenigingService.getVerenigingMetLeden().subscribe(
       result => {
-        this.rol = result.id;
+        console.log(result.gebruikers);
+        this.leden = result.gebruikers;
+        this.vereniging = result;
+        this.createDataForTable(result.gebruikers);
+        this.pageLoaded = true;
       },
       error => {
         console.log(error);
       }
     );
-    this.route.paramMap.subscribe(
-      params => {
-        if (params.get('id') !== null) {
-          this.verenigingService.getVerenigingMetLedenById(params.get('id')).subscribe(
-            result => {
-              console.log(result);
-              this.leden = result.gebruikers;
-              this.vereniging = result;
-              this.createDataForTable(result.gebruikers);
-              this.pageLoaded = true;
-            },
-            error => {
-              console.log(error);
-            }
-          );
-        }
-        else{
-          this.verenigingService.getVerenigingMetLeden().subscribe(
-            result => {
-              console.log(result.gebruikers);
-              this.leden = result.gebruikers;
-              this.vereniging = result;
-              this.createDataForTable(result.gebruikers);
-              this.pageLoaded = true;
-            },
-            error => {
-              console.log(error);
-            }
-          );
-        }
-      });
-    }
+  }
+
 /*
-    this.verenigingService.getAccountRol().subscribe(
-      result => {
-        this.rol = result.id;
-        if (this.rol == 1 || this.rol == 5) {
-          this.verenigingService.getVerenigingMetLedenById(this.vereniging.id).subscribe(
-            result => {
-              console.log(result.gebruikers);
-              // TODO LEDEN IS NIET MEER NODIG
-              this.leden = result.gebruikers;
-              this.vereniging = result;
-              this.createDataForTable(result.gebruikers);
-              this.pageLoaded = true;
-            },
-            error => {
-              console.log(error);
-            }
-          );
-        }
-        else if (this.rol == 3) {
-          this.verenigingService.getVerenigingMetLeden().subscribe(
-            result => {
-              console.log(result.gebruikers);
-              // TODO LEDEN IS NIET MEER NODIG
-              this.leden = result.gebruikers;
-              this.vereniging = result;
-              this.createDataForTable(result.gebruikers);
-              this.pageLoaded = true;
-            },
-            error => {
-              console.log(error);
-            }
-          );
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }*/
-
   /**
    * * @param {int} id  Het ID van de gebruiker die verwijderd wordt.
    * Deletet de informatie van een lid.

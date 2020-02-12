@@ -92,7 +92,11 @@
                       <label for="tshirt">Tshirt - Maat</label>
                       <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
                               [ngModelOptions]="{standalone: true}">
-                        <option *ngFor="let tshirt of tshirts" [value]="tshirt.maat">{{tshirt.maat}}</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
                       </select>
                     </div>
                   </div>
@@ -151,7 +155,7 @@
                     <div class="form-group">
                       <label for="btwnr">BTW nummer</label>
                       <input class="form-control" type="text" id="btwnr" name="btwnr"
-                             formControlName="btwnr" pattern="[BE]{2}[0]{1}[0-9]{9}" required>
+                             formControlName="btwnr" pattern="[BE]{2}[0]{1}[0-9]{9}">
                       <div class="invalid-feedback">Gelieve een correct rekeningnummer in te
                         vullen in het formaat BE0xxxxxxxxx
                       </div>

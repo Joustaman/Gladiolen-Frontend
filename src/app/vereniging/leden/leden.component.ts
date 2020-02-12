@@ -1,10 +1,11 @@
-import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
-import {VerenigingService} from '../vereniging.service';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { VerenigingService } from '../vereniging.service';
 import 'handsontable/languages/nl-NL';
 import { CsvDataService } from 'src/app/csv-data.service';
 import * as Handsontable from 'handsontable';
 import { HotTableRegisterer } from '@handsontable/angular';
 import * as jsPDF from 'jspdf';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-leden',
@@ -17,11 +18,12 @@ export class LedenComponent implements OnInit {
   id = 'hotInstance';
   vereniging: any = {};
   leden: any = [];
-  lid: any = {id: 0};
+  lid: any = { id: 0 };
+  rol = 0;
   pageLoaded = false;
   data: any = [];
   test = 'test';
-  str="";
+  str = "";
   colHeaders = [
     'Naam',
     'Voornaam',
@@ -40,23 +42,91 @@ export class LedenComponent implements OnInit {
   language = 'nl-NL';
   excelModus = false;
 
-  constructor(private readonly verenigingService: VerenigingService) {}
+  constructor(private readonly verenigingService: VerenigingService, private readonly router: Router,
+    private readonly route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.verenigingService.getVerenigingMetLeden().subscribe(
+
+    this.verenigingService.getAccountRol().subscribe(
       result => {
-        console.log(result.gebruikers);
-        // TODO LEDEN IS NIET MEER NODIG
-        this.leden = result.gebruikers;
-        this.vereniging = result;
-        this.createDataForTable(result.gebruikers);
-        this.pageLoaded = true;
+        this.rol = result.id;
       },
       error => {
         console.log(error);
       }
     );
-  }
+    this.route.paramMap.subscribe(
+      params => {
+        if (params.get('id') !== null) {
+          this.verenigingService.getVerenigingMetLedenById(params.get('id')).subscribe(
+            result => {
+              console.log(result);
+              this.leden = result.gebruikers;
+              this.vereniging = result;
+              this.createDataForTable(result.gebruikers);
+              this.pageLoaded = true;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        }
+        else{
+          this.verenigingService.getVerenigingMetLeden().subscribe(
+            result => {
+              console.log(result.gebruikers);
+              this.leden = result.gebruikers;
+              this.vereniging = result;
+              this.createDataForTable(result.gebruikers);
+              this.pageLoaded = true;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        }
+      });
+    }
+/*
+    this.verenigingService.getAccountRol().subscribe(
+      result => {
+        this.rol = result.id;
+        if (this.rol == 1 || this.rol == 5) {
+          this.verenigingService.getVerenigingMetLedenById(this.vereniging.id).subscribe(
+            result => {
+              console.log(result.gebruikers);
+              // TODO LEDEN IS NIET MEER NODIG
+              this.leden = result.gebruikers;
+              this.vereniging = result;
+              this.createDataForTable(result.gebruikers);
+              this.pageLoaded = true;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        }
+        else if (this.rol == 3) {
+          this.verenigingService.getVerenigingMetLeden().subscribe(
+            result => {
+              console.log(result.gebruikers);
+              // TODO LEDEN IS NIET MEER NODIG
+              this.leden = result.gebruikers;
+              this.vereniging = result;
+              this.createDataForTable(result.gebruikers);
+              this.pageLoaded = true;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }*/
 
   /**
    * * @param {int} id  Het ID van de gebruiker die verwijderd wordt.
@@ -127,15 +197,15 @@ export class LedenComponent implements OnInit {
 
     const pdf = new jsPDF('p', 'pt', 'a4');
 
-    for(var i=1; i<qrCodes.length;i++){
-      const volledigeNaam = this.leden[i-1].voornaam + ' ' + this.leden[i-1].name;
+    for (var i = 1; i < qrCodes.length; i++) {
+      const volledigeNaam = this.leden[i - 1].voornaam + ' ' + this.leden[i - 1].name;
       const qrCode = qrCodes.item(i).lastChild.firstChild.firstChild;
       pdf.text(70, 70, volledigeNaam);
       pdf.addImage(qrCode, 'png', 20, 90, 550, 550);
       pdf.addPage();
     }
 
-    pdf.save('qrCodes' +this.vereniging.naam+ '.pdf');
+    pdf.save('qrCodes' + this.vereniging.naam + '.pdf');
   }
 
   onClickExportQRCode(lid) {

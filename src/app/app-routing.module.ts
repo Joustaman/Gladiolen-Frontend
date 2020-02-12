@@ -30,6 +30,7 @@ import {AppComponent} from './app.component';
 import {ManageVerenigingLedenAdminComponent} from './admin/manage-vereniging-leden-admin/manage-vereniging-leden-admin.component';
 import {ProfielComponent} from './profiel/profiel.component';
 import {BevestigingAanvraagComponent} from './vereniging/bevestiging-aanvraag/bevestiging-aanvraag.component';
+import {OverzichtsPaginaComponent} from './vereniging/overzichts-pagina/overzichts-pagina.component';
 
 const routes: Routes = [
   {
@@ -83,8 +84,8 @@ const routes: Routes = [
     canActivate: [AdminGuardService]
   },
   {
-    path: 'manageVerenigingLedenAdmin/:id',
-    component: ManageVerenigingLedenAdminComponent,
+    path: "manageVerenigingLedenAdmin/:id",
+    component: LedenComponent,
     canActivate: [AdminGuardService]
   },
   {
@@ -110,6 +111,11 @@ const routes: Routes = [
     path: 'maaklid',
     component: CreateLidComponent,
     canActivate: [VerantwoordelijkeGuardService]
+  },
+  {
+    path: 'adminmaaklid',
+    component: CreateLidComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'editlid/:id',
@@ -154,12 +160,16 @@ const routes: Routes = [
   {
     path: 'bevestigingAanvraag',
     component: BevestigingAanvraagComponent
-  }
+  },
+    {
+        path: '',
+        component: OverzichtsPaginaComponent
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

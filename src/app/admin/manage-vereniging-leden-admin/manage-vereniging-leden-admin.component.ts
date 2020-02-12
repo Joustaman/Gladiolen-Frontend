@@ -19,7 +19,7 @@ export class ManageVerenigingLedenAdminComponent implements OnInit {
     this.route.paramMap.subscribe(
       params => {
         if (params.get('id') !== null) {
-              this.adminService.getVrijwilligers(params.get('id')).subscribe(
+              this.adminService.getVrijwilligersByVereniging(params.get('id')).subscribe(
                 result => {
                   console.log(result);
                   this.gebruikers = result;

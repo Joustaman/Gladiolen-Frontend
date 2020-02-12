@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
     email: new FormControl(''),
     password: new FormControl(''),
   });
+  resetmail = '';
+  emailgereset = false;
   constructor(private readonly authService: AuthService, private readonly router: Router,
               private readonly toastr: ToastrService) { }
 
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.tryLogin(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(
       result => {
+        this.toastr.success('Login gevonden!');
       },
       error => {
         this.toastr.error('Incorrecte inloggegevens');
@@ -32,7 +35,15 @@ export class LoginComponent implements OnInit {
     );
   }
 
-
-
-
+  resetPassword() {
+    this.authService.resetPassword({email: this.resetmail}).subscribe(
+      () => {
+        this.emailgereset = true;
+      },
+      error => {
+        console.log(error);
+        this.emailgereset = true;
+      }
+    );
+  }
 }

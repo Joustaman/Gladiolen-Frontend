@@ -1,13 +1,15 @@
 <div class="container">
     <div class="card table-wrapper shadow-lg">
         <div class="card-header table-title">
-            <h2>Bevestiging aanvraag</h2>
+            <h2>Welkom bij Keizer Karel Olen!</h2>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-12">
-                    <p>Bedankt voor het aanvragen van een vereniging. De medewerkers van Keizer Karel Olen zullen zo snel mogelijk uw aanvraag behandelen.</p>
-                    <p>U zal een mailtje krijgen met daarin verdere informatie.</p>
+                <p><b>Welkom op onze website.</b></p>
+                <p>Hier kan u uw vereniging inschrijven of inloggen indien u reeds een account heeft.</p>
+                    <div><a class="btn detail-button float-right" [routerLink]="['/createvereniging']" routerLinkActive="router-link-active"><i class="fas fa-users"></i> Vereniging inschrijven</a>
+                        <a class="btn btn-primary float-left" [routerLink]="['/login']" routerLinkActive="router-link-active"><i class="fas fa-sign-in-alt"></i> Inloggen</a></div>
                 </div>
             </div>
         </div>

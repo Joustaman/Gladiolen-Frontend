@@ -53,8 +53,8 @@ export class ManageTakenComponent implements OnInit {
     this.taakForm.patchValue({
         subtaak_id: taak.subtaak_id,
         taakgroep_id: taak.taakgroep_id,
-        startDatum: this.datepipe.transform(taak.startDatum, 'yyyy-MM-dd'),
-        eindDatum: this.datepipe.transform(taak.eindDatum, 'yyyy-MM-dd'),
+        startDatum: this.datepipe.transform(taak.startDatum, 'yyyy-MM-ddTHH:mm'),
+        eindDatum: this.datepipe.transform(taak.eindDatum, 'yyyy-MM-ddTHH:mm'),
         aantalPersonen: taak.aantalPersonen
       }
     );

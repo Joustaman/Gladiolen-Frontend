@@ -17,7 +17,8 @@
                 <input type="password" id="password" name="password" required="required" formControlName="password" />
               </div>
               <div class="form-group">
-                <a class="form-recovery float-right link">Wachtwoord vergeten ?</a>
+                <a class="form-recovery float-right link" data-toggle="modal" data-target="#resetModal">Wachtwoord
+                  vergeten ?</a>
               </div>
               <div class="form-group">
                 <button type="submit" (click)="login()">Log In</button>
@@ -25,6 +26,37 @@
             </form>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="resetModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Wachtwoord vergeten ?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form *ngIf="!emailgereset">
+          <div class="form-group">
+            <label for="resetemail">Voer uw email in</label>
+            <input type="text" id="resetemail" class="resetemail" [(ngModel)]="resetmail" [ngModelOptions]="{standalone: true}">
+          </div>
+        </form>
+          <svg *ngIf="emailgereset" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+            <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1"
+              cy="65.1" r="62.1" />
+            <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round"
+              stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+          </svg>
+          <p *ngIf="emailgereset">Als uw email bestaat hebben we u een mail gestuurd met uw nieuw wachtwoord</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="resetPassword()" *ngIf="!emailgereset" class="btn btn-primary">Reset</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

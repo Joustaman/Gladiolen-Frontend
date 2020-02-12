@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {AdminService} from '../admin.service';
-import {Router, Route, ActivatedRoute} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { AdminService } from '../admin.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-create-gebruiker',
-  templateUrl: './create-gebruiker.component.html',
-  styleUrls: ['./create-gebruiker.component.scss']
+  selector: 'app-create-lid-vereniging',
+  templateUrl: './create-lid-vereniging.component.html',
+  styleUrls: ['./create-lid-vereniging.component.scss']
 })
-export class CreateGebruikerComponent implements OnInit {
+export class CreateLidVerenigingComponent implements OnInit {
 
   tshirts: any = [];
   rollen: any = [];
@@ -29,6 +29,7 @@ export class CreateGebruikerComponent implements OnInit {
     opmerking: new FormControl(''),
     rol_id: new FormControl(null),
     rijksregisternr: new FormControl(''),
+    password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
     actief: new FormControl(true),
@@ -36,7 +37,7 @@ export class CreateGebruikerComponent implements OnInit {
   });
 
   constructor(private readonly adminService: AdminService, private readonly router: Router,
-              private readonly toast: ToastrService) {
+    private readonly toast: ToastrService) {
   }
 
   ngOnInit() {
@@ -70,7 +71,6 @@ export class CreateGebruikerComponent implements OnInit {
       }
     );
   }
-
   createGebruiker() {
     this.adminService.registreerGebruiker(this.gebruikerForm.value).subscribe(
       result => {
@@ -111,4 +111,5 @@ export class CreateGebruikerComponent implements OnInit {
   changeRol() {
     let value = this.gebruikerForm.get('rol_id').value;
   }
+
 }

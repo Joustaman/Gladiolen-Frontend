@@ -159,8 +159,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body text-center">
-          <div *ngIf="lidGekozen == true">
+        <div class="modal-body">
+          <div class="text-center" *ngIf="lidGekozen == true">
             <h3>{{ lid.voornaam }} {{ lid.name }}</h3>
             <qrcode
               id="canvas"

@@ -123,6 +123,8 @@
           <div>
 
             <button mat-button matStepperNext>Next</button>
+            <a [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar beheren</i></a>
+
           </div>
         </mat-step>
         <mat-step>
@@ -172,6 +174,7 @@
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button class="btn btn-primary float-right" (click)="createGebruiker()">Registreren</button>
+            <a [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar beheren</i></a>
 
           </div>
         </mat-step>

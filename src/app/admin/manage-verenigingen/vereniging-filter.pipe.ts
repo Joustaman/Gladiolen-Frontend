@@ -20,8 +20,16 @@ export class VerenigingFilterPipe implements PipeTransform {
         let naam = gebruiker.naam.toLowerCase();
         let voornaam = gebruiker.hoofd.voornaam.toLowerCase();
         let achternaam = gebruiker.hoofd.name.toLowerCase();
+        let contactVoornaam = gebruiker.contact.voornaam.toLowerCase();
+        let contactName = gebruiker.contact.name.toLowerCase();
         //let roepnaam = gebruiker.roepnaam.toLowerCase()
-        if (naam.includes(f) || voornaam.includes(f)||achternaam.includes(f)) {
+        if (
+          naam.includes(f) ||
+          voornaam.includes(f) ||
+          achternaam.includes(f) ||
+          contactName.includes(f) ||
+          contactVoornaam.includes(f)
+        ) {
           if (gefilterden.indexOf(gebruiker) === -1) {
             gefilterden.push(gebruiker);
           }

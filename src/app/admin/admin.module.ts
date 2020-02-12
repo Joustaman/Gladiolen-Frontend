@@ -21,11 +21,11 @@ import { ManageVerenigingLedenAdminComponent } from './manage-vereniging-leden-a
 import { GebruikerFilterPipe } from './manage-gebruikers/gebruiker-filter.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { VerenigingFilterPipe } from './manage-verenigingen/vereniging-filter.pipe';
+import { CreateVrijwilligerComponent } from './create-vrijwilliger/create-vrijwilliger.component';
+import { TijdsregistratieFilterPipe } from './manage-tijdsregistraties/tijdsregistratie-filter.pipe';
 
 @NgModule({
-  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent, ManageTijdsregistratiesComponent, AanvraagVerenigingComponent, ManageTakenComponent, TabletStatusBekijkenComponent, GebruikerFilterPipe, ManageVerenigingLedenAdminComponent, VerenigingFilterPipe],
-
-
+  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent, ManageTijdsregistratiesComponent, AanvraagVerenigingComponent, ManageTakenComponent, TabletStatusBekijkenComponent, GebruikerFilterPipe, ManageVerenigingLedenAdminComponent, VerenigingFilterPipe, CreateVrijwilligerComponent, TijdsregistratieFilterPipe],
 
   imports: [
     CommonModule,

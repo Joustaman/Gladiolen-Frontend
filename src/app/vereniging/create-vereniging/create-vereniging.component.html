@@ -1,249 +1,248 @@
 <div class="container">
-    <div class="card table-wrapper shadow-lg">
-        <div class="card-header table-title">
-            <h2>Vereniging aanvragen</h2>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-12">
-                    <mat-horizontal-stepper #stepper>
-                        <mat-step>
-                            <ng-template matStepLabel>Uw gegevens</ng-template>
-                            <form [formGroup]="verantwoordelijkeForm" class="was-validated" novalidate>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="naam">Naam</label>
-                                            <input class="form-control" type="text" id="naam" name="naam"
-                                                   formControlName="name" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="roepnaam">Roepnaam</label>
-                                            <input class="form-control" type="text" id="roepnaam" name="roepnaam"
-                                                   formControlName="roepnaam">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="voornaam">Voornaam</label>
-                                            <input class="form-control" type="text" id="voornaam" name="voornaam"
-                                                   formControlName="voornaam"
-                                                   required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="emailadres">Email</label>
-                                            <input class="form-control" type="email" id="emailadres" name="emailadres"
-                                                   formControlName="email"
-                                                   pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" required>
-                                            <div class="invalid-feedback">Gelieve een geldig e-mailadres in te vullen
-                                                van het formaat test@test.be
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="telefoon">Telefoon</label>
-                                            <input class="form-control" type="telefoon" id="telefoon" name="telefoon"
-                                                   formControlName="telefoon">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="geboortedatum">Geboortedatum</label>
-                                            <input class="form-control" type="date" id="geboortedatum"
-                                                   name="geboortedatum"
-                                                   formControlName="geboortedatum" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="rijksregisternr">Rijksregister</label>
-                                            <input class="form-control" type="text" id="rijksregisternr"
-                                                   name="rijksregisternr"
-                                                   formControlName="rijksregisternr" pattern="[0-9]{11}" required>
-                                            <div class="invalid-feedback">Gelieve de 11 cijfers van je
-                                                rijksregisternummer in te vullen.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="opmerking">Opmerking</label>
-                                            <textarea class="form-control" type="text" id="opmerking" name="opmerking"
-                                                      formControlName="opmerking"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <div class="form-group">
-                                            <label for="geslacht">Geslacht</label>
-                                            <select name="geslacht" id="geslacht" class="form-control"
-                                                    [(ngModel)]="geslacht" [ngModelOptions]="{standalone: true}">
-                                                <option value="XS">Man</option>
-                                                <option value="S">Vrouw</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <div class="form-group">
-                                            <label for="tshirt">Tshirt - Maat</label>
-                                            <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
-                                                    [ngModelOptions]="{standalone: true}">
-                                                <option value="XS">XS</option>
-                                                <option value="S">S</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div class="form-group paddingcheck text-center">
-                                            <div class="pretty p-default p-switch" (click)="changeLunch()">
-                                                <input type="checkbox"/>
-                                                <div class="state p-primary">
-                                                    <label>Lunchpakket</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label for="wachtwoord">Wachtwoord</label>
-                                        <input type="password" class="form-control" name="wachtwoord" id="wachtwoord"
-                                               formControlName="password" pattern=".{6,}" required>
-                                        <div class="invalid-feedback">Je wachtwoord moet minstens 6 tekens bevatten.
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label for="herhaalwachtwoord">Herhaal wachtwoord</label>
-                                        <input type="password" class="form-control" name="herhaalwachtwoord"
-                                               id="herhaalwachtwoord"
-                                               pattern=".{6,}" required>
-                                    </div>
-                                </div>
-                            </form>
-                                    <div class="mt-2">
-                                        <button class="btn btn-primary float-right" mat-button matStepperNext>Next <i
-                                                class="fas fa-arrow-right"></i></button>
-                                    </div>
-                        </mat-step>
-                        <mat-step>
-                            <ng-template matStepLabel>Vereniging</ng-template>
-                            <form [formGroup]="verenigingForm" class="was-validated" novalidate>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="naam">Naam</label>
-                                            <input class="form-control" type="text" id="naam" name="naam"
-                                                   formControlName="naam" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="rekeningnr">Rekeningnummer</label>
-                                            <input class="form-control" type="text" id="rekeningnr" name="rekeningnr"
-                                                   formControlName="rekeningnr" pattern="[BE]{2}[0-9]{14}" required>
-                                            <div class="invalid-feedback">Gelieve een correct rekeningnummer in te
-                                                vullen in het formaat BExxxxxxxxxxxxxx
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="btwnr">BTW nummer</label>
-                                            <input class="form-control" type="text" id="btwnr" name="btwnr"
-                                                   formControlName="btwnr" pattern="[BE]{2}[0]{1}[0-9]{9}" required>
-                                            <div class="invalid-feedback">Gelieve een correct rekeningnummer in te
-                                                vullen in het formaat BE0xxxxxxxxx
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="straat">Straat</label>
-                                            <input class="form-control" type="text" id="straat" name="straat"
-                                                   formControlName=straat required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="huisnummer">Huisnummer</label>
-                                            <input class="form-control" type="number" id="huisnummer" name="huisnummer"
-                                                   formControlName="huisnummer" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="gemeente">Gemeente</label>
-                                            <input class="form-control" type="text" id="gemeente" name="gemeente"
-                                                   formControlName="gemeente"
-                                                   required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="postcode">Postcode</label>
-                                            <input class="form-control" type="text" id="postcode" name="postcode"
-                                                   formControlName="postcode" pattern="[0-9]{4}" required>
-                                            <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="mt-2">
-                                <button class="btn btn-secondary" mat-button matStepperPrevious><i
-                                        class="fas fa-arrow-left"></i> Back
-                                </button>
-                                <button class="btn btn-primary float-right" mat-button matStepperNext>Next <i
-                                        class="fas fa-arrow-right"></i></button>
-                            </div>
-                        </mat-step>
-                        <mat-step>
-                            <ng-template matStepLabel>Overzicht</ng-template>
-                            <table class="table">
-                                <tbody>
-                                <tr>
-                                    <th scope="row">Naam</th>
-                                    <td>{{verenigingForm.get('naam').value}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Rekeningnummer</th>
-                                    <td>{{verenigingForm.get('rekeningnr').value}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">BTW nummer</th>
-                                    <td>{{verenigingForm.get('btwnr').value}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Straat</th>
-                                    <td>{{verenigingForm.get('straat').value}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Huisnummer</th>
-                                    <td>{{verenigingForm.get('huisnummer').value}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Gemeente</th>
-                                    <td>{{verenigingForm.get('gemeente').value}}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <div>
-                                <button class="btn btn-secondary mr-2" mat-button matStepperPrevious><i
-                                        class="fas fa-arrow-left"></i> Back
-                                </button>
-                                <button class="btn pdf" mat-button (click)="stepper.reset()"><i
-                                        class="fas fa-undo-alt"></i> Reset
-                                </button>
-                                <button class="btn add-button float-right" (click)="createVerantwoordelijke()"><i
-                                        class="fas fa-check"></i> Registreren
-                                </button>
-                            </div>
-                        </mat-step>
-                    </mat-horizontal-stepper>
-                </div>
-            </div>
-        </div>
+  <div class="card table-wrapper shadow-lg">
+    <div class="card-header table-title">
+      <h2>Vereniging aanvragen</h2>
     </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <mat-horizontal-stepper #stepper>
+            <mat-step>
+              <ng-template matStepLabel>Uw gegevens</ng-template>
+              <form [formGroup]="verantwoordelijkeForm" class="was-validated" novalidate>
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label for="naam">Naam</label>
+                      <input class="form-control" type="text" id="naam" name="naam" pattern="[^0-9]*"
+                             formControlName="name" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label for="roepnaam">Roepnaam</label>
+                      <input class="form-control" type="text" id="roepnaam" name="roepnaam" pattern="[^0-9]*"
+                             formControlName="roepnaam">
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label for="voornaam">Voornaam</label>
+                      <input class="form-control" type="text" id="voornaam" name="voornaam" pattern="[^0-9]*"
+                             formControlName="voornaam"
+                             required>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="emailadres">Email</label>
+                      <input class="form-control" type="email" id="emailadres" name="emailadres"
+                             formControlName="email"
+                             pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" required>
+                      <div class="invalid-feedback">Gelieve een geldig e-mailadres in te vullen
+                        van het formaat test@test.be
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                      <label for="telefoon">Telefoon</label>
+                      <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]*"
+                             formControlName="telefoon">
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                      <label for="geboortedatum">Geboortedatum</label>
+                      <input class="form-control" type="date" id="geboortedatum"
+                             name="geboortedatum"
+                             formControlName="geboortedatum" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="rijksregisternr">Rijksregister</label>
+                      <input class="form-control" type="text" id="rijksregisternr"
+                             name="rijksregisternr"
+                             formControlName="rijksregisternr" pattern="[0-9]{11}" required>
+                      <div class="invalid-feedback">Gelieve de 11 cijfers van je
+                        rijksregisternummer in te vullen.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="opmerking">Opmerking</label>
+                      <textarea class="form-control" type="text" id="opmerking" name="opmerking"
+                                formControlName="opmerking"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <div class="form-group">
+                      <label for="geslacht">Geslacht</label>
+                      <select name="geslacht" id="geslacht" class="form-control"
+                              [(ngModel)]="geslacht" [ngModelOptions]="{standalone: true}">
+                        <option value="XS">Man</option>
+                        <option value="S">Vrouw</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <div class="form-group">
+                      <label for="tshirt">Tshirt - Maat</label>
+                      <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
+                              [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let tshirt of tshirts" [value]="tshirt.maat">{{tshirt.maat}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div class="form-group paddingcheck text-center">
+                      <div class="pretty p-default p-switch" (click)="changeLunch()">
+                        <input type="checkbox"/>
+                        <div class="state p-primary">
+                          <label>Lunchpakket</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <label for="wachtwoord">Wachtwoord</label>
+                    <input type="password" class="form-control" name="wachtwoord" id="wachtwoord"
+                           formControlName="password" pattern=".{6,}" required>
+                    <div class="invalid-feedback">Je wachtwoord moet minstens 6 tekens bevatten.
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <label for="herhaalwachtwoord">Herhaal wachtwoord</label>
+                    <input type="password" class="form-control" name="herhaalwachtwoord"
+                           id="herhaalwachtwoord"
+                           pattern=".{6,}" required>
+                  </div>
+                </div>
+              </form>
+              <div class="mt-2">
+                <button class="btn btn-primary float-right" mat-button matStepperNext>Next <i
+                  class="fas fa-arrow-right"></i></button>
+              </div>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Vereniging</ng-template>
+              <form [formGroup]="verenigingForm" class="was-validated" novalidate>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="naam">Naam</label>
+                      <input class="form-control" type="text" id="naam" name="naam"
+                             formControlName="naam" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                      <label for="rekeningnr">Rekeningnummer</label>
+                      <input class="form-control" type="text" id="rekeningnr" name="rekeningnr"
+                             formControlName="rekeningnr" pattern="[BE]{2}[0-9]{14}" required>
+                      <div class="invalid-feedback">Gelieve een correct rekeningnummer in te
+                        vullen in het formaat BExxxxxxxxxxxxxx
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                      <label for="btwnr">BTW nummer</label>
+                      <input class="form-control" type="text" id="btwnr" name="btwnr"
+                             formControlName="btwnr" pattern="[BE]{2}[0]{1}[0-9]{9}" required>
+                      <div class="invalid-feedback">Gelieve een correct rekeningnummer in te
+                        vullen in het formaat BE0xxxxxxxxx
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                      <label for="straat">Straat</label>
+                      <input class="form-control" type="text" id="straat" name="straat"
+                             formControlName=straat pattern="[^0-9]*" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                      <label for="huisnummer">Huisnummer</label>
+                      <input class="form-control" type="number" id="huisnummer" name="huisnummer"
+                             formControlName="huisnummer" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                      <label for="gemeente">Gemeente</label>
+                      <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]*"
+                             formControlName="gemeente"
+                             required>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                      <label for="postcode">Postcode</label>
+                      <input class="form-control" type="text" id="postcode" name="postcode"
+                             formControlName="postcode" pattern="[0-9]{4}" required>
+                      <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="mt-2">
+                <button class="btn btn-secondary" mat-button matStepperPrevious><i
+                  class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="btn btn-primary float-right" mat-button matStepperNext>Next <i
+                  class="fas fa-arrow-right"></i></button>
+              </div>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Overzicht</ng-template>
+              <table class="table">
+                <tbody>
+                <tr>
+                  <th scope="row">Naam</th>
+                  <td>{{verenigingForm.get('naam').value}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Rekeningnummer</th>
+                  <td>{{verenigingForm.get('rekeningnr').value}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">BTW nummer</th>
+                  <td>{{verenigingForm.get('btwnr').value}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Straat</th>
+                  <td>{{verenigingForm.get('straat').value}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Huisnummer</th>
+                  <td>{{verenigingForm.get('huisnummer').value}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Gemeente</th>
+                  <td>{{verenigingForm.get('gemeente').value}}</td>
+                </tr>
+                </tbody>
+              </table>
+              <div>
+                <button class="btn btn-secondary mr-2" mat-button matStepperPrevious><i
+                  class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="btn pdf" mat-button (click)="stepper.reset()"><i
+                  class="fas fa-undo-alt"></i> Reset
+                </button>
+                <button class="btn add-button float-right" (click)="createVerantwoordelijke()"><i
+                  class="fas fa-check"></i> Registreren
+                </button>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

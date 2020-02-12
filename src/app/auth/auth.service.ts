@@ -66,4 +66,8 @@ export class AuthService {
     return this.http.put('http://localhost:8000/api/gebruiker/updateingelogdegebruiker', user);
   }
 
+  resetPassword(email): any {
+    return this.http.post('http://localhost:8000/api/gebruiker/resetpassword', email);
+  }
+
 }

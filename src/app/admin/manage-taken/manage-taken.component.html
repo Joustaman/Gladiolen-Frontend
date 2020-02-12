@@ -26,8 +26,8 @@
         <tr *ngFor="let taak of taken | paginate: { itemsPerPage: 10, currentPage: p }">
           <td>{{taak.subtaak.naam}}</td>
           <td>{{taak.taakgroep.naam}}</td>
-          <td>{{taak.startDatum | date:'dd/MM/yyyy'}}</td>
-          <td>{{taak.eindDatum | date:'dd/MM/yyyy'}}</td>
+          <td>{{taak.startDatum | date:'dd/MM/yyyy  hh:mm'}}</td>
+          <td>{{taak.eindDatum | date:'dd/MM/yyyy hh:mm'}}</td>
           <td>{{taak.aantalPersonen}}</td>
           <td>
             <a (click)="onClickEditTaak(taak)" data-toggle="modal" data-target="#editTaakModal"
@@ -122,12 +122,12 @@
           </div>
           <div class="form-group">
             <label for="startDatum" class="col-form-label">Start datum:</label>
-            <input type="date" class="form-control" id="startDatum"
+            <input type="datetime-local" class="form-control" id="startDatum"
                    formControlName="startDatum" required>
           </div>
           <div class="form-group">
             <label for="eindDatum" class="col-form-label">Eind datum:</label>
-            <input type="date" class="form-control" id="eindDatum"
+            <input type="datetime-local" class="form-control" id="eindDatum"
                    formControlName="eindDatum" required>
           </div>
           <div class="form-group">

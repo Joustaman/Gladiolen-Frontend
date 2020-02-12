@@ -29,7 +29,6 @@ export class CreateGebruikerComponent implements OnInit {
     opmerking: new FormControl(''),
     rol_id: new FormControl(null),
     rijksregisternr: new FormControl(''),
-    password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
     actief: new FormControl(true),
@@ -71,6 +70,7 @@ export class CreateGebruikerComponent implements OnInit {
       }
     );
   }
+
   createGebruiker() {
     this.adminService.registreerGebruiker(this.gebruikerForm.value).subscribe(
       result => {

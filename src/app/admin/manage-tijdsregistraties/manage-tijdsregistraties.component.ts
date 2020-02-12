@@ -4,6 +4,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {generateBuildStats} from '@angular-devkit/build-angular/src/angular-cli-files/utilities/stats';
+import { HotTableRegisterer } from '@handsontable/angular';
 
 @Component({
   selector: 'app-manage-tijdsregistraties',
@@ -22,7 +23,20 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   evenement: any = {naam: 'test'};
   gebruikers: any = [];
   gebruiker: any = {name: 'test'};
-  str="";
+  str = '';
+  private hotRegisterer = new HotTableRegisterer();
+  id = 'hotInstance';
+  data: any = [];
+  colHeaders = ['Lid', 'Vereniging', 'Evenement', 'Check-In', 'Check-Out', 'Manuele Check-In',
+  'Manuele Check-Out', 'Aangepaste Check-In', 'Aangepaste Check-Out'];
+  excelModus = false;
+  columns: any = [
+    {data: 'naam', readOnly: true},
+    {data: 'startdatum', readOnly: true},
+    {data: 'einddatum', readOnly: true},
+    {data: 'actief', readOnly: true},
+    {data: 'verenigingen', readOnly: true}
+  ];
 
   tijdsregistratieForm = new FormGroup({
     gebruiker_id: new FormControl(''),

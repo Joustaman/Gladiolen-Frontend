@@ -5,7 +5,7 @@
         <h4 class="card-title float-right">Pas uw vereniging aan</h4>
     </div>
     <div class="card-body">
-      <form [formGroup]="verenigingForm" class="was-validated" novalidate class="mt-5">
+      <form [formGroup]="verenigingForm" class="was-validated mt-5" novalidate>
         <div class="row">
           <div class="col-lg-6">
             <div class="form-group">
@@ -65,7 +65,8 @@
         </div>
         <button (click)="updateVereniging()" class="btn btn-primary">Update vereniging</button>
       </form>
+      <a [routerLink]="['/keuzemenu']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar home</i></a>
+
     </div>
   </div>
 </div>
-  

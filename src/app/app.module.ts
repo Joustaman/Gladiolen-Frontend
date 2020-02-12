@@ -24,6 +24,7 @@ import { LedenFilterPipe } from './vereniging/leden/leden-filter.pipe';
 import { ProfielComponent } from './profiel/profiel.component';
 import { DatePipe } from '@angular/common';
 import { BevestigingAanvraagComponent } from './vereniging/bevestiging-aanvraag/bevestiging-aanvraag.component';
+import { OverzichtsPaginaComponent } from './vereniging/overzichts-pagina/overzichts-pagina.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { BevestigingAanvraagComponent } from './vereniging/bevestiging-aanvraag/
     DetailVerenigingComponent,
     LedenFilterPipe,
     ProfielComponent,
-    BevestigingAanvraagComponent
+    BevestigingAanvraagComponent,
+    OverzichtsPaginaComponent
   ],
   imports: [
     BrowserModule,

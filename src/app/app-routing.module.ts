@@ -30,136 +30,141 @@ import {AppComponent} from './app.component';
 import {ManageVerenigingLedenAdminComponent} from './admin/manage-vereniging-leden-admin/manage-vereniging-leden-admin.component';
 import {ProfielComponent} from './profiel/profiel.component';
 import {BevestigingAanvraagComponent} from './vereniging/bevestiging-aanvraag/bevestiging-aanvraag.component';
+import {OverzichtsPaginaComponent} from './vereniging/overzichts-pagina/overzichts-pagina.component';
 
 const routes: Routes = [
-  {
-    path: 'manageGebruikers',
-    component: ManageGebruikersComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'createGebruiker',
-    component: CreateGebruikerComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'adminHome',
-    component: AdminHomeComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'manageEvenementen',
-    component: ManageEvenementenComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'createEvenement',
-    component: CreateVerenigingComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'detailGebruiker/:id',
-    component: DetailGebruikerComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'editGebruiker/:id',
-    component: EditGebruikerComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'manageVerenigingen',
-    component: ManageVerenigingenComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'createVerenigingAdmin',
-    component: CreateVerenigingAdminComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'editVerenigingAdmin/:id',
-    component: EditVerenigingAdminComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'manageVerenigingLedenAdmin/:id',
-    component: ManageVerenigingLedenAdminComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'manageTijdsregistraties',
-    component: ManageTijdsregistratiesComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'manageTaken',
-    component: ManageTakenComponent,
-    canActivate: [AdminGuardService]
-  },
-  {
-    path: 'createvereniging',
-    component: CreateVerenigingComponent
-  },
-  {
-    path: 'leden',
-    component: LedenComponent,
-    canActivate: [VerantwoordelijkeGuardService]
-  },
-  {
-    path: 'maaklid',
-    component: CreateLidComponent,
-    canActivate: [VerantwoordelijkeGuardService]
-  },
-  {
-    path: 'editlid/:id',
-    component: CreateLidComponent,
-    canActivate: [VerantwoordelijkeGuardService]
-  },
-  {
-    path: 'spinner',
-    component: SpinnerComponent
-  },
-  {
-    path: 'keuzemenu',
-    component: KeuzemenuComponent,
-    canActivate: [VerantwoordelijkeGuardService]
-  },
-  {
-    path: 'vereniging/editvereniging',
-    component: EditVerenigingComponent,
-    canActivate: [VerantwoordelijkeGuardService]
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'aanvragenVerenigingen',
-    component: AanvraagVerenigingComponent,
-    canActivate: [AdminGuardService],
-    resolve: {verenigingen: AanvragenResolverService}
-  },
-  {
-    path: 'tabletStatus',
-    component: TabletStatusBekijkenComponent,
-    canActivate: [AdminGuardService],
-    resolve: {tablets: TabletResolverService}
-  },
-  {
-    path: 'profiel',
-    component: ProfielComponent,
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'bevestigingAanvraag',
-    component: BevestigingAanvraagComponent
-  }
+    {
+        path: 'manageGebruikers',
+        component: ManageGebruikersComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'createGebruiker',
+        component: CreateGebruikerComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'adminHome',
+        component: AdminHomeComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'manageEvenementen',
+        component: ManageEvenementenComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'createEvenement',
+        component: CreateVerenigingComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'detailGebruiker/:id',
+        component: DetailGebruikerComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'editGebruiker/:id',
+        component: EditGebruikerComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'manageVerenigingen',
+        component: ManageVerenigingenComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'createVerenigingAdmin',
+        component: CreateVerenigingAdminComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'editVerenigingAdmin/:id',
+        component: EditVerenigingAdminComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'manageVerenigingLedenAdmin/:id',
+        component: ManageVerenigingLedenAdminComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'manageTijdsregistraties',
+        component: ManageTijdsregistratiesComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'manageTaken',
+        component: ManageTakenComponent,
+        canActivate: [AdminGuardService]
+    },
+    {
+        path: 'createvereniging',
+        component: CreateVerenigingComponent
+    },
+    {
+        path: 'leden',
+        component: LedenComponent,
+        canActivate: [VerantwoordelijkeGuardService]
+    },
+    {
+        path: 'maaklid',
+        component: CreateLidComponent,
+        canActivate: [VerantwoordelijkeGuardService]
+    },
+    {
+        path: 'editlid/:id',
+        component: CreateLidComponent,
+        canActivate: [VerantwoordelijkeGuardService]
+    },
+    {
+        path: 'spinner',
+        component: SpinnerComponent
+    },
+    {
+        path: 'keuzemenu',
+        component: KeuzemenuComponent,
+        canActivate: [VerantwoordelijkeGuardService]
+    },
+    {
+        path: 'vereniging/editvereniging',
+        component: EditVerenigingComponent,
+        canActivate: [VerantwoordelijkeGuardService]
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'aanvragenVerenigingen',
+        component: AanvraagVerenigingComponent,
+        canActivate: [AdminGuardService],
+        resolve: {verenigingen: AanvragenResolverService}
+    },
+    {
+        path: 'tabletStatus',
+        component: TabletStatusBekijkenComponent,
+        canActivate: [AdminGuardService],
+        resolve: {tablets: TabletResolverService}
+    },
+    {
+        path: 'profiel',
+        component: ProfielComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: 'bevestigingAanvraag',
+        component: BevestigingAanvraagComponent
+    },
+    {
+        path: '',
+        component: OverzichtsPaginaComponent
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

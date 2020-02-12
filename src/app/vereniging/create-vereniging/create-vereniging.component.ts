@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 })
 export class CreateVerenigingComponent implements OnInit {
 
+  kernleden: any = [];
   tshirts: any = [];
   maat: any;
   geslacht: any;
@@ -55,6 +56,15 @@ export class CreateVerenigingComponent implements OnInit {
     this.verenigingService.getTshirts().subscribe(
       result => {
         this.tshirts = result;
+      },
+    );
+
+    this.verenigingService.getKernleden().subscribe(
+      result => {
+        this.kernleden = result;
+      },
+      error => {
+        console.log(error);
       },
     );
   }
@@ -115,6 +125,7 @@ export class CreateVerenigingComponent implements OnInit {
       error => {
         this.toast.error('Vul het formulier correct in');
         this.buttonEnabled = true;
+        console.log(error);
       }
     );
   }

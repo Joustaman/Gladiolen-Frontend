@@ -86,7 +86,6 @@ const routes: Routes = [
     component: ManageVerenigingLedenAdminComponent,
     canActivate: [AdminGuardService]
   },
-
   {
     path: 'manageTijdsregistraties',
     component: ManageTijdsregistratiesComponent,

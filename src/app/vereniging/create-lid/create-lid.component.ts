@@ -93,10 +93,6 @@ export class CreateLidComponent implements OnInit {
     );
   }
 
-  clickCreateLid() {
-    this.lid = null;
-  }
-
     /**
      * @param {int} gebruikerId  Het ID van de gebruiker voor wie het Tshirt-object wordt aangemaakt.
      * Creëert een nieuw Tshirt-object

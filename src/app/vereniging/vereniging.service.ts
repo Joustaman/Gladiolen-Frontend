@@ -57,8 +57,4 @@ export class VerenigingService {
   updateVereniging(id, vereniging): any {
     return this.http.put('http://localhost:8000/api/vereniging/' + id, vereniging);
   }
-
-  getKernleden(): any {
-    return this.http.get('http://localhost:8000/api/gebruiker/getKernleden');
-  }
 }

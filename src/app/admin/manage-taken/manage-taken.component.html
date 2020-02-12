@@ -26,8 +26,8 @@
         <tr *ngFor="let taak of taken | paginate: { itemsPerPage: 10, currentPage: p }">
           <td>{{taak.subtaak.naam}}</td>
           <td>{{taak.taakgroep.naam}}</td>
-          <td>{{taak.startDatum | date:'MM/dd/yyyy'}}</td>
-          <td>{{taak.eindDatum | date:'MM/dd/yyyy'}}</td>
+          <td>{{taak.startDatum | date:'dd/MM/yyyy'}}</td>
+          <td>{{taak.eindDatum | date:'dd/MM/yyyy'}}</td>
           <td>{{taak.aantalPersonen}}</td>
           <td>
             <a (click)="onClickEditTaak(taak)" data-toggle="modal" data-target="#editTaakModal"
@@ -80,13 +80,13 @@
           </div>
           <div class="form-group">
             <label for="aantalPersonen" class="col-form-label">Aantal personen:</label>
-            <input type="text" class="form-control" id="aantalPersonen"
-                   formControlName="aantalPersonen" min="0" required>
+            <input type="number" class="form-control" id="aantalPersonen"
+                   formControlName="aantalPersonen" required min="0" oninput="validity.valid||(value='');">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-          <button (click)="onSubmit()" class="btn btn-primary" data-dismiss="modal">Opslaan
+          <button (click)="onSubmit()" class="btn btn-primary" data-dismiss="modal" *ngIf="taakForm.valid" >Opslaan
           </button>
         </div>
       </form>
@@ -132,13 +132,13 @@
           </div>
           <div class="form-group">
             <label for="aantalPersonen" class="col-form-label">Aantal personen:</label>
-            <input type="text" class="form-control" id="aantalPersonen"
-                   formControlName="aantalPersonen" min="0" required>
+            <input type="number" class="form-control" id="aantalPersonen"
+                   formControlName="aantalPersonen" required min="0" oninput="validity.valid||(value='');">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-          <button (click)="updateTaak()" data-dismiss="modal" class="btn btn-primary">Opslaan</button>
+          <button (click)="updateTaak()" data-dismiss="modal" class="btn btn-primary" *ngIf="taakForm.valid">Opslaan</button>
           <button (click)="deleteTaak()" data-dismiss="modal" class="btn btn-danger">Verwijderen</button>
         </div>
       </form>

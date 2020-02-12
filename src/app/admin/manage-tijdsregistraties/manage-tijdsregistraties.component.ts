@@ -22,6 +22,7 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   evenement: any = {naam: 'test'};
   gebruikers: any = [];
   gebruiker: any = {name: 'test'};
+  str="";
 
   tijdsregistratieForm = new FormGroup({
     gebruiker_id: new FormControl(''),

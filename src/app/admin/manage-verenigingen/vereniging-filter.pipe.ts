@@ -1,15 +1,14 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-  name: "gebruikerFilter"
+  name: "verenigingFilter"
 })
-export class GebruikerFilterPipe implements PipeTransform {
+export class VerenigingFilterPipe implements PipeTransform {
   transform(gebruikers: any[], filter: any): any {
     if (!gebruikers || !filter || filter === "") {
       return gebruikers;
     }
     filter = filter.toLowerCase();
-
     let filters = filter.split(" ");
     let alle: any[] = [];
     let first: boolean = true;
@@ -18,10 +17,19 @@ export class GebruikerFilterPipe implements PipeTransform {
       let gefilterden: any[] = [];
 
       gebruikers.forEach(gebruiker => {
-        let naam = gebruiker.name.toLowerCase();
-        let voornaam = gebruiker.voornaam.toLowerCase();
+        let naam = gebruiker.naam.toLowerCase();
+        let voornaam = gebruiker.hoofd.voornaam.toLowerCase();
+        let achternaam = gebruiker.hoofd.name.toLowerCase();
+        let contactVoornaam = gebruiker.contact.voornaam.toLowerCase();
+        let contactName = gebruiker.contact.name.toLowerCase();
         //let roepnaam = gebruiker.roepnaam.toLowerCase()
-        if (naam.includes(f) || voornaam.includes(f)) {
+        if (
+          naam.includes(f) ||
+          voornaam.includes(f) ||
+          achternaam.includes(f) ||
+          contactName.includes(f) ||
+          contactVoornaam.includes(f)
+        ) {
           if (gefilterden.indexOf(gebruiker) === -1) {
             gefilterden.push(gebruiker);
           }
@@ -36,9 +44,9 @@ export class GebruikerFilterPipe implements PipeTransform {
         alle.forEach(al => {
           gefilterden.forEach(gef => {
             if (
-              al.voornaam === gef.voornaam &&
-              al.name == gef.name &&
-              al.geboortedatum === gef.geboortedatum
+              al.naam === gef.naam &&
+              al.hoofd.name == gef.hoofd.name &&
+              al.hoofd.achternaam === gef.hoofd.achternaam
             ) {
               nieuwe.push(al);
             }

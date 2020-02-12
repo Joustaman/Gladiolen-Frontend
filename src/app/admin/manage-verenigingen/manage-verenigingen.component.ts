@@ -13,6 +13,7 @@ import 'handsontable/languages/nl-NL';
 export class ManageVerenigingenComponent implements OnInit {
   verenigingen: any = [];
   pageLoaded = false;
+  str="";
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';
   data: any = [];

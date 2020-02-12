@@ -24,9 +24,10 @@ import { VerenigingFilterPipe } from './manage-verenigingen/vereniging-filter.pi
 import { CreateVrijwilligerComponent } from './create-vrijwilliger/create-vrijwilliger.component';
 import { TijdsregistratieFilterPipe } from './manage-tijdsregistraties/tijdsregistratie-filter.pipe';
 import { EvenementenFilterPipe } from './manage-evenementen/evenementen-filter.pipe';
+import { CreateLidVerenigingComponent } from './create-lid-vereniging/create-lid-vereniging.component';
 
 @NgModule({
-  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent, ManageTijdsregistratiesComponent, AanvraagVerenigingComponent, ManageTakenComponent, TabletStatusBekijkenComponent, GebruikerFilterPipe, ManageVerenigingLedenAdminComponent, VerenigingFilterPipe, CreateVrijwilligerComponent, TijdsregistratieFilterPipe, EvenementenFilterPipe],
+  declarations: [ManageGebruikersComponent, DetailGebruikerComponent, CreateGebruikerComponent, AdminHomeComponent, ManageEvenementenComponent, ManageVerenigingenComponent, CreateVerenigingAdminComponent, EditVerenigingAdminComponent, EditGebruikerComponent, ManageTijdsregistratiesComponent, AanvraagVerenigingComponent, ManageTakenComponent, TabletStatusBekijkenComponent, GebruikerFilterPipe, ManageVerenigingLedenAdminComponent, VerenigingFilterPipe, CreateVrijwilligerComponent, TijdsregistratieFilterPipe, EvenementenFilterPipe, CreateLidVerenigingComponent],
 
   imports: [
     CommonModule,

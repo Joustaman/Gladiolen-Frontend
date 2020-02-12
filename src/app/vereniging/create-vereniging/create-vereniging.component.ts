@@ -75,6 +75,7 @@ export class CreateVerenigingComponent implements OnInit {
   createVerantwoordelijke() {
     this.verenigingService.registreerVerantwoordelijke(this.verantwoordelijkeForm.value).subscribe(
       result => {
+        console.log(result);
         this.verenigingForm.patchValue({
           hoofdverantwoordelijke: result.id,
         });
@@ -82,6 +83,11 @@ export class CreateVerenigingComponent implements OnInit {
       },
       error => {
         console.log(error);
+        if (error.error.message === 'email') {
+          this.toast.error('Email bestaat al');
+        } else {
+          this.toast.error('Vul persoonlijke informatie correct in');
+        }
       }
     );
   }
@@ -109,6 +115,7 @@ export class CreateVerenigingComponent implements OnInit {
 
     this.verenigingService.registreerVereniging(this.verenigingForm.value).subscribe(
       result => {
+        console.log(result);
         this.toast.success('Uw aanvraag is verzonden');
         this.router.navigate(['bevestigingAanvraag']);
       },

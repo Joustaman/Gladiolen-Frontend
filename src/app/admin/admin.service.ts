@@ -30,6 +30,10 @@ export class AdminService {
     return this.http.get(this.$link + 'api/vereniging/getVerenigingByIdMetLeden/' + id);
   }
 
+  getAdmins(): any {
+    return this.http.get(this.$link + 'api/gebruiker/getAdmins/');
+  }
+
   registreerGebruiker(gebruiker): any {
     return this.http.post(
       this.$link + 'api/gebruiker/registreergebruiker',
@@ -150,8 +154,8 @@ export class AdminService {
     return this.http.get<any[]>(this.$link + 'api/vereniging/inAanvraag');
   }
 
-  acceptVereningInAanvraag(id: number): any {
-    return this.http.get(this.$link + 'api/vereniging/accept/' + id);
+  acceptVereningInAanvraag(id: number, contact:number): any {
+    return this.http.get(this.$link + 'api/vereniging/accept/' + id + "/" + contact) ;
   }
 
   denyVereningInAanvraag(id: number): any {

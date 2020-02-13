@@ -32,55 +32,56 @@ import {ProfielComponent} from './profiel/profiel.component';
 import {BevestigingAanvraagComponent} from './vereniging/bevestiging-aanvraag/bevestiging-aanvraag.component';
 import {OverzichtsPaginaComponent} from './vereniging/overzichts-pagina/overzichts-pagina.component';
 import { CreateLidVerenigingComponent } from './admin/create-lid-vereniging/create-lid-vereniging.component';
+import { ContactpersonenResolverService } from "./admin/aanvraag-vereniging/contactpersonen-resolver.service";
 
 const routes: Routes = [
   {
-    path: 'manageGebruikers',
+    path: "manageGebruikers",
     component: ManageGebruikersComponent,
     canActivate: [AdminGuardService]
   },
   {
-    path: 'createGebruiker',
+    path: "createGebruiker",
     component: CreateGebruikerComponent,
     canActivate: [AdminGuardService]
   },
   {
-    path: 'adminHome',
+    path: "adminHome",
     component: AdminHomeComponent,
     canActivate: [AdminGuardService]
   },
   {
-    path: 'manageEvenementen',
+    path: "manageEvenementen",
     component: ManageEvenementenComponent,
     canActivate: [AdminGuardService]
   },
   {
-    path: 'createEvenement',
+    path: "createEvenement",
     component: CreateVerenigingComponent,
     canActivate: [AdminGuardService]
   },
   {
-    path: 'detailGebruiker/:id',
+    path: "detailGebruiker/:id",
     component: DetailGebruikerComponent,
     canActivate: [AdminGuardService]
   },
   {
-    path: 'editGebruiker/:id',
+    path: "editGebruiker/:id",
     component: EditGebruikerComponent,
     canActivate: [AdminGuardService]
   },
   {
-    path: 'manageVerenigingen',
+    path: "manageVerenigingen",
     component: ManageVerenigingenComponent,
     canActivate: [AdminGuardService]
   },
   {
-    path: 'createVerenigingAdmin',
+    path: "createVerenigingAdmin",
     component: CreateVerenigingAdminComponent,
     canActivate: [AdminGuardService]
   },
   {
-    path: 'editVerenigingAdmin/:id',
+    path: "editVerenigingAdmin/:id",
     component: EditVerenigingAdminComponent,
     canActivate: [AdminGuardService]
   },
@@ -90,26 +91,26 @@ const routes: Routes = [
     canActivate: [AdminGuardService]
   },
   {
-    path: 'manageTijdsregistraties',
+    path: "manageTijdsregistraties",
     component: ManageTijdsregistratiesComponent,
     canActivate: [AdminGuardService]
   },
   {
-    path: 'manageTaken',
+    path: "manageTaken",
     component: ManageTakenComponent,
     canActivate: [AdminGuardService]
   },
   {
-    path: 'createvereniging',
+    path: "createvereniging",
     component: CreateVerenigingComponent
   },
   {
-    path: 'leden',
+    path: "leden",
     component: LedenComponent,
     canActivate: [VerantwoordelijkeGuardService]
   },
   {
-    path: 'maaklid',
+    path: "maaklid",
     component: CreateLidComponent,
     canActivate: [VerantwoordelijkeGuardService]
   },
@@ -119,58 +120,62 @@ const routes: Routes = [
     canActivate: [AdminGuardService]
   },
   {
-    path: 'editlid/:id',
+    path: "editlid/:id",
     component: CreateLidComponent,
     canActivate: [VerantwoordelijkeGuardService]
   },
   {
-    path: 'spinner',
+    path: "spinner",
     component: SpinnerComponent
   },
   {
-    path: 'keuzemenu',
+    path: "keuzemenu",
     component: KeuzemenuComponent,
     canActivate: [VerantwoordelijkeGuardService]
   },
   {
-    path: 'vereniging/editvereniging',
+    path: "vereniging/editvereniging",
     component: EditVerenigingComponent,
     canActivate: [VerantwoordelijkeGuardService]
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: "login",
+    component: LoginComponent,
+    canActivate:[HomeGuardService]
   },
   {
-    path: 'aanvragenVerenigingen',
+    path: "aanvragenVerenigingen",
     component: AanvraagVerenigingComponent,
     canActivate: [AdminGuardService],
-    resolve: {verenigingen: AanvragenResolverService}
+    resolve: {
+      verenigingen: AanvragenResolverService,
+      contactpersonen: ContactpersonenResolverService
+    }
   },
   {
-    path: 'tabletStatus',
+    path: "tabletStatus",
     component: TabletStatusBekijkenComponent,
     canActivate: [AdminGuardService],
-    resolve: {tablets: TabletResolverService}
+    resolve: { tablets: TabletResolverService }
   },
   {
-    path: 'profiel',
+    path: "profiel",
     component: ProfielComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: 'bevestigingAanvraag',
+    path: "bevestigingAanvraag",
     component: BevestigingAanvraagComponent
   },
-    {
-        path: '',
-        component: OverzichtsPaginaComponent
-    }
+  {
+    path: "",
+    component: OverzichtsPaginaComponent,
+    canActivate:[HomeGuardService]
+  }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

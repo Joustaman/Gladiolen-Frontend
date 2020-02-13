@@ -7,19 +7,26 @@
     <div class="card-body">
       <form [formGroup]="verenigingForm" class="was-validated" novalidate>
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-4">
             <div class="form-group">
               <label for="naam">Naam</label>
               <input class="form-control" type="text" id="naam" name="naam" pattern="[^0-9]*" formControlName="naam" required>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-4">
             <div class="form-group">
               <label for="tweedeverantwoordelijke">Verander van tweede verantwoordelijke</label>
               <select class="form-control" name="tweedeverantwoordelijke" id="tweedeverantwoordelijke"
                 formControlName="tweedeverantwoordelijke">
-                <option *ngFor="let lid of leden" [value]="lid.id">{{lid.naam}} {{lid.voornaam}}</option>
+                <option *ngFor="let lid of leden" [value]="lid.id">{{lid.name}} {{lid.voornaam}}</option>
               </select>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label for="contactpersoon">Kernlid</label>
+              <input class="form-control" type="text" id="contactpersoon" name="contactpersoon" pattern="[^0-9]*" formControlName="contactpersoon" value="{{vereniging.contactpersoon.name}}" disabled>
             </div>
           </div>
           <div class="col-lg-6">

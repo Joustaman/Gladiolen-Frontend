@@ -45,7 +45,7 @@
             <tr>
               <th scope="col">Naam</th>
               <th scope="col">Hoofdverantwoordelijke</th>
-              <th scope="col">Contactpersoon</th>
+              <th scope="col">Kernlid</th>
               <th scope="col">Actief</th>
               <th class="acties">Acties</th>
             </tr>
@@ -60,7 +60,7 @@
                 {{ vereniging.contact.name }}
                 {{ vereniging.contact.voornaam }}
               </td>
-              <td *ngIf="vereniging.contact == null">Geen contactpersoon</td>
+              <td *ngIf="vereniging.contact == null">Geen kernlid</td>
               <td>
                 <div *ngIf="vereniging.actief == 0">Niet Actief</div>
                 <div *ngIf="vereniging.actief == 1">Actief</div>
@@ -248,7 +248,7 @@
             </div>
             <div class="col-lg-4">
               <div class="form-group">
-                <label for="contact">Contactpersoon</label>
+                <label for="contact">Kernlid</label>
                 <input
                   class="form-control"
                   type="text"
@@ -294,7 +294,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">
-          Sluiten
+          Annuleren
         </button>
       </div>
     </div>

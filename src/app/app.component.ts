@@ -21,10 +21,11 @@ export class AppComponent {
   rol: any;
   notificationsMenu = "";
   notifications = "";
-  loading:boolean;
+  loading: boolean;
   constructor(
     private readonly authService: AuthService,
-    private readonly adminService: AdminService,private router: Router,
+    private readonly adminService: AdminService,
+    private router: Router,
     private ref: ChangeDetectorRef
   ) {
     this.loading = false;
@@ -50,9 +51,11 @@ export class AppComponent {
 
   menuClick() {
     this.openMenu = !this.openMenu;
-    if (this.openMenu) this.notificationsMenu = "";
-    else this.notificationsMenu = this.notifications;
-    this.updateNotifications();
+    if (this.getRol() === "1") {
+      if (this.openMenu) this.notificationsMenu = "";
+      else this.notificationsMenu = this.notifications;
+      this.updateNotifications();
+    }
   }
 
   checkIfLoggedIn() {
@@ -75,9 +78,9 @@ export class AppComponent {
     this.updateNotifications();
   }
 
-notChangedHandler(count:string){
-  this.notifications = count;
-}
+  notChangedHandler(count: string) {
+    this.notifications = count;
+  }
 
   private updateNotifications() {
     if (this.authService.getRol() === "1") {

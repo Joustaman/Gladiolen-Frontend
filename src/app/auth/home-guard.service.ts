@@ -17,12 +17,12 @@ export class HomeGuardService {
 
   canActivate(): boolean {
     if (this.authService.checkIfLoggedIn() === false) {
-      this.router.navigate(["login"]);
-      return false;
+      return true;
     } else if (this.authService.getRol() === "1") {
       this.router.navigate(["adminHome"]);
       return false;
     } else if (this.authService.getRol() === "3") {
+      this.router.navigate(["/keuzemenu"])
       return false;
     }
     return true;

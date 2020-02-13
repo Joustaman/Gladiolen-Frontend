@@ -139,7 +139,8 @@ const routes: Routes = [
   },
   {
     path: "login",
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate:[HomeGuardService]
   },
   {
     path: "aanvragenVerenigingen",
@@ -167,7 +168,8 @@ const routes: Routes = [
   },
   {
     path: "",
-    component: OverzichtsPaginaComponent
+    component: OverzichtsPaginaComponent,
+    canActivate:[HomeGuardService]
   }
 ];
 

@@ -13,6 +13,7 @@
           <tr>
             <th scope="col">Naam</th>
             <th scope="col">Hoofdverantwoordelijke</th>
+            <th scope="col">Contactpersoon</th>
             <th scope="col">Adres</th>
             <th scope="col">Rekeningnummer</th>
             <th scope="col">Accepteren</th>
@@ -26,6 +27,18 @@
               {{ ver.hoofd.voornaam }}
               {{ ver.hoofd.name }}
             </td>
+            <td>
+              <select
+                name="{{ver.id}}"
+                class="form-control"
+                (change)="changeContact($event)"
+              >
+              <option value="-1">Kies contactpersoon</option>
+                <option *ngFor="let kernlid of contactpersonen" [value]="kernlid.id"
+                  >{{ kernlid.voornaam }} {{ kernlid.name }}</option
+                >
+              </select>
+            </td>
             <td>{{ ver.straat }} {{ ver.huisnummer }} {{ ver.gemeente }}</td>
             <td>{{ ver.rekeningnr }}</td>
             <td>
@@ -38,7 +51,6 @@
                   done
                 </i>
               </a>
-              
             </td>
             <td>
               <a style="color: red;" (click)="deny(ver.id)">

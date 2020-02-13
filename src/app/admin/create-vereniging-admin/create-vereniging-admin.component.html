@@ -71,7 +71,7 @@
 <!--              </div>-->
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label for="contactpersoon">Contactpersoon</label>
+                  <label for="contactpersoon">Kernlid</label>
                   <select name="contactpersoon" id="contactpersoon" class="form-control" formControlName="contactpersoon" (change)="changeContact()" required>
                     <option *ngFor="let kernlid of kernleden" [value]="kernlid.id">{{kernlid.name}} {{kernlid.voornaam}}</option>
                   </select>
@@ -212,7 +212,7 @@
               <td>{{verenigingForm.get('gemeente').value}}</td>
             </tr>
             <tr>
-              <th scope="row">Contactpersoon</th>
+              <th scope="row">Kernlid</th>
               <td>{{verenigingForm.get('contactpersoon').value}}</td>
             </tr>
             <tr>

@@ -9,7 +9,7 @@
           <tr>
             <th scope="col">Naam</th>
             <th scope="col">Hoofdverantwoordelijke</th>
-            <th scope="col">Contactpersoon</th>
+            <th scope="col">Kernlid</th>
             <th scope="col">Adres</th>
             <th scope="col">Rekeningnummer</th>
             <th scope="col">Accepteren</th>
@@ -29,7 +29,7 @@
                 class="form-control"
                 (change)="changeContact($event)"
               >
-              <option value="-1">Kies contactpersoon</option>
+              <option value="-1">Kies kernlid</option>
                 <option *ngFor="let kernlid of contactpersonen" [value]="kernlid.id"
                   >{{ kernlid.voornaam }} {{ kernlid.name }}</option
                 >

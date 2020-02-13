@@ -10,20 +10,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ManageVerenigingLedenAdminComponent implements OnInit {
 
   gebruikers: any = [];
+  vereniging: any={};
   pageLoaded = false;
 
   constructor(private adminService: AdminService, private readonly router: Router,
     private readonly route: ActivatedRoute) { }
- 
+
   ngOnInit() {
     this.route.paramMap.subscribe(
       params => {
         if (params.get('id') !== null) {
-              this.adminService.getVrijwilligersByVereniging(params.get('id')).subscribe(
-                result => {
-                  console.log(result);
-                  this.gebruikers = result;
-                  this.pageLoaded = true;
+          this.adminService.getVerenigingMetVrijwilligers(params.get('id')).subscribe(
+            result => {
+              console.log(result);
+              this.gebruikers = result;
+              this.pageLoaded = true;
             },
             error => {
               console.log(error);
@@ -31,8 +32,8 @@ export class ManageVerenigingLedenAdminComponent implements OnInit {
           );
         }
       });
-    }
+  }
 
 }
 
-  
+

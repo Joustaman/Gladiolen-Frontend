@@ -31,6 +31,7 @@ import {ManageVerenigingLedenAdminComponent} from './admin/manage-vereniging-led
 import {ProfielComponent} from './profiel/profiel.component';
 import {BevestigingAanvraagComponent} from './vereniging/bevestiging-aanvraag/bevestiging-aanvraag.component';
 import {OverzichtsPaginaComponent} from './vereniging/overzichts-pagina/overzichts-pagina.component';
+import { CreateLidVerenigingComponent } from './admin/create-lid-vereniging/create-lid-vereniging.component';
 
 const routes: Routes = [
   {
@@ -85,7 +86,7 @@ const routes: Routes = [
   },
   {
     path: "manageVerenigingLedenAdmin/:id",
-    component: LedenComponent,
+    component: ManageVerenigingLedenAdminComponent,
     canActivate: [AdminGuardService]
   },
   {
@@ -113,8 +114,8 @@ const routes: Routes = [
     canActivate: [VerantwoordelijkeGuardService]
   },
   {
-    path: 'adminmaaklid',
-    component: CreateLidComponent,
+    path: 'adminmaaklidvereniging/:id',
+    component: CreateLidVerenigingComponent,
     canActivate: [AdminGuardService]
   },
   {

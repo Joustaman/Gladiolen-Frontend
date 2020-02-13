@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from '../admin.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -13,7 +13,7 @@ export class CreateLidVerenigingComponent implements OnInit {
 
   tshirts: any = [];
   rollen: any = [];
-  verenigingen: any = [];
+  vereniging: any = {};
   gebruiker: any = {};
   maat: any;
   geslacht: any;
@@ -37,10 +37,27 @@ export class CreateLidVerenigingComponent implements OnInit {
   });
 
   constructor(private readonly adminService: AdminService, private readonly router: Router,
-    private readonly toast: ToastrService) {
+    private readonly route: ActivatedRoute, private readonly toast: ToastrService) {
   }
 
   ngOnInit() {
+
+    this.route.paramMap.subscribe(
+      params => {
+        if (params.get('id') !== null) {
+          this.adminService.getVereniging(params.get('id')).subscribe(
+            result => {
+              console.log(result);
+              this.vereniging = result;
+              this.pageLoaded = true;
+            },
+            error => {
+              console.log(error);
+            },
+          );
+        }
+      });
+
     this.adminService.getTshirts().subscribe(
       result => {
         this.tshirts = result;
@@ -50,12 +67,6 @@ export class CreateLidVerenigingComponent implements OnInit {
     this.adminService.getRollen().subscribe(
       result => {
         this.rollen = result;
-      },
-    );
-
-    this.adminService.getVerenigingen().subscribe(
-      result => {
-        this.verenigingen = result;
       },
     );
   }

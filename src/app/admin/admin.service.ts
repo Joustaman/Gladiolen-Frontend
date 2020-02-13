@@ -26,8 +26,8 @@ export class AdminService {
     return this.http.get(this.$link + 'api/gebruiker/getGebruiker/' + id);
   }
 
-  getVrijwilligersByVereniging(id): any {
-    return this.http.get(this.$link + 'api/gebruiker/getVrijwilligersByVereniging/' + id);
+  getVerenigingMetVrijwilligers(id): any {
+    return this.http.get(this.$link + 'api/vereniging/getVerenigingByIdMetLeden/' + id);
   }
 
   getAdmins(): any {

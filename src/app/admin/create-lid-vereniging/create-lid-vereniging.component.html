@@ -1,12 +1,12 @@
 <div class="container">
     <div class="card">
       <div class="card-header">
-        <h4>Voeg een gebruiker toe</h4>
+        <h4>Voeg een vrijwilliger toe</h4>
       </div>
       <div class="card-body">
         <mat-horizontal-stepper #stepper>
           <mat-step>
-            <ng-template matStepLabel>Gebruiker</ng-template>
+            <ng-template matStepLabel>Vrijwilliger</ng-template>
             <form [formGroup]="gebruikerForm" (ngSubmit)="submitForm()" class="mt-5 was-validated" novalidate>
               <div class="row">
                 <div class="col-lg-4">
@@ -90,15 +90,6 @@
                       <option value="XXL">XXL</option>                  </select>
                   </div>
                 </div>
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label for="rol">Rol</label>
-                    <select name="rol" id="rol" class="form-control" formControlName="rol_id" (change)="changeRol()"
-                            required>
-                      <option *ngFor="let rol of rollen" [value]="rol.id">{{rol.naam}}</option>
-                    </select>
-                  </div>
-                </div>
                 <div class="col-lg-2">
                   <div class="form-group paddingcheck text-center">
                     <div class="pretty p-default p-switch" (click)="changeLunch()">
@@ -109,24 +100,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <label for="password">Wachtwoord</label>
-                  <input type="password" class="form-control" name="password" id="password" formControlName="password"
-                         pattern=".{6,}" required>
-                  <div class="invalid-feedback">Je wachtwoord moet minstens 6 tekens bevatten.</div>
-                </div>
-                <div class="col-lg-6">
-                  <label for="herhaalwachtwoord">Herhaal wachtwoord</label>
-                  <input type="password" class="form-control" name="herhaalwachtwoord" id="herhaalwachtwoord"
-                         pattern=".{6,}"
-                         required>
-                </div>
               </div>
             </form>
             <div>
   
               <button mat-button matStepperNext>Next</button>
-              <a [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar beheren</i></a>
+              <a [routerLink]="['/manageVerenigingLedenAdmin/'+vereniging.id]" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar overzicht">Terug naar overzicht</i></a>
   
             </div>
           </mat-step>

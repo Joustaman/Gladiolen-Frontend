@@ -1,6 +1,9 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12">
+  <div class="card table-wrapper shadow-lg">
+    <div class="card-header table-title">
+      <h2>Verenigingen aanmaken</h2>
+    </div>
+    <div class="card-body">
       <mat-horizontal-stepper #stepper>
         <mat-step>
           <ng-template matStepLabel>Vereniging</ng-template>
@@ -223,7 +226,7 @@
             <button mat-button (click)="stepper.reset()">Reset</button>
             <button class="btn btn-primary float-right" (click)="createVerantwoordelijke()">Registreren</button>
           </div>
-          <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug naar beheren</a>
+          <a class="btn btn-secondary" [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug naar beheren</a>
         </mat-step>
       </mat-horizontal-stepper>
     </div>

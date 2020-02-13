@@ -189,4 +189,8 @@ export class AdminService {
   getSubtaken(): any {
     return this.http.get(this.$link + 'api/subtaak');
   }
+
+  importGebruikers(gebruikers): any {
+    return this.http.post(this.$link + 'api/gebruiker/import', gebruikers);
+  }
 }

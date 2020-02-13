@@ -4,6 +4,8 @@ import {AdminService} from '../admin.service';
 import { HotTableRegisterer } from '@handsontable/angular';
 import * as Handsontable from 'handsontable';
 import 'handsontable/languages/nl-NL';
+import * as XLSX from 'xlsx';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-manage-gebruikers',
@@ -41,9 +43,10 @@ export class ManageGebruikersComponent implements OnInit {
     { data: 'rijksregisternummer', readOnly: true },
     { data: 'actief', readOnly: true },
   ];
-  constructor(private adminService: AdminService) {
+  constructor(private adminService: AdminService,
+              private toastr: ToastrService) {
   }
- 
+
   ngOnInit() {
     this.adminService.getGebruikers().subscribe(
       result => {
@@ -85,5 +88,55 @@ export class ManageGebruikersComponent implements OnInit {
       filename:   'Gebruikers_[YYYY]-[MM]-[DD]',
       mimeType: 'text/csv',
     });
+  }
+
+  onFileChange(evt: any) {
+    let exceldata;
+    /* wire up file reader */
+    const target: DataTransfer = <DataTransfer>(evt.target);
+    if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+    const reader: FileReader = new FileReader();
+    reader.onload = (e: any) => {
+      /* read workbook */
+      const bstr: string = e.target.result;
+      const wb: XLSX.WorkBook = XLSX.read(bstr, {type: 'binary'});
+
+      /* grab first sheet */
+      const wsname: string = wb.SheetNames[0];
+      const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+      /* save data */
+      exceldata = (XLSX.utils.sheet_to_json(ws, {header: 1}));
+      this.createObjectOfExcelArrays(exceldata);
+    };
+    reader.readAsBinaryString(target.files[0]);
+  }
+
+  createObjectOfExcelArrays(exceldata) {
+    let objectArray = [];
+    console.log(exceldata);
+    let headers = [...exceldata[0]];
+    console.log("headers: ", headers);
+    exceldata.splice(0, 1);
+
+    exceldata.forEach(array => {
+      let object = {};
+      array.forEach((value, index) => {
+        Object.assign(object, {[headers[index]]: value, rol_id: 4, password: null, eersteAanmelding: true,
+          lunchpakket: false, actief: true, foto: null, geboortedatum: '1983-03-15 00:00:00'});
+      });
+      objectArray.push(object);
+    });
+    console.log(objectArray);
+    this.adminService.importGebruikers({gebruikers: objectArray}).subscribe(
+      result => {
+        this.toastr.success('Gebruikers zijn geïmporteerd');
+        this.ngOnInit();
+      },
+      error => {
+        console.log(error);
+        this.toastr.error('Er is iets misgegaan. Verbeter het excelbestand');
+      }
+    );
   }
 }

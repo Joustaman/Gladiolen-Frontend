@@ -6,6 +6,8 @@
           <h2><b>Gebruikers beheren</b></h2>
         </div>
         <div class="col-sm-6">
+          <label for="excelimport" class="btn btn-success" *ngIf="!excelModus"><i class="fas fa-download"></i> Import data</label>
+          <input id="excelimport" name="excelimport" type="file" (change)="onFileChange($event)" multiple="false" />
           <a class="btn btn-success" (click)="changeExcel()" *ngIf="!excelModus"
             ><i class="far fa-file-excel"></i> <span>Export modus</span></a
           >
@@ -95,3 +97,4 @@
     </div>
   </div>
 </div>
+

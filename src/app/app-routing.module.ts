@@ -33,6 +33,7 @@ import {BevestigingAanvraagComponent} from './vereniging/bevestiging-aanvraag/be
 import {OverzichtsPaginaComponent} from './vereniging/overzichts-pagina/overzichts-pagina.component';
 import { CreateLidVerenigingComponent } from './admin/create-lid-vereniging/create-lid-vereniging.component';
 import { ContactpersonenResolverService } from "./admin/aanvraag-vereniging/contactpersonen-resolver.service";
+import { VerenigingofadminGuardService } from './auth/verenigingofadmin-guard.service';
 
 const routes: Routes = [
   {
@@ -107,12 +108,12 @@ const routes: Routes = [
   {
     path: "leden",
     component: LedenComponent,
-    canActivate: [VerantwoordelijkeGuardService]
+    canActivate: [VerenigingofadminGuardService]
   },
   {
     path: "maaklid",
     component: CreateLidComponent,
-    canActivate: [VerantwoordelijkeGuardService]
+    canActivate: [VerenigingofadminGuardService]
   },
   {
     path: 'adminmaaklidvereniging/:id',
@@ -122,7 +123,7 @@ const routes: Routes = [
   {
     path: "editlid/:id",
     component: CreateLidComponent,
-    canActivate: [VerantwoordelijkeGuardService]
+    canActivate: [VerenigingofadminGuardService]
   },
   {
     path: "spinner",

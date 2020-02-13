@@ -115,7 +115,6 @@ a {
   border: none;
   min-width: 50px;
   border-radius: 3px;
-  border: none;
   outline: none !important;
   margin-left: 10px;
 }
@@ -131,7 +130,7 @@ a {
 }
 
 table.table th{
-  color: #566787;
+  color: #0c225d;
 }
 table.table tr th, table.table tr td {
   border-color: #e9e9e9;
@@ -161,7 +160,7 @@ table.table td:last-child i {
 }
 table.table td a {
   font-weight: bold;
-  color: #566787;
+  color: #0c225d;
   display: inline-block;
   text-decoration: none;
   outline: none !important;
@@ -201,6 +200,9 @@ table.table td a.edit {
 table.table td a.delete {
   color: #ff2121;
 }
+table.table td a.add {
+  color: #329B72;
+}
 
 table.table td i {
   font-size: 19px;
@@ -236,5 +238,9 @@ pagination-controls,
 }
 
 .pretty input:checked~.state.p-primary label:after, .pretty.p-toggle .state.p-primary label:after {
+  background-color: #0c225d !important;
+}
+
+.mat-step-icon-selected, .mat-step-icon-state-edit {
   background-color: #0c225d !important;
 }

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AdminService} from '../admin.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import * as Handsontable from 'handsontable';
-import { HotTableRegisterer } from '@handsontable/angular';
+import {HotTableRegisterer} from '@handsontable/angular';
 import 'handsontable/languages/nl-NL';
 
 @Component({
@@ -13,7 +13,7 @@ import 'handsontable/languages/nl-NL';
 export class ManageVerenigingenComponent implements OnInit {
   verenigingen: any = [];
   pageLoaded = false;
-  str="";
+  str = '';
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';
   data: any = [];
@@ -30,16 +30,16 @@ export class ManageVerenigingenComponent implements OnInit {
     'Actief',
   ];
   columns: any = [
-    { data: 'naam', readOnly: true },
-    { data: 'hoofdverantwoordelijke', readOnly: true },
-    { data: 'contactpersoon', readOnly: true },
-    { data: 'rekeningnummer', readOnly: true },
-    { data: 'btwnummer', readOnly: true },
-    { data: 'straat', readOnly: true },
-    { data: 'huisnummer', readOnly: true },
-    { data: 'gemeente', readOnly: true },
-    { data: 'postcode', readOnly: true },
-    { data: 'actief', readOnly: true },
+    {data: 'naam', readOnly: true},
+    {data: 'hoofdverantwoordelijke', readOnly: true},
+    {data: 'contactpersoon', readOnly: true},
+    {data: 'rekeningnummer', readOnly: true},
+    {data: 'btwnummer', readOnly: true},
+    {data: 'straat', readOnly: true},
+    {data: 'huisnummer', readOnly: true},
+    {data: 'gemeente', readOnly: true},
+    {data: 'postcode', readOnly: true},
+    {data: 'actief', readOnly: true},
   ];
   excelModus = false;
 
@@ -76,6 +76,7 @@ export class ManageVerenigingenComponent implements OnInit {
       });
     });
   }
+
   onClickDetailVereniging(vereniging: any) {
     let contact;
     let tweede;
@@ -83,18 +84,18 @@ export class ManageVerenigingenComponent implements OnInit {
     if (vereniging.contact === null) {
       contact = 'Geen contactpersoon';
     } else {
-      contact = vereniging.contact.name;
+      contact = vereniging.contact.voornaam + ' ' + vereniging.contact.name;
     }
 
     if (vereniging.tweede === null) {
       tweede = 'Geen tweede verantwoordelijke';
     } else {
-      tweede = vereniging.tweede.name;
+      tweede = vereniging.tweede.voornaam + ' ' + vereniging.tweede.name;
     }
 
     this.verenigingForm.patchValue({
         naam: vereniging.naam,
-        hoofdverantwoordelijke: vereniging.hoofd.name,
+        hoofdverantwoordelijke: vereniging.hoofd.voornaam + ' ' + vereniging.hoofd.name,
         tweedeverantwoordelijke: tweede,
         contact: contact,
         rekeningnr: vereniging.rekeningnr,
@@ -118,9 +119,11 @@ export class ManageVerenigingenComponent implements OnInit {
       },
     );
   }
+
   changeExcel() {
     this.excelModus = !this.excelModus;
   }
+
   export() {
     const exportPlugin = this.hotRegisterer.getInstance(this.id).getPlugin('exportFile');
 
@@ -130,7 +133,7 @@ export class ManageVerenigingenComponent implements OnInit {
       exportHiddenColumns: true,
       exportHiddenRows: true,
       fileExtension: 'csv',
-      filename:   'Verenigingen_[YYYY]-[MM]-[DD]',
+      filename: 'Verenigingen_[YYYY]-[MM]-[DD]',
       mimeType: 'text/csv',
     });
   }

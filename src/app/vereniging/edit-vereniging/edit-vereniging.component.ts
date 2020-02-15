@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { VerenigingService } from '../vereniging.service';
-import { CreateLidComponent } from '../create-lid/create-lid.component';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormControl} from '@angular/forms';
+import {VerenigingService} from '../vereniging.service';
+import {CreateLidComponent} from '../create-lid/create-lid.component';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -27,9 +27,12 @@ export class EditVerenigingComponent implements OnInit {
   });
   vereniging: any = {};
   leden: any = [];
+  contact: any = {};
   pageLoaded = false;
+
   constructor(private readonly verenigingsService: VerenigingService, private readonly router: Router,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService) {
+  }
 
   ngOnInit() {
     this.verenigingsService.getVerenigingMetLeden().subscribe(
@@ -45,10 +48,17 @@ export class EditVerenigingComponent implements OnInit {
       }
     );
   }
-    /**
-     * Vult het update-formulier op met de huidige informatie van de geselecteerde vereniging.
-     */
+
+  /**
+   * Vult het update-formulier op met de huidige informatie van de geselecteerde vereniging.
+   */
   fillForm() {
+    if (this.vereniging.contact === null) {
+      this.contact = "Nog geen contactpersoon";
+    } else {
+      this.contact = this.vereniging.contact.voornaam + ' ' + this.vereniging.contact.name;
+    }
+
     this.verenigingForm.patchValue({
       naam: this.vereniging.naam,
       hoofdverantwoordelijke: this.vereniging.hoofdverantwoordelijke,
@@ -63,9 +73,9 @@ export class EditVerenigingComponent implements OnInit {
     });
   }
 
-    /**
-     * Updatet de informatie van een vereniging.
-     */
+  /**
+   * Updatet de informatie van een vereniging.
+   */
   updateVereniging() {
     this.verenigingsService.updateVereniging(this.vereniging.id, this.verenigingForm.value).subscribe(
       result => {

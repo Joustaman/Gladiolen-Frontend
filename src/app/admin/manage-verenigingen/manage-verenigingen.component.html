@@ -51,7 +51,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let vereniging of verenigingen| verenigingFilter: str | paginate: { itemsPerPage: 10, currentPage: p }">
+            <tr
+              *ngFor="let vereniging of verenigingen| verenigingFilter: str | paginate: { itemsPerPage: 10, currentPage: p }">
               <td>{{ vereniging.naam }}</td>
               <td>
                 {{ vereniging.hoofd.name }} {{ vereniging.hoofd.voornaam }}

@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AdminService} from '../admin.service';
-import { HotTableRegisterer } from '@handsontable/angular';
+import {HotTableRegisterer} from '@handsontable/angular';
 import * as Handsontable from 'handsontable';
 import 'handsontable/languages/nl-NL';
 import * as XLSX from 'xlsx';
-import { ToastrService } from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
+import {FormControl, FormGroup} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-manage-gebruikers',
@@ -15,8 +17,10 @@ import { ToastrService } from 'ngx-toastr';
 export class ManageGebruikersComponent implements OnInit {
 
   gebruikers: any = [];
+  maat: any;
+  geslacht: any;
   pageLoaded = false;
-  str="";
+  str = '';
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';
   data: any = [];
@@ -30,22 +34,40 @@ export class ManageGebruikersComponent implements OnInit {
     'Opmerking',
     'Rijksregisternummer',
     'Actief',
-  ]
+  ];
   excelModus = false;
   columns: any = [
-    { data: 'naam', readOnly: true },
-    { data: 'voornaam', readOnly: true },
-    { data: 'geboortedatum', readOnly: true },
-    { data: 'rol', readOnly: true},
-    { data: 'email', readOnly: true },
-    { data: 'telefoon', readOnly: true },
-    { data: 'opmerking', readOnly: true },
-    { data: 'rijksregisternummer', readOnly: true },
-    { data: 'actief', readOnly: true },
+    {data: 'naam', readOnly: true},
+    {data: 'voornaam', readOnly: true},
+    {data: 'geboortedatum', readOnly: true},
+    {data: 'rol', readOnly: true},
+    {data: 'email', readOnly: true},
+    {data: 'telefoon', readOnly: true},
+    {data: 'opmerking', readOnly: true},
+    {data: 'rijksregisternummer', readOnly: true},
+    {data: 'actief', readOnly: true},
   ];
-  constructor(private adminService: AdminService,
+
+  constructor(private adminService: AdminService, private readonly datepipe: DatePipe,
               private toastr: ToastrService) {
   }
+
+  gebruikerForm = new FormGroup({
+    name: new FormControl(''),
+    voornaam: new FormControl(''),
+    roepnaam: new FormControl(''),
+    geboortedatum: new FormControl(''),
+    email: new FormControl(''),
+    telefoon: new FormControl(''),
+    opmerking: new FormControl(''),
+    rol: new FormControl(null),
+    rijksregisternr: new FormControl(''),
+    eersteAanmelding: new FormControl(false),
+    lunchpakket: new FormControl(false),
+    actief: new FormControl(true),
+    foto: new FormControl(null),
+    tshirt: new FormControl(null)
+  });
 
   ngOnInit() {
     this.adminService.getGebruikers().subscribe(
@@ -56,6 +78,28 @@ export class ManageGebruikersComponent implements OnInit {
         this.pageLoaded = true;
       },
     );
+  }
+
+  onClickDetailGebruiker(gebruiker) {
+    this.maat = gebruiker.tshirts[0].maat;
+    this.geslacht = gebruiker.tshirts[0].geslacht;
+
+    this.gebruikerForm.patchValue({
+      name: gebruiker.name,
+      voornaam: gebruiker.voornaam,
+      roepnaam: gebruiker.roepnaam,
+      geboortedatum: this.datepipe.transform(gebruiker.geboortedatum, 'yyyy-MM-dd'),
+      email: gebruiker.email,
+      telefoon: gebruiker.telefoon,
+      opmerking: gebruiker.opmerking,
+      rijksregisternr: gebruiker.rijksregisternr,
+      eersteAanmelding: gebruiker.eersteAanmelding,
+      lunchpakket: gebruiker.lunchpakket,
+      qrcode: gebruiker.qrcode,
+      foto: gebruiker.foto,
+      rol: gebruiker.rol.naam,
+      tshirt: this.geslacht + ' / ' + this.maat
+    });
   }
 
   createDataForTable(apiData: any) {
@@ -73,9 +117,11 @@ export class ManageGebruikersComponent implements OnInit {
       });
     });
   }
+
   changeExcel() {
     this.excelModus = !this.excelModus;
   }
+
   export() {
     const exportPlugin = this.hotRegisterer.getInstance(this.id).getPlugin('exportFile');
 
@@ -85,7 +131,7 @@ export class ManageGebruikersComponent implements OnInit {
       exportHiddenColumns: true,
       exportHiddenRows: true,
       fileExtension: 'csv',
-      filename:   'Gebruikers_[YYYY]-[MM]-[DD]',
+      filename: 'Gebruikers_[YYYY]-[MM]-[DD]',
       mimeType: 'text/csv',
     });
   }
@@ -93,8 +139,10 @@ export class ManageGebruikersComponent implements OnInit {
   onFileChange(evt: any) {
     let exceldata;
     /* wire up file reader */
-    const target: DataTransfer = <DataTransfer>(evt.target);
-    if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+    const target: DataTransfer = <DataTransfer> (evt.target);
+    if (target.files.length !== 1) {
+      throw new Error('Cannot use multiple files');
+    }
     const reader: FileReader = new FileReader();
     reader.onload = (e: any) => {
       /* read workbook */
@@ -116,14 +164,16 @@ export class ManageGebruikersComponent implements OnInit {
     let objectArray = [];
     console.log(exceldata);
     let headers = [...exceldata[0]];
-    console.log("headers: ", headers);
+    console.log('headers: ', headers);
     exceldata.splice(0, 1);
 
     exceldata.forEach(array => {
       let object = {};
       array.forEach((value, index) => {
-        Object.assign(object, {[headers[index]]: value, rol_id: 4, password: null, eersteAanmelding: true,
-          lunchpakket: false, actief: true, foto: null, geboortedatum: '1983-03-15 00:00:00'});
+        Object.assign(object, {
+          [headers[index]]: value, rol_id: 4, password: null, eersteAanmelding: true,
+          lunchpakket: false, actief: true, foto: null, geboortedatum: '1983-03-15 00:00:00'
+        });
       });
       objectArray.push(object);
     });

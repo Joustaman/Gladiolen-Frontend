@@ -6,6 +6,8 @@ import * as Handsontable from "handsontable";
 import "handsontable/languages/nl-NL";
 import * as XLSX from "xlsx";
 import { ToastrService } from "ngx-toastr";
+import { DatePipe } from "@angular/common";
+import { FormGroup, FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-manage-gebruikers",
@@ -14,6 +16,8 @@ import { ToastrService } from "ngx-toastr";
 })
 export class ManageGebruikersComponent implements OnInit {
   gebruikers: any = [];
+  maat: any;
+  geslacht: any;
   pageLoaded = false;
   str = "";
   private hotRegisterer = new HotTableRegisterer();
@@ -42,10 +46,29 @@ export class ManageGebruikersComponent implements OnInit {
     { data: "rijksregisternummer", readOnly: true },
     { data: "actief", readOnly: true }
   ];
+
   constructor(
     private adminService: AdminService,
+    private readonly datepipe: DatePipe,
     private toastr: ToastrService
   ) {}
+
+  gebruikerForm = new FormGroup({
+    name: new FormControl(""),
+    voornaam: new FormControl(""),
+    roepnaam: new FormControl(""),
+    geboortedatum: new FormControl(""),
+    email: new FormControl(""),
+    telefoon: new FormControl(""),
+    opmerking: new FormControl(""),
+    rol: new FormControl(null),
+    rijksregisternr: new FormControl(""),
+    eersteAanmelding: new FormControl(false),
+    lunchpakket: new FormControl(false),
+    actief: new FormControl(true),
+    foto: new FormControl(null),
+    tshirt: new FormControl(null)
+  });
 
   ngOnInit() {
     this.adminService.getGebruikers().subscribe(result => {
@@ -53,6 +76,31 @@ export class ManageGebruikersComponent implements OnInit {
       this.gebruikers = result;
       this.createDataForTable(result);
       this.pageLoaded = true;
+    });
+  }
+
+  onClickDetailGebruiker(gebruiker) {
+    this.maat = gebruiker.tshirts[0].maat;
+    this.geslacht = gebruiker.tshirts[0].geslacht;
+
+    this.gebruikerForm.patchValue({
+      name: gebruiker.name,
+      voornaam: gebruiker.voornaam,
+      roepnaam: gebruiker.roepnaam,
+      geboortedatum: this.datepipe.transform(
+        gebruiker.geboortedatum,
+        "yyyy-MM-dd"
+      ),
+      email: gebruiker.email,
+      telefoon: gebruiker.telefoon,
+      opmerking: gebruiker.opmerking,
+      rijksregisternr: gebruiker.rijksregisternr,
+      eersteAanmelding: gebruiker.eersteAanmelding,
+      lunchpakket: gebruiker.lunchpakket,
+      qrcode: gebruiker.qrcode,
+      foto: gebruiker.foto,
+      rol: gebruiker.rol.naam,
+      tshirt: this.geslacht + " / " + this.maat
     });
   }
 
@@ -71,9 +119,11 @@ export class ManageGebruikersComponent implements OnInit {
       });
     });
   }
+
   changeExcel() {
     this.excelModus = !this.excelModus;
   }
+
   export() {
     const exportPlugin = this.hotRegisterer
       .getInstance(this.id)
@@ -94,12 +144,17 @@ export class ManageGebruikersComponent implements OnInit {
     let exceldata;
     /* wire up file reader */
     const target: DataTransfer = <DataTransfer>evt.target;
-    if (target.files.length !== 1) throw new Error("Cannot use multiple files");
+    if (target.files.length !== 1) {
+      throw new Error("Cannot use multiple files");
+    }
     const reader: FileReader = new FileReader();
     reader.onload = (e: any) => {
       /* read workbook */
       const bstr: string = e.target.result;
-      const wb: XLSX.WorkBook = XLSX.read(bstr, { type: "binary" ,cellDates:true});
+      const wb: XLSX.WorkBook = XLSX.read(bstr, {
+        type: "binary",
+        cellDates: true
+      });
 
       /* grab first sheet */
       const wsname: string = wb.SheetNames[0];
@@ -107,7 +162,7 @@ export class ManageGebruikersComponent implements OnInit {
 
       /* save data */
       exceldata = XLSX.utils.sheet_to_json(ws, { header: 1 });
-      
+
       this.createObjectOfExcelArrays(exceldata);
     };
     reader.readAsBinaryString(target.files[0]);
@@ -132,11 +187,13 @@ export class ManageGebruikersComponent implements OnInit {
           eersteAanmelding: true,
           lunchpakket: false,
           actief: true,
-          foto: null,
+          foto: null
         });
         object["geboortedatum"] = new Date(object["geboortedatum"]);
-        object["geboortedatum"] = object["geboortedatum"].toLocaleDateString("fr-CA");
-        if(!("opmerking" in object)){
+        object["geboortedatum"] = object["geboortedatum"].toLocaleDateString(
+          "fr-CA"
+        );
+        if (!("opmerking" in object)) {
           object["opmerking"] = "/";
         }
       });

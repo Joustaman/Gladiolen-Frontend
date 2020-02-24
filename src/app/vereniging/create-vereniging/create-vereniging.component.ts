@@ -32,7 +32,7 @@ export class CreateVerenigingComponent implements OnInit {
     password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
-    actief: new FormControl(true),
+    actief: new FormControl(false),
     foto: new FormControl(null)
   });
 

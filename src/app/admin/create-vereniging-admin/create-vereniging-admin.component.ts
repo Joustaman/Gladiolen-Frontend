@@ -91,13 +91,6 @@ export class CreateVerenigingAdminComponent implements OnInit {
     );
   }
 
-  changeLunch() {
-    let value = this.verantwoordelijkeForm.get('lunchpakket').value;
-    this.verantwoordelijkeForm.patchValue({
-      lunchpakket: !value
-    });
-  }
-
   createVerantwoordelijke() {
     this.verantwoordelijkeForm.patchValue(
       {

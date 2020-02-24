@@ -59,15 +59,6 @@ export class CreateVerenigingComponent implements OnInit {
     );
   }
 
-  /**
-   * Verandert de lunch-waarde van de verantwoordelijke van 0 naar 1 en omgekeerd.
-   */
-  changeLunch() {
-    let value = this.verantwoordelijkeForm.get('lunchpakket').value;
-    this.verantwoordelijkeForm.patchValue({
-      lunchpakket: !value
-    });
-  }
 
   /**
    * Creëert een nieuwe verantwoordelijke en voert de functie createTshirt uit.

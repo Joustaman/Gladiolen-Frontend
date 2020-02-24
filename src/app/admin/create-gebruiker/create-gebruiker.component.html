@@ -91,23 +91,13 @@
                     <option value="XXL">XXL</option>                  </select>
                 </div>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-6">
                 <div class="form-group">
                   <label for="rol">Rol</label>
                   <select name="rol" id="rol" class="form-control" formControlName="rol_id" (change)="changeRol()"
                           required>
                     <option *ngFor="let rol of rollen" [value]="rol.id">{{rol.naam}}</option>
                   </select>
-                </div>
-              </div>
-              <div class="col-lg-2">
-                <div class="form-group paddingcheck text-center">
-                  <div class="pretty p-default p-switch" (click)="changeLunch()">
-                    <input type="checkbox"/>
-                    <div class="state p-primary">
-                      <label>Lunchpakket</label>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

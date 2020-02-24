@@ -62,6 +62,7 @@ export class ManageVerenigingenComponent implements OnInit {
 
   createDataForTable(apiData: any) {
     apiData.forEach(vereniging => {
+      console.log(vereniging);
       this.data.push({
         naam: vereniging.naam,
         hoofdverantwoordelijke: vereniging.hoofd.name + ' ' + vereniging.hoofd.voornaam,

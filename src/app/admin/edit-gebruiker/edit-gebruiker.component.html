@@ -1,3 +1,4 @@
+<app-spinner *ngIf="!pageLoaded"></app-spinner>
 <div class="container" *ngIf="pageLoaded">
   <div class="card table-wrapper shadow-lg">
     <div class="card-header table-title">
@@ -13,31 +14,36 @@
           <div class="col-lg-4">
             <div class="form-group">
               <label for="voornaam">Voornaam</label>
-              <input class="form-control" type="text" id="voornaam" name="voornaam" pattern="[^0-9]*" formControlName="voornaam" required>
+              <input class="form-control" type="text" id="voornaam" name="voornaam" pattern="[^0-9]*"
+                     formControlName="voornaam" required>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="form-group">
               <label for="roepnaam">Roepnaam</label>
-              <input class="form-control" type="text" id="roepnaam" name="roepnaam" pattern="[^0-9]*" formControlName="roepnaam">
+              <input class="form-control" type="text" id="roepnaam" name="roepnaam" pattern="[^0-9]*"
+                     formControlName="roepnaam">
             </div>
           </div>
           <div class="col-lg-4">
             <div class="form-group">
               <label for="name">Achternaam</label>
-              <input class="form-control" type="text" id="name" name="name" formControlName="name" pattern="[^0-9]*" required>
+              <input class="form-control" type="text" id="name" name="name" formControlName="name" pattern="[^0-9]*"
+                     required>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="form-group">
               <label for="email">Email</label>
-              <input class="form-control" type="text" id="email" name="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" formControlName="email">
+              <input class="form-control" type="text" id="email" name="email"
+                     pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" formControlName="email">
             </div>
           </div>
           <div class="col-lg-3">
             <div class="form-group">
               <label for="telefoon">Telefoon</label>
-              <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]*" formControlName="telefoon">
+              <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]*"
+                     formControlName="telefoon">
             </div>
           </div>
           <div class="col-lg-3">
@@ -62,7 +68,7 @@
                         formControlName="opmerking"></textarea>
             </div>
           </div>
-          <div class="col-lg-5">
+          <div class="col-lg-6">
             <div class="form-group">
               <label for="geslacht">Geslacht</label>
               <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
@@ -72,7 +78,7 @@
               </select>
             </div>
           </div>
-          <div class="col-lg-5">
+          <div class="col-lg-6">
             <div class="form-group">
               <label for="tshirt">Tshirt - Maat</label>
               <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
@@ -82,17 +88,8 @@
                 <option value="M">M</option>
                 <option value="L">L</option>
                 <option value="XL">XL</option>
-                <option value="XXL">XXL</option>              </select>
-            </div>
-          </div>
-          <div class="col-lg-2">
-            <div class="form-group paddingcheck text-center">
-              <div class="pretty p-default p-switch" (click)="changeLunch()">
-                <input type="checkbox"/>
-                <div class="state p-primary">
-                  <label>Lunchpakket</label>
-                </div>
-              </div>
+                <option value="XXL">XXL</option>
+              </select>
             </div>
           </div>
           <div class="col-lg-6">
@@ -113,7 +110,9 @@
             </div>
           </div>
         </div>
-        <a [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active" class="btn btn-secondary float-left"><i class="fas fa-arrow-left" data-toggle="tooltip" title="Terug naar beheren"></i> Terug</a>
+        <a [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active"
+           class="btn btn-secondary float-left"><i class="fas fa-arrow-left" data-toggle="tooltip"
+                                                   title="Terug naar beheren"></i> Terug</a>
         <a (click)="updateGebruiker()" class="btn btn-primary float-right"><i class="fas fa-save"></i> Update gebruiker</a>
       </form>
 

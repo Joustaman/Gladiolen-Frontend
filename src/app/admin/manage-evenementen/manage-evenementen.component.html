@@ -7,11 +7,11 @@
           <h2><b>Evenementen beheren</b></h2>
         </div>
         <div class="col-sm-6">
-          <a class="btn btn-success" (click)="changeExcel()" *ngIf="!excelModus"
-          ><i class="far fa-file-excel"></i> <span>Export modus</span></a
+          <a class="btn add-button" (click)="changeExcel()" *ngIf="!excelModus"
+          ><i class="fas fa-file-excel"></i> <span>Export modus</span></a
           >
           <a
-            class="btn btn-success"
+            class="btn add-button"
             *ngIf="!excelModus"
             (click)="clearEvenementForm()"
             data-toggle="modal"
@@ -19,10 +19,10 @@
           ><i class="material-icons">&#xE147;</i>
             <span>Voeg evenement toe</span></a
           >
-          <a class="btn btn-success" (click)="changeExcel()" *ngIf="excelModus"
+          <a class="btn add-button" (click)="changeExcel()" *ngIf="excelModus"
           ><i class="fas fa-edit"></i> <span>Edit modus</span></a
           >
-          <a class="btn btn-success" (click)="export()" *ngIf="excelModus"
+          <a class="btn add-button" (click)="export()" *ngIf="excelModus"
           ><i class="fas fa-file-export"></i> <span>Export data</span></a
           >
         </div>
@@ -36,7 +36,7 @@
               id="str"
               [(ngModel)]="str"
               class="form-control w-100 m-1 float-right"
-              placeholder="Zoek tijdsregistratie"
+              placeholder="Zoek evenement"
             />
           </div>
           <table class="table table-striped table-hover">
@@ -46,7 +46,7 @@
               <th scope="col">Startdatum</th>
               <th scope="col">Einddatum</th>
               <th scope="col">Actief</th>
-              <th scope="col">Acties</th>
+              <th class="acties">Acties</th>
             </tr>
             </thead>
             <tbody>
@@ -60,30 +60,12 @@
                 <div *ngIf="evenement.actief == 1">Actief</div>
               </td>
               <td>
-                <a
-                  (click)="onClickEditEvenement(evenement)"
-                  data-toggle="modal"
-                  data-target="#editEvenementModal"
-                  class="edit"
-                ><i
-                  class="material-icons"
-                  data-toggle="tooltip"
-                  title="Bewerken"
-                >&#xE254;</i
-                ></a
-                >
-                <a
-                  (click)="changeEvenementId(evenement.id, evenement)"
-                  data-toggle="modal"
-                  data-target="#toewijzenVerenigingModal"
-                  class="add"
-                ><i
-                  class="material-icons"
-                  data-toggle="tooltip"
-                  title="Vereniging toewijzen"
-                >add</i
-                ></a
-                >
+                <a (click)="onClickEditEvenement(evenement)" data-toggle="modal"
+                   data-target="#editEvenementModal"
+                   class="add"><i class="fas fa-plus" data-toggle="tooltip" title="Vereniging toewijzen"></i></a>
+                <a (click)="changeEvenementId(evenement.id, evenement)" data-toggle="modal"
+                   data-target="#toewijzenVerenigingModal"
+                   class="edit"><i class="fas fa-pencil-alt" data-toggle="tooltip" title="Bewerken"></i></a>
               </td>
             </tr>
             </tbody>
@@ -315,26 +297,25 @@
                 [value]="vereniging.id">{{ vereniging.naam }}</option>
             </select>
           </div>
-          <button (click)="toewijzenVerenigingen()" class="btn btn-primary">
+          <a (click)="toewijzenVerenigingen()" class="btn add-button">
             Vereniging toevoegen
-          </button>
+          </a>
           <div>
             <h5 class="mt-5">Toegewezen verenigingen</h5>
-            <ul>
+            <ul class="fa-ul">
               <li
                 (click)="verwijderVerenigingVanEvenement(vereniging.id)"
-                class="link"
                 *ngFor="let vereniging of evenementVerenigingen">
-                <span class="mt-1">{{ vereniging.naam }}</span>
+                <a class="mt-1"><i class="fa-li fas fa-times-circle dlt"></i> {{ vereniging.naam }}</a>
               </li>
             </ul>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+        <a class="btn pdf" data-dismiss="modal">
           Annuleren
-        </button>
+        </a>
       </div>
     </div>
   </div>

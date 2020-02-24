@@ -47,7 +47,6 @@ export class CreateLidVerenigingComponent implements OnInit {
         if (params.get('id') !== null) {
           this.adminService.getVereniging(params.get('id')).subscribe(
             result => {
-              console.log(result);
               this.vereniging = result;
               this.pageLoaded = true;
             },

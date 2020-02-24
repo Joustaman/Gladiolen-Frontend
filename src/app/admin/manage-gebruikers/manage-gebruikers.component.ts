@@ -72,7 +72,6 @@ export class ManageGebruikersComponent implements OnInit {
 
   ngOnInit() {
     this.adminService.getGebruikers().subscribe(result => {
-      console.log(result);
       this.gebruikers = result;
       this.createDataForTable(result);
       this.pageLoaded = true;
@@ -211,7 +210,14 @@ export class ManageGebruikersComponent implements OnInit {
       }
     );
   }
-  deleteGebruiker(gebruiker){
-    this.adminService.deleteGebruiker(gebruiker.id);
+  deleteGebruiker(gebruiker) {
+    console.log(gebruiker);
+
+    this.adminService.deleteGebruiker(gebruiker.id).subscribe(res => {
+      this.adminService.getGebruikers().subscribe(result => {
+        this.gebruikers = result;
+        this.createDataForTable(result);
+      });
+    });
   }
 }

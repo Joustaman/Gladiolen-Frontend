@@ -45,7 +45,6 @@ export class LedenComponent implements OnInit {
   ngOnInit() {
     this.verenigingService.getVerenigingMetLeden().subscribe(
       result => {
-        console.log(result.gebruikers);
         this.leden = result.gebruikers;
         this.vereniging = result;
         this.createDataForTable(result.gebruikers);

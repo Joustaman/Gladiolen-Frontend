@@ -61,7 +61,6 @@ export class CreateVerenigingAdminComponent implements OnInit {
           this.kernleden =this.kernleden.concat(res);
         });
         this.pageLoaded = true;
-        console.log(result);
       },
     );
 
@@ -81,7 +80,6 @@ export class CreateVerenigingAdminComponent implements OnInit {
     this.adminService.registreerVereniging(this.verenigingForm.value).subscribe(
       result => {
         this.toast.success('Uw aanvraag is verzonden');
-        console.log(result);
         this.router.navigate(['/manageVerenigingen']);
       },
       error => {
@@ -104,7 +102,6 @@ export class CreateVerenigingAdminComponent implements OnInit {
           hoofdverantwoordelijke: result.id,
         });
         this.createTshirt(result.id);
-        console.log(result);
       },
       error => {
         console.log(error);
@@ -123,7 +120,6 @@ export class CreateVerenigingAdminComponent implements OnInit {
     this.adminService.createTshirt(tshirt).subscribe(
       result => {
         this.createVereniging();
-        console.log(result);
       }
     );
   }

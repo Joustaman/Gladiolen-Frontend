@@ -87,7 +87,6 @@ export class ManageVerenigingenComponent implements OnInit {
         this.verenigingen = result;
         this.createDataForTable(result);
         this.pageLoaded = true;
-        console.log(result);
       },
     );
   }

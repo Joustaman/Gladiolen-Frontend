@@ -63,8 +63,6 @@ export class EditVerenigingAdminComponent implements OnInit {
   }
 
   fillForm() {
-    console.log(this.vereniging);
-
     this.verenigingForm.patchValue({
       naam: this.vereniging.naam,
       hoofdverantwoordelijke: this.vereniging.hoofdverantwoordelijke,

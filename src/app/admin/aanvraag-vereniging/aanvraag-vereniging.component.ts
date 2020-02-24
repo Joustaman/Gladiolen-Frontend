@@ -61,7 +61,6 @@ export class AanvraagVerenigingComponent implements OnInit {
   ngOnInit() {
     this.verenigingen = this.route.snapshot.data['verenigingen'];
     this.contactpersonen = this.route.snapshot.data['contactpersonen'];
-    console.log(this.contactpersonen);
   }
 
   changeContact(event: any) {
@@ -69,7 +68,6 @@ export class AanvraagVerenigingComponent implements OnInit {
     let eventid = event.target.name;
     let contactId = event.target.value;
     this.contacts[eventid] = contactId;
-    console.log(this.contacts);
   }
 
   accept(id) {

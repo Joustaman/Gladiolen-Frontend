@@ -48,7 +48,6 @@ export class EditGebruikerComponent implements OnInit {
         if (params.get('id') !== null) {
           this.adminService.getGebruiker(params.get('id')).subscribe(
             result => {
-              console.log(result);
               this.gebruiker = result;
               this.fillForm();
               this.pageLoaded = true;
@@ -102,7 +101,6 @@ export class EditGebruikerComponent implements OnInit {
   updateGebruiker() {
     this.adminService.updateGebruiker(this.gebruiker.id, this.gebruikerForm.value).subscribe(
       result => {
-        console.log(result);
         this.updateTshirt();
       },
       error => {
@@ -113,10 +111,8 @@ export class EditGebruikerComponent implements OnInit {
 
   updateTshirt() {
     let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: this.gebruiker.id, tshirttype_id: null};
-    console.log(tshirt);
     this.adminService.updateTshirt(this.gebruiker.id, tshirt).subscribe(
       result => {
-        console.log(result);
         this.toast.success('Gebruiker geupdate');
         this.router.navigate(['/manageGebruikers']);
       }

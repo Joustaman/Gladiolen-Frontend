@@ -9,11 +9,11 @@
       </div>
       <div class="col-lg-6">
         <div class="form-group">
-          <label for="contactpersoon">Contactpersoon</label>
+          <label for="contactpersoon">Kernlid</label>
           <select class="form-control" name="contactpersoon" id="contactpersoon"
                   formControlName="contactpersoon">
             <option *ngFor="let kernlid of kernleden"
-                    [value]="kernlid.id">{{kernlid.naam}} {{kernlid.voornaam}}</option>
+                    [value]="kernlid.id">{{kernlid.name}} {{kernlid.voornaam}}</option>
           </select>
         </div>
       </div>
@@ -22,7 +22,7 @@
           <label for="hoofdverantwoordelijke">Hoofd verantwoordelijke</label>
           <select class="form-control" name="hoofdverantwoordelijke" id="hoofdverantwoordelijke"
                   formControlName="hoofdverantwoordelijke">
-            <option *ngFor="let lid of leden" [value]="lid.id">{{lid.naam}} {{lid.voornaam}}</option>
+            <option *ngFor="let lid of leden" [value]="lid.id">{{lid.name}} {{lid.voornaam}}</option>
           </select>
         </div>
       </div>
@@ -31,7 +31,7 @@
           <label for="tweedeverantwoordelijke">Verander van tweede verantwoordelijke</label>
           <select class="form-control" name="tweedeverantwoordelijke" id="tweedeverantwoordelijke"
                   formControlName="tweedeverantwoordelijke">
-            <option *ngFor="let lid of leden" [value]="lid.id">{{lid.naam}} {{lid.voornaam}}</option>
+            <option *ngFor="let lid of leden" [value]="lid.id">{{lid.name}} {{lid.voornaam}}</option>
           </select>
         </div>
       </div>

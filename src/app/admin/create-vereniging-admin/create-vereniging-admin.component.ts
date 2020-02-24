@@ -59,7 +59,7 @@ export class CreateVerenigingAdminComponent implements OnInit {
         this.kernleden = result;
         this.adminService.getAdmins().subscribe(res=>{
           this.kernleden =this.kernleden.concat(res);
-        })
+        });
         this.pageLoaded = true;
         console.log(result);
       },
@@ -115,6 +115,11 @@ export class CreateVerenigingAdminComponent implements OnInit {
       },
       error => {
         console.log(error);
+        if (error.error.message === 'email') {
+          this.toast.error('Voer een geldige e-mail in');
+        } else {
+          this.toast.error('Uw gegevens zijn niet geldig in');
+        }
       }
     );
   }

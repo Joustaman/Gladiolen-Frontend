@@ -2,70 +2,92 @@
 <div class="container" *ngIf="pageLoaded">
   <div class="card table-wrapper shadow-lg">
     <div class="card-header table-title">
-        <h2>Pas uw vereniging aan</h2>
+      <h2>Pas uw vereniging aan</h2>
     </div>
     <div class="card-body">
       <form [formGroup]="verenigingForm" class="was-validated" novalidate>
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-3">
             <div class="form-group">
               <label for="naam">Naam</label>
-              <input class="form-control" type="text" id="naam" name="naam" pattern="[^0-9]*" formControlName="naam" required>
+              <input class="form-control" type="text" id="naam" name="naam" pattern="[^0-9]*" formControlName="naam"
+                     required>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-3">
             <div class="form-group">
-              <label for="tweedeverantwoordelijke">Verander van tweede verantwoordelijke</label>
-              <select class="form-control" name="tweedeverantwoordelijke" id="tweedeverantwoordelijke"
-                formControlName="tweedeverantwoordelijke">
-                <option *ngFor="let lid of leden" [value]="lid.id">{{lid.naam}} {{lid.voornaam}}</option>
+              <label for="hoofdverantwoordelijke">Hoofdverantwoordelijke</label>
+              <select class="form-control" name="hoofdverantwoordelijke" id="hoofdverantwoordelijke"
+                      formControlName="hoofdverantwoordelijke">
+                <option *ngFor="let lid of leden" [value]="lid.id">{{lid.name}} {{lid.voornaam}}</option>
               </select>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="tweedeverantwoordelijke">Tweede verantwoordelijke</label>
+              <select class="form-control" name="tweedeverantwoordelijke" id="tweedeverantwoordelijke"
+                      formControlName="tweedeverantwoordelijke">
+                <option *ngFor="let lid of leden" [value]="lid.id">{{lid.name}} {{lid.voornaam}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="contactpersoon">Kernlid</label>
+              <input value="{{contact}}" class="form-control" type="text" id="contactpersoon" name="contactpersoon" formControlName="contactpersoon" disabled>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="form-group">
               <label for="rekeningnr">Rekening Nummer</label>
               <input class="form-control" type="text" id="rekeningnr" name="rekeningnr" formControlName="rekeningnr"
-                pattern="[BE]{2}[0-9]{14}" required>
+                     pattern="[BE]{2}[0-9]{14}" required>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="form-group">
               <label for="btwnr">BTW Nummer</label>
               <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr"
-                pattern="[BE]{2}[0]{1}[0-9]{9}" required>
+                     pattern="[BE]{2}[0]{1}[0-9]{9}" required>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="form-group">
               <label for="straat">Straat</label>
-              <input class="form-control" type="text" id="straat" name="straat" pattern="[^0-9]*" formControlName=straat required>
+              <input class="form-control" type="text" id="straat" name="straat" pattern="[^0-9]*" formControlName=straat
+                     required>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="form-group">
               <label for="huisnummer">Huisnummer</label>
               <input class="form-control" type="text" id="huisnummer" name="huisnummer" formControlName="huisnummer"
-                required>
+                     required>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="form-group">
               <label for="gemeente">Gemeente</label>
-              <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]*" formControlName="gemeente" required>
+              <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]*"
+                     formControlName="gemeente" required>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="form-group">
               <label for="postcode">Postcode</label>
               <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode"
-                pattern="[0-9]{4}" required>
+                     pattern="[0-9]{4}" required>
             </div>
           </div>
         </div>
-        <button (click)="updateVereniging()" class="btn btn-primary float-right"><i class="fas fa-save"></i> Update vereniging</button>
+        <button (click)="updateVereniging()" class="btn btn-primary float-right"><i class="fas fa-save"></i> Update
+          vereniging
+        </button>
       </form>
-      <a class="btn btn-secondary float-left" [routerLink]="['/keuzemenu']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug naar home</a>
+      <a class="btn btn-secondary float-left" [routerLink]="['/keuzemenu']" routerLinkActive="router-link-active"><i
+        class="fas fa-arrow-left"></i> Terug naar home</a>
     </div>
   </div>
 </div>

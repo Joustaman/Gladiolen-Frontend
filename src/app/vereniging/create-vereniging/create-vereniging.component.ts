@@ -106,7 +106,6 @@ export class CreateVerenigingComponent implements OnInit {
 
     this.verenigingService.registreerVereniging(this.verenigingForm.value).subscribe(
       result => {
-        console.log(result);
         this.toast.success('Uw aanvraag is verzonden');
         this.router.navigate(['bevestigingAanvraag']);
       },

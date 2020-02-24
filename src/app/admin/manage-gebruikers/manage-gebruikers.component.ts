@@ -72,7 +72,6 @@ export class ManageGebruikersComponent implements OnInit {
 
   ngOnInit() {
     this.adminService.getGebruikers().subscribe(result => {
-      console.log(result);
       this.gebruikers = result;
       this.createDataForTable(result);
       this.pageLoaded = true;

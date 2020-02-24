@@ -22,7 +22,6 @@ export class ManageVerenigingLedenAdminComponent implements OnInit {
         if (params.get('id') !== null) {
           this.adminService.getVerenigingMetVrijwilligers(params.get('id')).subscribe(
             result => {
-              console.log(result);
               this.gebruikers = result;
               this.pageLoaded = true;
             },

@@ -105,7 +105,6 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     console.log(this.tijdsregistratieForm.value);
     this.adminService.updateTijdsregistratie(this.tijdsregistratie.id, this.tijdsregistratieForm.value).subscribe(
       result => {
-        console.log(result);
         this.toastr.success('Verening geupdate');
       },
       error => {
@@ -120,7 +119,6 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     this.adminService.createTijdsregistraties(this.tijdsregistratieForm.value).subscribe(
       result => {
         this.toastr.success('Succesvol toegevoegd');
-        console.log(result);
 
       },
       error => {
@@ -155,9 +153,6 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     this.vereniging = this.verenigingen.find(
       vereniging => vereniging.id === tijdsregistratie.vereniging_id
     );
-    console.log(this.evenement);
-    console.log(this.gebruiker);
-    console.log(this.vereniging);
     this.tijdsregistratie = tijdsregistratie;
   }
 
@@ -166,13 +161,11 @@ export class ManageTijdsregistratiesComponent implements OnInit {
       this.tijdsregistraties = result;
       this.createDataForTable(result);
       this.pageLoaded = true;
-      console.log(result);
     });
   }
   getEvenementen() {
     this.adminService.getEvenementen().subscribe(result => {
       this.evenementen = result;
-      console.log(result);
       this.pageLoaded = true;
     });
   }
@@ -180,7 +173,6 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   getVerenigingen() {
     this.adminService.getVerenigingen().subscribe(result => {
       this.verenigingen = result;
-      console.log(result);
       this.pageLoaded = true;
     });
   }
@@ -188,14 +180,12 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     this.adminService.getVerenigingByIdMetLeden(id).subscribe(result=>
     {
       this.verenigingLeden = result;
-      console.log(result);
       this.pageLoaded = true;
     });
   }
 
   getGebruikers() {
     this.adminService.getGebruikers().subscribe(result => {
-      console.log(result);
       this.gebruikers = result;
       this.pageLoaded = true;
     });
@@ -203,7 +193,6 @@ export class ManageTijdsregistratiesComponent implements OnInit {
 
   changeGebruiker() {
     let value = this.tijdsregistratieForm.get('gebruiker_id').value;
-    console.log(this.gebruiker.id);
     this.tijdsregistratieForm.patchValue({
       gebruiker_id: !value
     });

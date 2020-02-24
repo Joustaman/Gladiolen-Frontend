@@ -75,7 +75,7 @@
                 <div class="form-group">
                   <label for="geslacht">Geslacht</label>
                   <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
-                          [ngModelOptions]="{standalone: true}">
+                          [ngModelOptions]="{standalone: true}" required>
                     <option value="Man">Man</option>
                     <option value="Vrouw">Vrouw</option>
                   </select>
@@ -85,7 +85,7 @@
                 <div class="form-group">
                   <label for="tshirt">Tshirt - Maat</label>
                   <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
-                          [ngModelOptions]="{standalone: true}">
+                          [ngModelOptions]="{standalone: true}" required>
                     <option value="Later kiezen">Later kiezen</option>
                     <option value="S">S</option>
                     <option value="M">M</option>

@@ -38,7 +38,8 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="straat">Straat</label>
-                  <input class="form-control" type="text" id="straat" name="straat" pattern="[^0-9]*" formControlName=straat>
+                  <input class="form-control" type="text" id="straat" name="straat" pattern="[^0-9]*"
+                         formControlName=straat>
                 </div>
               </div>
               <div class="col-lg-3">
@@ -51,7 +52,8 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="gemeente">Gemeente</label>
-                  <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]*" formControlName="gemeente">
+                  <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]*"
+                         formControlName="gemeente">
                 </div>
               </div>
               <div class="col-lg-3">
@@ -62,18 +64,20 @@
                   <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven</div>
                 </div>
               </div>
-<!--              <div class="col-lg-4">-->
-<!--                <div class="form-group">-->
-<!--                  <label for="contactpersoon">Contactpersoon</label>-->
-<!--                  <input class="form-control" type="text" id="contactpersoon" name="contactpersoon"-->
-<!--                         formControlName="contactpersoon">-->
-<!--                </div>-->
-<!--              </div>-->
+              <!--              <div class="col-lg-4">-->
+              <!--                <div class="form-group">-->
+              <!--                  <label for="contactpersoon">Contactpersoon</label>-->
+              <!--                  <input class="form-control" type="text" id="contactpersoon" name="contactpersoon"-->
+              <!--                         formControlName="contactpersoon">-->
+              <!--                </div>-->
+              <!--              </div>-->
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="contactpersoon">Kernlid</label>
-                  <select name="contactpersoon" id="contactpersoon" class="form-control" formControlName="contactpersoon" (change)="changeContact()" required>
-                    <option *ngFor="let kernlid of kernleden" [value]="kernlid.id">{{kernlid.name}} {{kernlid.voornaam}}</option>
+                  <select name="contactpersoon" id="contactpersoon" class="form-control"
+                          formControlName="contactpersoon" (change)="changeContact()" required>
+                    <option *ngFor="let kernlid of kernleden"
+                            [value]="kernlid.id">{{kernlid.name}} {{kernlid.voornaam}}</option>
                   </select>
                 </div>
               </div>
@@ -81,8 +85,10 @@
             </div>
           </form>
           <div>
-            <button mat-button matStepperNext *ngIf="verenigingForm.valid">Next <i class="fas fa-arrow-right"></i></button>
-            <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug naar beheren</a>
+            <button mat-button matStepperNext *ngIf="verenigingForm.valid">Next <i class="fas fa-arrow-right"></i>
+            </button>
+            <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i
+              class="fas fa-arrow-left"></i> Terug naar beheren</a>
           </div>
         </mat-step>
         <mat-step>
@@ -92,20 +98,23 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="voornaam">Voornaam</label>
-                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam" pattern="[^0-9]*"
+                  <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam"
+                         pattern="[^0-9]*"
                          required>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="roepnaam">Roepnaam</label>
-                  <input class="form-control" type="text" id="roepnaam" name="roepnaam" pattern="[^0-9]*" formControlName="roepnaam">
+                  <input class="form-control" type="text" id="roepnaam" name="roepnaam" pattern="[^0-9]*"
+                         formControlName="roepnaam">
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="name">Achternaam</label>
-                  <input class="form-control" type="text" id="name" name="naam" formControlName="name" pattern="[^0-9]*" required>
+                  <input class="form-control" type="text" id="name" name="naam" formControlName="name" pattern="[^0-9]*"
+                         required>
                 </div>
               </div>
               <div class="col-lg-6">
@@ -113,13 +122,16 @@
                   <label for="emailadres">Email</label>
                   <input class="form-control" type="email" id="emailadres" name="emailadres"
                          formControlName="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" required>
-                  <div class="invalid-feedback">Gelieve een geldig e-mailadres in te vullen van het formaat test@test.be</div>
+                  <div class="invalid-feedback">Gelieve een geldig e-mailadres in te vullen van het formaat
+                    test@test.be
+                  </div>
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="telefoon">Telefoon</label>
-                  <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]*" formControlName="telefoon">
+                  <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]*"
+                         formControlName="telefoon">
                 </div>
               </div>
               <div class="col-lg-3">
@@ -147,7 +159,8 @@
               <div class="col-lg-5">
                 <div class="form-group">
                   <label for="geslacht">Geslacht</label>
-                  <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht" [ngModelOptions]="{standalone: true}">
+                  <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
+                          [ngModelOptions]="{standalone: true}">
                     <option value="Man">Man</option>
                     <option value="Vrouw">Vrouw</option>
                   </select>
@@ -156,7 +169,9 @@
               <div class="col-lg-5">
                 <div class="form-group">
                   <label for="tshirt">Tshirt - Maat</label>
-                  <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat" [ngModelOptions]="{standalone: true}">
+                  <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
+                          [ngModelOptions]="{standalone: true}">
+                    <option value="Later kiezen">Later kiezen</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
                     <option value="L">L</option>
@@ -177,8 +192,10 @@
               </div>
               <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext *ngIf="verantwoordelijkeForm.valid">Next <i class="fas fa-arrow-right"></i></button>
-                <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug naar beheren</a>
+                <button mat-button matStepperNext *ngIf="verantwoordelijkeForm.valid">Next <i
+                  class="fas fa-arrow-right"></i></button>
+                <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i
+                  class="fas fa-arrow-left"></i> Terug naar beheren</a>
               </div>
             </div>
           </form>
@@ -226,7 +243,8 @@
             <button mat-button (click)="stepper.reset()">Reset</button>
             <button class="btn btn-primary float-right" (click)="createVerantwoordelijke()">Registreren</button>
           </div>
-          <a class="btn btn-secondary" [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug naar beheren</a>
+          <a class="btn btn-secondary" [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i
+            class="fas fa-arrow-left"></i> Terug naar beheren</a>
         </mat-step>
       </mat-horizontal-stepper>
     </div>

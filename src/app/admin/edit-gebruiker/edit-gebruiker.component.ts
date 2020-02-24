@@ -20,7 +20,6 @@ export class EditGebruikerComponent implements OnInit {
   pageLoaded = false;
   maat: any;
   geslacht: any;
-
   gebruikerForm = new FormGroup({
     name: new FormControl(''),
     voornaam: new FormControl(''),

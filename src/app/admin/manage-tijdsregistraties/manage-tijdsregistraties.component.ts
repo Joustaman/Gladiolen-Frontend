@@ -105,7 +105,7 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     console.log(this.tijdsregistratieForm.value);
     this.adminService.updateTijdsregistratie(this.tijdsregistratie.id, this.tijdsregistratieForm.value).subscribe(
       result => {
-        this.toastr.success('Verening geupdate');
+        this.toastr.success('Tijdsregistratie geupdate');
       },
       error => {
         console.log(error);

@@ -33,7 +33,7 @@ export class EditGebruikerComponent implements OnInit {
     password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
-    actief: new FormControl(null),
+    actief: new FormControl(true),
     foto: new FormControl(null)
   });
 

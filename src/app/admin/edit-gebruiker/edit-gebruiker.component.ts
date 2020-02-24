@@ -123,13 +123,6 @@ export class EditGebruikerComponent implements OnInit {
     );
   }
 
-  changeLunch() {
-    let value = this.gebruikerForm.get('lunchpakket').value;
-    this.gebruikerForm.patchValue({
-      lunchpakket: !value
-    });
-  }
-
   changeRol() {
     let value = this.gebruikerForm.get('rol_id').value;
   }

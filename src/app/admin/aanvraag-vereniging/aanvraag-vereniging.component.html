@@ -20,7 +20,12 @@
         <tbody>
         <tr *ngFor="let ver of verenigingen">
           <td>{{ ver.naam }}</td>
-          <td>{{ ver.hoofd.voornaam }} {{ ver.hoofd.name }}</td>
+          <td>
+            <a (click)="onClickDetailGebruiker(ver.hoofd)" data-toggle="modal"
+               data-target="#hoofdverantwoordelijkeModal">
+              {{ ver.hoofd.voornaam }} {{ ver.hoofd.name }}
+            </a>
+          </td>
           <td>
             <select name="{{ver.id}}" class="form-control" (change)="changeContact($event)">
               <option value="-1">Kies kernlid</option>
@@ -122,6 +127,88 @@
                 <label for="postcode">Postcode</label>
                 <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode"
                        disabled>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          Annuleren
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="hoofdverantwoordelijkeModal" tabindex="-1" role="dialog"
+     aria-labelledby="hoofdverantwoordelijkeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="hoofdverantwoordelijkeModalLabel">Hoofdverantwoordelijke detail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="gebruikerForm">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label for="voornaam">Voornaam</label>
+                <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam"
+                       disabled>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label for="roepnaam">Roepnaam</label>
+                <input class="form-control" type="text" id="roepnaam" name="roepnaam" formControlName="roepnaam"
+                       disabled>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label for="name">Achternaam</label>
+                <input class="form-control" type="text" id="name" name="name" formControlName="name" disabled>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <a href="{{email}}">
+                  <input class="form-control" type="email" id="email" name="email" formControlName="email" disabled>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label for="telefoon">Telefoon</label>
+                <input class="form-control" type="tel" id="telefoon" name="telefoon" formControlName="telefoon"
+                       disabled>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label for="geboortedatum">Geboortedatum</label>
+                <input class="form-control" type="date" id="geboortedatum" name="geboortedatum"
+                       formControlName="geboortedatum" disabled>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label for="rijksregisternr">Rijksregister</label>
+                <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
+                       formControlName="rijksregisternr" disabled>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="form-group">
+                <label for="opmerking">Opmerking</label>
+                <textarea class="form-control" type="text" id="opmerking" name="opmerking"
+                          formControlName="opmerking" disabled></textarea>
               </div>
             </div>
           </div>

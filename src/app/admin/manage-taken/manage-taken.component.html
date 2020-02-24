@@ -21,6 +21,7 @@
           <th scope="col">Start datum</th>
           <th scope="col">Eind datum</th>
           <th scope="col">Aantal personen</th>
+          <th class="acties">Acties</th>
         </tr>
         </thead>
         <tbody>
@@ -32,13 +33,13 @@
           <td>{{taak.aantalPersonen}}</td>
           <td>
             <a (click)="onClickEditTaak(taak)" data-toggle="modal" data-target="#editTaakModal"
-               class="edit"><i class="material-icons" data-toggle="tooltip" title="Bewerken">&#xE254;</i></a>
+               class="edit"><i class="fas fa-pencil-alt" data-toggle="tooltip" title="Bewerken"></i></a>
+            <a (click)="deleteTaak(taak)" data-dismiss="modal" class="delete"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Verwijderen"></i></a>
           </td>
         </tr>
         </tbody>
       </table>
-      <pagination-controls (pageChange)="p = $event" directionLinks="true" responsive="true" previousLabel="Vorige"
-                           nextLabel="Volgende"></pagination-controls>
+      <pagination-controls (pageChange)="p = $event" directionLinks="true" responsive="true" previousLabel="Vorige" nextLabel="Volgende"></pagination-controls>
     </div>
   </div>
 </div>

@@ -59,7 +59,7 @@ export class CreateVerenigingAdminComponent implements OnInit {
         this.kernleden = result;
         this.adminService.getAdmins().subscribe(res=>{
           this.kernleden =this.kernleden.concat(res);
-        })
+        });
         this.pageLoaded = true;
         console.log(result);
       },

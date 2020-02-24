@@ -1,3 +1,4 @@
+<app-spinner *ngIf="!pageLoaded"></app-spinner>
 <div class="container" *ngIf="pageLoaded">
   <div class="card table-wrapper shadow-lg">
     <div class="card-header table-title">
@@ -257,7 +258,7 @@
                 required
               />
               <div class="state p-primary">
-                <label>Actief</label>
+                <label id="test">{{test}}</label>
               </div>
             </div>
           </div>

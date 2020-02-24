@@ -211,4 +211,7 @@ export class ManageGebruikersComponent implements OnInit {
       }
     );
   }
+  deleteGebruiker(gebruiker){
+    this.adminService.deleteGebruiker(gebruiker.id);
+  }
 }

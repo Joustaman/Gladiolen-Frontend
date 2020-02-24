@@ -30,7 +30,12 @@ export class LoginComponent implements OnInit {
         this.toastr.success('Login gevonden!');
       },
       error => {
-        this.toastr.error('Incorrecte inloggegevens');
+        console.log(error);
+        if (error.status === 444) {
+          this.toastr.error(error.error.error);
+        } else {
+          this.toastr.error('Incorrecte inloggegevens');
+        }
       }
     );
   }

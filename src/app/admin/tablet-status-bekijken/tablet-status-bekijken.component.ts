@@ -9,6 +9,7 @@ import { AdminService } from "../admin.service";
 })
 export class TabletStatusBekijkenComponent implements OnInit {
   tablets: any[];
+  pageLoaded = false;
   constructor(
     private route: ActivatedRoute,
     private adminService: AdminService,
@@ -39,5 +40,7 @@ export class TabletStatusBekijkenComponent implements OnInit {
         tablet.tijdKleur = "red";
       }
     });
+
+    this.pageLoaded = true;
   }
 }

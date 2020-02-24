@@ -70,15 +70,6 @@ export class CreateLidComponent implements OnInit {
     );
   }
     /**
-     * Verandert de lunch-waarde van de gebruiker 0 naar 1 en omgekeerd.
-     */
-  changeLunch() {
-    let value = this.lidForm.get('lunchpakket').value;
-    this.lidForm.patchValue({
-      lunchpakket: !value
-    });
-  }
-    /**
      * Creëert een nieuwe vrijwilliger en voert de functie createTshirt uit.
      */
   createLid() {

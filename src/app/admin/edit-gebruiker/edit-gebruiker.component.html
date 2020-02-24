@@ -1,10 +1,14 @@
-<div class="container">
-  <div class="card">
-    <div class="card-header">
-      <h4>Wijzig gebruiker</h4>
+<div class="container" *ngIf="pageLoaded">
+  <div class="card table-wrapper shadow-lg">
+    <div class="card-header table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2><b>Gebruikers bewerken</b></h2>
+        </div>
+      </div>
     </div>
     <div class="card-body">
-      <form [formGroup]="gebruikerForm" class="mt-5 was-validated" novalidate>
+      <form [formGroup]="gebruikerForm" class="was-validated" novalidate>
         <div class="row">
           <div class="col-lg-4">
             <div class="form-group">
@@ -62,7 +66,7 @@
             <div class="form-group">
               <label for="geslacht">Geslacht</label>
               <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
-                      [ngModelOptions]="{standalone: true}">
+                      [ngModelOptions]="{standalone: true}" required>
                 <option value="Man">Man</option>
                 <option value="Vrouw">Vrouw</option>
               </select>
@@ -72,7 +76,7 @@
             <div class="form-group">
               <label for="tshirt">Tshirt - Maat</label>
               <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
-                      [ngModelOptions]="{standalone: true}">
+                      [ngModelOptions]="{standalone: true}" required>
                 <option value="Later kiezen">Later kiezen</option>
                 <option value="S">S</option>
                 <option value="M">M</option>
@@ -109,9 +113,10 @@
             </div>
           </div>
         </div>
-        <button (click)="updateGebruiker()" class="btn btn-primary">Update gebruiker</button>
+        <a [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active" class="btn btn-secondary float-left"><i class="fas fa-arrow-left" data-toggle="tooltip" title="Terug naar beheren"></i> Terug</a>
+        <a (click)="updateGebruiker()" class="btn btn-primary float-right"><i class="fas fa-save"></i> Update gebruiker</a>
       </form>
-      <a [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug</i></a>
+
     </div>
   </div>
 </div>

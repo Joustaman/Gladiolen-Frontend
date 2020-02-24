@@ -22,6 +22,7 @@ export class ManageEvenementenComponent implements OnInit {
   einddatum: any;
   pageLoaded = false;
   actief: any;
+  test = '';
   str = '';
   evenementVerenigingen: any = [];
   private hotRegisterer = new HotTableRegisterer();
@@ -85,13 +86,31 @@ export class ManageEvenementenComponent implements OnInit {
       actief: evenement.actief
     });
     this.evenement = evenement;
+    if(evenement.actief === false|| evenement.actief === 1){
+      this.test="Actief";
+      console.log(evenement.actief);
+    }
+    else if(evenement.actief === true|| evenement.actief === 0){
+      this.test="Niet Actief";
+      console.log(this.test);
+    }
   }
 
   changeActief() {
     let value = this.evenementForm.get('actief').value;
+
     this.evenementForm.patchValue({
       actief: !value
+
     });
+    if(value === false|| value === 0){
+      this.test="Actief";
+      console.log(value);
+    }
+    else if(value === true|| value === 1){
+      this.test="Niet Actief";
+      console.log(value);
+    }
   }
 
   updateEvenement() {

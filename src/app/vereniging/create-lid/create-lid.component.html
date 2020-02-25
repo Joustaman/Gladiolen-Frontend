@@ -106,7 +106,7 @@
                     </div>
                 </div>
             </form>
-            <a class="btn btn-secondary float-left" [routerLink]="['/leden']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug
+            <a class="btn btn-secondary float-left" [routerLink]="['/leden/', verenigingId]" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug
                 naar leden</a>
             <a *ngIf="!updateGebruiker" class="btn add-button float-right" (click)="createLid()"><i
                     class="fas fa-plus-circle"></i><span> Lid toevoegen</span></a>

@@ -15,14 +15,16 @@ export class CreateLidComponent implements OnInit {
 
   tshirts: any = [];
   lid: any = {};
+  verenigingId: any;
+  rol: any;
   updateGebruiker = false;
   pageLoaded = false;
   maat: any;
   geslacht: any;
 
   constructor(private readonly verenigingService: VerenigingService, private readonly router: Router,
-              private readonly route: ActivatedRoute, private readonly datepipe: DatePipe,
-              private readonly toast: ToastrService) { }
+    private readonly route: ActivatedRoute, private readonly datepipe: DatePipe,
+    private readonly toast: ToastrService) { }
 
   lidForm = new FormGroup({
     name: new FormControl(''),
@@ -42,9 +44,21 @@ export class CreateLidComponent implements OnInit {
   });
 
   ngOnInit() {
+    this.verenigingService.getRolVanIngelogdeGebruiker().subscribe(
+      result => {
+        console.log(result);
+        this.rol = result;
+      },
+      error => {
+        console.log(error);
+      },
+    );
     this.route.paramMap.subscribe(
       params => {
-        console.log(params.get('id'));
+        console.log(params.get('verenigingId'));
+        if (params.get('verenigingId') !== null) {
+          this.verenigingId = params.get('verenigingId');
+        }
         if (params.get('id') !== null) {
           this.verenigingService.getLid(params.get('id')).subscribe(
             result => {
@@ -69,48 +83,67 @@ export class CreateLidComponent implements OnInit {
       },
     );
   }
-    /**
-     * Verandert de lunch-waarde van de gebruiker 0 naar 1 en omgekeerd.
-     */
+  /**
+   * Verandert de lunch-waarde van de gebruiker 0 naar 1 en omgekeerd.
+   */
   changeLunch() {
     let value = this.lidForm.get('lunchpakket').value;
     this.lidForm.patchValue({
       lunchpakket: !value
     });
   }
-    /**
-     * Creëert een nieuwe vrijwilliger en voert de functie createTshirt uit.
-     */
+  /**
+   * Creëert een nieuwe vrijwilliger en voert de functie createTshirt uit.
+   */
   createLid() {
-    this.verenigingService.addLid(this.lidForm.value).subscribe(
-      result => {
-        this.createTshirt(result.id);
-      },
-      error => {
-        console.log(error);
-        this.toast.error('Vul het formulier correct in');
+    console.log('verenigingId: '+this.verenigingId);
+    if (this.verenigingId !== null) {
+        if (this.rol == 1) {
+          console.log(this.rol);
+          console.log('verenigingId: '+this.verenigingId)
+          this.verenigingService.addLidAdmin(this.lidForm.value, this.verenigingId).subscribe(
+            result => {
+              this.createTshirt(result.id);
+            },
+            error => {
+              console.log(error);
+              this.toast.error('Vul het formulier correct in');
+            }
+          );
+        }
+        else if (this.rol == 3) {
+          console.log(''+this.rol);
+          this.verenigingService.addLid(this.lidForm.value).subscribe(
+            result => {
+              this.createTshirt(result.id);
+            },
+            error => {
+              console.log(error);
+              this.toast.error('Vul het formulier correct in');
+            }
+          );
+        }
       }
-    );
   }
 
-    /**
-     * @param {int} gebruikerId  Het ID van de gebruiker voor wie het Tshirt-object wordt aangemaakt.
-     * Creëert een nieuw Tshirt-object
-     */
+  /**
+   * @param {int} gebruikerId  Het ID van de gebruiker voor wie het Tshirt-object wordt aangemaakt.
+   * Creëert een nieuw Tshirt-object
+   */
   createTshirt(gebruikerId) {
-    let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null};
+    let tshirt = { maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null };
 
     this.verenigingService.createTshirt(tshirt).subscribe(
       () => {
         this.toast.success('Lid aangemaakt');
-        this.router.navigate(['/leden']);
+        this.router.navigate(['/leden/', this.verenigingId]);
       }
     );
   }
 
-    /**
-     * Updatet de informatie van een lid en voert de functie updateTshirt uit.
-     */
+  /**
+   * Updatet de informatie van een lid en voert de functie updateTshirt uit.
+   */
   updateLid() {
     this.verenigingService.updateLid(this.lid.id, this.lidForm.value).subscribe(
       result => {
@@ -123,23 +156,23 @@ export class CreateLidComponent implements OnInit {
     );
   }
 
-    /**
-     * Updatet het Tshirt-object van de geselecteerde gebruiker.
-     */
+  /**
+   * Updatet het Tshirt-object van de geselecteerde gebruiker.
+   */
   updateTshirt() {
-    let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: this.lid.id, tshirttype_id: null};
+    let tshirt = { maat: this.maat, geslacht: this.geslacht, gebruiker_id: this.lid.id, tshirttype_id: null };
     console.log(tshirt);
     this.verenigingService.updateTshirt(this.lid.id, tshirt).subscribe(
-      result =>  {
+      result => {
         console.log(result);
         this.toast.success('Lid geupdate');
-        this.router.navigate(['/leden']);
+        this.router.navigate(['/leden/',this.verenigingId]);
       }
     );
   }
-    /**
-     * Vult het update-formulier op met de huidige informatie van de geselecteerde gebruiker.
-     */
+  /**
+   * Vult het update-formulier op met de huidige informatie van de geselecteerde gebruiker.
+   */
   fillForm() {
     this.lidForm.patchValue({
       name: this.lid.name,

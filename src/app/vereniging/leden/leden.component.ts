@@ -5,6 +5,7 @@ import { CsvDataService } from 'src/app/csv-data.service';
 import * as Handsontable from 'handsontable';
 import { HotTableRegisterer } from '@handsontable/angular';
 import * as jsPDF from 'jspdf';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-leden',
@@ -15,6 +16,7 @@ export class LedenComponent implements OnInit {
   lidGekozen: boolean = false;
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';
+  verenigingId: any;
   vereniging: any = {};
   leden: any = [];
   lid: any = { id: 0 };
@@ -40,21 +42,47 @@ export class LedenComponent implements OnInit {
   language = 'nl-NL';
   excelModus = false;
 
-  constructor(private readonly verenigingService: VerenigingService) { }
+  constructor(private readonly verenigingService: VerenigingService, private readonly router: Router,
+    private readonly route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.verenigingService.getVerenigingMetLeden().subscribe(
-      result => {
-        console.log(result.gebruikers);
-        this.leden = result.gebruikers;
-        this.vereniging = result;
-        this.createDataForTable(result.gebruikers);
-        this.pageLoaded = true;
-      },
-      error => {
-        console.log(error);
+    this.route.paramMap.subscribe(
+      params => {
+        console.log(params.get('verenigingId'));
+        if (params.get('verenigingId') !== null) {
+          this.verenigingService.getVerenigingMetLedenById(params.get('verenigingId')).subscribe(
+            result => {
+              console.log(result.gebruikers);
+              this.leden = result.gebruikers;
+              this.vereniging = result;
+              this.createDataForTable(result.gebruikers);
+              this.pageLoaded = true;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        }
+        else{
+          this.verenigingService.getVerenigingMetLeden().subscribe(
+            result => {
+              console.log(result.gebruikers);
+              this.leden = result.gebruikers;
+              this.vereniging = result;
+              this.createDataForTable(result.gebruikers);
+              this.pageLoaded = true;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        }
       }
     );
+
+
+
+    
   }
 
 /*

@@ -64,7 +64,6 @@ export class AanvraagVerenigingComponent implements OnInit {
   }
 
   changeContact(event: any) {
-    console.log(event);
     let eventid = event.target.name;
     let contactId = event.target.value;
     this.contacts[eventid] = contactId;

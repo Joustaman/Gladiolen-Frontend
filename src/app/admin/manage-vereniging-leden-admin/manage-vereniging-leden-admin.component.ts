@@ -24,10 +24,7 @@ export class ManageVerenigingLedenAdminComponent implements OnInit {
             result => {
               this.gebruikers = result;
               this.pageLoaded = true;
-            },
-            error => {
-              console.log(error);
-            },
+            }
           );
         }
       });

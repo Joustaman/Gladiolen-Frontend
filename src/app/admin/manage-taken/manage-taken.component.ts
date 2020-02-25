@@ -42,9 +42,6 @@ export class ManageTakenComponent implements OnInit {
       result => {
         this.toastr.success('Taak toegevoegd');
         this.getTaken();
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -66,9 +63,6 @@ export class ManageTakenComponent implements OnInit {
       result => {
         this.toastr.success('Taak geupdate');
         this.getTaken();
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -78,9 +72,6 @@ export class ManageTakenComponent implements OnInit {
       result => {
         this.toastr.success('Taak verwijderd');
         this.getTaken();
-      },
-      error => {
-        console.log(error);
       }
     );
   }

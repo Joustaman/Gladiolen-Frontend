@@ -14,7 +14,6 @@ export class EvenementenFilterPipe implements PipeTransform {
     let alle: any[] = [];
     let first: boolean = true;
     filters = filters.filter(Boolean);
-    console.log(filters);
 
     filters.forEach(f => {
       let gefilterden: any[] = [];

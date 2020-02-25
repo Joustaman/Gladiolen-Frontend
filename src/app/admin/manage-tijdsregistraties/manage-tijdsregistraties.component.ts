@@ -125,20 +125,15 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     });
   }
   updateTijdsregistratie() {
-    console.log(this.tijdsregistratieForm.value);
     this.adminService.updateTijdsregistratie(this.tijdsregistratie.id, this.tijdsregistratieForm.value).subscribe(
       result => {
         this.toastr.success('Tijdsregistratie geupdate');
-      },
-      error => {
-        console.log(error);
       }
     );
     this.getTijdsregistraties();
   }
 
   createTijdsregistratie() {
-    console.log(this.tijdsregistratieForm.value);
     this.adminService.createTijdsregistraties(this.tijdsregistratieForm.value).subscribe(
       result => {
         this.toastr.success('Succesvol toegevoegd');

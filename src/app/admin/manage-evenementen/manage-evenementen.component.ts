@@ -63,9 +63,6 @@ export class ManageEvenementenComponent implements OnInit {
     this.adminService.registreerEvenement(this.evenementForm.value).subscribe(
       result => {
         this.getEvenementen();
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -116,9 +113,6 @@ export class ManageEvenementenComponent implements OnInit {
         result => {
           this.toastr.success('Verening geupdate');
           this.getEvenementen();
-        },
-        error => {
-          console.log(error);
         }
       );
   }
@@ -135,9 +129,6 @@ export class ManageEvenementenComponent implements OnInit {
     this.adminService.registreerEvenementVereniging(data).subscribe(
       result => {
         this.getEvenementen();
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -172,9 +163,6 @@ export class ManageEvenementenComponent implements OnInit {
     this.adminService.deleteVerenigingFromEvenement(ids).subscribe(
       result => {
         this.getEvenementen();
-      },
-      error => {
-        console.log(error);
       }
     );
   }

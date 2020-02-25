@@ -46,16 +46,11 @@ export class CreateLidComponent implements OnInit {
   ngOnInit() {
     this.verenigingService.getRolVanIngelogdeGebruiker().subscribe(
       result => {
-        console.log(result);
         this.rol = result;
-      },
-      error => {
-        console.log(error);
-      },
+      }
     );
     this.route.paramMap.subscribe(
       params => {
-        console.log(params.get('verenigingId'));
         if (params.get('verenigingId') !== null) {
           this.verenigingId = params.get('verenigingId');
         }
@@ -66,10 +61,7 @@ export class CreateLidComponent implements OnInit {
               this.fillForm();
               this.updateGebruiker = true;
               this.pageLoaded = true;
-            },
-            error => {
-              console.log(error);
-            },
+            }
           );
         }
       }
@@ -104,7 +96,6 @@ export class CreateLidComponent implements OnInit {
               this.createTshirt(result.id);
             },
             error => {
-              console.log(error);
               this.toast.error('Vul het formulier correct in');
             }
           );
@@ -115,7 +106,6 @@ export class CreateLidComponent implements OnInit {
               this.createTshirt(result.id);
             },
             error => {
-              console.log(error);
               this.toast.error('Vul het formulier correct in');
             }
           );
@@ -151,9 +141,6 @@ export class CreateLidComponent implements OnInit {
     this.verenigingService.updateLid(this.lid.id, this.lidForm.value).subscribe(
       result => {
         this.updateTshirt();
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -163,7 +150,6 @@ export class CreateLidComponent implements OnInit {
    */
   updateTshirt() {
     let tshirt = { maat: this.maat, geslacht: this.geslacht, gebruiker_id: this.lid.id, tshirttype_id: null };
-    console.log(tshirt);
     this.verenigingService.updateTshirt(this.lid.id, tshirt).subscribe(
       result =>  {
         this.toast.success('Lid geupdate');

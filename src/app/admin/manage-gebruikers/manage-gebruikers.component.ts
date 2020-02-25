@@ -171,16 +171,12 @@ export class ManageGebruikersComponent implements OnInit {
 
   createObjectOfExcelArrays(exceldata) {
     let objectArray = [];
-    console.log(exceldata);
     let headers = [...exceldata[0]];
-    console.log("headers: ", headers);
     exceldata.splice(0, 1);
 
     exceldata.forEach(array => {
       let object = {};
       array.forEach((value, index) => {
-        console.log(value);
-        console.log(index);
         Object.assign(object, {
           [headers[index]]: value,
           rol_id: 4,
@@ -200,7 +196,6 @@ export class ManageGebruikersComponent implements OnInit {
       });
       objectArray.push(object);
     });
-    console.log(objectArray);
     this.adminService.importGebruikers({ gebruikers: objectArray }).subscribe(
       result => {
         this.toastr.success("Gebruikers zijn geïmporteerd");
@@ -226,8 +221,6 @@ export class ManageGebruikersComponent implements OnInit {
     }
   }
   openDialog(gebruiker) {
-    this.teVerwijderen = gebruiker;
-    console.log(this.teVerwijderen);
-    
+    this.teVerwijderen = gebruiker;    
   }
 }

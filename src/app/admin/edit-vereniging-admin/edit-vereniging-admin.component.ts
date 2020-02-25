@@ -51,10 +51,7 @@ export class EditVerenigingAdminComponent implements OnInit {
               else if(result.actief === true|| result.actief === 0){
                 this.test="Niet Actief";
               }
-            },
-            error => {
-              console.log(error);
-            },
+            }
           );
         }
       });
@@ -62,12 +59,8 @@ export class EditVerenigingAdminComponent implements OnInit {
     this.adminService.getKernleden().subscribe(
       result => {
         this.kernleden = result;
-      },
-      error => {
-        console.log(error);
-      },
+      }
     );
-    console.log("hier nog wel")
 
   }
 
@@ -92,9 +85,6 @@ export class EditVerenigingAdminComponent implements OnInit {
       result => {
         this.toastr.success('Verenigingen geupdate');
         this.router.navigate(['manageVerenigingen']);
-      },
-      error => {
-        console.log(error);
       }
     );
   }

@@ -75,6 +75,14 @@ export class ManageTakenComponent implements OnInit {
       }
     );
   }
+  deleteTaakModal(){
+    this.adminService.deleteTaak(this.taak.id).subscribe(
+      result => {
+        this.toastr.success('Taak verwijderd');
+        this.getTaken();
+      }
+    );
+  }
 
   getTaken() {
     this.adminService.getTaken().subscribe(

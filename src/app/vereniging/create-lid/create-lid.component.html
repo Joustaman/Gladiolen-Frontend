@@ -96,7 +96,10 @@
           </div>
         </div>
       </form>
-      <a class="btn btn-secondary float-left" [routerLink]="['/leden/', verenigingId]"
+      <a *ngIf="rol==1" class="btn btn-secondary float-left" [routerLink]="['/leden/', verenigingId]"
+        routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug
+        naar leden</a>
+      <a *ngIf="rol==3" class="btn btn-secondary float-left" [routerLink]="['/leden']"
         routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug
         naar leden</a>
       <a *ngIf="!updateGebruiker" class="btn add-button float-right" (click)="createLid()"><i

@@ -113,7 +113,7 @@ const routes: Routes = [
   {
     path: "leden/:verenigingId",
     component: LedenComponent,
-    canActivate: [VerenigingofadminGuardService]
+    canActivate: [AdminGuardService]
   },
   {
     path: "maaklid/:verenigingId",

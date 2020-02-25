@@ -50,9 +50,6 @@ export class CreateLidVerenigingComponent implements OnInit {
               this.vereniging = result;
               this.pageLoaded = true;
             },
-            error => {
-              console.log(error);
-            },
           );
         }
       });

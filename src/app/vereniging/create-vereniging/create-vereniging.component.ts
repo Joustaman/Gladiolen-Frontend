@@ -66,14 +66,12 @@ export class CreateVerenigingComponent implements OnInit {
   createVerantwoordelijke() {
     this.verenigingService.registreerVerantwoordelijke(this.verantwoordelijkeForm.value).subscribe(
       result => {
-        console.log(result);
         this.verenigingForm.patchValue({
           hoofdverantwoordelijke: result.id,
         });
         this.createTshirt(result.id);
       },
       error => {
-        console.log(error);
         if (error.error.message === 'email') {
           this.toast.error('Email bestaat al');
         } else {
@@ -93,7 +91,6 @@ export class CreateVerenigingComponent implements OnInit {
     this.verenigingService.createTshirt(tshirt).subscribe(
       result => {
         this.createVereniging();
-        console.log(result);
       }
     );
   }
@@ -112,7 +109,6 @@ export class CreateVerenigingComponent implements OnInit {
       error => {
         this.toast.error('Vul het formulier correct in');
         this.buttonEnabled = true;
-        console.log(error);
       }
     );
   }

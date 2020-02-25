@@ -18,6 +18,7 @@ export class ManageTakenComponent implements OnInit {
   taakgroepen: any = [];
   subtaken: any = [];
   pageLoaded = false;
+  p:any;
 
   constructor(private adminService: AdminService, private readonly datepipe: DatePipe,
               private toastr: ToastrService, private readonly router: Router) {
@@ -42,9 +43,6 @@ export class ManageTakenComponent implements OnInit {
       result => {
         this.toastr.success('Taak toegevoegd');
         this.getTaken();
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -66,21 +64,23 @@ export class ManageTakenComponent implements OnInit {
       result => {
         this.toastr.success('Taak geupdate');
         this.getTaken();
-      },
-      error => {
-        console.log(error);
       }
     );
   }
 
-  deleteTaak() {
+  deleteTaak(taak) {
+    this.adminService.deleteTaak(taak.id).subscribe(
+      result => {
+        this.toastr.success('Taak verwijderd');
+        this.getTaken();
+      }
+    );
+  }
+  deleteTaakModal(){
     this.adminService.deleteTaak(this.taak.id).subscribe(
       result => {
         this.toastr.success('Taak verwijderd');
         this.getTaken();
-      },
-      error => {
-        console.log(error);
       }
     );
   }

@@ -23,6 +23,7 @@ export class LedenComponent implements OnInit {
   lid: any = { id: 0 };
   pageLoaded = false;
   data: any = [];
+  p:any;
   test = 'test';
   str = "";
   colHeaders = [
@@ -50,10 +51,7 @@ export class LedenComponent implements OnInit {
     this.verenigingService.getRolVanIngelogdeGebruiker().subscribe(
       result => {
         this.rol = result;
-      },
-      error => {
-        console.log(error);
-      },
+      }
     );
     this.route.paramMap.subscribe(
       params => {
@@ -64,9 +62,6 @@ export class LedenComponent implements OnInit {
               this.vereniging = result;
               this.createDataForTable(result.gebruikers);
               this.pageLoaded = true;
-            },
-            error => {
-              console.log(error);
             }
           );
         }
@@ -77,9 +72,6 @@ export class LedenComponent implements OnInit {
               this.vereniging = result;
               this.createDataForTable(result.gebruikers);
               this.pageLoaded = true;
-            },
-            error => {
-              console.log(error);
             }
           );
         }
@@ -101,9 +93,6 @@ export class LedenComponent implements OnInit {
       () => {
         this.pageLoaded = false;
         this.ngOnInit();
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -121,9 +110,7 @@ export class LedenComponent implements OnInit {
     });
   }
 
-  saveChanges() {
-    console.log(this.hotRegisterer.getInstance(this.id).getData());
-  }
+
 
   export() {
     const exportPlugin = this.hotRegisterer.getInstance(this.id).getPlugin('exportFile');

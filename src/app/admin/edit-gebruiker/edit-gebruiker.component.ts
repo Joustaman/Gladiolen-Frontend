@@ -51,10 +51,7 @@ export class EditGebruikerComponent implements OnInit {
               this.gebruiker = result;
               this.fillForm();
               this.pageLoaded = true;
-            },
-            error => {
-              console.log(error);
-            },
+            }
           );
         }
       });
@@ -102,9 +99,6 @@ export class EditGebruikerComponent implements OnInit {
     this.adminService.updateGebruiker(this.gebruiker.id, this.gebruikerForm.value).subscribe(
       result => {
         this.updateTshirt();
-      },
-      error => {
-        console.log(error);
       }
     );
   }

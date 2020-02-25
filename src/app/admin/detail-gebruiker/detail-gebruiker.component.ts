@@ -44,9 +44,6 @@ export class DetailGebruikerComponent implements OnInit {
                   this.fillForm();
                   this.pageLoaded = true;
                 },
-                error => {
-                  console.log(error);
-                },
             );
           }
         });

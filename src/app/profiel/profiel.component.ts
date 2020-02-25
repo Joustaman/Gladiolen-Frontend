@@ -61,7 +61,6 @@ export class ProfielComponent implements OnInit {
   }
 
   updateProfiel() {
-    console.log(this.userForm.value);
     if (this.hwachtwoord !== this.userForm.get('password').value) {
       this.toastr.error('Wachtwoorden komen niet overeen');
     } else {

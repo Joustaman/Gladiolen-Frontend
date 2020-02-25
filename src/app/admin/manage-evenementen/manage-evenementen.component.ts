@@ -24,6 +24,7 @@ export class ManageEvenementenComponent implements OnInit {
   actief: any;
   test = '';
   str = '';
+  p:any;
   evenementVerenigingen: any = [];
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';

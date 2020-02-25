@@ -17,6 +17,7 @@ export class ManageVerenigingenComponent implements OnInit {
   verenigingen: any = [];
   pageLoaded = false;
   str = '';
+  p:any;
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';
   data: any = [];

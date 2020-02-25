@@ -18,6 +18,7 @@ export class ManageTakenComponent implements OnInit {
   taakgroepen: any = [];
   subtaken: any = [];
   pageLoaded = false;
+  p:any;
 
   constructor(private adminService: AdminService, private readonly datepipe: DatePipe,
               private toastr: ToastrService, private readonly router: Router) {

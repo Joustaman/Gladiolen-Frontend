@@ -23,6 +23,7 @@ export class LedenComponent implements OnInit {
   lid: any = { id: 0 };
   pageLoaded = false;
   data: any = [];
+  p:any;
   test = 'test';
   str = "";
   colHeaders = [

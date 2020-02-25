@@ -20,6 +20,7 @@ export class ManageGebruikersComponent implements OnInit {
   maat: any;
   geslacht: any;
   pageLoaded = false;
+  p:any;
   teVerwijderen = { name: "", voornaam: "", id: 0 };
   str = "";
   private hotRegisterer = new HotTableRegisterer();

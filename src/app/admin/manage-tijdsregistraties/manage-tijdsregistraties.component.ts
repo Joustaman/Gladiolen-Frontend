@@ -24,6 +24,7 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   evenement: any = {naam: 'test'};
   gebruikers: any = [];
   gebruiker: any = {name: 'test'};
+  p:any;
   str = '';
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';

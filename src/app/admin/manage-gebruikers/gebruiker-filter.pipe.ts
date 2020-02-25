@@ -5,6 +5,8 @@ import { Pipe, PipeTransform } from "@angular/core";
 })
 export class GebruikerFilterPipe implements PipeTransform {
   transform(gebruikers: any[], filter: any): any {
+    
+    
     if (!gebruikers || !filter || filter === "") {
       return gebruikers;
     }
@@ -21,8 +23,9 @@ export class GebruikerFilterPipe implements PipeTransform {
       gebruikers.forEach(gebruiker => {
         let naam = gebruiker.name.toLowerCase();
         let voornaam = gebruiker.voornaam.toLowerCase();
+        let rol = gebruiker.rol.naam.toLowerCase();
         //let roepnaam = gebruiker.roepnaam.toLowerCase()
-        if (naam.includes(f) || voornaam.includes(f)) {
+        if (naam.includes(f) || voornaam.includes(f) || rol.includes(f)) {
           if (gefilterden.indexOf(gebruiker) === -1) {
             gefilterden.push(gebruiker);
           }

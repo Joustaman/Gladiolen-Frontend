@@ -26,6 +26,7 @@ import { TijdsregistratieFilterPipe } from './manage-tijdsregistraties/tijdsregi
 import { EvenementenFilterPipe } from './manage-evenementen/evenementen-filter.pipe';
 import { CreateLidVerenigingComponent } from './create-lid-vereniging/create-lid-vereniging.component';
 import { SpinnerModule } from '../spinner/spinner.module';
+import { MatDialogRef } from '@angular/material';
 @NgModule({
   declarations: [
     ManageGebruikersComponent,
@@ -59,6 +60,11 @@ import { SpinnerModule } from '../spinner/spinner.module';
     HotTableModule.forRoot(),
     NgxPaginationModule,
     SpinnerModule,
-  ]
+  ], 
+
+  providers:[{
+    provide: MatDialogRef,
+    useValue: {}
+  }]
 })
 export class AdminModule {}

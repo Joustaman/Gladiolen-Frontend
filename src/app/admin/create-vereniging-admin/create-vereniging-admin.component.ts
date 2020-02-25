@@ -59,9 +59,8 @@ export class CreateVerenigingAdminComponent implements OnInit {
         this.kernleden = result;
         this.adminService.getAdmins().subscribe(res=>{
           this.kernleden =this.kernleden.concat(res);
-        })
+        });
         this.pageLoaded = true;
-        console.log(result);
       },
     );
 
@@ -81,7 +80,6 @@ export class CreateVerenigingAdminComponent implements OnInit {
     this.adminService.registreerVereniging(this.verenigingForm.value).subscribe(
       result => {
         this.toast.success('Uw aanvraag is verzonden');
-        console.log(result);
         this.router.navigate(['/manageVerenigingen']);
       },
       error => {
@@ -89,13 +87,6 @@ export class CreateVerenigingAdminComponent implements OnInit {
         console.log(error);
       }
     );
-  }
-
-  changeLunch() {
-    let value = this.verantwoordelijkeForm.get('lunchpakket').value;
-    this.verantwoordelijkeForm.patchValue({
-      lunchpakket: !value
-    });
   }
 
   createVerantwoordelijke() {
@@ -111,10 +102,14 @@ export class CreateVerenigingAdminComponent implements OnInit {
           hoofdverantwoordelijke: result.id,
         });
         this.createTshirt(result.id);
-        console.log(result);
       },
       error => {
         console.log(error);
+        if (error.error.message === 'email') {
+          this.toast.error('Voer een geldige e-mail in');
+        } else {
+          this.toast.error('Uw gegevens zijn niet geldig in');
+        }
       }
     );
   }
@@ -125,7 +120,6 @@ export class CreateVerenigingAdminComponent implements OnInit {
     this.adminService.createTshirt(tshirt).subscribe(
       result => {
         this.createVereniging();
-        console.log(result);
       }
     );
   }

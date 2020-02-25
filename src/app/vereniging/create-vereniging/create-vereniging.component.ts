@@ -32,7 +32,7 @@ export class CreateVerenigingComponent implements OnInit {
     password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
-    actief: new FormControl(true),
+    actief: new FormControl(false),
     foto: new FormControl(null)
   });
 
@@ -59,15 +59,6 @@ export class CreateVerenigingComponent implements OnInit {
     );
   }
 
-  /**
-   * Verandert de lunch-waarde van de verantwoordelijke van 0 naar 1 en omgekeerd.
-   */
-  changeLunch() {
-    let value = this.verantwoordelijkeForm.get('lunchpakket').value;
-    this.verantwoordelijkeForm.patchValue({
-      lunchpakket: !value
-    });
-  }
 
   /**
    * Creëert een nieuwe verantwoordelijke en voert de functie createTshirt uit.
@@ -115,7 +106,6 @@ export class CreateVerenigingComponent implements OnInit {
 
     this.verenigingService.registreerVereniging(this.verenigingForm.value).subscribe(
       result => {
-        console.log(result);
         this.toast.success('Uw aanvraag is verzonden');
         this.router.navigate(['bevestigingAanvraag']);
       },

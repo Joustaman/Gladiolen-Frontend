@@ -41,7 +41,6 @@ export class EditVerenigingComponent implements OnInit {
         this.leden = result.gebruikers;
         this.fillForm();
         this.pageLoaded = true;
-        console.log(result);
       },
       error => {
         console.log(error);
@@ -79,7 +78,6 @@ export class EditVerenigingComponent implements OnInit {
   updateVereniging() {
     this.verenigingsService.updateVereniging(this.vereniging.id, this.verenigingForm.value).subscribe(
       result => {
-        console.log(result);
         this.toastr.success('Vereniging geupdate');
         this.router.navigate(['keuzemenu']);
       },

@@ -60,8 +60,6 @@ export class CreateGebruikerComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.gebruikerForm.value);
-    
     this.adminService.registreerGebruiker(this.gebruikerForm.value).subscribe(
       result => {
         this.createTshirt(result.id);
@@ -102,13 +100,6 @@ export class CreateGebruikerComponent implements OnInit {
     let value = this.gebruikerForm.get('tweedetshirt').value;
     this.gebruikerForm.patchValue({
       tweedetshirt: !value
-    });
-  }
-
-  changeLunch() {
-    let value = this.gebruikerForm.get('lunchpakket').value;
-    this.gebruikerForm.patchValue({
-      lunchpakket: !value
     });
   }
 

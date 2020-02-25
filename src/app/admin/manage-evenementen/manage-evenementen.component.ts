@@ -22,6 +22,7 @@ export class ManageEvenementenComponent implements OnInit {
   einddatum: any;
   pageLoaded = false;
   actief: any;
+  test = '';
   str = '';
   evenementVerenigingen: any = [];
   private hotRegisterer = new HotTableRegisterer();
@@ -85,13 +86,27 @@ export class ManageEvenementenComponent implements OnInit {
       actief: evenement.actief
     });
     this.evenement = evenement;
+    if(evenement.actief === false|| evenement.actief === 1){
+      this.test="Actief";
+    }
+    else if(evenement.actief === true|| evenement.actief === 0){
+      this.test="Niet Actief";
+    }
   }
 
   changeActief() {
     let value = this.evenementForm.get('actief').value;
+
     this.evenementForm.patchValue({
       actief: !value
+
     });
+    if(value === false|| value === 0){
+      this.test="Actief";
+    }
+    else if(value === true|| value === 1){
+      this.test="Niet Actief";
+    }
   }
 
   updateEvenement() {
@@ -99,7 +114,6 @@ export class ManageEvenementenComponent implements OnInit {
       .updateEvenement(this.evenement.id, this.evenementForm.value)
       .subscribe(
         result => {
-          console.log(result);
           this.toastr.success('Verening geupdate');
           this.getEvenementen();
         },
@@ -120,7 +134,6 @@ export class ManageEvenementenComponent implements OnInit {
     };
     this.adminService.registreerEvenementVereniging(data).subscribe(
       result => {
-        console.log(result);
         this.getEvenementen();
       },
       error => {
@@ -144,7 +157,6 @@ export class ManageEvenementenComponent implements OnInit {
         );
         this.changeEvenementId(this.evenementId, this.evenement);
       }
-      console.log(result);
       this.pageLoaded = true;
     });
   }
@@ -157,10 +169,8 @@ export class ManageEvenementenComponent implements OnInit {
 
   verwijderVerenigingVanEvenement(verenigingId) {
     const ids = {verenigingid: verenigingId, evenementid: this.evenementId};
-    console.log(ids);
     this.adminService.deleteVerenigingFromEvenement(ids).subscribe(
       result => {
-        console.log(result);
         this.getEvenementen();
       },
       error => {

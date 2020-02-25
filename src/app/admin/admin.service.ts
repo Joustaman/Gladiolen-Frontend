@@ -6,10 +6,15 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class AdminService {
+  
   constructor(private readonly http: HttpClient) {
   }
 
   $link = 'http://localhost:8000/';
+
+  deleteGebruiker(id: number) {
+    return this.http.get(this.$link + 'api/gebruiker/delete/' + id);
+  }
 
   registreerVerantwoordelijke(gebruiker): any {
     return this.http.post(

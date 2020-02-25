@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {  tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(
     private readonly http: HttpClient,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly toast: ToastrService,
   ) {}
 
   private readonly api = 'http://localhost:8000';
@@ -28,6 +30,9 @@ export class AuthService {
     this.getIngelogdeGebruiker().subscribe(
       result => {
         localStorage.setItem(this.ROL, result.rol_id);
+        if (result.eersteAanmelding === 1) {
+          this.toast.success('Vergeet uw wachtwoord niet te veranderen');
+        }
         if (result.rol_id === 1) {
           this.router.navigate(['adminHome']);
         } else if (result.rol_id === 3) {

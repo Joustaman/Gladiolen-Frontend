@@ -34,7 +34,7 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input class="form-control" type="email" id="email" name="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" formControlName="email">
+                  <input class="form-control" type="email" id="email" name="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" formControlName="email" required>
                   <div class="invalid-feedback">Gelieve een geldig e-mailadres in te vullen van het formaat test@test.be</div>
 
                 </div>
@@ -50,14 +50,14 @@
                 <div class="form-group">
                   <label for="geboortedatum">Geboortedatum</label>
                   <input class="form-control" type="date" id="geboortedatum" name="geboortedatum"
-                         formControlName="geboortedatum">
+                         formControlName="geboortedatum" required>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="rijksregisternr">Rijksregister</label>
                   <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
-                         formControlName="rijksregisternr" pattern="[0-9]{11}">
+                         formControlName="rijksregisternr" pattern="[0-9]{11}" required>
                   <div class="invalid-feedback">Gelieve de 11 cijfers van je rijksregisternummer in te vullen.</div>
                 </div>
               </div>
@@ -83,6 +83,7 @@
                   <label for="tshirt">Tshirt - Maat</label>
                   <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
                           [ngModelOptions]="{standalone: true}">
+                    <option value="Later kiezen">Later kiezen</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
                     <option value="L">L</option>
@@ -90,23 +91,13 @@
                     <option value="XXL">XXL</option>                  </select>
                 </div>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-6">
                 <div class="form-group">
                   <label for="rol">Rol</label>
                   <select name="rol" id="rol" class="form-control" formControlName="rol_id" (change)="changeRol()"
                           required>
                     <option *ngFor="let rol of rollen" [value]="rol.id">{{rol.naam}}</option>
                   </select>
-                </div>
-              </div>
-              <div class="col-lg-2">
-                <div class="form-group paddingcheck text-center">
-                  <div class="pretty p-default p-switch" (click)="changeLunch()">
-                    <input type="checkbox"/>
-                    <div class="state p-primary">
-                      <label>Lunchpakket</label>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

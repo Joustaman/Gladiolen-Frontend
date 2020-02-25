@@ -43,7 +43,6 @@ export class DetailGebruikerComponent implements OnInit {
                   this.gebruiker = result;
                   this.fillForm();
                   this.pageLoaded = true;
-                  console.log(result);
                 },
                 error => {
                   console.log(error);

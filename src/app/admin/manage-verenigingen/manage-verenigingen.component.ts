@@ -4,6 +4,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import * as Handsontable from 'handsontable';
 import {HotTableRegisterer} from '@handsontable/angular';
 import 'handsontable/languages/nl-NL';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-manage-verenigingen',
@@ -11,6 +12,8 @@ import 'handsontable/languages/nl-NL';
   styleUrls: ['./manage-verenigingen.component.scss']
 })
 export class ManageVerenigingenComponent implements OnInit {
+
+  email: any = {};
   verenigingen: any = [];
   pageLoaded = false;
   str = '';
@@ -57,24 +60,35 @@ export class ManageVerenigingenComponent implements OnInit {
     actief: new FormControl(false)
   });
 
-  constructor(private adminService: AdminService) {
+  gebruikerForm = new FormGroup({
+    name: new FormControl(''),
+    voornaam: new FormControl(''),
+    roepnaam: new FormControl(''),
+    geboortedatum: new FormControl(''),
+    email: new FormControl(''),
+    telefoon: new FormControl(''),
+    opmerking: new FormControl(''),
+    rol: new FormControl(null),
+    rijksregisternr: new FormControl(''),
+    eersteAanmelding: new FormControl(false),
+    lunchpakket: new FormControl(false),
+    actief: new FormControl(true),
+    foto: new FormControl(null),
+    tshirt: new FormControl(null)
+  });
+
+  constructor(private adminService: AdminService,
+              private readonly datepipe: DatePipe) {
   }
 
-  createDataForTable(apiData: any) {
-    apiData.forEach(vereniging => {
-      this.data.push({
-        naam: vereniging.naam,
-        hoofdverantwoordelijke: vereniging.hoofd.name + ' ' + vereniging.hoofd.voornaam,
-        contactpersoon: vereniging.contact.name + ' ' + vereniging.contact.voornaam,
-        rekeningnummer: vereniging.rekeningnr,
-        btwnummer: vereniging.btwnr,
-        straat: vereniging.straat,
-        huisnummer: vereniging.huisnummer,
-        gemeente: vereniging.gemeente,
-        postcode: vereniging.postcode,
-        actief: vereniging.actief === 1 ? 'Ja' : 'Nee',
-      });
-    });
+  ngOnInit() {
+    this.adminService.getGeacepteerdeVerenigingen().subscribe(
+      result => {
+        this.verenigingen = result;
+        this.createDataForTable(result);
+        this.pageLoaded = true;
+      },
+    );
   }
 
   onClickDetailVereniging(vereniging: any) {
@@ -109,19 +123,43 @@ export class ManageVerenigingenComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-    this.adminService.getGeacepteerdeVerenigingen().subscribe(
-      result => {
-        this.verenigingen = result;
-        this.createDataForTable(result);
-        this.pageLoaded = true;
-        console.log(result);
-      },
-    );
+  onClickDetailGebruiker(gebruiker) {
+    this.email = "mailto:" + gebruiker.email;
+
+    this.gebruikerForm.patchValue({
+      name: gebruiker.name,
+      voornaam: gebruiker.voornaam,
+      roepnaam: gebruiker.roepnaam,
+      geboortedatum: this.datepipe.transform(
+        gebruiker.geboortedatum,
+        'yyyy-MM-dd'
+      ),
+      email: gebruiker.email,
+      telefoon: gebruiker.telefoon,
+      opmerking: gebruiker.opmerking,
+      rijksregisternr: gebruiker.rijksregisternr
+    });
   }
 
   changeExcel() {
     this.excelModus = !this.excelModus;
+  }
+
+  createDataForTable(apiData: any) {
+    apiData.forEach(vereniging => {
+      this.data.push({
+        naam: vereniging.naam,
+        hoofdverantwoordelijke: vereniging.hoofd.name + ' ' + vereniging.hoofd.voornaam,
+        contactpersoon: vereniging.contact.name + ' ' + vereniging.contact.voornaam,
+        rekeningnummer: vereniging.rekeningnr,
+        btwnummer: vereniging.btwnr,
+        straat: vereniging.straat,
+        huisnummer: vereniging.huisnummer,
+        gemeente: vereniging.gemeente,
+        postcode: vereniging.postcode,
+        actief: vereniging.actief === 1 ? 'Ja' : 'Nee',
+      });
+    });
   }
 
   export() {
@@ -137,5 +175,4 @@ export class ManageVerenigingenComponent implements OnInit {
       mimeType: 'text/csv',
     });
   }
-
 }

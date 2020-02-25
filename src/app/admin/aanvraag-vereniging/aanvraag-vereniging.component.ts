@@ -10,6 +10,7 @@ import {AdminService} from '../admin.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {FormControl, FormGroup} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-aanvraag-vereniging',
@@ -17,15 +18,18 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./aanvraag-vereniging.component.scss']
 })
 export class AanvraagVerenigingComponent implements OnInit {
+
   verenigingen: any[];
   contactpersonen: any[];
   contacts: any = {};
+  email: any = {};
 
   constructor(
     private route: ActivatedRoute,
     private adminService: AdminService,
     private readonly toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private readonly datepipe: DatePipe
   ) {
   }
 
@@ -41,12 +45,22 @@ export class AanvraagVerenigingComponent implements OnInit {
     postcode: new FormControl('')
   });
 
+  gebruikerForm = new FormGroup({
+    name: new FormControl(''),
+    voornaam: new FormControl(''),
+    roepnaam: new FormControl(''),
+    geboortedatum: new FormControl(''),
+    email: new FormControl(''),
+    telefoon: new FormControl(''),
+    opmerking: new FormControl(''),
+    rijksregisternr: new FormControl(''),
+  });
+
   @Output() notificationChanged: EventEmitter<String> = new EventEmitter();
 
   ngOnInit() {
     this.verenigingen = this.route.snapshot.data['verenigingen'];
     this.contactpersonen = this.route.snapshot.data['contactpersonen'];
-    console.log(this.contactpersonen);
   }
 
   changeContact(event: any) {
@@ -54,7 +68,6 @@ export class AanvraagVerenigingComponent implements OnInit {
     let eventid = event.target.name;
     let contactId = event.target.value;
     this.contacts[eventid] = contactId;
-    console.log(this.contacts);
   }
 
   accept(id) {
@@ -96,6 +109,24 @@ export class AanvraagVerenigingComponent implements OnInit {
       huisnummer: vereniging.huisnummer,
       gemeente: vereniging.gemeente,
       postcode: vereniging.postcode
+    });
+  }
+
+  onClickDetailGebruiker(gebruiker) {
+    this.email = 'mailto:' + gebruiker.email;
+
+    this.gebruikerForm.patchValue({
+      name: gebruiker.name,
+      voornaam: gebruiker.voornaam,
+      roepnaam: gebruiker.roepnaam,
+      geboortedatum: this.datepipe.transform(
+        gebruiker.geboortedatum,
+        'yyyy-MM-dd'
+      ),
+      email: gebruiker.email,
+      telefoon: gebruiker.telefoon,
+      opmerking: gebruiker.opmerking,
+      rijksregisternr: gebruiker.rijksregisternr
     });
   }
 }

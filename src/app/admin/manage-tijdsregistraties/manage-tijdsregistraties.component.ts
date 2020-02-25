@@ -29,7 +29,7 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   id = 'hotInstance';
   data: any = [];
   colHeaders = ['Lid', 'Vereniging', 'Evenement', 'Check-In', 'Check-Out', 'Manuele Check-In',
-  'Manuele Check-Out', 'Aangepaste Check-In', 'Aangepaste Check-Out'];
+  'Manuele Check-Out', 'Aangepaste Check-In', 'Aangepaste Check-Out', 'Finale Check-In', 'Finale Check-Uit'];
   excelModus = false;
   columns: any = [
     {data: 'lid', readOnly: true},
@@ -41,6 +41,8 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     {data: 'manuelecheckuit', readOnly: true},
     {data: 'aangepastecheckin', readOnly: true},
     {data: 'aangepastecheckuit', readOnly: true},
+    {data: 'finaleCheckIn', readOnly: true},
+    {data: 'finaleCheckUit', readOnly: true},
   ];
 
   tijdsregistratieForm = new FormGroup({
@@ -75,6 +77,25 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   }
   createDataForTable(apiData: any) {
     apiData.forEach(tr => {
+      let finaleCheckIn;
+      let finaleCheckUit;
+
+      if (tr.adminCheckIn !== null) {
+        finaleCheckIn = tr.adminCheckIn;
+      } else if (tr.manCheckIn !== null) {
+        finaleCheckIn = tr.manCheckIn;
+      } else if (tr.checkIn !== null) {
+        finaleCheckIn = tr.checkIn;
+      }
+
+      if (tr.adminCheckUit !== null) {
+        finaleCheckUit = tr.adminCheckUit;
+      } else if (tr.manCheckUit !== null) {
+        finaleCheckUit = tr.manCheckUit;
+      } else if (tr.checkUit !== null) {
+        finaleCheckUit = tr.checkUit;
+      }
+
       this.data.push({
         lid: tr.gebruiker.name + ' ' + tr.gebruiker.voornaam,
         evenement: tr.evenement.naam,
@@ -85,6 +106,8 @@ export class ManageTijdsregistratiesComponent implements OnInit {
         manuelecheckuit: tr.manCheckUit,
         aangepastecheckin: tr.adminCheckIn,
         aangepastecheckuit: tr.adminCheckUit,
+        finaleCheckIn,
+        finaleCheckUit,
       });
     });
   }
@@ -105,8 +128,7 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     console.log(this.tijdsregistratieForm.value);
     this.adminService.updateTijdsregistratie(this.tijdsregistratie.id, this.tijdsregistratieForm.value).subscribe(
       result => {
-        console.log(result);
-        this.toastr.success('Verening geupdate');
+        this.toastr.success('Tijdsregistratie geupdate');
       },
       error => {
         console.log(error);
@@ -120,7 +142,6 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     this.adminService.createTijdsregistraties(this.tijdsregistratieForm.value).subscribe(
       result => {
         this.toastr.success('Succesvol toegevoegd');
-        console.log(result);
 
       },
       error => {
@@ -155,9 +176,6 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     this.vereniging = this.verenigingen.find(
       vereniging => vereniging.id === tijdsregistratie.vereniging_id
     );
-    console.log(this.evenement);
-    console.log(this.gebruiker);
-    console.log(this.vereniging);
     this.tijdsregistratie = tijdsregistratie;
   }
 
@@ -166,13 +184,11 @@ export class ManageTijdsregistratiesComponent implements OnInit {
       this.tijdsregistraties = result;
       this.createDataForTable(result);
       this.pageLoaded = true;
-      console.log(result);
     });
   }
   getEvenementen() {
     this.adminService.getEvenementen().subscribe(result => {
       this.evenementen = result;
-      console.log(result);
       this.pageLoaded = true;
     });
   }
@@ -180,7 +196,6 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   getVerenigingen() {
     this.adminService.getVerenigingen().subscribe(result => {
       this.verenigingen = result;
-      console.log(result);
       this.pageLoaded = true;
     });
   }
@@ -188,14 +203,12 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     this.adminService.getVerenigingByIdMetLeden(id).subscribe(result=>
     {
       this.verenigingLeden = result;
-      console.log(result);
       this.pageLoaded = true;
     });
   }
 
   getGebruikers() {
     this.adminService.getGebruikers().subscribe(result => {
-      console.log(result);
       this.gebruikers = result;
       this.pageLoaded = true;
     });
@@ -203,7 +216,6 @@ export class ManageTijdsregistratiesComponent implements OnInit {
 
   changeGebruiker() {
     let value = this.tijdsregistratieForm.get('gebruiker_id').value;
-    console.log(this.gebruiker.id);
     this.tijdsregistratieForm.patchValue({
       gebruiker_id: !value
     });

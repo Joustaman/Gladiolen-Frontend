@@ -26,6 +26,7 @@ import { DatePipe } from '@angular/common';
 import { BevestigingAanvraagComponent } from './vereniging/bevestiging-aanvraag/bevestiging-aanvraag.component';
 import { AanvraagVerenigingComponent } from './admin/aanvraag-vereniging/aanvraag-vereniging.component';
 import { OverzichtsPaginaComponent } from './vereniging/overzichts-pagina/overzichts-pagina.component';
+import { SpinnerModule } from './spinner/spinner.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,6 @@ import { OverzichtsPaginaComponent } from './vereniging/overzichts-pagina/overzi
     LoginComponent,
     LedenComponent,
     CreateLidComponent,
-    SpinnerComponent,
     KeuzemenuComponent,
     EditVerenigingComponent,
     DetailVerenigingComponent,
@@ -48,6 +48,7 @@ import { OverzichtsPaginaComponent } from './vereniging/overzichts-pagina/overzi
     BrowserAnimationsModule,
     AppRoutingModule,
     MymaterialModule,
+    SpinnerModule,
     AdminModule,
     HttpClientModule,
     FormsModule,
@@ -55,7 +56,7 @@ import { OverzichtsPaginaComponent } from './vereniging/overzichts-pagina/overzi
     NgxPaginationModule,
     ToastrModule.forRoot(),
     HotTableModule.forRoot(),
-    QRCodeModule
+    QRCodeModule,
   ],
   providers: [
     {

@@ -17,6 +17,7 @@ export class LedenComponent implements OnInit {
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';
   verenigingId: any;
+  rol: any;
   vereniging: any = {};
   leden: any = [];
   lid: any = { id: 0 };
@@ -46,6 +47,15 @@ export class LedenComponent implements OnInit {
     private readonly route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.verenigingService.getRolVanIngelogdeGebruiker().subscribe(
+      result => {
+        console.log(result);
+        this.rol = result;
+      },
+      error => {
+        console.log(error);
+      },
+    );
     this.route.paramMap.subscribe(
       params => {
         console.log(params.get('verenigingId'));

@@ -10,13 +10,24 @@
           <a class="btn add-button" (click)="changeExcel()" *ngIf="!excelModus"
             ><i class="far fa-file-excel"></i> <span> Excel modus</span></a
           >
-          <a
+          <div *ngIf="!excelModus">
+            <a
+            *ngIf="rol==1"
             class="btn add-button"
             [routerLink]="['/maaklid/', vereniging.id]"
             routerLinkActive="router-link-active"
-            *ngIf="!excelModus"
+            
             ><i class="fas fa-plus-circle"></i><span> Voeg lid toe</span></a
           >
+          <a
+            *ngIf="rol==3"
+            class="btn add-button"
+            [routerLink]="['/maaklid']"
+            routerLinkActive="router-link-active"
+            ><i class="fas fa-plus-circle"></i><span> Voeg lid toe</span></a
+          >
+          </div>
+          
           <a class="btn edit-button" (click)="changeExcel()" *ngIf="excelModus"
             ><i class="fas fa-pencil-alt"></i> <span>Edit modus</span></a
           >

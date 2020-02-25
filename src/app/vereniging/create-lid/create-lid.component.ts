@@ -62,7 +62,6 @@ export class CreateLidComponent implements OnInit {
         if (params.get('id') !== null) {
           this.verenigingService.getLid(params.get('id')).subscribe(
             result => {
-              console.log(result);
               this.lid = result;
               this.fillForm();
               this.updateGebruiker = true;
@@ -94,13 +93,12 @@ export class CreateLidComponent implements OnInit {
   }
   /**
    * Creëert een nieuwe vrijwilliger en voert de functie createTshirt uit.
+   * Als admin (rol == 1) voer je addLidAdmin uit, met het verenigingId van de geselecteerde vereniging.
+   * Als Verantwoordelijke (rol == 3) voer je addLid uit (binnen zijn eigen vereniging).
    */
   createLid() {
-    console.log('verenigingId: '+this.verenigingId);
     if (this.verenigingId !== null) {
         if (this.rol == 1) {
-          console.log(this.rol);
-          console.log('verenigingId: '+this.verenigingId)
           this.verenigingService.addLidAdmin(this.lidForm.value, this.verenigingId).subscribe(
             result => {
               this.createTshirt(result.id);
@@ -112,7 +110,6 @@ export class CreateLidComponent implements OnInit {
           );
         }
         else if (this.rol == 3) {
-          console.log(''+this.rol);
           this.verenigingService.addLid(this.lidForm.value).subscribe(
             result => {
               this.createTshirt(result.id);
@@ -136,7 +133,13 @@ export class CreateLidComponent implements OnInit {
     this.verenigingService.createTshirt(tshirt).subscribe(
       () => {
         this.toast.success('Lid aangemaakt');
-        this.router.navigate(['/leden/', this.verenigingId]);
+        if(this.rol==1){
+          this.router.navigate(['/leden/', this.verenigingId]);
+        }
+        else if(this.rol==3){
+          this.router.navigate(['/leden']);
+        }
+        
       }
     );
   }

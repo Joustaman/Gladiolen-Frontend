@@ -111,13 +111,18 @@ const routes: Routes = [
     canActivate: [VerenigingofadminGuardService]
   },
   {
-    path: "maaklid",
+    path: "leden/:verenigingId",
+    component: LedenComponent,
+    canActivate: [AdminGuardService]
+  },
+  {
+    path: "maaklid/:verenigingId",
     component: CreateLidComponent,
     canActivate: [VerenigingofadminGuardService]
   },
   {
     path: 'adminmaaklidvereniging/:id',
-    component: CreateLidVerenigingComponent,
+    component: CreateLidComponent,
     canActivate: [AdminGuardService]
   },
   {

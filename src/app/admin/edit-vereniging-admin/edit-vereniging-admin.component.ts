@@ -15,6 +15,7 @@ export class EditVerenigingAdminComponent implements OnInit {
   leden: any = [];
   kernleden: any = [];
   pageLoaded = false;
+  test = '';
 
   verenigingForm = new FormGroup({
     naam: new FormControl(''),
@@ -44,6 +45,12 @@ export class EditVerenigingAdminComponent implements OnInit {
               this.leden = result.gebruikers;
               this.fillForm();
               this.pageLoaded = true;
+              if(result.actief === false|| result.actief === 1){
+                this.test="Actief";
+              }
+              else if(result.actief === true|| result.actief === 0){
+                this.test="Niet Actief";
+              }
             },
             error => {
               console.log(error);
@@ -60,6 +67,8 @@ export class EditVerenigingAdminComponent implements OnInit {
         console.log(error);
       },
     );
+    console.log("hier nog wel")
+
   }
 
   fillForm() {
@@ -95,5 +104,11 @@ export class EditVerenigingAdminComponent implements OnInit {
     this.verenigingForm.patchValue({
       actief: !value
     });
+    if(value === false|| value === 0){
+      this.test="Actief";
+    }
+    else if(value === true|| value === 1){
+      this.test="Niet Actief";
+    }
   }
 }

@@ -11,30 +11,29 @@
           <div class="col-lg-4">
             <div class="form-group">
               <label for="voornaam">Voornaam</label>
-              <input class="form-control" type="text" id="voornaam" name="voornaam"
-                     formControlName="voornaam" pattern="[^0-9]*" required>
+              <input class="form-control" type="text" id="voornaam" name="voornaam" formControlName="voornaam"
+                pattern="[^0-9]*" required>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="form-group">
               <label for="roepnaam">Roepnaam</label>
               <input class="form-control" type="text" id="roepnaam" name="roepnaam" pattern="[^0-9]*"
-                     formControlName="roepnaam">
+                formControlName="roepnaam">
             </div>
           </div>
           <div class="col-lg-4">
             <div class="form-group">
               <label for="naam">Achternaam</label>
-              <input class="form-control" type="text" id="naam" name="naam" formControlName="name"
-                     pattern="[^0-9]*" required>
+              <input class="form-control" type="text" id="naam" name="naam" formControlName="name" pattern="[^0-9]*"
+                required>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="form-group">
               <label for="emailadres">Email</label>
-              <input class="form-control" type="text" id="emailadres" name="emailadres"
-                     formControlName="email"
-                     pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$">
+              <input class="form-control" type="text" id="emailadres" name="emailadres" formControlName="email"
+                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$">
               <div class="invalid-feedback">Gelieve een geldig e-mailadres in te vullen van het formaat
                 test@test.be
               </div>
@@ -44,21 +43,21 @@
             <div class="form-group">
               <label for="telefoon">Telefoon</label>
               <input class="form-control" type="tel" id="telefoon" name="telefoon" pattern="[0-9]*"
-                     formControlName="telefoon">
+                formControlName="telefoon">
             </div>
           </div>
           <div class="col-lg-3">
             <div class="form-group">
               <label for="geboortedatum">Geboortedatum</label>
               <input class="form-control" type="date" id="geboortedatum" name="geboortedatum" required
-                     formControlName="geboortedatum">
+                formControlName="geboortedatum">
             </div>
           </div>
           <div class="col-lg-6">
             <div class="form-group">
               <label for="rijksregisternr">Rijksregister</label>
               <input class="form-control" type="text" id="rijksregisternr" name="rijksregisternr"
-                     formControlName="rijksregisternr" pattern="[0-9]{11}" required>
+                formControlName="rijksregisternr" pattern="[0-9]{11}" required>
               <div class="invalid-feedback">Gelieve de 11 cijfers van je rijksregisternummer in te
                 vullen.
               </div>
@@ -68,14 +67,14 @@
             <div class="form-group">
               <label for="opmerking">Opmerking</label>
               <textarea class="form-control" type="text" id="opmerking" name="opmerking"
-                        formControlName="opmerking"></textarea>
+                formControlName="opmerking"></textarea>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="form-group">
               <label for="geslacht">Geslacht</label>
               <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
-                      [ngModelOptions]="{standalone: true}">
+                [ngModelOptions]="{standalone: true}">
                 <option value="Man">Man</option>
                 <option value="Vrouw">Vrouw</option>
               </select>
@@ -85,7 +84,7 @@
             <div class="form-group">
               <label for="tshirt">Tshirt - Maat</label>
               <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
-                      [ngModelOptions]="{standalone: true}">
+                [ngModelOptions]="{standalone: true}">
                 <option value="Later kiezen">Later kiezen</option>
                 <option value="S">S</option>
                 <option value="M">M</option>
@@ -97,13 +96,16 @@
           </div>
         </div>
       </form>
-      <a class="btn btn-secondary float-left" [routerLink]="['/leden']" routerLinkActive="router-link-active"><i
-        class="fas fa-arrow-left"></i> Terug
+      <a *ngIf="rol==1" class="btn btn-secondary float-left" [routerLink]="['/leden/', verenigingId]"
+        routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug
+        naar leden</a>
+      <a *ngIf="rol==3" class="btn btn-secondary float-left" [routerLink]="['/leden']"
+        routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug
         naar leden</a>
       <a *ngIf="!updateGebruiker" class="btn add-button float-right" (click)="createLid()"><i
-        class="fas fa-plus-circle"></i><span> Lid toevoegen</span></a>
+          class="fas fa-plus-circle"></i><span> Lid toevoegen</span></a>
       <a *ngIf="updateGebruiker" class="btn edit-button float-right" (click)="updateLid()"><i
-        class="fas fa-pencil-alt"></i><span> Lid bewerken</span></a>
+          class="fas fa-pencil-alt"></i><span> Lid bewerken</span></a>
     </div>
   </div>
 </div>

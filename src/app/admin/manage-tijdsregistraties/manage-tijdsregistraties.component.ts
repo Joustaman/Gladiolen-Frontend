@@ -29,7 +29,7 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   id = 'hotInstance';
   data: any = [];
   colHeaders = ['Lid', 'Vereniging', 'Evenement', 'Check-In', 'Check-Out', 'Manuele Check-In',
-  'Manuele Check-Out', 'Aangepaste Check-In', 'Aangepaste Check-Out'];
+  'Manuele Check-Out', 'Aangepaste Check-In', 'Aangepaste Check-Out', 'Finale Check-In', 'Finale Check-Uit'];
   excelModus = false;
   columns: any = [
     {data: 'lid', readOnly: true},
@@ -41,6 +41,8 @@ export class ManageTijdsregistratiesComponent implements OnInit {
     {data: 'manuelecheckuit', readOnly: true},
     {data: 'aangepastecheckin', readOnly: true},
     {data: 'aangepastecheckuit', readOnly: true},
+    {data: 'finaleCheckIn', readOnly: true},
+    {data: 'finaleCheckUit', readOnly: true},
   ];
 
   tijdsregistratieForm = new FormGroup({
@@ -75,6 +77,25 @@ export class ManageTijdsregistratiesComponent implements OnInit {
   }
   createDataForTable(apiData: any) {
     apiData.forEach(tr => {
+      let finaleCheckIn;
+      let finaleCheckUit;
+
+      if (tr.adminCheckIn !== null) {
+        finaleCheckIn = tr.adminCheckIn;
+      } else if (tr.manCheckIn !== null) {
+        finaleCheckIn = tr.manCheckIn;
+      } else if (tr.checkIn !== null) {
+        finaleCheckIn = tr.checkIn;
+      }
+
+      if (tr.adminCheckUit !== null) {
+        finaleCheckUit = tr.adminCheckUit;
+      } else if (tr.manCheckUit !== null) {
+        finaleCheckUit = tr.manCheckUit;
+      } else if (tr.checkUit !== null) {
+        finaleCheckUit = tr.checkUit;
+      }
+
       this.data.push({
         lid: tr.gebruiker.name + ' ' + tr.gebruiker.voornaam,
         evenement: tr.evenement.naam,
@@ -85,6 +106,8 @@ export class ManageTijdsregistratiesComponent implements OnInit {
         manuelecheckuit: tr.manCheckUit,
         aangepastecheckin: tr.adminCheckIn,
         aangepastecheckuit: tr.adminCheckUit,
+        finaleCheckIn,
+        finaleCheckUit,
       });
     });
   }

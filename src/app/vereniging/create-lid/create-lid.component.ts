@@ -46,7 +46,7 @@ export class CreateLidComponent implements OnInit {
   ngOnInit() {
     this.verenigingService.getRolVanIngelogdeGebruiker().subscribe(
       result => {
-        console.log(result);
+        console.log("rol:" +result);
         this.rol = result;
       },
       error => {
@@ -55,7 +55,6 @@ export class CreateLidComponent implements OnInit {
     );
     this.route.paramMap.subscribe(
       params => {
-        console.log(params.get('verenigingId'));
         if (params.get('verenigingId') !== null) {
           this.verenigingId = params.get('verenigingId');
         }

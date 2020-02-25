@@ -49,7 +49,6 @@ export class LedenComponent implements OnInit {
   ngOnInit() {
     this.verenigingService.getRolVanIngelogdeGebruiker().subscribe(
       result => {
-        console.log(result);
         this.rol = result;
       },
       error => {
@@ -58,7 +57,6 @@ export class LedenComponent implements OnInit {
     );
     this.route.paramMap.subscribe(
       params => {
-        console.log(params.get('verenigingId'));
         if (params.get('verenigingId') !== null) {
           this.verenigingService.getVerenigingMetLedenById(params.get('verenigingId')).subscribe(
             result => {

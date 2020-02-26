@@ -38,6 +38,10 @@ export class VerenigingService {
     return this.http.delete('http://localhost:8000/api/gebruiker/deletelid/' + id);
   }
 
+  deleteLidAdmin(id, verenigingId): any {
+    return this.http.delete('http://localhost:8000/api/gebruiker/deletelid/'+verenigingId, id);
+  }
+
   updateLid(id, lid): any {
     return this.http.put('http://localhost:8000/api/gebruiker/updatelid/' + id, lid);
   }

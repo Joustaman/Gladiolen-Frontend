@@ -18,6 +18,7 @@ export class CreateGebruikerComponent implements OnInit {
   maat: any;
   geslacht: any;
   pageLoaded = false;
+  btnVisible = true;
 
   gebruikerForm = new FormGroup({
     name: new FormControl(''),
@@ -60,12 +61,13 @@ export class CreateGebruikerComponent implements OnInit {
   }
 
   submitForm() {
+    this.btnVisible = false;
     this.adminService.registreerGebruiker(this.gebruikerForm.value).subscribe(
       result => {
         this.createTshirt(result.id);
       },
       error => {
-        console.log(error);
+        this.btnVisible = true;
         this.toast.error('Vul het formulier correct in');
       }
     );

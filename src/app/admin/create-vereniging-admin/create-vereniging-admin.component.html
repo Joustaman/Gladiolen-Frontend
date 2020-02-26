@@ -85,9 +85,9 @@
             </div>
           </form>
           <div>
-            <button mat-button matStepperNext *ngIf="verenigingForm.valid">Next <i class="fas fa-arrow-right"></i>
+            <button class="btn btn-primary float-right" mat-button matStepperNext *ngIf="verenigingForm.valid">Next <i class="fas fa-arrow-right"></i>
             </button>
-            <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i
+            <a class="btn btn-secondary float-left"[routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i
               class="fas fa-arrow-left"></i> Terug naar beheren</a>
           </div>
         </mat-step>
@@ -181,11 +181,11 @@
                 </div>
               </div>
               <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext *ngIf="verantwoordelijkeForm.valid">Next <i
-                  class="fas fa-arrow-right"></i></button>
-                <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i
+                <button class="btn btn-secondary float-left" mat-button matStepperPrevious><i class="fas fa-arrow-left" data-toggle="tooltip" title="Terug"></i> Terug</button>
+                <a class="btn btn-secondary float-left" [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i
                   class="fas fa-arrow-left"></i> Terug naar beheren</a>
+                <button class="btn btn-primary float-right" mat-button matStepperNext *ngIf="verantwoordelijkeForm.valid">Next <i
+                        class="fas fa-arrow-right"></i></button>
               </div>
             </div>
           </form>
@@ -229,12 +229,12 @@
             </tbody>
           </table>
           <div>
-            <button mat-button matStepperPrevious><i class="fas fa-arrow-left"></i> Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-            <button class="btn btn-primary float-right" (click)="createVerantwoordelijke()">Registreren</button>
+            <button class="btn btn-secondary float-left" mat-button matStepperPrevious><i class="fas fa-arrow-left" data-toggle="tooltip" title="Terug"></i> Terug</button>
+            <a class="btn btn-primary float-right" (click)="createVerantwoordelijke()">Registreren</a>
           </div>
-          <a class="btn btn-secondary" [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i
+          <a class="btn btn-secondary float-left" [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i
             class="fas fa-arrow-left"></i> Terug naar beheren</a>
+          <a class="btn detail-button float-left" mat-button (click)="stepper.reset()">Reset</a>
         </mat-step>
       </mat-horizontal-stepper>
     </div>

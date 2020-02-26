@@ -1,15 +1,4 @@
-$body-font: "Roboto";
-
-$thin: 100;
-$light: 300;
-$regular: 400;
-$semibold: 500;
-$bold: 700;
-$ultra: 800;
-
-$base-font-family: $body-font, sans-serif;
 $base-font-size: 14px;
-$base-font-weight: $regular;
 $base-line-height: 1.6em;
 
 $black: #000000;
@@ -32,7 +21,6 @@ html {
 body {
   background: linear-gradient(45deg,  rgba(66, 183, 245,0.8) 0%,rgba(66, 245, 189,0.4) 100%);
   color: $gray;
-  font-family: $base-font-family;
   font-size: $base-font-size;
   line-height: $base-line-height;
   -webkit-font-smoothing: antialiased;
@@ -50,13 +38,12 @@ body {
 }
 
 .form {
+  vertical-align: middle;
   z-index: 0;
   position: relative;
   background: $white;
-  width: $max-width;
   border-radius: 7px;
   box-sizing: border-box;
-  margin: 100px auto 10px;
   overflow: hidden;
 
   // Toggle
@@ -117,7 +104,6 @@ body {
       margin: 0 0 10px;
       color: $gray;
       font-size: 12px;
-      font-weight: $semibold;
       line-height: 1;
       text-transform: uppercase;
       letter-spacing: .2em;
@@ -139,7 +125,6 @@ body {
       color: $gray;
       font-family: inherit;
       font-size: inherit;
-      font-weight: $semibold;
       line-height: inherit;
       transition: 0.3s ease;
 
@@ -166,7 +151,6 @@ body {
       color: $white;
       font-family: inherit;
       font-size: inherit;
-      font-weight: $semibold;
       line-height: inherit;
       text-transform: uppercase;
       cursor: pointer;
@@ -179,7 +163,6 @@ body {
 
     .form-remember {
       font-size: 12px;
-      font-weight: $regular;
       letter-spacing: 0;
       text-transform: none;
 
@@ -199,7 +182,7 @@ body {
 
   // Panel
   &-panel {
-    padding: 60px calc(5% + 60px) 60px 60px;
+    padding: 60px;
     box-sizing: border-box;
 
     // Panel One
@@ -283,7 +266,6 @@ body {
       padding: 4px 0;
       color: $accent;
       font-size: 24px;
-      font-weight: $bold;
       text-transform: uppercase;
 
       .two & {
@@ -311,7 +293,7 @@ body {
     font-size: 12px;
     text-decoration: none;
     text-shadow: 1px 2px 0 rgba($black, .1);
-    
+
     .material-icons {
       width: 12px;
       margin: 0 5px;
@@ -399,4 +381,16 @@ p {
     stroke-dashoffset: 900;
   }
 }
+
+.container {
+  background-image:url('https://nnieuws.be/sites/default/files/gladiolen_2014_7571245782447863241_o.jpg');
+  background-size: cover;
+  min-width: 100% !important;
+  margin-top: -120px !important;
+}
+
+.form {
+  margin-top: 120px !important;
+}
+
 

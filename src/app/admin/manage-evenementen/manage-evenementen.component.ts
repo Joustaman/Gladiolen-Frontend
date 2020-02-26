@@ -211,4 +211,10 @@ export class ManageEvenementenComponent implements OnInit {
       mimeType: 'text/csv'
     });
   }
-}
+
+  fixPagination(){    
+    if(this.str!==""){
+        this.p=1;        
+    }
+  }
+} 

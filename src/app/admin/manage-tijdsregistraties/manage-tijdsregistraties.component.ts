@@ -209,7 +209,11 @@ export class ManageTijdsregistratiesComponent implements OnInit {
       this.pageLoaded = true;
     });
   }
-
+  fixPagination(){    
+    if(this.str!==""){
+        this.p=1;        
+    }
+  }
   changeGebruiker() {
     let value = this.tijdsregistratieForm.get('gebruiker_id').value;
     this.tijdsregistratieForm.patchValue({

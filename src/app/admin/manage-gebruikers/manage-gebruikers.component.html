@@ -42,6 +42,7 @@
         <input
           id="str"
           [(ngModel)]="str"
+          (ngModelChange)="fixPagination()"
           class="form-control w-100 m-1 float-right"
           placeholder="Zoek gebruiker"
         />

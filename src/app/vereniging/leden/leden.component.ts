@@ -56,6 +56,7 @@ export class LedenComponent implements OnInit {
     this.route.paramMap.subscribe(
       params => {
         if (params.get('verenigingId') !== null) {
+          this.verenigingId = params.get('verenigingId');
           this.verenigingService.getVerenigingMetLedenById(params.get('verenigingId')).subscribe(
             result => {
               this.leden = result.gebruikers;
@@ -89,12 +90,31 @@ export class LedenComponent implements OnInit {
    * Deletet de informatie van een lid.
    */
   deleteLid(id) {
-    this.verenigingService.deleteLid(id).subscribe(
-      () => {
-        this.pageLoaded = false;
-        this.ngOnInit();
-      }
-    );
+    //Admin
+    if(this.rol==1){
+      this.verenigingService.deleteLidAdmin(id, this.verenigingId).subscribe(
+        () => {
+          this.pageLoaded = false;
+          this.ngOnInit();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+    //Verenigingsverantwoordelijke
+    else if(this.rol==3){
+      console.log(this.rol)
+      this.verenigingService.deleteLid(id).subscribe(
+        () => {
+          this.pageLoaded = false;
+          this.ngOnInit();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   createDataForTable(apiData: any) {

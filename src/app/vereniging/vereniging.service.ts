@@ -39,7 +39,7 @@ export class VerenigingService {
   }
 
   deleteLidAdmin(id, verenigingId): any {
-    return this.http.delete('http://localhost:8000/api/gebruiker/deletelid/'+verenigingId, id);
+    return this.http.delete('http://localhost:8000/api/gebruiker/deletelidadmin/'+verenigingId+'/'+id);
   }
 
   updateLid(id, lid): any {

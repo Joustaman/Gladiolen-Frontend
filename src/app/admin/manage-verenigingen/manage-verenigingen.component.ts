@@ -162,7 +162,11 @@ export class ManageVerenigingenComponent implements OnInit {
       });
     });
   }
-
+  fixPagination(){    
+    if(this.str!==""){
+        this.p=1;        
+    }
+  }
   export() {
     const exportPlugin = this.hotRegisterer.getInstance(this.id).getPlugin('exportFile');
 

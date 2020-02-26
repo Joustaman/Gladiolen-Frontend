@@ -167,4 +167,9 @@ export class LedenComponent implements OnInit {
   changeToAll() {
     this.lidGekozen = false;
   }
+  fixPagination(){    
+    if(this.str!==""){
+        this.p=1;        
+    }
+  }
 }

@@ -141,7 +141,11 @@ export class ManageGebruikersComponent implements OnInit {
       mimeType: "text/csv"
     });
   }
-
+  fixPagination(){    
+    if(this.str!==""){
+        this.p=1;        
+    }
+  }
   onFileChange(evt: any) {
     let exceldata;
     /* wire up file reader */

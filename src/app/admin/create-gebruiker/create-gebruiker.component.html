@@ -72,7 +72,7 @@
                 <div class="form-group">
                   <label for="geslacht">Geslacht</label>
                   <select name="geslacht" id="geslacht" class="form-control" [(ngModel)]="geslacht"
-                          [ngModelOptions]="{standalone: true}">
+                          [ngModelOptions]="{standalone: true}" required>
                     <option value="Man">Man</option>
                     <option value="Vrouw">Vrouw</option>
                   </select>
@@ -82,7 +82,7 @@
                 <div class="form-group">
                   <label for="tshirt">Tshirt - Maat</label>
                   <select name="tshirt" id="tshirt" class="form-control" [(ngModel)]="maat"
-                          [ngModelOptions]="{standalone: true}">
+                          [ngModelOptions]="{standalone: true}" required>
                     <option value="Later kiezen">Later kiezen</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
@@ -104,7 +104,7 @@
           </form>
           <div>
 
-            <button class="btn btn-primary float-right" mat-button matStepperNext>Next <i class="fas fa-arrow-right"></i></button>
+            <button class="btn btn-primary float-right" mat-button matStepperNext>Volgende <i class="fas fa-arrow-right"></i></button>
             <a class="btn btn-secondary" [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active"><i class="fas fa-arrow-left"></i> Terug naar beheren</a>
           </div>
         </mat-step>
@@ -155,7 +155,7 @@
           <div>
             <button class="btn btn-secondary float-left" mat-button matStepperPrevious><i class="fas fa-arrow-left" data-toggle="tooltip"
                                                      title="Terug"></i> Terug</button>
-            <a class="btn btn-primary float-right" (click)="createGebruiker()">Registreren</a>
+            <a *ngIf="btnVisible" class="btn btn-primary float-right" (click)="createGebruiker()">Registreren</a>
             <a [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active"
                class="btn btn-secondary float-left"><i class="fas fa-arrow-left" data-toggle="tooltip"
                                                        title="Terug naar beheren"></i> Terug naar beheren</a>

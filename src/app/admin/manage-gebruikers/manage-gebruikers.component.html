@@ -42,6 +42,7 @@
         <input
           id="str"
           [(ngModel)]="str"
+          (ngModelChange)="fixPagination()"
           class="form-control w-100 m-1 float-right"
           placeholder="Zoek gebruiker"
         />
@@ -57,7 +58,7 @@
                 <th scope="col">Voornaam</th>
                 <th scope="col">Geboortedatum</th>
                 <th scope="col">Rol</th>
-                <th scope="col">Acties</th>
+                <th class="acties">Acties</th>
               </tr>
             </thead>
             <tbody>
@@ -94,7 +95,7 @@
                       title="Bewerken"
                     ></i
                   ></a>
-                  <a
+                  <a class="delete"
                     (click)="openDialog(gebruiker)"
                     data-toggle="modal"
                     data-target="#deleteModal"

@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
         this.emailgereset = true;
       },
       error => {
-        console.log(error);
         this.emailgereset = true;
       }
     );

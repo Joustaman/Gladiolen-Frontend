@@ -41,9 +41,6 @@ export class EditVerenigingComponent implements OnInit {
         this.leden = result.gebruikers;
         this.fillForm();
         this.pageLoaded = true;
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -80,9 +77,6 @@ export class EditVerenigingComponent implements OnInit {
       result => {
         this.toastr.success('Vereniging geupdate');
         this.router.navigate(['keuzemenu']);
-      },
-      error => {
-        console.log(error);
       }
     );
   }

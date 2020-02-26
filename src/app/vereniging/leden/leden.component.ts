@@ -5,6 +5,7 @@ import { CsvDataService } from 'src/app/csv-data.service';
 import * as Handsontable from 'handsontable';
 import { HotTableRegisterer } from '@handsontable/angular';
 import * as jsPDF from 'jspdf';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-leden',
@@ -15,11 +16,14 @@ export class LedenComponent implements OnInit {
   lidGekozen: boolean = false;
   private hotRegisterer = new HotTableRegisterer();
   id = 'hotInstance';
+  verenigingId: any;
+  rol: any;
   vereniging: any = {};
   leden: any = [];
   lid: any = { id: 0 };
   pageLoaded = false;
   data: any = [];
+  p:any;
   test = 'test';
   str = "";
   colHeaders = [
@@ -40,20 +44,43 @@ export class LedenComponent implements OnInit {
   language = 'nl-NL';
   excelModus = false;
 
-  constructor(private readonly verenigingService: VerenigingService) { }
+  constructor(private readonly verenigingService: VerenigingService, private readonly router: Router,
+    private readonly route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.verenigingService.getVerenigingMetLeden().subscribe(
+    this.verenigingService.getRolVanIngelogdeGebruiker().subscribe(
       result => {
-        this.leden = result.gebruikers;
-        this.vereniging = result;
-        this.createDataForTable(result.gebruikers);
-        this.pageLoaded = true;
-      },
-      error => {
-        console.log(error);
+        this.rol = result;
       }
     );
+    this.route.paramMap.subscribe(
+      params => {
+        if (params.get('verenigingId') !== null) {
+          this.verenigingService.getVerenigingMetLedenById(params.get('verenigingId')).subscribe(
+            result => {
+              this.leden = result.gebruikers;
+              this.vereniging = result;
+              this.createDataForTable(result.gebruikers);
+              this.pageLoaded = true;
+            }
+          );
+        }
+        else{
+          this.verenigingService.getVerenigingMetLeden().subscribe(
+            result => {
+              this.leden = result.gebruikers;
+              this.vereniging = result;
+              this.createDataForTable(result.gebruikers);
+              this.pageLoaded = true;
+            }
+          );
+        }
+      }
+    );
+
+
+
+    
   }
 
 /*
@@ -66,9 +93,6 @@ export class LedenComponent implements OnInit {
       () => {
         this.pageLoaded = false;
         this.ngOnInit();
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -86,9 +110,7 @@ export class LedenComponent implements OnInit {
     });
   }
 
-  saveChanges() {
-    console.log(this.hotRegisterer.getInstance(this.id).getData());
-  }
+
 
   export() {
     const exportPlugin = this.hotRegisterer.getInstance(this.id).getPlugin('exportFile');

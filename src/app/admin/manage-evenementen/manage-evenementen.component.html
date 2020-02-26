@@ -60,11 +60,11 @@
                 <div *ngIf="evenement.actief == 1">Actief</div>
               </td>
               <td>
-                <a (click)="onClickEditEvenement(evenement)" data-toggle="modal"
-                   data-target="#editEvenementModal"
-                   class="add"><i class="fas fa-plus" data-toggle="tooltip" title="Vereniging toewijzen"></i></a>
                 <a (click)="changeEvenementId(evenement.id, evenement)" data-toggle="modal"
                    data-target="#toewijzenVerenigingModal"
+                   class="add"><i class="fas fa-plus" data-toggle="tooltip" title="Vereniging toewijzen"></i></a>
+                <a (click)="onClickEditEvenement(evenement)" data-toggle="modal"
+                   data-target="#editEvenementModal"
                    class="edit"><i class="fas fa-pencil-alt" data-toggle="tooltip" title="Bewerken"></i></a>
               </td>
             </tr>

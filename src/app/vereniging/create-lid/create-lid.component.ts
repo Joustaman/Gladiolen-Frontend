@@ -15,14 +15,16 @@ export class CreateLidComponent implements OnInit {
 
   tshirts: any = [];
   lid: any = {};
+  verenigingId: any;
+  rol: any;
   updateGebruiker = false;
   pageLoaded = false;
   maat: any;
   geslacht: any;
 
   constructor(private readonly verenigingService: VerenigingService, private readonly router: Router,
-              private readonly route: ActivatedRoute, private readonly datepipe: DatePipe,
-              private readonly toast: ToastrService) { }
+    private readonly route: ActivatedRoute, private readonly datepipe: DatePipe,
+    private readonly toast: ToastrService) { }
 
   lidForm = new FormGroup({
     name: new FormControl(''),
@@ -42,21 +44,24 @@ export class CreateLidComponent implements OnInit {
   });
 
   ngOnInit() {
+    this.verenigingService.getRolVanIngelogdeGebruiker().subscribe(
+      result => {
+        this.rol = result;
+      }
+    );
     this.route.paramMap.subscribe(
       params => {
-        console.log(params.get('id'));
+        if (params.get('verenigingId') !== null) {
+          this.verenigingId = params.get('verenigingId');
+        }
         if (params.get('id') !== null) {
           this.verenigingService.getLid(params.get('id')).subscribe(
             result => {
-              console.log(result);
               this.lid = result;
               this.fillForm();
               this.updateGebruiker = true;
               this.pageLoaded = true;
-            },
-            error => {
-              console.log(error);
-            },
+            }
           );
         }
       }
@@ -69,66 +74,92 @@ export class CreateLidComponent implements OnInit {
       },
     );
   }
-    /**
-     * Creëert een nieuwe vrijwilliger en voert de functie createTshirt uit.
-     */
+  /**
+   * Verandert de lunch-waarde van de gebruiker 0 naar 1 en omgekeerd.
+   */
+  changeLunch() {
+    let value = this.lidForm.get('lunchpakket').value;
+    this.lidForm.patchValue({
+      lunchpakket: !value
+    });
+  }
+  /**
+   * Creëert een nieuwe vrijwilliger en voert de functie createTshirt uit.
+   * Als admin (rol == 1) voer je addLidAdmin uit, met het verenigingId van de geselecteerde vereniging.
+   * Als Verantwoordelijke (rol == 3) voer je addLid uit (binnen zijn eigen vereniging).
+   */
   createLid() {
-    this.verenigingService.addLid(this.lidForm.value).subscribe(
-      result => {
-        this.createTshirt(result.id);
-      },
-      error => {
-        console.log(error);
-        this.toast.error('Vul het formulier correct in');
+    if (this.verenigingId !== null) {
+        if (this.rol == 1) {
+          this.verenigingService.addLidAdmin(this.lidForm.value, this.verenigingId).subscribe(
+            result => {
+              this.createTshirt(result.id);
+            },
+            error => {
+              this.toast.error('Vul het formulier correct in');
+            }
+          );
+        }
+        else if (this.rol == 3) {
+          this.verenigingService.addLid(this.lidForm.value).subscribe(
+            result => {
+              this.createTshirt(result.id);
+            },
+            error => {
+              this.toast.error('Vul het formulier correct in');
+            }
+          );
+        }
       }
-    );
   }
 
-    /**
-     * @param {int} gebruikerId  Het ID van de gebruiker voor wie het Tshirt-object wordt aangemaakt.
-     * Creëert een nieuw Tshirt-object
-     */
+  /**
+   * @param {int} gebruikerId  Het ID van de gebruiker voor wie het Tshirt-object wordt aangemaakt.
+   * Creëert een nieuw Tshirt-object
+   */
   createTshirt(gebruikerId) {
-    let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null};
+    let tshirt = { maat: this.maat, geslacht: this.geslacht, gebruiker_id: gebruikerId, tshirttype_id: null };
 
     this.verenigingService.createTshirt(tshirt).subscribe(
       () => {
         this.toast.success('Lid aangemaakt');
-        this.router.navigate(['/leden']);
+        if(this.rol==1){
+          this.router.navigate(['/leden/', this.verenigingId]);
+        }
+        else if(this.rol==3){
+          this.router.navigate(['/leden']);
+        }
+        
       }
     );
   }
 
-    /**
-     * Updatet de informatie van een lid en voert de functie updateTshirt uit.
-     */
+  /**
+   * Updatet de informatie van een lid en voert de functie updateTshirt uit.
+   */
   updateLid() {
     this.verenigingService.updateLid(this.lid.id, this.lidForm.value).subscribe(
       result => {
         this.updateTshirt();
-      },
-      error => {
-        console.log(error);
       }
     );
   }
 
-    /**
-     * Updatet het Tshirt-object van de geselecteerde gebruiker.
-     */
+  /**
+   * Updatet het Tshirt-object van de geselecteerde gebruiker.
+   */
   updateTshirt() {
-    let tshirt = {maat: this.maat, geslacht: this.geslacht, gebruiker_id: this.lid.id, tshirttype_id: null};
-    console.log(tshirt);
+    let tshirt = { maat: this.maat, geslacht: this.geslacht, gebruiker_id: this.lid.id, tshirttype_id: null };
     this.verenigingService.updateTshirt(this.lid.id, tshirt).subscribe(
       result =>  {
         this.toast.success('Lid geupdate');
-        this.router.navigate(['/leden']);
+        this.router.navigate(['/leden/',this.verenigingId]);
       }
     );
   }
-    /**
-     * Vult het update-formulier op met de huidige informatie van de geselecteerde gebruiker.
-     */
+  /**
+   * Vult het update-formulier op met de huidige informatie van de geselecteerde gebruiker.
+   */
   fillForm() {
     this.lidForm.patchValue({
       name: this.lid.name,

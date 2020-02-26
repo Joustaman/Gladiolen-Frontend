@@ -36,7 +36,7 @@ export class AdminService {
   }
 
   getAdmins(): any {
-    return this.http.get(this.$link + 'api/gebruiker/getAdmins/');
+    return this.http.get(this.$link + 'api/gebruiker/getAdmins');
   }
 
   registreerGebruiker(gebruiker): any {

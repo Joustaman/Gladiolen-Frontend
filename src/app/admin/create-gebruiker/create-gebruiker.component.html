@@ -153,9 +153,12 @@
             </tbody>
           </table>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button class="btn btn-primary float-right" (click)="createGebruiker()">Registreren</button>
-            <a [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar beheren</i></a>
+            <button class="btn btn-secondary float-left" mat-button matStepperPrevious><i class="fas fa-arrow-left" data-toggle="tooltip"
+                                                     title="Terug"></i> Terug</button>
+            <a class="btn btn-primary float-right" (click)="createGebruiker()">Registreren</a>
+            <a [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active"
+               class="btn btn-secondary float-left"><i class="fas fa-arrow-left" data-toggle="tooltip"
+                                                       title="Terug naar beheren"></i> Terug naar beheren</a>
 
           </div>
         </mat-step>

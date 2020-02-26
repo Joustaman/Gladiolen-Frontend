@@ -1,104 +1,124 @@
 <app-spinner *ngIf="!pageLoaded"></app-spinner>
 <div class="container" *ngIf="pageLoaded">
-  <form [formGroup]="verenigingForm" class="was-validated mt-5" novalidate>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="naam">Naam</label>
-          <input class="form-control" type="text" id="naam" name="naam" formControlName="naam" required>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="contactpersoon">Kernlid</label>
-          <select class="form-control" name="contactpersoon" id="contactpersoon"
-                  formControlName="contactpersoon">
-            <option *ngFor="let kernlid of kernleden"
-                    [value]="kernlid.id">{{kernlid.name}} {{kernlid.voornaam}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="hoofdverantwoordelijke">Hoofd verantwoordelijke</label>
-          <select class="form-control" name="hoofdverantwoordelijke" id="hoofdverantwoordelijke"
-                  formControlName="hoofdverantwoordelijke">
-            <option *ngFor="let lid of leden" [value]="lid.id">{{lid.name}} {{lid.voornaam}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="tweedeverantwoordelijke">Verander van tweede verantwoordelijke</label>
-          <select class="form-control" name="tweedeverantwoordelijke" id="tweedeverantwoordelijke"
-                  formControlName="tweedeverantwoordelijke">
-            <option *ngFor="let lid of leden" [value]="lid.id">{{lid.name}} {{lid.voornaam}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="rekeningnr">Rekening Nummer</label>
-          <input class="form-control" type="text" id="rekeningnr" name="rekeningnr" formControlName="rekeningnr"
-                 pattern="[BE]{2}[0-9]{14}" required>
-          <div class="invalid-feedback">Gelieve een correct rekeningnummer in te vullen in het formaat
-            BExxxxxxxxxxxxxx
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="btwnr">BTW Nummer</label>
-          <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr"
-                 pattern="[BE]{2}[0]{1}[0-9]{9}">
-        </div>
-        <div class="invalid-feedback">Gelieve een correct rekeningnummer in te vullen in het formaat
-          BE0xxxxxxxxx
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="form-group">
-          <label for="straat">Straat</label>
-          <input class="form-control" type="text" id="straat" name="straat" pattern="[^0-9]*" formControlName=straat
-                 required>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="form-group">
-          <label for="huisnummer">Huisnummer</label>
-          <input class="form-control" type="text" id="huisnummer" name="huisnummer" formControlName="huisnummer"
-                 required>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="form-group">
-          <label for="gemeente">Gemeente</label>
-          <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]*"
-                 formControlName="gemeente" required>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="form-group">
-          <label for="postcode">Postcode</label>
-          <input class="form-control" type="text" id="postcode" name="postcode" formControlName="postcode"
-                 pattern="[0-9]{4}" required>
-          <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven</div>
-        </div>
-      </div>
-      <div class="col-lg-1">
-        <div class="form-group paddingcheck text-center">
-          <div class="pretty p-default p-switch" (click)="changeActief()">
-            <input type="checkbox" id="actief" formControlName="actief" required
-                   [checked]="verenigingForm.get('actief').value"/>
-            <div class="state p-primary">
-              <label>Actief</label>
+    <div class="card table-wrapper shadow-lg">
+        <div class="card-header table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2><b>Vereniging bewerken</b></h2>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <button (click)="updateVereniging()" class="btn btn-primary">Update vereniging</button>
-    <a [routerLink]="['/manageVerenigingen']" routerLinkActive="router-link-active"><i class="fas" data-toggle="tooltip" title="Terug naar beheren">Terug naar beheren</i></a>
+        <div class="card-body">
+            <form [formGroup]="verenigingForm" class="was-validated" novalidate>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="naam">Naam</label>
+                            <input class="form-control" type="text" id="naam" name="naam" formControlName="naam"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="contactpersoon">Kernlid</label>
+                            <select class="form-control" name="contactpersoon" id="contactpersoon"
+                                    formControlName="contactpersoon">
+                                <option *ngFor="let kernlid of kernleden"
+                                        [value]="kernlid.id">{{kernlid.name}} {{kernlid.voornaam}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="hoofdverantwoordelijke">Hoofd verantwoordelijke</label>
+                            <select class="form-control" name="hoofdverantwoordelijke" id="hoofdverantwoordelijke"
+                                    formControlName="hoofdverantwoordelijke">
+                                <option *ngFor="let lid of leden"
+                                        [value]="lid.id">{{lid.name}} {{lid.voornaam}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="tweedeverantwoordelijke">Verander van tweede verantwoordelijke</label>
+                            <select class="form-control" name="tweedeverantwoordelijke" id="tweedeverantwoordelijke"
+                                    formControlName="tweedeverantwoordelijke">
+                                <option *ngFor="let lid of leden"
+                                        [value]="lid.id">{{lid.name}} {{lid.voornaam}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="rekeningnr">Rekening Nummer</label>
+                            <input class="form-control" type="text" id="rekeningnr" name="rekeningnr"
+                                   formControlName="rekeningnr"
+                                   pattern="[BE]{2}[0-9]{14}" required>
+                            <div class="invalid-feedback">Gelieve een correct rekeningnummer in te vullen in het formaat
+                                BExxxxxxxxxxxxxx
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="btwnr">BTW Nummer</label>
+                            <input class="form-control" type="text" id="btwnr" name="btwnr" formControlName="btwnr"
+                                   pattern="[BE]{2}[0]{1}[0-9]{9}">
+                        </div>
+                        <div class="invalid-feedback">Gelieve een correct rekeningnummer in te vullen in het formaat
+                            BE0xxxxxxxxx
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="straat">Straat</label>
+                            <input class="form-control" type="text" id="straat" name="straat" pattern="[^0-9]*"
+                                   formControlName=straat
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="huisnummer">Huisnummer</label>
+                            <input class="form-control" type="text" id="huisnummer" name="huisnummer"
+                                   formControlName="huisnummer"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="gemeente">Gemeente</label>
+                            <input class="form-control" type="text" id="gemeente" name="gemeente" pattern="[^0-9]*"
+                                   formControlName="gemeente" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="postcode">Postcode</label>
+                            <input class="form-control" type="text" id="postcode" name="postcode"
+                                   formControlName="postcode"
+                                   pattern="[0-9]{4}" required>
+                            <div class="invalid-feedback">Gelieve de 4-cijferige postcode in te geven</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1">
+                        <div class="form-group paddingcheck text-center">
+                            <div class="pretty p-default p-switch" (click)="changeActief()">
+                                <input type="checkbox" id="actief" formControlName="actief" required
+                                       [checked]="verenigingForm.get('actief').value"/>
+                                <div class="state p-primary">
+                                    <label>{{test}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button (click)="updateVereniging()" class="btn btn-primary float-right"><i class="fas fa-save"></i> Update vereniging</button>
+                <a [routerLink]="['/manageGebruikers']" routerLinkActive="router-link-active"
+                   class="btn btn-secondary float-left"><i class="fas fa-arrow-left" data-toggle="tooltip"
+                                                           title="Terug naar beheren"></i> Terug</a>
 
-  </form>
+            </form>
+        </div>
+    </div>
 </div>

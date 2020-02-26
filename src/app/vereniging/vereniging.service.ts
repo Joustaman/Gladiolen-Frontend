@@ -30,6 +30,10 @@ export class VerenigingService {
     return this.http.post('http://localhost:8000/api/gebruiker/addlid', lid);
   }
 
+  addLidAdmin(lid, verenigingId): any {
+    return this.http.post('http://localhost:8000/api/gebruiker/addlidadmin/'+verenigingId, lid);
+  }
+
   deleteLid(id): any {
     return this.http.delete('http://localhost:8000/api/gebruiker/deletelid/' + id);
   }
@@ -60,5 +64,12 @@ export class VerenigingService {
 
   updateVereniging(id, vereniging): any {
     return this.http.put('http://localhost:8000/api/vereniging/' + id, vereniging);
+  }
+
+  getRolVanIngelogdeGebruiker(): any {
+    return this.http.get('http://localhost:8000/api/rol/getRol');
+  }
+  getRolIdWhereNaam(naam): any {
+    return this.http.get('http://localhost:8000/api/rol/getRolIdWhereNaam', naam);
   }
 }

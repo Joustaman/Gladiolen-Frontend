@@ -30,7 +30,6 @@ export class EditGebruikerComponent implements OnInit {
     opmerking: new FormControl(''),
     rol_id: new FormControl(null),
     rijksregisternr: new FormControl(''),
-    password: new FormControl(null),
     eersteAanmelding: new FormControl(false),
     lunchpakket: new FormControl(false),
     actief: new FormControl(true),
@@ -51,10 +50,7 @@ export class EditGebruikerComponent implements OnInit {
               this.gebruiker = result;
               this.fillForm();
               this.pageLoaded = true;
-            },
-            error => {
-              console.log(error);
-            },
+            }
           );
         }
       });
@@ -102,9 +98,6 @@ export class EditGebruikerComponent implements OnInit {
     this.adminService.updateGebruiker(this.gebruiker.id, this.gebruikerForm.value).subscribe(
       result => {
         this.updateTshirt();
-      },
-      error => {
-        console.log(error);
       }
     );
   }

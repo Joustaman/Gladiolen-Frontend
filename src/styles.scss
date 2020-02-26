@@ -7,12 +7,14 @@
 @font-face {
   font-family: CircularStd;
   src: url(assets/CircularStd-Book.woff);
+  font-display: swap;
 }
 
 @font-face {
   font-family: CircularStd;
   src: url(assets/CircularStd-Bold.woff);
   font-weight: bold;
+  font-display: swap;
 }
 
 body {

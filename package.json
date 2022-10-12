@@ -26,7 +26,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap.min.js": "^3.3.5",
     "handsontable": "^7.3.0",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.5.1",
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^11.3.2",
     "rxjs": "~6.4.0",
